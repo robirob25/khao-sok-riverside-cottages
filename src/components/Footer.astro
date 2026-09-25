@@ -1,0 +1,131 @@
+---
+// Footer.astro — Premium editorial footer
+---
+
+<footer class="bg-jungle-900 border-t border-white/[0.06] mt-16 sm:mt-24">
+  <!-- Top divider -->
+  <div class="divider-gold opacity-60"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
+
+      <!-- Brand Column -->
+      <div class="sm:col-span-2 lg:col-span-1">
+        <a href="/" class="flex items-center gap-3 mb-4 sm:mb-5 group">
+          <img
+            src="/wp-content/uploads/2015/10/ksr-icon-114-114.jpg"
+            alt="Khao Sok Riverside Cottages"
+            width="48"
+            height="48"
+            class="rounded-full ring-2 ring-gold-500/30"
+            loading="lazy"
+          />
+          <div>
+            <p class="text-xs text-gold-400 tracking-[0.3em] uppercase leading-none">Khao Sok</p>
+            <p class="font-display text-lg sm:text-xl text-[#f7e6b5]">Riverside Cottages</p>
+          </div>
+        </a>
+        <p class="text-[#abd0bb] text-sm leading-relaxed mb-4 sm:mb-6 font-light max-w-sm">
+          A family-owned eco-resort nestled beside the ancient rainforest of Khao Sok National Park, Southern Thailand.
+        </p>
+        <div class="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-[#abd0bb]">
+          <p>📍 64 Moo 1 Klong Sok, Surat Thani 84250</p>
+          <p>📞 <a href="tel:+6677395159" class="hover:text-gold-300 transition-colors">+66 77 395 159</a></p>
+          <p>✉️ <a href="mailto:info@khao-sok-riverside-cottages.com" class="hover:text-gold-300 transition-colors">info@khao-sok-riverside-cottages.com</a></p>
+        </div>
+      </div>
+
+      <!-- Stay & Explore -->
+      <div>
+        <h3 class="text-gold-400 text-xs uppercase tracking-[0.25em] font-medium mb-4 sm:mb-5">Stay</h3>
+        <ul class="space-y-2 sm:space-y-2.5">
+          {[
+            ['Cottages', '/khao-sok-accommodation/'],
+            ['Floating Bungalows', '/khao-sok-floating-bungalows/'],
+            ['Resort Facilities', '/khao-sok-riverside-resort-facilities/'],
+            ['Dining', '/khao-sok-restaurant/'],
+            ['Book a Room', '/booking-khao-sok-accommodation/?tab=room'],
+            ['Our Story', '/khao-sok-resort/'],
+            ['Sustainability', '/sustainability/'],
+          ].map(([label, href]) => (
+            <li>
+              <a href={href} class="text-xs sm:text-sm text-[#abd0bb] hover:text-gold-300 transition-colors duration-150">{label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Explore & Packages -->
+      <div>
+        <h3 class="text-gold-400 text-xs uppercase tracking-[0.25em] font-medium mb-4 sm:mb-5">Explore</h3>
+        <ul class="space-y-2 sm:space-y-2.5">
+          {[
+            ['Book a Package (Best Value)', '/booking-khao-sok-accommodation/?tab=package'],
+            ['All Activities', '/khao-sok-tours/'],
+            ['Tour Packages', '/khao-sok-tour-packages/'],
+            ['Trekking & Hiking', '/khao-sok-trekking-hiking/'],
+            ['Lake Tours', '/khao-sok-lake-cheow-lan-tours/'],
+            ['Night Safari', '/khao-sok-night-safari/'],
+            ['River Tubing', '/khao-sok-river-tubing/'],
+            ['Spirit of Khao Sok', '/khao-sok-package-tour-spirit/'],
+            ['Grand Jungle 4-Day', '/4-day-khao-sok-jungle-tour-lake-overnight/'],
+            ['Khao Sok Delight 3-Day', '/khao-sok-tour-package-delight/'],
+          ].map(([label, href]) => (
+            <li>
+              <a href={href} class="text-xs sm:text-sm text-[#abd0bb] hover:text-gold-300 transition-colors duration-150">{label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Info & Guides -->
+      <div>
+        <h3 class="text-gold-400 text-xs uppercase tracking-[0.25em] font-medium mb-4 sm:mb-5">Discover</h3>
+        <ul class="space-y-2 sm:space-y-2.5">
+          {[
+            ['Khao Sok National Park', '/khao-sok-national-park/'],
+            ['Wildlife Guide', '/khao-sok-jungle-thailand-rainforest/'],
+            ['Cheow Lan Lake', '/cheow-lan-lake-information-guide/'],
+            ['Plan Your Stay', '/plan-your-stay/'],
+            ['Getting Here', '/khao-sok-map-directions/'],
+            ['FAQs', '/khao-sok-faqs/'],
+            ['Cancellation Policy', '/cancellation-policy/'],
+            ['Blog', '/khao-sok-blog/'],
+            ['Videos', '/khao-sok-videos/'],
+            ['Contact Us', '/contact-khao-sok-riverside-cottages/'],
+          ].map(([label, href]) => (
+            <li>
+              <a href={href} class="text-xs sm:text-sm text-[#abd0bb] hover:text-gold-300 transition-colors duration-150">{label}</a>
+            </li>
+          ))}
+        </ul>
+
+        <h3 class="text-gold-400 text-xs uppercase tracking-[0.25em] font-medium mb-4 sm:mb-5 mt-6 sm:mt-8">Getting There</h3>
+        <ul class="space-y-2 sm:space-y-2.5">
+          {[
+            ['Phuket to Khao Sok', '/phuket-to-khao-sok/'],
+            ['Krabi to Khao Sok', '/krabi-to-khao-sok/'],
+            ['Bangkok to Khao Sok', '/train-bangkok-khao-sok/'],
+            ['Surat Thani to Khao Sok', '/get-surat-thani-airport-khao-sok/'],
+          ].map(([label, href]) => (
+            <li>
+              <a href={href} class="text-xs sm:text-sm text-[#abd0bb] hover:text-gold-300 transition-colors duration-150">{label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="divider-gold opacity-30 mt-8 sm:mt-12 mb-4 sm:mb-6"></div>
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-[11px] sm:text-xs text-[#81ac92] text-center sm:text-left">
+      <p>© {new Date().getFullYear()} Khao Sok Riverside Cottages. All rights reserved.</p>
+      <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-6">
+        <a href="/sitemap/" class="hover:text-gold-400 transition-colors">Sitemap</a>
+        <a href="/privacy-policy/" class="hover:text-gold-400 transition-colors">Privacy Policy</a>
+        <a href="/terms-and-conditions/" class="hover:text-gold-400 transition-colors">Terms & Conditions</a>
+        <a href="/cancellation-policy/" class="hover:text-gold-400 transition-colors">Cancellation Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>

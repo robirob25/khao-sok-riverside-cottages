@@ -1,0 +1,236 @@
+---
+// ActivitiesBentoGrid.astro — 2026 Elite Bento Grid for Khao Sok Activities
+// Modern Asymmetric 2x2 Bento Architecture with Zero Text Clipping & Generous Margins
+interface Props {
+  showTitle?: boolean;
+}
+
+const { showTitle = true } = Astro.props;
+
+const categories = [
+  {
+    id: 'lake-tours',
+    num: '01',
+    title: 'Lake Tours',
+    badge: '01 · Signature Lake Trips',
+    subtitle: 'Emerald waters, floating raft houses & limestone karsts',
+    img: '/wp-content/uploads/2016/07/khao-sok-national-park-2.jpg',
+    mainHref: '/khao-sok-lake-cheow-lan-tours/',
+    actionLabel: 'Explore Lake Tours',
+    items: [
+      {
+        name: 'Full Day Cheow Lan Lake Tour',
+        price: 'Full Day Excursion',
+        detail: 'Scenic longtail boat safari, Guilin rock karsts & floating restaurant lunch',
+        href: '/khao-sok-lake-cheow-lan-tours/',
+      },
+      {
+        name: 'Overnight at the Lake',
+        price: 'Floating Raft House',
+        detail: 'Bungalow on emerald water, night safari & dawn mist cruise',
+        href: '/khao-sok-floating-bungalows/',
+      },
+      {
+        name: 'Private Overnight Lake Trips',
+        price: 'Custom Itinerary',
+        detail: 'Exclusive private longtail boat & bespoke lake expedition schedule',
+        href: '/khao-sok-lake-cheow-lan-tours/',
+      },
+    ],
+  },
+  {
+    id: 'thai-culture',
+    num: '04',
+    title: 'Thai Culture & Spa',
+    badge: '04 · Healing Arts & Roots',
+    subtitle: 'Ancient healing traditions, culinary arts & geothermal springs',
+    img: '/wp-content/uploads/2015/09/Thai-Massage1.jpg',
+    mainHref: '/khao-sok-thailand-culture/',
+    actionLabel: 'Explore Culture & Spa',
+    items: [
+      {
+        name: 'Thai Jungle Cooking',
+        price: '1,500 THB',
+        detail: 'Organic farm visit, fresh bamboo cooking & authentic curry preparation',
+        href: '/khao-sok-thailand-culture/',
+      },
+      {
+        name: 'Traditional Thai Massage',
+        price: '600 THB',
+        detail: 'Soothing therapeutic massage beside the gently flowing Sok River',
+        href: '/khao-sok-thailand-culture/',
+      },
+      {
+        name: 'Romanee Hot Springs',
+        price: '650 THB',
+        detail: 'Natural geothermal mineral baths surrounded by lush tropical jungle',
+        href: '/khao-sok-hot-springs/',
+      },
+    ],
+  },
+  {
+    id: 'hiking',
+    num: '02',
+    title: 'Hiking & Trekking',
+    badge: '02 · Rainforest Trails',
+    subtitle: 'Guided treks through 160-million-year-old primary jungle',
+    img: '/wp-content/uploads/2023/03/jungle-hiking-1500-1000.jpg',
+    mainHref: '/khao-sok-trekking-hiking/',
+    actionLabel: 'Explore Hiking & Trekking',
+    items: [
+      { name: 'Half Day Rainforest Hike', price: '700 THB', href: '/khao-sok-trekking-hiking/' },
+      { name: 'Full Day Jungle Trek', price: '1,400 THB', href: '/khao-sok-trekking-hiking/' },
+      { name: 'Night Safari Expedition', price: '700 THB', href: '/khao-sok-night-safari/' },
+      { name: 'Jungle Day, Jungle Night', price: '1,600 THB', href: '/khao-sok-trekking-hiking/' },
+      { name: 'Rafflesia – Giant Flower', price: 'Contact for price', href: '/khao-sok-trekking-hiking/' },
+      { name: 'Bang Man Cave Hike', price: '1,800 THB', href: '/khao-sok-cave-raft-hike-tour/' },
+    ],
+  },
+  {
+    id: 'local-adventures',
+    num: '03',
+    title: 'Local Adventures',
+    badge: '03 · River & Wildlife',
+    subtitle: 'Sok river rapids, ethical elephant care & jungle camping',
+    img: '/wp-content/uploads/2015/09/Khao-Sok-Canoe-Trip.jpg',
+    mainHref: '/khao-sok-canoe-trips/',
+    actionLabel: 'Explore Local Adventures',
+    items: [
+      { name: 'Scenic Canoe Trip', price: '750 THB', href: '/khao-sok-canoe-trips/' },
+      { name: 'River Tubing Adventure', price: '500 THB', href: '/khao-sok-river-tubing/' },
+      { name: 'Ethical Elephant Experience', price: '1,500 THB', href: '/khao-sok-elephant-experience/' },
+      { name: 'Cave / Bamboo Raft / Hike', price: '1,700 THB', href: '/khao-sok-cave-raft-hike-tour/' },
+      { name: 'Rainforest Bird Watching', price: '1,700 THB', href: '/khao-sok-thailand-adventures/' },
+      { name: 'Overnight Jungle Camping', price: '3,000 THB', href: '/khao-sok-thailand-adventures/' },
+    ],
+  },
+];
+---
+
+<div class="space-y-12 my-8">
+  {showTitle && (
+    <div class="text-center max-w-3xl mx-auto space-y-3">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ba9038]/10 border border-[#ba9038]/20 text-[#8a6b25] text-xs font-mono uppercase tracking-[0.2em] font-semibold">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#ba9038]"></span>
+        <span>Four Adventure Chapters · Reserve Upon Arrival</span>
+      </div>
+      <h2 class="font-monumental text-3xl sm:text-4xl lg:text-5xl text-[#12281b] tracking-tight">
+        Choose Your Adventure
+      </h2>
+      <p class="text-[#2e5339] text-base sm:text-lg font-light leading-relaxed">
+        From Cheow Lan lake day tours to overnight floating raft houses, river canoeing and jungle night safaris — our local naturalist guides take care of everything.
+      </p>
+    </div>
+  )}
+
+  <!-- 2026 Elite Bento Grid: Balanced 2-Column Responsive Layout -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+    {categories.map((cat) => (
+      <div class="group relative flex flex-col justify-between rounded-3xl bg-white border border-[#12281b]/10 hover:border-[#ba9038]/60 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden backdrop-blur-md">
+        
+        <!-- Photographic Banner with Cinematic Aspect Ratio -->
+        <div class="relative w-full h-56 sm:h-64 overflow-hidden bg-[#12281b] shrink-0">
+          <img
+            src={cat.img}
+            alt={cat.title}
+            class="w-full h-full object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 filter brightness-[0.98] contrast-[1.02]"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent"></div>
+
+          <!-- Top Badge Overlay -->
+          <div class="absolute top-4 left-4 right-4 flex items-center justify-between gap-2 z-10">
+            <span class="px-3.5 py-1.5 rounded-full text-[10px] font-mono uppercase tracking-[0.18em] font-bold shadow-md backdrop-blur-md border bg-white/95 text-[#12281b] border-white/20">
+              {cat.badge}
+            </span>
+          </div>
+
+          <!-- Bottom Photo Title & Subtitle Overlay -->
+          <div class="absolute bottom-4 left-5 right-5 z-10">
+            <h3 class="font-monumental text-2xl sm:text-3xl text-white group-hover:text-[#f7e6b5] transition-colors drop-shadow-md leading-tight">
+              {cat.title}
+            </h3>
+            <p class="text-white/85 text-xs font-mono uppercase tracking-wider mt-1 drop-shadow">
+              {cat.subtitle}
+            </p>
+          </div>
+        </div>
+
+        <!-- Body Content: Authentic Activities List with Prices & Comfortable Spacing -->
+        <div class="p-6 sm:p-8 flex-1 flex flex-col justify-between gap-6">
+          <ul class="space-y-3">
+            {cat.items.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="group/item block p-3.5 rounded-2xl border border-transparent hover:border-[#ba9038]/30 hover:bg-[#f4efeb] transition-all duration-200"
+                >
+                  <div class="flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-2.5 min-w-0">
+                      <span class="w-1.5 h-1.5 rounded-full bg-[#ba9038]/80 shrink-0"></span>
+                      <span class="font-semibold text-sm sm:text-base text-[#163824] group-hover/item:text-[#ba9038] transition-colors truncate">
+                        {item.name}
+                      </span>
+                    </div>
+                    <span class="text-xs font-mono font-bold text-[#8a6b25] bg-[#ba9038]/12 px-3 py-1 rounded-lg shrink-0 whitespace-nowrap shadow-xs">
+                      {item.price}
+                    </span>
+                  </div>
+                  {item.detail && (
+                    <p class="text-xs text-[#2e5339]/80 pl-6 mt-1.5 font-light leading-relaxed">
+                      {item.detail}
+                    </p>
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <!-- Action Footer Button -->
+          <div class="pt-5 border-t border-[#12281b]/10 mt-auto">
+            <a
+              href={cat.mainHref}
+              class="w-full py-3 px-5 rounded-xl bg-[#faf8f5] hover:bg-[#12281b] border border-[#12281b]/15 hover:border-[#12281b] text-[#12281b] hover:text-white font-mono text-xs uppercase tracking-widest font-bold text-center transition-all duration-300 flex items-center justify-center gap-2 group/btn shadow-sm"
+            >
+              <span>{cat.actionLabel}</span>
+              <span class="transition-transform group-hover/btn:translate-x-1.5">→</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    ))}
+  </div>
+
+  <!-- Authentic Reception Notice Callout Banner (Matching Original Site) -->
+  <div class="bg-gradient-to-br from-[#1c3d24] via-[#163824] to-[#0f2518] rounded-3xl p-6 sm:p-10 text-white shadow-2xl border border-[#ba9038]/30 flex flex-col md:flex-row items-center justify-between gap-8">
+    <div class="space-y-3 text-center md:text-left max-w-2xl">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-[#ebd082] text-xs font-mono uppercase tracking-widest font-bold">
+        <span>CONCIERGE & RECEPTION DESK</span>
+      </div>
+      <h3 class="font-monumental text-xl sm:text-2xl text-white leading-snug">
+        You can book all your Khao Sok tours with reception when you arrive.
+      </h3>
+      <p class="text-emerald-100/90 text-sm font-light leading-relaxed">
+        For best results, especially during high season for floating lake bungalows and private guides, we recommend reserving a tour package in advance.
+      </p>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-3.5 shrink-0">
+      <a
+        href="/khao-sok-tour-packages/"
+        class="py-3.5 px-6 rounded-xl bg-gradient-to-r from-[#ba9038] to-[#d8b257] hover:from-[#a67e2a] hover:to-[#ba9038] text-[#12281b] font-mono text-xs uppercase tracking-widest font-bold text-center transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2"
+      >
+        <span>Browse Packages</span>
+        <span>→</span>
+      </a>
+      <a
+        href="/booking-khao-sok-accommodation/"
+        class="py-3.5 px-6 rounded-xl border border-white/20 hover:border-white/50 hover:bg-white/10 text-white font-mono text-xs uppercase tracking-widest font-semibold text-center transition-all duration-300"
+      >
+        Book Rooms Only
+      </a>
+    </div>
+  </div>
+</div>

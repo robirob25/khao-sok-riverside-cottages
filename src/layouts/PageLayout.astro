@@ -1,0 +1,168 @@
+---
+// PageLayout.astro — Standard layout wrapper used by all inner pages
+// Silent Luxury & Borgo Egnazia Standards — 100% Responsive
+import BaseLayout from './BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+export interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  heroImage?: string;
+  heroAlt?: string;
+  heroTitle?: string;
+  heroSubtitle?: string;
+  breadcrumbs?: Array<{ label: string; href: string }>;
+  canonicalURL?: string;
+  noIndex?: boolean;
+}
+
+const {
+  title,
+  description,
+  ogImage,
+  heroImage: rawHeroImage,
+  heroAlt = '',
+  heroTitle,
+  heroSubtitle,
+  breadcrumbs,
+  canonicalURL,
+  noIndex,
+} = Astro.props;
+
+const heroImage = (!rawHeroImage || rawHeroImage.includes('khao-sok-riverside-cottages-beach.jpg'))
+  ? '/images/khao-sok-hero-cottages.jpg'
+  : rawHeroImage;
+---
+
+<BaseLayout {title} {description} {ogImage} {canonicalURL} {noIndex}>
+  <!-- Preload hero LCP image -->
+  {heroImage && (
+    <link slot="head" rel="preload" as="image" href={heroImage} fetchpriority="high" />
+  )}
+
+  <Header />
+
+  <!-- ===== INNER PAGE HERO — Responsive at all breakpoints ===== -->
+  {heroImage && (
+    <section class="hero-section text-white relative min-h-[320px] sm:min-h-[420px] md:min-h-[520px] flex items-center justify-center select-none pt-20 sm:pt-28 pb-10 sm:pb-16 px-4 sm:px-6 overflow-hidden">
+      
+      <!-- Background Image -->
+      <div class="absolute inset-0 w-full h-full will-change-transform">
+        <img
+          src={heroImage}
+          alt={heroAlt || title}
+          class="w-full h-full object-cover object-center filter contrast-[1.03] brightness-[0.96]"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+          width="1200"
+          height="675"
+        />
+      </div>
+
+      <!-- Overlays for text legibility -->
+      <div class="absolute inset-0 bg-[#0b1910]/45 pointer-events-none"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0b1910] via-[#0b1910]/60 to-black/50 pointer-events-none"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(11,25,16,0.85)_100%)] pointer-events-none"></div>
+
+      <!-- Title Box -->
+      <div class="relative z-10 max-w-4xl mx-auto px-4 text-center flex flex-col items-center justify-center w-full">
+        
+        <!-- Breadcrumb -->
+        {breadcrumbs && (
+          <nav class="mb-3 sm:mb-5" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center flex-wrap justify-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full border border-[#ba9038]/50 bg-[#0b1910]/85 backdrop-blur-md text-[9px] sm:text-[10px] md:text-xs text-[#f7e6b5] uppercase tracking-[0.15em] sm:tracking-[0.2em] font-mono shadow-lg">
+              <li>
+                <a href="/" class="hover:text-gold-300 transition-colors">Home</a>
+              </li>
+              {breadcrumbs.filter(c => c.href !== '/' && c.label.toLowerCase() !== 'home').map((crumb, i, arr) => (
+                <>
+                  <li class="text-[#ba9038]/60">/</li>
+                  <li>
+                    {i < arr.length - 1 ? (
+                      <a href={crumb.href} class="hover:text-gold-300 transition-colors">{crumb.label}</a>
+                    ) : (
+                      <span class="text-gold-300 font-semibold">{crumb.label}</span>
+                    )}
+                  </li>
+                </>
+              ))}
+            </ol>
+          </nav>
+        )}
+
+        <!-- Page Title -->
+        {heroTitle && (
+          <h1
+            class="hero-title font-monumental text-xl sm:text-3xl md:text-4xl lg:text-5xl text-white tracking-wide font-normal drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] leading-tight max-w-4xl reveal"
+            style="color: #ffffff !important; text-shadow: 0 4px 24px rgba(0,0,0,0.95), 0 2px 8px rgba(0,0,0,0.85);"
+          >
+            {heroTitle}
+          </h1>
+        )}
+
+        <!-- Hairline divider -->
+        <div class="w-12 h-px bg-gradient-to-r from-transparent via-[#ba9038] to-transparent my-3 sm:my-4 mx-auto"></div>
+
+        <!-- Subtitle -->
+        {heroSubtitle && (
+          <p class="font-display italic text-sm sm:text-lg md:text-xl text-[#f7e6b5] max-w-2xl font-light tracking-wide drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] reveal reveal-delay-1">
+            {heroSubtitle}
+          </p>
+        )}
+
+        <!-- Coordinates Badge -->
+        <div class="mt-2 sm:mt-3 flex items-center gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] text-[#f7e6b5]/80 font-mono tracking-widest uppercase opacity-90 drop-shadow">
+          <span class="hidden sm:inline">KHAO SOK NATIONAL PARK</span>
+          <span class="hidden sm:inline">•</span>
+          <span>08°54'N 98°31'E</span>
+        </div>
+      </div>
+
+      <!-- Scroll hint — hidden on very small screens -->
+      <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 hidden sm:flex flex-col items-center pointer-events-none opacity-60">
+        <div class="w-4 h-6 rounded-full border border-white/30 flex items-start justify-center p-0.5">
+          <div class="w-1 h-1 rounded-full bg-gold-400 animate-bounce"></div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Fallback spacing if no hero -->
+  {!heroImage && <div class="pt-20 sm:pt-28"></div>}
+
+  <!-- Page Content Container -->
+  <main class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-10 sm:py-16 md:py-24">
+    <!-- Botanical accent — hidden on mobile -->
+    <div class="pointer-events-none absolute right-0 sm:right-2 lg:right-4 top-8 sm:top-14 w-32 sm:w-52 md:w-64 z-0 opacity-50 sm:opacity-65 select-none animate-tropical-sway hidden sm:block">
+      <img
+        src="/images/stylized-banana-leaf-1.webp"
+        alt="Stylized Botanical Foliage"
+        class="w-full h-auto filter drop-shadow-[0_15px_30px_rgba(18,35,25,0.06)]"
+        loading="lazy"
+        width="300"
+        height="400"
+      />
+    </div>
+
+    <!-- Palm frond — hidden on mobile -->
+    <div class="pointer-events-none absolute left-0 sm:left-2 lg:left-4 bottom-16 sm:bottom-24 w-40 sm:w-56 md:w-72 z-0 opacity-20 sm:opacity-30 select-none animate-tropical-float hidden sm:block">
+      <img
+        src="/images/stylized-palm-drawing.webp"
+        alt="Stylized Palm Frond Drawing"
+        class="w-full h-auto"
+        loading="lazy"
+        width="300"
+        height="400"
+      />
+    </div>
+
+    <div class="relative z-10">
+      <slot />
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

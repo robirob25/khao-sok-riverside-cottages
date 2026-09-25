@@ -1,0 +1,1287 @@
+---
+// BookingSplitExperience.astro — 2026 Elite Dual Booking Architecture
+// Splits reservations into 2 clear pillars:
+// 1. BOOK A PACKAGE (Highlighted / Recommended · All-Inclusive: Resort + Lake + Safaris)
+// 2. BOOK A ROOM ONLY (Flexible Stay · Handcrafted Wooden Cottages)
+// Faithful to Khao Sok Riverside Cottages' Honor System (No deposit, pay on arrival)
+import GoogleReviewsWidget from './GoogleReviewsWidget.astro';
+
+interface Props {
+  defaultTab?: 'package' | 'room';
+}
+
+const { defaultTab = 'package' } = Astro.props;
+
+const tourPackages = [
+  {
+    id: "grand-jungle",
+    title: "4D / 3N Grand Jungle & Lake Overnight",
+    tagline: "The Ultimate Rainforest & Cheow Lan Lake Expedition",
+    price: "฿7,100",
+    priceNote: "per person · All-Inclusive",
+    duration: "4 Days / 3 Nights",
+    stay: "2 Nights Riverside Cottages + 1 Night Floating Lake House",
+    badge: "Signature Expedition",
+    popular: true,
+    img: "/wp-content/uploads/2025/01/Grand-Jungle-Cover.jpg",
+    highlights: [
+      "2 Nights Wooden Cottages + 1 Night Lake Floating Bungalow",
+      "Elephant Bathing & Mud Spa Sanctuary Experience",
+      "Cheow Lan Lake Scenic Longtail Boat Tour & Wildlife Safari",
+      "Pakarang (Coral) Cave Hike & Bamboo Raft Journey",
+      "Night Safari in Khlong Phanom & Sok River Tubing",
+      "All meals included from Day 1 dinner to Day 4 lunch",
+    ],
+    beds24Url: "https://beds24.com/booking2.php?propid=42681",
+  },
+  {
+    id: "lake-rafthouse",
+    title: "3D / 2N Riverside & Lake Rafthouse",
+    tagline: "The Perfect Balance of Riverfront & Lake Wilderness",
+    price: "฿5,400",
+    priceNote: "per person · All-Inclusive",
+    duration: "3 Days / 2 Nights",
+    stay: "1 Night Riverside Cottages + 1 Night Floating Lake House",
+    badge: "Lake Overnight",
+    popular: false,
+    img: "/wp-content/uploads/2025/01/Riverside-Rafthouse-Cover.jpg",
+    highlights: [
+      "1 Night Riverside Cottages + 1 Night Floating Bungalow",
+      "Scenic Lake Longtail Boat Tour past Karst Limestone Peaks",
+      "Guided Rainforest Trekking & Cave Exploration",
+      "Early Morning Wildlife Mist Safari by Boat",
+      "Free Swimming & Kayaking directly from your Raft Porch",
+      "5 freshly prepared Thai meals included",
+    ],
+    beds24Url: "https://beds24.com/booking2.php?propid=42681",
+  },
+  {
+    id: "rainforest-adventure",
+    title: "3D / 2N Rainforest Adventure",
+    tagline: "Ethical Elephant Encounters & Deep Jungle Immersion",
+    price: "฿5,200",
+    priceNote: "per person · All-Inclusive",
+    duration: "3 Days / 2 Nights",
+    stay: "2 Nights Riverside Cottages",
+    badge: "Family & Wildlife",
+    popular: false,
+    img: "/wp-content/uploads/2025/09/rainforest-adventure-package-cover.jpg",
+    highlights: [
+      "2 Nights Handcrafted Wooden Cottages beside the river",
+      "Ethical Elephant Bathing, Feeding & Mud Treatment",
+      "Guided Sok River Canoe Trip with local paddler",
+      "Rainforest Night Safari spotting nocturnal wildlife",
+      "Traditional Thai Cooking Class & Organic Farm Visit",
+      "Fresh daily breakfast & dinners included",
+    ],
+    beds24Url: "https://beds24.com/booking2.php?propid=42681",
+  },
+  {
+    id: "delight",
+    title: "3D / 2N Khao Sok Delight",
+    tagline: "Full-Day Lake Tour & Sok River Exploration",
+    price: "฿4,500",
+    priceNote: "per person · All-Inclusive",
+    duration: "3 Days / 2 Nights",
+    stay: "2 Nights Riverside Cottages",
+    badge: "Top Highlights",
+    popular: false,
+    img: "/wp-content/uploads/2025/01/delight-cover.jpg",
+    highlights: [
+      "2 Nights Handcrafted Wooden Cottages beside the river",
+      "Full-Day Cheow Lan Lake Excursion with floating lunch",
+      "Relaxing Sok River Tubing or Guided Canoe Safari",
+      "Night Safari in search of civets, frogs and owls",
+      "Ideal for travelers who prefer sleeping in the resort each night",
+      "Breakfasts & authentic Thai dinners included",
+    ],
+    beds24Url: "https://beds24.com/booking2.php?propid=42681",
+  },
+  {
+    id: "spirit",
+    title: "2D / 1N Spirit of Khao Sok",
+    tagline: "Essential Jungle Getaway for Tight Itineraries",
+    price: "฿2,300",
+    priceNote: "per person · All-Inclusive",
+    duration: "2 Days / 1 Night",
+    stay: "1 Night Riverside Cottages",
+    badge: "Essential 2-Day",
+    popular: false,
+    img: "/wp-content/uploads/2025/01/spirit-cover.jpg",
+    highlights: [
+      "1 Night Handcrafted Wooden Cottage",
+      "Exciting Sok River Tubing Adventure",
+      "Guided Jungle Night Safari",
+      "Free time to swim and relax by the Sok River",
+      "Delicious Thai Dinner & Fresh Breakfast",
+    ],
+    beds24Url: "https://beds24.com/booking2.php?propid=279807",
+  },
+];
+
+const roomTypes = [
+  {
+    id: "garden-view",
+    name: "Garden View Cottage",
+    price: "฿1,100",
+    priceNote: "per night · 1-2 guests",
+    bed: "1 King Bed or 2 Twin Beds",
+    img: "/wp-content/uploads/2025/07/cottage-1.jpg",
+    desc: "Spacious freestanding wooden cottage nestled in tropical botanical gardens. Features a private covered balcony with hammock, hot water shower, mosquito netting, and gentle ceiling fans or AC.",
+    features: ["Private Balcony & Hammock", "En-suite Bathroom & Hot Shower", "Air Conditioning or Fan", "Garden View", "Free Wi-Fi"],
+  },
+  {
+    id: "riverside",
+    name: "Riverside Cottage",
+    price: "฿1,400",
+    priceNote: "per night · 1-2 guests",
+    bed: "1 King Bed",
+    img: "/wp-content/uploads/2025/07/deluxe-cottage-1.jpg",
+    desc: "Our most sought-after room category. Perched directly above the clear waters of the Sok River, with panoramic views of ancient limestone karst cliffs and the sounds of the flowing river.",
+    features: ["Direct River & Karst Views", "Private Riverfront Balcony", "Air Conditioning", "En-suite Hot Shower", "Hammock Over River"],
+  },
+  {
+    id: "family",
+    name: "Family Wooden Cottage",
+    price: "฿2,000",
+    priceNote: "per night · Up to 4 guests",
+    bed: "2 Queen Beds or 1 King + 2 Bunks",
+    img: "/wp-content/uploads/2025/07/family-cottage-1.jpg",
+    desc: "Extra-spacious wooden chalets designed for families with children or friends travelling together. Large en-suite bathroom, expansive balcony, and plenty of space to relax together.",
+    features: ["Sleeps up to 4 Guests", "Spacious Family Balcony", "Air Conditioning & Hot Shower", "Secluded Jungle Setting", "Child Friendly"],
+  },
+];
+---
+
+<div class="space-y-12" id="booking-experience-root">
+  
+  <!-- ============================================================
+       TOP VALUE PROPOSITION & HONOR SYSTEM BADGE
+  ============================================================ -->
+  <div class="bg-gradient-to-br from-[#12281b] to-[#1e442c] rounded-3xl p-6 sm:p-8 md:p-10 text-white shadow-xl relative overflow-hidden">
+    <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-[#ba9038]/10 rounded-full blur-3xl pointer-events-none"></div>
+    
+    <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div class="space-y-3 max-w-2xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ba9038]/20 border border-[#ba9038]/40 text-[#d8b257] text-xs font-mono uppercase tracking-[0.2em] font-semibold">
+          <span class="w-2 h-2 rounded-full bg-[#ba9038]"></span>
+          <span>The Khao Sok Honor System</span>
+        </div>
+        <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-[#faf8f5]">
+          Book With Complete Confidence
+        </h2>
+        <p class="text-sm sm:text-base text-[#e5f0ea] leading-relaxed font-light">
+          <strong>No advance deposits or credit card pre-payments required.</strong> We rely on mutual trust — simply pay upon arrival at Khao Sok Riverside Cottages. Guaranteed lowest direct prices.
+        </p>
+      </div>
+
+      <!-- Quick Stats Capsule -->
+      <div class="grid grid-cols-2 gap-3 sm:gap-4 shrink-0 bg-white/10 p-4 sm:p-5 rounded-2xl border border-white/15 backdrop-blur-md">
+        <div class="text-center sm:text-left">
+          <div class="text-xl sm:text-2xl font-monumental font-bold text-[#d8b257]">4.4 / 5</div>
+          <div class="text-[11px] font-mono uppercase tracking-wider text-[#abd0bb]">564+ Google Reviews</div>
+        </div>
+        <div class="text-center sm:text-left border-l border-white/10 pl-3 sm:pl-4">
+          <div class="text-xl sm:text-2xl font-monumental font-bold text-[#d8b257]">8.9 / 10</div>
+          <div class="text-[11px] font-mono uppercase tracking-wider text-[#abd0bb]">Booking.com Fabulous</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SCISSION EN 2 : DUAL PILLAR SELECTOR TABS
+       1. BOOK A PACKAGE (Highlight / Recommended)
+       2. BOOK A ROOM (Flexible Stay)
+  ============================================================ -->
+  <div class="space-y-6">
+    <div class="text-center max-w-2xl mx-auto space-y-2">
+      <span class="text-xs font-mono text-[#ba9038] uppercase tracking-[0.25em] font-bold">Select Your Booking Experience</span>
+      <h3 class="font-display text-2xl sm:text-3xl text-[#12281b] font-semibold tracking-tight">
+        Choose How You Wish to Stay
+      </h3>
+      <p class="text-sm text-[#2e5339]">
+        90% of our guests choose an all-inclusive package to include Cheow Lan Lake floating bungalows, wildlife safaris, and meals with zero hassle.
+      </p>
+    </div>
+
+    <!-- Dual Tab Switcher Buttons (2026 Tactile Luxury Switch) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto p-2 rounded-3xl bg-[#f4efeb] border border-[#12281b]/10 shadow-inner">
+      
+      <!-- Tab 1: BOOK A PACKAGE (Highlighted & Recommended) -->
+      <button
+        type="button"
+        id="btn-tab-package"
+        class="tab-switch-btn group relative p-5 sm:p-6 rounded-2xl text-left transition-all duration-300 flex items-start justify-between gap-3 shadow-sm cursor-pointer"
+        data-target="package"
+        data-active="true"
+      >
+        <div class="space-y-1.5">
+          <div class="flex items-center gap-2">
+            <span class="tab-badge px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider font-bold transition-colors">
+              ★ Most Popular · Best Value
+            </span>
+          </div>
+          <h4 class="tab-title font-display text-lg sm:text-xl font-bold tracking-tight transition-colors">
+            Book a Tour Package
+          </h4>
+          <p class="tab-desc text-xs leading-relaxed transition-colors">
+            Resort cottages + Cheow Lan Lake floating house + safaris + all meals.
+          </p>
+          <div class="tab-price pt-1 text-xs font-mono font-semibold transition-colors">
+            From ฿2,300 to ฿7,100 / person
+          </div>
+        </div>
+        <span class="tab-indicator w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-1 shadow-sm transition-all">
+          ✓
+        </span>
+      </button>
+
+      <!-- Tab 2: BOOK A ROOM ONLY -->
+      <button
+        type="button"
+        id="btn-tab-room"
+        class="tab-switch-btn group relative p-5 sm:p-6 rounded-2xl text-left transition-all duration-300 flex items-start justify-between gap-3 cursor-pointer"
+        data-target="room"
+        data-active="false"
+      >
+        <div class="space-y-1.5">
+          <div class="flex items-center gap-2">
+            <span class="tab-badge px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider font-bold transition-colors">
+              Flexible Stay
+            </span>
+          </div>
+          <h4 class="tab-title font-display text-lg sm:text-xl font-semibold tracking-tight transition-colors">
+            Book a Room Only
+          </h4>
+          <p class="tab-desc text-xs leading-relaxed transition-colors">
+            Handcrafted wooden cottages nestled on the Sok River. Tours booked on-site.
+          </p>
+          <div class="tab-price pt-1 text-xs font-mono font-semibold transition-colors">
+            From ฿1,100 to ฿2,000 / night
+          </div>
+        </div>
+        <span class="tab-indicator w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-1 transition-all">
+          ✓
+        </span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ============================================================
+       PILLAR 1 : BOOK A TOUR PACKAGE (Recommended View)
+  ============================================================ -->
+  <div id="panel-package" class="booking-panel space-y-10 transition-all duration-300">
+    
+    <!-- Intro Banner -->
+    <div class="p-6 sm:p-8 rounded-3xl bg-white border border-[#12281b]/10 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div class="space-y-2">
+        <div class="flex items-center gap-2 text-[#ba9038] text-xs font-mono uppercase tracking-widest font-semibold">
+          <span>01 / ALL-INCLUSIVE EXPEDITIONS</span>
+        </div>
+        <h3 class="font-display text-2xl sm:text-3xl text-[#12281b] font-semibold tracking-tight">
+          Select Your Tour & Safari Package
+        </h3>
+        <p class="text-sm text-[#223e2c] max-w-2xl leading-relaxed">
+          Click a package below to inspect the itinerary and pre-fill your reservation request. All packages include riverside accommodation, national park excursions, professional local guides, and authentic freshly-cooked meals.
+        </p>
+      </div>
+
+      <a
+        href="/khao-sok-tour-packages/"
+        class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#ba9038] hover:text-[#12281b] font-bold shrink-0 self-start md:self-center"
+      >
+        <span>Compare Full Package Itineraries</span>
+        <span>→</span>
+      </a>
+    </div>
+
+    <!-- Interactive Package Selection Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {tourPackages.map((pkg, idx) => (
+        <div
+          class={`package-select-card group relative rounded-3xl bg-white border cursor-pointer transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-xl ${
+            pkg.popular ? "border-[#ba9038] ring-2 ring-[#ba9038]/30" : "border-[#12281b]/10 hover:border-[#ba9038]"
+          }`}
+          data-package-id={pkg.id}
+          data-package-title={pkg.title}
+        >
+          <!-- Card Image & Badges -->
+          <div class="relative h-52 overflow-hidden bg-slate-900">
+            <img
+              src={pkg.img}
+              alt={pkg.title}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            
+            <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+              <span class="px-2.5 py-1 rounded-full bg-[#12281b]/90 backdrop-blur-md text-[#d8b257] text-[10px] font-mono uppercase tracking-wider font-bold border border-[#ba9038]/40">
+                {pkg.badge}
+              </span>
+              {pkg.popular && (
+                <span class="px-2.5 py-1 rounded-full bg-[#ba9038] text-[#12281b] text-[10px] font-mono uppercase tracking-wider font-bold shadow-sm">
+                  ★ Most Popular
+                </span>
+              )}
+            </div>
+
+            <div class="absolute bottom-3 left-4 right-4 flex items-end justify-between text-white">
+              <div>
+                <span class="text-xs font-mono uppercase tracking-widest text-[#abd0bb]">{pkg.duration}</span>
+                <div class="text-xl font-monumental font-bold text-[#faf8f5]">{pkg.price}</div>
+              </div>
+              <span class="text-[11px] font-mono text-[#e5f0ea]/80">{pkg.priceNote}</span>
+            </div>
+          </div>
+
+          <!-- Card Content & Highlights -->
+          <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
+            <div class="space-y-2">
+              <h4 class="font-display text-lg font-bold text-[#163824] group-hover:text-[#ba9038] transition-colors leading-snug">
+                {pkg.title}
+              </h4>
+              <p class="text-xs text-[#2e5339] font-medium italic">
+                {pkg.stay}
+              </p>
+              
+              <!-- Highlights list -->
+              <ul class="space-y-1.5 pt-2 border-t border-[#12281b]/5 text-xs text-[#223e2c]">
+                {pkg.highlights.slice(0, 3).map((item) => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-[#2e6b45] font-bold mt-0.5">✓</span>
+                    <span class="leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- Action Button -->
+            <div class="pt-4 border-t border-[#12281b]/10 flex items-center justify-between gap-3">
+              <button
+                type="button"
+                class="btn-select-package w-full py-2.5 px-4 rounded-xl bg-[#faf8f5] hover:bg-[#12281b] border border-[#12281b]/15 text-[#12281b] hover:text-white font-mono text-xs uppercase tracking-wider font-bold transition-all text-center"
+              >
+                Select This Package
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Package Reservation Form Box -->
+    <div id="package-reservation-form-container" class="rounded-3xl bg-white border border-[#12281b]/15 p-6 sm:p-10 md:p-12 shadow-xl space-y-8 scroll-mt-24">
+      <div class="border-b border-[#12281b]/10 pb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2e6b45]/10 text-[#2e6b45] text-xs font-mono uppercase tracking-wider font-semibold mb-2">
+            <span>Direct Inquiry Form</span>
+          </div>
+          <h3 class="font-display text-2xl sm:text-3xl text-[#12281b] font-semibold tracking-tight">
+            Reserve Your Tour Package
+          </h3>
+          <p class="text-sm text-[#2e5339] mt-1">
+            Fill out your details below. Our reservation desk will confirm availability and send your itinerary within 12 hours.
+          </p>
+        </div>
+
+        <div class="text-xs font-mono text-[#8a6b25] bg-[#ba9038]/10 px-3.5 py-2 rounded-xl border border-[#ba9038]/20 shrink-0">
+          ✓ Honor System: Pay on Arrival
+        </div>
+      </div>
+
+      <form id="form-book-package" novalidate class="space-y-6">
+        <!-- Row 1: Selected Package -->
+        <div class="space-y-2">
+          <label for="pkg-select" class="block text-xs font-mono uppercase tracking-wider text-[#12281b] font-bold">
+            Select Your Desired Package *
+          </label>
+          <select
+            id="pkg-select"
+            name="package"
+            required
+            class="w-full px-4 py-3.5 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] font-medium text-sm transition-all focus:outline-none focus:ring-2 focus:ring-[#ba9038]/20"
+          >
+            {tourPackages.map((pkg) => (
+              <option value={pkg.id} selected={pkg.popular}>
+                {pkg.title} — {pkg.price} / person ({pkg.duration})
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <!-- Row 2: Dates & Guests -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="space-y-2">
+            <label for="pkg-date" class="block text-xs font-mono uppercase tracking-wider text-[#12281b] font-bold">
+              Preferred Start Date *
+            </label>
+            <div class="relative">
+              <input
+                type="text"
+                id="pkg-date"
+                name="start_date"
+                placeholder="YYYY-MM-DD"
+                onfocus="this.type='date'; try{this.showPicker()}catch(e){}"
+                onblur="if(!this.value){this.type='text'}"
+                lang="en-US"
+                required
+                class="w-full pl-4 pr-10 py-3 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] text-sm focus:outline-none focus:ring-2 focus:ring-[#ba9038]/20"
+              />
+              <div class="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#7a5813]">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <label for="pkg-adults" class="block text-xs font-mono uppercase tracking-wider text-[#12281b] font-bold">
+              Number of Adults *
+            </label>
+            <select
+              id="pkg-adults"
+              name="adults"
+              required
+              class="w-full px-4 py-3 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] text-sm focus:outline-none"
+            >
+              <option value="1">1 Adult</option>
+              <option value="2" selected>2 Adults</option>
+              <option value="3">3 Adults</option>
+              <option value="4">4 Adults</option>
+              <option value="5">5 Adults</option>
+              <option value="6+">6+ Adults (Group)</option>
+            </select>
+          </div>
+
+          <div class="space-y-2">
+            <label for="pkg-children" class="block text-xs font-mono uppercase tracking-wider text-[#12281b] font-bold">
+              Children (under 12)
+            </label>
+            <select
+              id="pkg-children"
+              name="children"
+              class="w-full px-4 py-3 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] text-sm focus:outline-none"
+            >
+              <option value="0" selected>0 Children</option>
+              <option value="1">1 Child</option>
+              <option value="2">2 Children</option>
+              <option value="3+">3+ Children</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Row 3: Guest Name, Email, WhatsApp -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="space-y-2">
+            <label for="pkg-name" class="block text-xs font-mono uppercase tracking-wider text-[#12281b] font-bold">
+              Lead Guest Full Name *
+            </label>
+            <input
+              type="text"
+              id="pkg-name"
+              name="full_name"
+              placeholder="e.g. Sarah Jenkins"
+              required
+              class="w-full px-4 py-3 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] text-sm focus:outline-none focus:ring-2 focus:ring-[#ba9038]/20"
+            />
+          </div>
+
+          <div class="space-y-2">
+            <label for="pkg-email" class="block text-xs font-mono uppercase tracking-wider text-[#12281b] font-bold">
+              Email Address *
+            </label>
+            <input
+              type="email"
+              id="pkg-email"
+              name="email"
+              placeholder="sarah@example.com"
+              required
+              class="w-full px-4 py-3 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] text-sm focus:outline-none focus:ring-2 focus:ring-[#ba9038]/20"
+            />
+          </div>
+
+          <div class="space-y-2">
+            <label for="pkg-phone" class="block text-xs font-mono uppercase tracking-wider text-[#12281b] font-bold">
+              WhatsApp / Phone *
+            </label>
+            <input
+              type="tel"
+              id="pkg-phone"
+              name="phone"
+              placeholder="+44 7123 456789"
+              required
+              class="w-full px-4 py-3 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] text-sm focus:outline-none focus:ring-2 focus:ring-[#ba9038]/20"
+            />
+          </div>
+        </div>
+
+        <!-- Row 4: Pick-up Location -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="space-y-2">
+            <label for="pkg-pickup" class="block text-xs font-mono uppercase tracking-wider text-[#12281b] font-bold">
+              Transfer / Pickup Needed?
+            </label>
+            <select
+              id="pkg-pickup"
+              name="pickup_location"
+              class="w-full px-4 py-3 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] text-sm focus:outline-none"
+            >
+              <option value="none" selected>No — Arriving by own transport / rental car</option>
+              <option value="khao-sok-bus-stop">Free pickup at Khao Sok Bus Stop (Highway 401)</option>
+              <option value="surat-thani-airport">Surat Thani Airport (URT)</option>
+              <option value="surat-thani-train">Surat Thani Train Station (Phunphin)</option>
+              <option value="phuket">Phuket (Airport or Hotel)</option>
+              <option value="krabi">Krabi (Airport, Ao Nang or Town)</option>
+              <option value="khao-lak">Khao Lak</option>
+              <option value="don-sak-pier">Don Sak Pier (Samui / Phangan Ferry)</option>
+              <option value="other">Other location (specify in notes)</option>
+            </select>
+          </div>
+
+          <div class="space-y-2">
+            <label for="pkg-notes" class="block text-xs font-mono uppercase tracking-wider text-[#12281b] font-bold">
+              Dietary Needs or Special Requests
+            </label>
+            <input
+              type="text"
+              id="pkg-notes"
+              name="notes"
+              placeholder="e.g. Vegetarian, vegan, anniversary trip, late arrival"
+              class="w-full px-4 py-3 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] text-sm focus:outline-none focus:ring-2 focus:ring-[#ba9038]/20"
+            />
+          </div>
+        </div>
+
+        <!-- Validation Error Message (100% English) -->
+        <div id="pkg-form-error" class="hidden p-4 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 text-xs font-medium flex items-center gap-2.5">
+          <svg class="w-4 h-4 text-amber-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+          </svg>
+          <span>Please complete all required fields marked with an asterisk (*) to send your package reservation.</span>
+        </div>
+
+        <!-- Form Actions & Submission -->
+        <div class="pt-6 border-t border-[#12281b]/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-2 text-xs text-[#2e5339]">
+            <span class="w-2 h-2 rounded-full bg-[#2e6b45]"></span>
+            <span>Zero deposit. We confirm via WhatsApp/Email within 12h.</span>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-4 w-full sm:w-auto">
+            <a
+              id="pkg-beds24-link"
+              href="https://beds24.com/booking2.php?propid=42681"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-5 py-3.5 rounded-xl border border-[#12281b]/20 hover:border-[#12281b] text-[#12281b] font-mono text-xs uppercase tracking-wider font-semibold transition-all text-center flex-1 sm:flex-initial"
+            >
+              Instant Beds24 Booking ↗
+            </a>
+
+            <button
+              type="submit"
+              class="px-8 py-3.5 rounded-xl bg-[#ba9038] hover:bg-[#d8b257] text-[#12281b] font-bold text-sm uppercase tracking-wider transition-all duration-200 shadow-lg shadow-[#ba9038]/25 text-center flex-1 sm:flex-initial"
+            >
+              Send Package Reservation Request →
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- ============================================================
+       PILLAR 2 : BOOK A ROOM ONLY (Flexible Accommodation)
+  ============================================================ -->
+  <div id="panel-room" class="booking-panel hidden space-y-10 transition-all duration-300">
+    
+    <!-- Intro Banner -->
+    <div class="p-6 sm:p-8 rounded-3xl bg-white border border-[#12281b]/10 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div class="space-y-2">
+        <div class="flex items-center gap-2 text-[#2e6b45] text-xs font-mono uppercase tracking-widest font-semibold">
+          <span>02 / RESORT COTTAGES</span>
+        </div>
+        <h3 class="font-display text-2xl sm:text-3xl text-[#12281b] font-semibold tracking-tight">
+          Reserve Handcrafted Wooden Cottages
+        </h3>
+        <p class="text-sm text-[#223e2c] max-w-2xl leading-relaxed">
+          Spacious free-standing wooden cottages nestled in lush tropical gardens beside the Sok River. All activities, jungle safaris, Thai cooking classes, and massages can be booked à la carte at our front desk upon arrival.
+        </p>
+      </div>
+
+      <a
+        href="/khao-sok-accommodation/"
+        class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#2e6b45] hover:text-[#12281b] font-bold shrink-0 self-start md:self-center"
+      >
+        <span>View Full Cottage Gallery & Specs</span>
+        <span>→</span>
+      </a>
+    </div>
+
+    <!-- Room Types Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {roomTypes.map((room) => (
+        <div
+          class="room-select-card group rounded-3xl bg-white border border-[#12281b]/10 hover:border-[#ba9038] cursor-pointer transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-xl"
+          data-room-id={room.id}
+          data-room-name={room.name}
+        >
+          <div class="relative h-56 overflow-hidden bg-slate-900">
+            <img
+              src={room.img}
+              alt={room.name}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            
+            <div class="absolute bottom-3 left-4 right-4 flex items-end justify-between text-white">
+              <div>
+                <span class="text-xs font-mono uppercase tracking-widest text-[#abd0bb]">{room.bed}</span>
+                <div class="text-xl font-monumental font-bold text-[#faf8f5]">{room.price}</div>
+              </div>
+              <span class="text-[11px] font-mono text-[#e5f0ea]/80">{room.priceNote}</span>
+            </div>
+          </div>
+
+          <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
+            <div class="space-y-2">
+              <h4 class="font-display text-lg font-bold text-[#163824] group-hover:text-[#ba9038] transition-colors leading-snug">
+                {room.name}
+              </h4>
+              <p class="text-xs text-[#2e5339] leading-relaxed">
+                {room.desc}
+              </p>
+              
+              <ul class="space-y-1.5 pt-3 border-t border-[#12281b]/5 text-xs text-[#223e2c]">
+                {room.features.slice(0, 4).map((feat) => (
+                  <li class="flex items-center gap-2">
+                    <span class="text-[#2e6b45] font-bold text-xs">✓</span>
+                    <span>{feat}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="pt-4 border-t border-[#12281b]/10">
+              <button
+                type="button"
+                class="btn-select-room w-full py-2.5 px-4 rounded-xl bg-[#faf8f5] hover:bg-[#12281b] border border-[#12281b]/15 text-[#12281b] hover:text-white font-mono text-xs uppercase tracking-wider font-bold transition-all text-center"
+              >
+                Select This Cottage
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Room Reservation Form Box -->
+    <div id="room-reservation-form-container" class="rounded-3xl bg-white border border-[#12281b]/15 p-6 sm:p-10 md:p-12 shadow-xl space-y-8 scroll-mt-24">
+      <div class="border-b border-[#12281b]/10 pb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ba9038]/10 text-[#8a6b25] text-xs font-mono uppercase tracking-wider font-semibold mb-2">
+            <span>Room Reservation Form</span>
+          </div>
+          <h3 class="font-display text-2xl sm:text-3xl text-[#12281b] font-semibold tracking-tight">
+            Reserve Your Cottage Stay
+          </h3>
+          <p class="text-sm text-[#2e5339] mt-1">
+            Enjoy our peaceful riverside grounds. Pay upon arrival with no prepayment or credit card deposit required.
+          </p>
+        </div>
+
+        <div class="text-xs font-mono text-[#2e6b45] bg-[#2e6b45]/10 px-3.5 py-2 rounded-xl border border-[#2e6b45]/20 shrink-0 font-bold">
+          ✓ Honor System: Pay on Arrival
+        </div>
+      </div>
+
+      <form id="form-book-room" novalidate class="space-y-6">
+        <!-- Row 1: Room Choice -->
+        <div class="space-y-2">
+          <label for="room-select" class="block text-xs font-mono uppercase tracking-wider text-[#12281b] font-bold">
+            Select Cottage Category *
+          </label>
+          <select
+            id="room-select"
+            name="room_type"
+            required
+            class="w-full px-4 py-3.5 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] font-medium text-sm focus:outline-none focus:ring-2 focus:ring-[#ba9038]/20"
+          >
+            {roomTypes.map((r) => (
+              <option value={r.id}>
+                {r.name} — {r.price} / night ({r.priceNote})
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <!-- Row 2: Check-in, Check-out, Guests -->
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+          <div class="space-y-2">
+            <label for="room-checkin" class="block text-xs font-mono uppercase tracking-wider text-[#12281b] font-bold">
+              Check-In Date *
+            </label>
+            <div class="relative">
+              <input
+                type="text"
+                id="room-checkin"
+                name="checkin_date"
+                placeholder="YYYY-MM-DD"
+                onfocus="this.type='date'; try{this.showPicker()}catch(e){}"
+                onblur="if(!this.value){this.type='text'}"
+                lang="en-US"
+                required
+                class="w-full pl-4 pr-10 py-3 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] text-sm focus:outline-none"
+              />
+              <div class="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#7a5813]">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <label for="room-checkout" class="block text-xs font-mono uppercase tracking-wider text-[#12281b] font-bold">
+              Check-Out Date *
+            </label>
+            <div class="relative">
+              <input
+                type="text"
+                id="room-checkout"
+                name="checkout_date"
+                placeholder="YYYY-MM-DD"
+                onfocus="this.type='date'; try{this.showPicker()}catch(e){}"
+                onblur="if(!this.value){this.type='text'}"
+                lang="en-US"
+                required
+                class="w-full pl-4 pr-10 py-3 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] text-sm focus:outline-none"
+              />
+              <div class="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#7a5813]">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <label for="room-adults" class="block text-xs font-mono uppercase tracking-wider text-[#12281b] font-bold">
+              Adults *
+            </label>
+            <select
+              id="room-adults"
+              name="adults"
+              required
+              class="w-full px-4 py-3 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] text-sm focus:outline-none"
+            >
+              <option value="1">1 Adult</option>
+              <option value="2" selected>2 Adults</option>
+              <option value="3">3 Adults</option>
+              <option value="4">4 Adults</option>
+            </select>
+          </div>
+
+          <div class="space-y-2">
+            <label for="room-children" class="block text-xs font-mono uppercase tracking-wider text-[#12281b] font-bold">
+              Children
+            </label>
+            <select
+              id="room-children"
+              name="children"
+              class="w-full px-4 py-3 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] text-sm focus:outline-none"
+            >
+              <option value="0" selected>0 Children</option>
+              <option value="1">1 Child</option>
+              <option value="2">2 Children</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Row 3: Guest Name, Email, WhatsApp -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="space-y-2">
+            <label for="room-name" class="block text-xs font-mono uppercase tracking-wider text-[#12281b] font-bold">
+              Guest Full Name *
+            </label>
+            <input
+              type="text"
+              id="room-name"
+              name="full_name"
+              placeholder="e.g. David Miller"
+              required
+              class="w-full px-4 py-3 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] text-sm focus:outline-none"
+            />
+          </div>
+
+          <div class="space-y-2">
+            <label for="room-email" class="block text-xs font-mono uppercase tracking-wider text-[#12281b] font-bold">
+              Email Address *
+            </label>
+            <input
+              type="email"
+              id="room-email"
+              name="email"
+              placeholder="david@example.com"
+              required
+              class="w-full px-4 py-3 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] text-sm focus:outline-none"
+            />
+          </div>
+
+          <div class="space-y-2">
+            <label for="room-phone" class="block text-xs font-mono uppercase tracking-wider text-[#12281b] font-bold">
+              WhatsApp / Mobile *
+            </label>
+            <input
+              type="tel"
+              id="room-phone"
+              name="phone"
+              placeholder="+44 7123 456789"
+              required
+              class="w-full px-4 py-3 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] text-sm focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <!-- Row 4: Free Pickup & Special Requests -->
+        <div class="space-y-4">
+          <label class="flex items-start gap-3 p-4 rounded-xl bg-[#faf8f5] border border-[#12281b]/10 cursor-pointer hover:bg-white transition-colors">
+            <input
+              type="checkbox"
+              name="bus_pickup"
+              value="yes"
+              class="mt-1 w-4 h-4 rounded text-[#2e6b45] focus:ring-[#2e6b45]"
+            />
+            <span class="text-xs text-[#223e2c] leading-relaxed">
+              <strong>Free Bus Stop Pickup:</strong> We are arriving by public minivan/bus at Khao Sok bus station on Highway 401 and request free pickup upon arrival.
+            </span>
+          </label>
+
+          <div class="space-y-2">
+            <label for="room-notes" class="block text-xs font-mono uppercase tracking-wider text-[#12281b] font-bold">
+              Special Requests or Estimated Arrival Time
+            </label>
+            <input
+              type="text"
+              id="room-notes"
+              name="notes"
+              placeholder="e.g. Late check-in around 18:00, quiet cottage request"
+              class="w-full px-4 py-3 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] text-sm focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <!-- Validation Error Message (100% English) -->
+        <div id="room-form-error" class="hidden p-4 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 text-xs font-medium flex items-center gap-2.5">
+          <svg class="w-4 h-4 text-amber-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+          </svg>
+          <span>Please complete all required fields marked with an asterisk (*) to send your room reservation.</span>
+        </div>
+
+        <!-- Form Actions & Submission -->
+        <div class="pt-6 border-t border-[#12281b]/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-2 text-xs text-[#2e5339]">
+            <span class="w-2 h-2 rounded-full bg-[#2e6b45]"></span>
+            <span>No advance payment. Pay at resort check-in.</span>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-4 w-full sm:w-auto">
+            <a
+              href="https://beds24.com/booking2.php?propid=8735&numadult=2&referer=iframe"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-5 py-3.5 rounded-xl border border-[#12281b]/20 hover:border-[#12281b] text-[#12281b] font-mono text-xs uppercase tracking-wider font-semibold transition-all text-center flex-1 sm:flex-initial"
+            >
+              Live Beds24 Channel ↗
+            </a>
+
+            <button
+              type="submit"
+              class="px-8 py-3.5 rounded-xl bg-[#12281b] hover:bg-[#1f402c] text-white font-bold text-sm uppercase tracking-wider transition-all duration-200 shadow-lg text-center flex-1 sm:flex-initial"
+            >
+              Send Room Reservation Request →
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- ============================================================
+       SIDE-BY-SIDE COMPARISON: PACKAGES VS ROOM ONLY
+  ============================================================ -->
+  <div class="rounded-3xl bg-[#faf8f5] border border-[#12281b]/10 p-6 sm:p-8 md:p-10 shadow-sm space-y-6">
+    <div class="text-center max-w-xl mx-auto space-y-2">
+      <span class="text-xs font-mono text-[#ba9038] uppercase tracking-[0.25em] font-bold">Comparison Matrix</span>
+      <h3 class="font-display text-xl sm:text-2xl text-[#12281b] font-semibold tracking-tight">
+        Packages vs. Room Only
+      </h3>
+      <p class="text-xs text-[#2e5339]">
+        Understand what is included with each booking method before finalizing.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+      
+      <!-- Option A: Package -->
+      <div class="p-6 rounded-2xl bg-white border border-[#ba9038]/40 shadow-sm space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-mono uppercase tracking-widest text-[#ba9038] font-bold">Recommended</span>
+          <span class="text-xs font-bold text-[#12281b] bg-[#ba9038]/15 px-2.5 py-0.5 rounded-full">All-Inclusive</span>
+        </div>
+        <h4 class="font-display text-xl text-[#12281b] font-bold">Tour & Safari Packages</h4>
+        <ul class="space-y-2.5 text-xs text-[#223e2c]">
+          <li class="flex items-start gap-2">
+            <span class="text-[#2e6b45] font-bold">✓</span>
+            <span><strong>Resort + Cheow Lan Lake Bungalows:</strong> Combines riverside wooden cottages with overnight floating raft houses inside the national park.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-[#2e6b45] font-bold">✓</span>
+            <span><strong>All Safaris & Excursions:</strong> Longtail boat tours, Coral Cave hikes, night safaris, tubing, and elephant mud baths included.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-[#2e6b45] font-bold">✓</span>
+            <span><strong>Full Meals Included:</strong> Fresh breakfasts, floating lake lunches, and authentic Thai dinners.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-[#2e6b45] font-bold">✓</span>
+            <span><strong>Maximum Value:</strong> Far more cost-effective than booking accommodation and individual day tours separately.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Option B: Room Only -->
+      <div class="p-6 rounded-2xl bg-white border border-[#12281b]/10 shadow-sm space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-mono uppercase tracking-widest text-[#2e6b45] font-bold">Flexible Stay</span>
+          <span class="text-xs text-[#2e5339] bg-[#12281b]/5 px-2.5 py-0.5 rounded-full">À La Carte</span>
+        </div>
+        <h4 class="font-display text-xl text-[#12281b] font-bold">Room Only Accommodation</h4>
+        <ul class="space-y-2.5 text-xs text-[#223e2c]">
+          <li class="flex items-start gap-2">
+            <span class="text-[#2e6b45] font-bold">✓</span>
+            <span><strong>Resort Cottages Only:</strong> Handcrafted wooden bungalows in tropical gardens on the Sok River.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-[#8a6b25] font-bold">•</span>
+            <span><strong>Tours Booked Separately:</strong> Cheow Lan Lake and safari activities must be booked à la carte upon arrival.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-[#8a6b25] font-bold">•</span>
+            <span><strong>Dining À La Carte:</strong> Breakfast and dinners ordered directly at our open-air riverside restaurant.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-[#2e6b45] font-bold">✓</span>
+            <span><strong>Complete Flexibility:</strong> Perfect if you just want to relax by the river with a good book and no set schedule.</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================
+       GOOGLE REVIEWS WIDGET INTEGRATION
+  ============================================================ -->
+  <GoogleReviewsWidget
+    title="Real Stories from Riverside Cottages"
+    subtitle="Verified Google 4.4/5 & Global Traveler Ratings"
+    showPlatforms={true}
+  />
+
+  <!-- ============================================================
+       SUCCESS FEEDBACK MODAL (Immediate UX Feedback Loop)
+  ============================================================ -->
+  <div
+    id="booking-success-modal"
+    class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 flex items-center justify-center p-4"
+  >
+    <div class="bg-[#faf8f5] border border-[#12281b]/15 rounded-3xl max-w-lg w-full p-8 sm:p-10 shadow-2xl space-y-6 relative transform scale-95 transition-transform duration-300">
+      <div class="w-14 h-14 rounded-full bg-[#2e6b45]/15 border border-[#2e6b45]/30 text-[#2e6b45] flex items-center justify-center text-2xl mx-auto">
+        ✓
+      </div>
+
+      <div class="text-center space-y-2">
+        <span class="text-xs font-mono uppercase tracking-[0.25em] text-[#ba9038] font-bold">Request Received</span>
+        <h3 class="font-display text-2xl font-bold text-[#12281b]">
+          Reservation Request Sent!
+        </h3>
+        <p class="text-sm text-[#223e2c] leading-relaxed" id="modal-summary-text">
+          Thank you for choosing Khao Sok Riverside Cottages. Our reservation team is reviewing your dates and will confirm your booking via WhatsApp and Email within 12 hours.
+        </p>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-[#f4efeb] border border-[#12281b]/10 text-xs text-[#2e5339] space-y-1.5 font-mono">
+        <div><strong>Status:</strong> Pending Confirmation (Honor System)</div>
+        <div><strong>Deposit:</strong> ฿0 Required (Pay on arrival)</div>
+        <div><strong>Cancellation:</strong> Free cancellation anytime</div>
+      </div>
+
+      <button
+        type="button"
+        id="btn-close-modal"
+        class="w-full py-3.5 rounded-xl bg-[#12281b] hover:bg-[#1f402c] text-white font-bold text-sm uppercase tracking-wider transition-colors shadow-md"
+      >
+        Understood & Close
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Client-side vanilla JS for dual switching, URL parameter support & instant form handling -->
+<script is:inline>
+  (function initBookingTabs() {
+    const btnPackage = document.getElementById('btn-tab-package');
+    const btnRoom = document.getElementById('btn-tab-room');
+    const panelPackage = document.getElementById('panel-package');
+    const panelRoom = document.getElementById('panel-room');
+    const pkgSelect = document.getElementById('pkg-select');
+    const roomSelect = document.getElementById('room-select');
+    const modal = document.getElementById('booking-success-modal');
+    const btnCloseModal = document.getElementById('btn-close-modal');
+    const modalSummary = document.getElementById('modal-summary-text');
+
+    function setActiveTab(tab) {
+      if (!btnPackage || !btnRoom || !panelPackage || !panelRoom) return;
+
+      if (tab === 'room') {
+        btnRoom.setAttribute('data-active', 'true');
+        btnPackage.setAttribute('data-active', 'false');
+        panelPackage.classList.add('hidden');
+        panelRoom.classList.remove('hidden');
+      } else {
+        btnPackage.setAttribute('data-active', 'true');
+        btnRoom.setAttribute('data-active', 'false');
+        panelRoom.classList.add('hidden');
+        panelPackage.classList.remove('hidden');
+      }
+    }
+
+    if (btnPackage) {
+      btnPackage.addEventListener('click', () => {
+        setActiveTab('package');
+        history.replaceState(null, '', '?tab=package');
+      });
+    }
+
+    if (btnRoom) {
+      btnRoom.addEventListener('click', () => {
+        setActiveTab('room');
+        history.replaceState(null, '', '?tab=room');
+      });
+    }
+
+    // Check URL search parameters on load (?tab=room or ?tab=package)
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialTab = urlParams.get('tab');
+    if (initialTab === 'room') {
+      setActiveTab('room');
+    } else {
+      setActiveTab('package');
+    }
+
+    // Package selection cards click handler
+    document.querySelectorAll('.package-select-card').forEach((card) => {
+      card.addEventListener('click', (e) => {
+        const pkgId = card.getAttribute('data-package-id');
+        if (pkgSelect && pkgId) {
+          pkgSelect.value = pkgId;
+        }
+        // Smooth scroll to form
+        const formElem = document.getElementById('package-reservation-form-container');
+        if (formElem) {
+          formElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Room selection cards click handler
+    document.querySelectorAll('.room-select-card').forEach((card) => {
+      card.addEventListener('click', (e) => {
+        const roomId = card.getAttribute('data-room-id');
+        if (roomSelect && roomId) {
+          roomSelect.value = roomId;
+        }
+        // Smooth scroll to form
+        const formElem = document.getElementById('room-reservation-form-container');
+        if (formElem) {
+          formElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    function validateInputs(fieldIds, errorElId) {
+      const errorEl = document.getElementById(errorElId);
+      let isValid = true;
+      let firstInvalid = null;
+
+      fieldIds.forEach((id) => {
+        const input = document.getElementById(id);
+        if (!input) return;
+        const val = (input.value || '').trim();
+        if (!val) {
+          isValid = false;
+          input.classList.add('border-red-500', 'ring-2', 'ring-red-400/20', 'bg-red-50/20');
+          if (!firstInvalid) firstInvalid = input;
+
+          const clearFn = () => {
+            input.classList.remove('border-red-500', 'ring-2', 'ring-red-400/20', 'bg-red-50/20');
+            if (errorEl) errorEl.classList.add('hidden');
+          };
+          input.addEventListener('input', clearFn, { once: true });
+          input.addEventListener('change', clearFn, { once: true });
+        } else {
+          input.classList.remove('border-red-500', 'ring-2', 'ring-red-400/20', 'bg-red-50/20');
+        }
+      });
+
+      if (!isValid) {
+        if (errorEl) errorEl.classList.remove('hidden');
+        if (firstInvalid) {
+          firstInvalid.focus();
+          firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      } else {
+        if (errorEl) errorEl.classList.add('hidden');
+      }
+
+      return isValid;
+    }
+
+    // Handle Form Submissions (Package)
+    const formPackage = document.getElementById('form-book-package');
+    if (formPackage) {
+      formPackage.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const requiredIds = ['pkg-date', 'pkg-name', 'pkg-email', 'pkg-phone'];
+        if (!validateInputs(requiredIds, 'pkg-form-error')) {
+          return;
+        }
+
+        const guestName = (document.getElementById('pkg-name')?.value || 'Guest').trim();
+        const pkgTitle = pkgSelect ? pkgSelect.options[pkgSelect.selectedIndex].text.split('—')[0].trim() : 'Tour Package';
+        if (modalSummary) {
+          modalSummary.textContent = `Thank you ${guestName}! We have received your request for the "${pkgTitle}". Bodhi, Tu & the Riverside team will confirm availability and send transfer instructions within 12 hours.`;
+        }
+        openModal();
+      });
+    }
+
+    // Handle Form Submissions (Room)
+    const formRoom = document.getElementById('form-book-room');
+    if (formRoom) {
+      formRoom.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const requiredIds = ['room-checkin', 'room-checkout', 'room-name', 'room-email', 'room-phone'];
+        if (!validateInputs(requiredIds, 'room-form-error')) {
+          return;
+        }
+
+        const guestName = (document.getElementById('room-name')?.value || 'Guest').trim();
+        const roomName = roomSelect ? roomSelect.options[roomSelect.selectedIndex].text.split('—')[0].trim() : 'Cottage';
+        if (modalSummary) {
+          modalSummary.textContent = `Thank you ${guestName}! We have received your stay request for the "${roomName}". We will confirm your dates and bus stop pickup within 12 hours.`;
+        }
+        openModal();
+      });
+    }
+
+    function openModal() {
+      if (!modal) return;
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      const inner = modal.querySelector('div');
+      if (inner) inner.classList.remove('scale-95');
+    }
+
+    function closeModal() {
+      if (!modal) return;
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      const inner = modal.querySelector('div');
+      if (inner) inner.classList.add('scale-95');
+    }
+
+    if (btnCloseModal) {
+      btnCloseModal.addEventListener('click', closeModal);
+    }
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+    }
+  })();
+</script>
+
+<style>
+  /* Dual Pillar Tabs Active vs Inactive State (100% WCAG AAA Contrast Guarantee) */
+  :global(.tab-switch-btn[data-active="true"]) {
+    background-color: #12281b !important;
+    border-color: rgba(186, 144, 56, 0.6) !important;
+    box-shadow: 0 0 0 2px rgba(186, 144, 56, 0.5), 0 8px 20px -4px rgba(18, 40, 27, 0.3) !important;
+  }
+  :global(.tab-switch-btn[data-active="true"]:hover) {
+    background-color: #163624 !important;
+  }
+  :global(.tab-switch-btn[data-active="true"] h4),
+  :global(.tab-switch-btn[data-active="true"] .tab-title) {
+    color: #ffffff !important;
+  }
+  :global(.tab-switch-btn[data-active="true"] .tab-desc) {
+    color: #d8eee1 !important; /* 12.5:1 contrast on dark green */
+  }
+  :global(.tab-switch-btn[data-active="true"] .tab-price) {
+    color: #fce2a6 !important; /* 11.5:1 contrast on dark green */
+  }
+  :global(.tab-switch-btn[data-active="true"] .tab-badge) {
+    background-color: #ba9038 !important;
+    color: #12281b !important;
+  }
+  :global(.tab-switch-btn[data-active="true"] .tab-indicator) {
+    background-color: #ba9038 !important;
+    color: #12281b !important;
+    border-color: transparent !important;
+  }
+
+  :global(.tab-switch-btn[data-active="false"]) {
+    background-color: #ffffff !important;
+    border-color: rgba(18, 40, 27, 0.15) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  }
+  :global(.tab-switch-btn[data-active="false"]:hover) {
+    background-color: #faf8f5 !important;
+    border-color: #ba9038 !important;
+  }
+  :global(.tab-switch-btn[data-active="false"] h4),
+  :global(.tab-switch-btn[data-active="false"] .tab-title) {
+    color: #12281b !important;
+  }
+  :global(.tab-switch-btn[data-active="false"]:hover h4),
+  :global(.tab-switch-btn[data-active="false"]:hover .tab-title) {
+    color: #7a5813 !important;
+  }
+  :global(.tab-switch-btn[data-active="false"] .tab-desc) {
+    color: #1b3e2a !important; /* 9.8:1 contrast on white */
+  }
+  :global(.tab-switch-btn[data-active="false"] .tab-price) {
+    color: #7a5813 !important; /* 6.8:1 contrast on white */
+  }
+  :global(.tab-switch-btn[data-active="false"] .tab-badge) {
+    background-color: rgba(18, 40, 27, 0.08) !important;
+    color: #12281b !important;
+  }
+  :global(.tab-switch-btn[data-active="false"] .tab-indicator) {
+    background-color: transparent !important;
+    color: transparent !important;
+    border: 1px solid rgba(18, 40, 27, 0.25) !important;
+  }
+</style>

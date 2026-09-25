@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Stylized Luxury Botanical Monstera Drawing -->
+  <g stroke="#1b3527" stroke-width="1.8" opacity="0.85">
+    <!-- Main stem -->
+    <path d="M 290 680 C 295 560, 300 420, 300 240 C 300 160, 298 90, 295 30" stroke="#122319" stroke-width="3" />
+    <path d="M 292 680 C 297 560, 302 420, 302 240 C 302 160, 300 90, 297 30" stroke="#ba9038" stroke-width="1" opacity="0.6" />
+
+    <!-- Outer Monstera Contour with Natural Cutouts / Fenestrations -->
+    <path d="M 295 30 
+      C 220 50, 140 100, 90 180 
+      C 80 195, 75 220, 95 235 
+      C 125 255, 175 260, 220 250 
+      C 150 280, 80 320, 60 370 
+      C 50 395, 70 420, 105 425 
+      C 150 430, 210 410, 255 385 
+      C 195 430, 130 480, 110 540 
+      C 100 570, 130 595, 170 590 
+      C 225 580, 270 535, 290 490 
+      C 292 580, 290 680, 290 680
+      C 290 680, 310 570, 315 490
+      C 340 535, 385 580, 440 590
+      C 480 595, 510 570, 500 540
+      C 480 480, 415 430, 355 385
+      C 400 410, 460 430, 505 425
+      C 540 420, 560 395, 550 370
+      C 530 320, 460 280, 390 250
+      C 435 260, 485 255, 515 235
+      C 535 220, 530 195, 520 180
+      C 470 100, 390 50, 305 30 Z" 
+      stroke="#122319" stroke-width="2" />
+
+    <!-- Interior Fenestration Holes (Typical Monstera Signature) -->
+    <ellipse cx="230" cy="180" rx="14" ry="32" transform="rotate(-30 230 180)" stroke="#ba9038" stroke-width="1.4" />
+    <ellipse cx="370" cy="180" rx="14" ry="32" transform="rotate(30 370 180)" stroke="#ba9038" stroke-width="1.4" />
+    <ellipse cx="210" cy="310" rx="12" ry="26" transform="rotate(-40 210 310)" stroke="#ba9038" stroke-width="1.4" />
+    <ellipse cx="390" cy="310" rx="12" ry="26" transform="rotate(40 390 310)" stroke="#ba9038" stroke-width="1.4" />
+
+    <!-- Delicate Botanical Veins & Hatching (Engraving Style) -->
+    <path d="M 298 120 C 230 140, 160 170, 110 210" stroke="#1b3527" stroke-width="1.2" />
+    <path d="M 298 210 C 210 245, 140 300, 85 360" stroke="#1b3527" stroke-width="1.2" />
+    <path d="M 298 320 C 230 365, 175 425, 130 500" stroke="#1b3527" stroke-width="1.2" />
+
+    <path d="M 302 120 C 370 140, 440 170, 490 210" stroke="#1b3527" stroke-width="1.2" />
+    <path d="M 302 210 C 390 245, 460 300, 515 360" stroke="#1b3527" stroke-width="1.2" />
+    <path d="M 302 320 C 370 365, 425 425, 470 500" stroke="#1b3527" stroke-width="1.2" />
+
+    <!-- Gold Accent Hatching Lines -->
+    <path d="M 295 150 C 250 170, 200 200, 160 230" stroke="#ba9038" stroke-width="0.8" opacity="0.6" />
+    <path d="M 305 150 C 350 170, 400 200, 440 230" stroke="#ba9038" stroke-width="0.8" opacity="0.6" />
+    <path d="M 295 260 C 250 290, 205 340, 170 380" stroke="#ba9038" stroke-width="0.8" opacity="0.6" />
+    <path d="M 305 260 C 350 290, 395 340, 430 380" stroke="#ba9038" stroke-width="0.8" opacity="0.6" />
+  </g>
+</svg>

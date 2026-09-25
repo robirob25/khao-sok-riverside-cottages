@@ -1,0 +1,697 @@
+@import "tailwindcss";
+
+@theme {
+  /* ===== LUXURY LINEN & WARM ALABASTER ("BLANC CASSÉ") PALETTE ===== */
+  --color-linen-base: #faf8f5;  /* Fond principal noble blanc cassé / albâtre chaud */
+  --color-linen-card: #ffffff;  /* Cartes pures lumineuses */
+  --color-linen-warm: #f4efeb;  /* Sections alternées travertin / sable clair */
+  --color-linen-sand: #ede6dc;  /* Accents neutres & bordures douces */
+
+  /* ===== DEEP RAINFOREST CHARCOAL & EMERALD (TEXTES ÉDITORIAUX HAUTE LISIBILITÉ) ===== */
+  --color-forest-950: #122319; /* Titres monumentaux & grands titres */
+  --color-forest-900: #1a3325; /* Titres secondaires & sous-titres */
+  --color-forest-800: #264634; /* Texte de corps riche & élégant */
+  --color-forest-700: #375e47; /* Paragraphes descriptifs */
+  --color-forest-600: #4a755b; /* Textes d'ambiance */
+  --color-forest-500: #5f8e71;
+  --color-forest-400: #81ac92;
+  --color-forest-300: #abd0bb;
+  --color-forest-200: #d6ebe0;
+  --color-forest-100: #edf7f1;
+  --color-forest-50:  #f6fbf8;
+
+  /* ===== ANCIENNES RÉFÉRENCES JUNGLE (COMPATIBILITÉ HERO & ACCENTS FONCÉS) ===== */
+  --color-jungle-950: #0b1910;
+  --color-jungle-900: #102418;
+  --color-jungle-850: #152f20;
+  --color-jungle-800: #1c3d2a;
+  --color-jungle-700: #255038;
+  --color-jungle-600: #30684a;
+  --color-jungle-500: #3f8660;
+
+  /* ===== CHAMPAGNE SATINÉ & LAITON POLI ===== */
+  --color-gold-600: #9b7520;
+  --color-gold-500: #ba9038;
+  --color-gold-400: #d8b257;
+  --color-gold-300: #ebd082;
+  --color-gold-200: #f7e6b5;
+  --color-gold-100: #fcf6e0;
+
+  /* ===== NEUTRES & SABLE (WARM LUXURY LINEN & SAND PALETTE) ===== */
+  --color-sand-50:  #fdfcf9;
+  --color-sand-100: #f7f4ee;
+  --color-sand-200: #ede6dc;
+  --color-sand-300: #dfd5c5;
+  --color-sand-400: #c9bbaa;
+  --color-sand-500: #aa9985;
+  --color-sand-600: #7a6a57;
+
+  /* ===== TYPOGRAPHIE ===== */
+  --font-monumental: "Cinzel", "Cormorant Garamond", serif;
+  --font-display: "Cormorant Garamond", serif;
+  --font-handwriting: "Caveat", cursive;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+/* ===== BASE TYPOGRAPHY & WARM LINEN BACKGROUND ===== */
+html {
+  font-family: var(--font-sans);
+  scroll-behavior: smooth;
+  background-color: var(--color-linen-base);
+  color: #223e2c;
+}
+
+body {
+  background-color: var(--color-linen-base);
+  color: #223e2c;
+  -webkit-font-smoothing: antialiased;
+  cursor: default;
+}
+
+/* ===== PERFORMANCE: Image rendering optimization ===== */
+img {
+  /* Prevents layout shift on images without explicit dimensions */
+  max-width: 100%;
+  height: auto;
+}
+
+/* content-visibility: auto defers off-screen rendering — massive LCP boost */
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px; /* estimated height */
+}
+
+/* ===== PERFORMANCE: will-change only where needed ===== */
+.hero-section img {
+  will-change: transform;
+  transform: translateZ(0); /* GPU compositing layer */
+}
+
+/* ===== BASE TYPOGRAPHY IN @layer base (ALLOWS TAILWIND UTILITIES LIKE text-white TO WIN) ===== */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    color: #12281b;
+  }
+}
+
+/* Headings on hero and dark sections MUST ALWAYS be pure brilliant white */
+.hero-title,
+.hero-section h1,
+.hero-section h2,
+.hero-section h3 {
+  color: #ffffff !important;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.text-white-shadow {
+  color: #ffffff !important;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.95), 0 2px 8px rgba(0, 0, 0, 0.85);
+}
+
+/* ===== FONTS UTILITIES ===== */
+.font-monumental {
+  font-family: var(--font-monumental);
+  letter-spacing: 0.08em;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-handwriting {
+  font-family: var(--font-handwriting);
+}
+
+/* ===== TROPICAL BOTANICAL ANIMATIONS (BANANA LEAF & PALM BREEZE) ===== */
+@keyframes tropical-sway-slow {
+  0%, 100% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(2.8deg) translate3d(8px, -12px, 0);
+  }
+}
+
+@keyframes tropical-sway-reverse {
+  0%, 100% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(-2.5deg) translate3d(-10px, -8px, 0);
+  }
+}
+
+@keyframes tropical-float-subtle {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-12px) scale(1.015);
+  }
+}
+
+.animate-tropical-sway {
+  animation: tropical-sway-slow 14s ease-in-out infinite;
+  transform-origin: bottom left;
+  will-change: transform;
+}
+
+.animate-tropical-sway-reverse {
+  animation: tropical-sway-reverse 18s ease-in-out infinite;
+  transform-origin: bottom right;
+  will-change: transform;
+}
+
+.animate-tropical-float {
+  animation: tropical-float-subtle 10s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ===== TEXT REVEAL EFFECT (SplitText Mask) ===== */
+.reveal-text-line {
+  display: block;
+  transform: translateY(110%);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+.reveal-text-line.revealed {
+  transform: translateY(0);
+}
+
+/* ===== TITRE SCULPTÉ ÉLÉGANT (OR & IVOIRE AVEC RELIEF) ===== */
+.text-sculpted-gold {
+  font-family: var(--font-monumental);
+  background: linear-gradient(180deg, #122319 0%, #264634 50%, #9b7520 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== ACCENT DORÉ LUMINEUX ===== */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #ba9038 0%, #d8b257 50%, #9b7520 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== HAUTE COUTURE BUTTONS ===== */
+.btn-couture-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.95rem 2.2rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(186, 144, 56, 0.85);
+  background: linear-gradient(135deg, #d8b257 0%, #ba9038 100%);
+  color: #122319;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, background 0.3s ease;
+  box-shadow: 0 10px 25px -4px rgba(186, 144, 56, 0.35), 0 2px 6px rgba(18, 35, 25, 0.08);
+  will-change: transform;
+}
+
+.btn-couture-gold:hover {
+  background: linear-gradient(135deg, #f7e6b5 0%, #d8b257 100%);
+  border-color: #ba9038;
+  color: #0b1910;
+  box-shadow: 0 14px 35px -4px rgba(216, 178, 87, 0.45);
+  transform: translateY(-2px);
+}
+
+.btn-couture-glass {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.95rem 2.2rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(18, 35, 25, 0.15);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #122319;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 24px -4px rgba(18, 35, 25, 0.08);
+  will-change: transform;
+}
+
+.btn-couture-glass:hover {
+  background: #ffffff;
+  border-color: rgba(186, 144, 56, 0.6);
+  color: #122319;
+  box-shadow: 0 12px 30px -4px rgba(186, 144, 56, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-couture-dark-glass {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.95rem 2.2rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #ffffff !important;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.4);
+  will-change: transform;
+}
+
+.btn-couture-dark-glass:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #0b1910 !important;
+  box-shadow: 0 12px 30px -4px rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+/* ===== STAMPED BRASS MEDALLION / LOGO ===== */
+.stamped-brass-badge {
+  background: radial-gradient(circle at 35% 30%, #f7e6b5 0%, #ba9038 55%, #735314 100%);
+  box-shadow:
+    0 10px 25px -4px rgba(0, 0, 0, 0.25),
+    inset 0 2px 3px rgba(255, 255, 255, 0.7),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.4);
+  border: 1.5px solid rgba(235, 208, 130, 0.8);
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stamped-brass-badge:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow:
+    0 14px 35px -4px rgba(186, 144, 56, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.9);
+}
+
+/* ===== TACTILE PANELS (LUXURY RESORT LINEN & PORCELAIN) ===== */
+.teak-panel {
+  background: #ffffff;
+  border: 1px solid rgba(18, 35, 25, 0.08);
+  position: relative;
+  box-shadow:
+    0 16px 40px -12px rgba(18, 35, 25, 0.07),
+    0 2px 6px rgba(18, 35, 25, 0.03);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.teak-panel:hover {
+  border-color: rgba(186, 144, 56, 0.35);
+  box-shadow:
+    0 24px 50px -12px rgba(18, 35, 25, 0.12),
+    0 4px 10px rgba(18, 35, 25, 0.05);
+}
+
+/* Cadres d'orfèvrerie discrets */
+.bamboo-frame {
+  position: relative;
+}
+.bamboo-frame::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 14px;
+  height: 14px;
+  border-top: 2px solid rgba(186, 144, 56, 0.7);
+  border-left: 2px solid rgba(186, 144, 56, 0.7);
+  pointer-events: none;
+  z-index: 10;
+}
+.bamboo-frame::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 14px;
+  height: 14px;
+  border-bottom: 2px solid rgba(186, 144, 56, 0.7);
+  border-right: 2px solid rgba(186, 144, 56, 0.7);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ===== LUXURY DIVIDERS ===== */
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(186, 144, 56, 0.35) 50%, transparent 100%);
+}
+
+/* ===== SCROLL REVEALS ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ===== NAVIGATION SCROLLED (LUXURY FROSTED GLASS OVER WHITE) ===== */
+.nav-scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(18, 35, 25, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(18, 35, 25, 0.08);
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-linen-base); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-gold-400), var(--color-forest-700));
+  border-radius: 4px;
+}
+
+/* ===== HAUTE COUTURE GLASS CARDS (AMAN & BORGO EGNAZIA STYLE) ===== */
+.glass-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(18, 35, 25, 0.08);
+  box-shadow:
+    0 16px 40px -12px rgba(18, 35, 25, 0.07),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+}
+
+.glass-card:hover {
+  border-color: rgba(186, 144, 56, 0.4);
+  box-shadow:
+    0 24px 50px -12px rgba(18, 35, 25, 0.12),
+    0 0 25px -4px rgba(186, 144, 56, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 1);
+  transform: translateY(-2px);
+}
+
+/* ===== EDITORIAL LUXURY PROSE (CONDÉ NAST / SINGITA) ===== */
+.prose-luxury {
+  color: var(--color-forest-800);
+  line-height: 1.85;
+}
+
+.prose-luxury h1,
+.prose-luxury h2 {
+  font-family: var(--font-monumental);
+  color: var(--color-forest-950);
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.prose-luxury h3,
+.prose-luxury h4 {
+  font-family: var(--font-display);
+  color: var(--color-forest-900);
+  letter-spacing: 0.02em;
+}
+
+.prose-luxury p {
+  color: var(--color-forest-800);
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+}
+
+.prose-luxury a {
+  color: var(--color-gold-600);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(186, 144, 56, 0.4);
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.prose-luxury a:hover {
+  color: var(--color-forest-950);
+  text-decoration-color: var(--color-gold-500);
+}
+
+.prose-luxury blockquote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--color-forest-950);
+  border-left: 3px solid var(--color-gold-500);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  background: #ffffff;
+  border-radius: 0 1rem 1rem 0;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 10px 25px -8px rgba(18, 35, 25, 0.06);
+}
+
+.prose-luxury ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 1.5rem 0;
+}
+
+.prose-luxury ul > li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-forest-800);
+}
+
+.prose-luxury ul > li::before {
+  content: "•";
+  position: absolute;
+  left: 0.25rem;
+  top: 0;
+  color: var(--color-gold-600);
+  font-size: 1rem;
+}
+
+.prose-luxury strong {
+  color: var(--color-forest-950);
+  font-weight: 600;
+}
+
+/* ===== LUXURY THAI TYPOGRAPHY SYSTEM (Aman / Six Senses Thai Standard) ===== */
+html.lang-th,
+html.lang-th body {
+  font-family: 'Sarabun', 'Prompt', system-ui, sans-serif !important;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+html.lang-th .font-monumental {
+  font-family: 'Prompt', sans-serif !important;
+  letter-spacing: 0.12em !important;
+  font-weight: 400 !important;
+}
+
+html.lang-th h1 {
+  font-family: 'Prompt', sans-serif !important;
+  font-weight: 400 !important;
+  line-height: 1.35 !important;
+}
+
+html.lang-th h2,
+html.lang-th h3,
+html.lang-th h4 {
+  font-family: 'Prompt', sans-serif !important;
+  font-weight: 500 !important;
+  line-height: 1.45 !important;
+}
+
+html.lang-th .font-display {
+  font-family: 'Sarabun', 'Prompt', serif, sans-serif !important;
+  font-weight: 300 !important;
+  line-height: 1.9 !important;
+  letter-spacing: normal !important;
+}
+
+html.lang-th .font-serif {
+  font-family: 'Sarabun', Georgia, serif !important;
+  font-weight: 300 !important;
+  line-height: 1.85 !important;
+  letter-spacing: normal !important;
+}
+
+html.lang-th .font-handwriting {
+  font-family: 'Caveat', 'Prompt', cursive, sans-serif !important;
+  font-weight: 500 !important;
+}
+
+html.lang-th p,
+html.lang-th li,
+html.lang-th span:not(.font-mono):not(.font-monumental) {
+  letter-spacing: normal;
+}
+
+
+/* ===================================================================
+   GLOBAL RESPONSIVE — Mobile & Tablet Polish
+   Applied site-wide to every page
+=================================================================== */
+
+/* Tables: always horizontal scroll on mobile */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+/* Wrap tables so they scroll horizontally on small screens */
+.overflow-x-auto table,
+article table {
+  min-width: 480px;
+}
+
+/* Responsive iframes / embeds (YouTube, Maps) */
+iframe {
+  max-width: 100%;
+}
+
+/* YouTube embed container — responsive 16:9 */
+.youtube-embed {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+.youtube-embed iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: 0;
+}
+
+/* Inner page article images — never overflow */
+article img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Inner page article figures */
+article figure {
+  margin: 0;
+  max-width: 100%;
+}
+
+/* Prevent long URLs/text from breaking mobile layout */
+p, li, td, th {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Responsive hero heights */
+@media (max-width: 640px) {
+  .hero-section {
+    min-height: 420px !important;
+  }
+  .hero-section .font-monumental {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+}
+
+/* Responsive bento grid gap reduction on mobile */
+@media (max-width: 640px) {
+  .bento-grid, [class*="grid-cols"] {
+    gap: 0.75rem !important;
+  }
+}
+
+/* Touch-friendly tap targets */
+@media (max-width: 768px) {
+  a, button {
+    min-height: 40px;
+    min-width: 40px;
+  }
+  nav a, nav button {
+    padding-top: 0.375rem;
+    padding-bottom: 0.375rem;
+  }
+}
+
+/* Inner page content padding — tighter on mobile */
+@media (max-width: 640px) {
+  .max-w-4xl.mx-auto,
+  .max-w-5xl.mx-auto {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Blockquote mobile */
+@media (max-width: 640px) {
+  blockquote {
+    font-size: 1.125rem !important;
+    padding: 1.25rem !important;
+  }
+}
+
+/* Gallery grid — 2 cols on mobile */
+@media (max-width: 640px) {
+  .grid-cols-3,
+  .sm\:grid-cols-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Floating botanicals — smaller on tiny screens */
+@media (max-width: 480px) {
+  [class*="animate-tropical"] {
+    opacity: 0.4 !important;
+    width: 8rem !important;
+  }
+}
+
+/* Back to top — slightly smaller on mobile */
+@media (max-width: 640px) {
+  #back-to-top {
+    bottom: 1rem !important;
+    right: 1rem !important;
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+  }
+}
+
+/* Footer grid — stack on mobile */
+@media (max-width: 768px) {
+  footer .grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2rem !important;
+  }
+}
+@media (max-width: 480px) {
+  footer .grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Cursor dot — disable on touch screens */
+@media (hover: none) {
+  #cursor-dot, #cursor-ring {
+    display: none !important;
+  }
+}
+

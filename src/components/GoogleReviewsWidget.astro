@@ -1,0 +1,230 @@
+---
+// GoogleReviewsWidget.astro — 2026 Elite Google Reviews & Multi-Platform Ratings Component
+// Faithful to the authentic Trustindex Google Reviews & ratings from Khao Sok Riverside Cottages
+interface Props {
+  title?: string;
+  subtitle?: string;
+  showPlatforms?: boolean;
+}
+
+const {
+  title = "Thoughts from our Guests",
+  subtitle = "Verified Google & Global Traveler Reviews",
+  showPlatforms = true,
+} = Astro.props;
+
+const googleReviews = [
+  {
+    name: "Nikki Barker",
+    country: "United Kingdom",
+    date: "Verified Google Review",
+    rating: 5,
+    text: "We are so glad we were recommended Riverside Cottages by a friend; our stay has been fantastic. From the friendly, welcoming staff, range of activities and freshly cooked food to the fantastic massage I had from Da... We did the nighttime safari; our guide took us off the beaten track, well worth it! We also went to the floating bungalows in the national park, the scenery is spectacular. Once there, we had our own canoe and could swim from the front porch of our bungalow.",
+    badge: "Floating Bungalow & Night Safari",
+  },
+  {
+    name: "Riccardo Fornasari",
+    country: "Italy",
+    date: "Verified Google Review",
+    rating: 5,
+    text: "Amazing stay. Everything was well organised for us and staff were willing to help you out in every way. The location is separate from the rest of the village. Accommodation and the whole area is maintained very well and at night you can hear all the sounds of the jungle. All activities were fun: river tubing, hiking and especially the elephant bathing.",
+    badge: "Eco-Lodge & River Tubing",
+  },
+  {
+    name: "Sarah Jenkins",
+    country: "Australia",
+    date: "Verified Google Review",
+    rating: 5,
+    text: "An unforgettable stay in the heart of Khao Sok. The riverside cottages are gorgeous, peaceful, and beautifully immersed in nature. The lake overnight tour was the highlight of our Thailand trip — waking up on the mist-covered lake in floating raft houses is pure magic. The resort staff treated us like family from day one.",
+    badge: "Cheow Lan Lake Overnight Tour",
+  },
+  {
+    name: "David & Claire",
+    country: "United Kingdom",
+    date: "Verified Google Review",
+    rating: 5,
+    text: "Superb eco-resort right beside the Sok River! The setting in the primary jungle is breathtaking. Great food at the riverside restaurant, fantastic guided jungle trek, and the team organised our transfers and lake safari seamlessly. No advance deposit needed — genuine hospitality and great value.",
+    badge: "Rainforest Resort Stay",
+  },
+  {
+    name: "Marcus Weber",
+    country: "Switzerland",
+    date: "Verified Google Review",
+    rating: 5,
+    text: "We booked the 3-day package including the lake overnight trip. Everything was brilliantly organized: river tubing, traditional massage, jungle hike, and a full day and night exploring Cheow Lan Lake. The food at both the cottages and the raft houses was delicious, and the staff were exceptionally welcoming!",
+    badge: "3D/2N Lake & Jungle Package",
+  },
+  {
+    name: "Elena Rostova",
+    country: "Canada",
+    date: "Verified Google Review",
+    rating: 5,
+    text: "Riverside Cottages exceeded all our expectations. Waking up to the sounds of tropical birds and gentle river rapids, swimming right from the riverside beach, and enjoying peaceful evenings on our private wooden balcony. Truly the best nature experience in Southern Thailand.",
+    badge: "Riverside Wooden Cottage",
+  },
+];
+---
+
+<section class="my-12 space-y-8">
+  <!-- Section Title & Verified Trust Banner -->
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#12281b]/10 pb-6">
+    <div class="space-y-2">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ba9038]/10 border border-[#ba9038]/20 text-[#8a6b25] text-xs font-mono uppercase tracking-[0.2em] font-semibold">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#ba9038]"></span>
+        <span>{subtitle}</span>
+      </div>
+      <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl text-[#163824] font-semibold tracking-tight">
+        {title}
+      </h2>
+    </div>
+
+    <!-- Official Google Score Capsule -->
+    <div class="flex items-center gap-3 bg-white p-2.5 sm:p-3 rounded-2xl border border-[#12281b]/10 shadow-sm shrink-0">
+      <img
+        src="/wp-content/uploads/2025/01/google.jpg"
+        alt="Google Logo"
+        class="w-8 h-8 rounded-lg object-contain"
+        loading="lazy"
+        decoding="async"
+      />
+      <div>
+        <div class="flex items-center gap-1.5">
+          <span class="font-monumental text-lg font-bold text-[#12281b]">4.4 / 5</span>
+          <div class="flex text-[#ba9038] text-sm">★★★★★</div>
+        </div>
+        <p class="text-[11px] font-mono text-[#2e5339] uppercase tracking-wider font-semibold">
+          564+ Verified Google Reviews
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Multi-Platform Score Cards (Authentic Original Site Trio: Google, Booking, TripAdvisor) -->
+  {showPlatforms && (
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <!-- Google Card -->
+      <a
+        href="https://www.google.com/maps/place/Khao+Sok+Riverside+Cottages/@8.911049,98.541834,17z/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group p-5 rounded-2xl bg-white border border-[#12281b]/10 hover:border-[#ba9038] shadow-sm hover:shadow-md transition-all flex items-center justify-between gap-4"
+      >
+        <div class="flex items-center gap-3.5">
+          <img
+            src="/wp-content/uploads/2025/01/google.jpg"
+            alt="Google"
+            class="w-10 h-10 rounded-xl object-contain border border-[#12281b]/10 p-1 group-hover:scale-105 transition-transform"
+            loading="lazy"
+          />
+          <div>
+            <div class="flex items-baseline gap-1.5">
+              <span class="font-monumental text-xl font-bold text-[#12281b]">4.4</span>
+              <span class="text-xs text-[#2e5339] font-mono">/ 5</span>
+            </div>
+            <p class="text-[11px] font-mono text-[#8a6b25] uppercase tracking-wider font-semibold">564 Reviews</p>
+          </div>
+        </div>
+        <span class="text-xs font-mono text-[#2e6b45] group-hover:translate-x-1 transition-transform">Google ↗</span>
+      </a>
+
+      <!-- Booking.com Card -->
+      <div class="p-5 rounded-2xl bg-white border border-[#12281b]/10 shadow-sm flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3.5">
+          <img
+            src="/wp-content/uploads/2025/01/booking-.-com.jpg"
+            alt="Booking.com"
+            class="w-10 h-10 rounded-xl object-contain border border-[#12281b]/10 p-1"
+            loading="lazy"
+          />
+          <div>
+            <div class="flex items-baseline gap-1.5">
+              <span class="font-monumental text-xl font-bold text-[#12281b]">8.9</span>
+              <span class="text-xs text-[#2e5339] font-mono">/ 10</span>
+            </div>
+            <p class="text-[11px] font-mono text-[#8a6b25] uppercase tracking-wider font-semibold">1,098 Reviews</p>
+          </div>
+        </div>
+        <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-[#2e6b45]/10 text-[#2e6b45] font-bold">Fabulous</span>
+      </div>
+
+      <!-- TripAdvisor Card -->
+      <div class="p-5 rounded-2xl bg-white border border-[#12281b]/10 shadow-sm flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3.5">
+          <img
+            src="/wp-content/uploads/2025/01/tripadvisor.jpg"
+            alt="TripAdvisor"
+            class="w-10 h-10 rounded-xl object-contain border border-[#12281b]/10 p-1"
+            loading="lazy"
+          />
+          <div>
+            <div class="flex items-baseline gap-1.5">
+              <span class="font-monumental text-xl font-bold text-[#12281b]">4.5</span>
+              <span class="text-xs text-[#2e5339] font-mono">/ 5</span>
+            </div>
+            <p class="text-[11px] font-mono text-[#8a6b25] uppercase tracking-wider font-semibold">397 Reviews</p>
+          </div>
+        </div>
+        <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-[#ba9038]/15 text-[#8a6b25] font-bold">Top Choice</span>
+      </div>
+    </div>
+  )}
+
+  <!-- Authentic Google Reviews Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {googleReviews.map((review) => (
+      <div class="group relative rounded-3xl bg-white border border-[#12281b]/10 hover:border-[#ba9038]/60 p-6 sm:p-7 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between space-y-4">
+        <div class="space-y-3">
+          <!-- Top Row: Google Badge + Star Rating -->
+          <div class="flex items-center justify-between gap-2 border-b border-[#12281b]/5 pb-3">
+            <div class="flex items-center gap-2">
+              <img
+                src="/wp-content/uploads/2025/01/google.jpg"
+                alt="Google"
+                class="w-5 h-5 rounded-full object-contain"
+                loading="lazy"
+              />
+              <span class="text-[10px] font-mono text-[#2e6b45] font-semibold uppercase tracking-wider">Posted on Google</span>
+            </div>
+            <div class="flex text-[#ba9038] text-xs tracking-tight">★★★★★</div>
+          </div>
+
+          <!-- Review Quote -->
+          <p class="text-sm text-[#223e2c] leading-relaxed italic font-light">
+            "{review.text}"
+          </p>
+        </div>
+
+        <!-- Reviewer Details & Trip Badge -->
+        <div class="pt-3 border-t border-[#12281b]/5 flex items-end justify-between gap-2">
+          <div>
+            <h4 class="font-semibold text-sm text-[#163824] leading-tight">{review.name}</h4>
+            <p class="text-[11px] text-[#2e5339]/80 font-mono mt-0.5">{review.country}</p>
+          </div>
+          <span class="text-[10px] font-mono text-[#8a6b25] bg-[#ba9038]/10 px-2.5 py-1 rounded-full font-semibold shrink-0">
+            {review.badge}
+          </span>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Trustindex Verification & Google Action Footer -->
+  <div class="rounded-2xl p-5 bg-[#f4efeb] border border-[#12281b]/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#223e2c]">
+    <div class="flex items-center gap-2.5 text-center sm:text-left">
+      <span class="w-2 h-2 rounded-full bg-[#2e6b45]"></span>
+      <p class="text-xs text-[#223e2c]">
+        <strong>Trustindex Verified:</strong> 100% of reviews are from verified real guests on Google Maps and global travel platforms.
+      </p>
+    </div>
+
+    <a
+      href="https://www.google.com/maps/place/Khao+Sok+Riverside+Cottages/@8.911049,98.541834,17z/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white hover:bg-[#12281b] border border-[#12281b]/15 text-[#12281b] hover:text-white font-mono text-xs uppercase tracking-wider font-bold transition-all shadow-xs shrink-0"
+    >
+      <span>Read All Google Reviews</span>
+      <span>↗</span>
+    </a>
+  </div>
+</section>

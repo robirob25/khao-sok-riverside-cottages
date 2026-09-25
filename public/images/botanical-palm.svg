@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -20 540 680" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Complete Stylized Botanical Areca Palm Frond - Zero Clipping -->
+  <g stroke="#1b3527" stroke-width="1.6" opacity="0.85">
+    <!-- Gracefully arching central stem -->
+    <path d="M 120 620 C 180 500, 240 370, 280 240 C 310 140, 320 60, 315 20" stroke="#122319" stroke-width="3" />
+    <path d="M 121 620 C 181 500, 241 370, 281 240 C 311 140, 321 60, 316 20" stroke="#ba9038" stroke-width="1.2" opacity="0.6" />
+
+    <!-- Left Leaflets -->
+    <path d="M 145 570 C 105 560, 65 540, 30 500" stroke-width="1.8" />
+    <path d="M 170 520 C 120 500, 75 465, 35 410" stroke-width="1.8" />
+    <path d="M 195 470 C 135 440, 85 390, 45 320" stroke-width="1.8" />
+    <path d="M 220 420 C 150 380, 95 315, 60 230" stroke-width="1.8" />
+    <path d="M 240 365 C 165 315, 110 240, 80 150" stroke-width="1.8" />
+    <path d="M 260 310 C 185 250, 135 170, 110 85" stroke-width="1.8" />
+    <path d="M 275 255 C 205 190, 160 115, 145 40" stroke-width="1.8" />
+    <path d="M 290 200 C 225 135, 190 70, 185 15" stroke-width="1.8" />
+    <path d="M 302 145 C 250 85, 225 35, 230 5" stroke-width="1.8" />
+    <path d="M 310 85 C 275 40, 260 15, 270 0" stroke-width="1.8" />
+
+    <!-- Right Leaflets -->
+    <path d="M 155 550 C 200 540, 250 515, 290 475" stroke-width="1.8" />
+    <path d="M 180 500 C 240 480, 300 445, 345 390" stroke-width="1.8" />
+    <path d="M 205 450 C 275 420, 345 375, 395 305" stroke-width="1.8" />
+    <path d="M 230 400 C 310 360, 385 300, 435 215" stroke-width="1.8" />
+    <path d="M 250 345 C 335 295, 410 220, 455 125" stroke-width="1.8" />
+    <path d="M 270 290 C 355 230, 420 145, 455 50" stroke-width="1.8" />
+    <path d="M 285 235 C 365 170, 415 85, 435 15" stroke-width="1.8" />
+    <path d="M 298 180 C 370 110, 400 45, 410 0" stroke-width="1.8" />
+    <path d="M 308 125 C 365 65, 385 15, 385 0" stroke-width="1.8" />
+    <path d="M 314 65 C 350 25, 360 5, 355 0" stroke-width="1.8" />
+
+    <!-- Fine Gold Vein Lines Along Leaflets -->
+    <path d="M 172 518 C 122 498, 78 463, 40 412" stroke="#ba9038" stroke-width="0.8" opacity="0.6" />
+    <path d="M 222 418 C 152 378, 98 313, 65 232" stroke="#ba9038" stroke-width="0.8" opacity="0.6" />
+    <path d="M 262 308 C 188 248, 138 168, 114 87" stroke="#ba9038" stroke-width="0.8" opacity="0.6" />
+
+    <path d="M 182 498 C 242 478, 302 443, 347 392" stroke="#ba9038" stroke-width="0.8" opacity="0.6" />
+    <path d="M 232 398 C 312 358, 387 298, 437 217" stroke="#ba9038" stroke-width="0.8" opacity="0.6" />
+    <path d="M 272 288 C 357 228, 422 143, 457 52" stroke="#ba9038" stroke-width="0.8" opacity="0.6" />
+  </g>
+</svg>

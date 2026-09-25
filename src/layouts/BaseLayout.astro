@@ -1,0 +1,253 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  canonicalURL?: string;
+  noIndex?: boolean;
+}
+
+const {
+  title,
+  description = 'Khao Sok Riverside Cottages — Luxury eco-resort in the heart of Khao Sok National Park, Thailand. Comfortable Thai-style cottages, jungle tours, and authentic rainforest experiences.',
+  ogImage = '/wp-content/uploads/2019/10/khao-sok-riverside-cottages-beach.jpg',
+  canonicalURL = Astro.url.href,
+  noIndex = false,
+} = Astro.props;
+
+const siteTitle = title.includes('Khao Sok') ? title : `${title} | Khao Sok Riverside Cottages`;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-[#faf8f5] text-[#264634] notranslate" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google" content="notranslate" />
+    <title>{siteTitle}</title>
+    <meta name="description" content={description} />
+    {noIndex && <meta name="robots" content="noindex,nofollow" />}
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Favicon (Authentic Khao Sok Rafflesia Flower) -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Resource hints — non-blocking DNS + connections -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.google.com" />
+    <link rel="dns-prefetch" href="https://maps.googleapis.com" />
+    <link rel="dns-prefetch" href="https://www.youtube.com" />
+    <link rel="dns-prefetch" href="https://i.ytimg.com" />
+
+    <!-- Google Fonts — NON-BLOCKING (print trick) prevents render-blocking -->
+    <!-- Critical fonts preloaded as high-priority for LCP -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <!-- Fallback for no-JS -->
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap"
+      />
+    </noscript>
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LodgingBusiness",
+        "name": "Khao Sok Riverside Cottages",
+        "url": "https://www.khao-sok-riverside-cottages.com/",
+        "telephone": "+66 77 395 159",
+        "email": "info@khao-sok-riverside-cottages.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "64 Moo 1 Klong Sok",
+          "addressLocality": "Khao Sok",
+          "addressRegion": "Surat Thani",
+          "postalCode": "84250",
+          "addressCountry": "TH"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 8.9065,
+          "longitude": 98.5285
+        },
+        "image": "/wp-content/uploads/2019/10/khao-sok-riverside-cottages-beach.jpg",
+        "priceRange": "$$"
+      }
+    </script>
+
+    <!-- Named slot for page-specific head elements (preloads, etc.) -->
+    <slot name="head" />
+  </head>
+  <body class="bg-[#faf8f5] text-[#223e2c] antialiased font-sans relative selection:bg-gold-500/30 selection:text-[#12281b] overflow-x-hidden">
+    
+    <!-- Minimalist Custom Cursor (Luxury Dot & Follower Ring) -->
+    <div id="cursor-dot" class="fixed top-0 left-0 w-2 h-2 rounded-full bg-gold-400 pointer-events-none z-50 transition-transform duration-75 hidden lg:block -translate-x-1/2 -translate-y-1/2" aria-hidden="true"></div>
+    <div id="cursor-ring" class="fixed top-0 left-0 w-8 h-8 rounded-full border border-gold-400/50 pointer-events-none z-50 transition-all duration-300 ease-out hidden lg:flex items-center justify-center -translate-x-1/2 -translate-y-1/2 text-[8px] font-mono tracking-widest text-gold-200" aria-hidden="true"></div>
+
+    <slot />
+
+    <!-- Back to Top Button (Luxury Floating Pill, All Pages) -->
+    <button
+      id="back-to-top"
+      type="button"
+      class="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-[#12281b]/85 hover:bg-[#ba9038] text-white/90 hover:text-white backdrop-blur-md border border-white/20 hover:border-[#ba9038] shadow-2xl flex items-center justify-center transition-all duration-300 cursor-pointer opacity-0 pointer-events-none translate-y-3 group focus:outline-none"
+      aria-label="Scroll back to top"
+      title="Back to top"
+    >
+      <svg class="w-4 h-4 transform group-hover:-translate-y-0.5 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+      </svg>
+    </button>
+
+    <!-- Performance-optimized Native Script Orchestration -->
+    <script>
+      // ── CRITICAL: Runs immediately (navbar + back-to-top) ─────────────────
+      // 3. Navbar Scroll Blur
+      const nav = document.getElementById('main-nav');
+      if (nav) {
+        window.addEventListener('scroll', () => {
+          nav.classList.toggle('nav-scrolled', window.scrollY > 40);
+        }, { passive: true });
+      }
+
+      // 7. Back to Top Button Controller
+      const backToTopBtn = document.getElementById('back-to-top');
+      if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+          const show = window.scrollY > 350;
+          backToTopBtn.classList.toggle('opacity-0', !show);
+          backToTopBtn.classList.toggle('pointer-events-none', !show);
+          backToTopBtn.classList.toggle('translate-y-3', !show);
+          backToTopBtn.classList.toggle('opacity-100', show);
+          backToTopBtn.classList.toggle('pointer-events-auto', show);
+          backToTopBtn.classList.toggle('translate-y-0', show);
+        }, { passive: true });
+
+        backToTopBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      // ── DEFERRED: Non-critical — run when browser is idle ─────────────────
+      const runDeferred = () => {
+        // 1. Text Reveal Effect
+        const textLines = document.querySelectorAll('.reveal-text-line');
+        const textObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              textObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        textLines.forEach((el) => textObserver.observe(el));
+
+        // Trigger hero immediately
+        setTimeout(() => {
+          document.querySelectorAll('.hero-reveal .reveal-text-line').forEach((el) => el.classList.add('revealed'));
+        }, 150);
+
+        // 2. Scroll Reveal Observer
+        const reveals = document.querySelectorAll('.reveal');
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        reveals.forEach((el) => io.observe(el));
+
+        // 4. Magnetic Buttons
+        const magneticBtns = document.querySelectorAll('.magnetic-btn');
+        magneticBtns.forEach((btn) => {
+          btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate3d(${x * 0.28}px, ${y * 0.28}px, 0)`;
+          });
+          btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'translate3d(0, 0, 0)';
+          });
+        });
+
+        // 5. Custom Cursor Tracking (desktop only)
+        const dot = document.getElementById('cursor-dot');
+        const ring = document.getElementById('cursor-ring');
+        if (dot && ring && window.matchMedia('(pointer: fine)').matches) {
+          window.addEventListener('mousemove', (e) => {
+            dot.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+            ring.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+          }, { passive: true });
+
+          document.querySelectorAll('[data-cursor="explore"]').forEach((el) => {
+            el.addEventListener('mouseenter', () => {
+              ring.style.width = '64px';
+              ring.style.height = '64px';
+              ring.style.backgroundColor = 'rgba(202, 160, 52, 0.2)';
+              ring.style.borderColor = 'rgba(226, 191, 94, 0.9)';
+              ring.textContent = 'EXPLORE';
+            });
+            el.addEventListener('mouseleave', () => {
+              ring.style.width = '32px';
+              ring.style.height = '32px';
+              ring.style.backgroundColor = 'transparent';
+              ring.style.borderColor = 'rgba(226, 191, 94, 0.5)';
+              ring.textContent = '';
+            });
+          });
+        }
+
+        // 6. Hero Parallax Scroll
+        const heroParallax = document.getElementById('hero-parallax-bg');
+        const heroText = document.getElementById('hero-parallax-text');
+        if (heroParallax && heroText) {
+          window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            if (scrollY < window.innerHeight) {
+              heroParallax.style.transform = `translate3d(0, ${scrollY * 0.25}px, 0)`;
+              heroText.style.transform = `translate3d(0, ${scrollY * -0.15}px, 0)`;
+            }
+          }, { passive: true });
+        }
+      };
+
+      // Use requestIdleCallback if available, else setTimeout fallback
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(runDeferred, { timeout: 2000 });
+      } else {
+        setTimeout(runDeferred, 200);
+      }
+    </script>
+    <script src="../scripts/i18n.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 800" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Stylized Luxury Botanical Palm Branch Drawing -->
+  <g stroke="#1b3527" stroke-width="1.8" opacity="0.85">
+    <!-- Main stem curving gracefully -->
+    <path d="M 250 780 C 248 650, 240 500, 230 350 C 220 230, 205 120, 190 20" stroke="#122319" stroke-width="3.2" />
+    <path d="M 251 780 C 249 650, 241 500, 231 350 C 221 230, 206 120, 191 20" stroke="#ba9038" stroke-width="1.2" opacity="0.6" />
+
+    <!-- Palm Frond Leaflets Left -->
+    <!-- Lower leaflets -->
+    <path d="M 246 720 C 180 700, 100 660, 40 600" />
+    <path d="M 246 720 C 185 705, 110 670, 42 602" stroke="#ba9038" stroke-width="0.8" opacity="0.7" />
+    <path d="M 244 670 C 170 640, 90 590, 30 520" />
+    <path d="M 241 620 C 160 580, 80 520, 25 440" />
+    <path d="M 239 570 C 150 520, 75 450, 25 360" />
+    <path d="M 236 520 C 145 460, 70 380, 30 280" />
+    <path d="M 233 470 C 140 400, 75 310, 40 210" />
+    <path d="M 230 420 C 135 340, 80 250, 55 150" />
+    <path d="M 226 370 C 130 280, 85 190, 70 100" />
+    <path d="M 221 320 C 135 230, 95 150, 90 60" />
+    <path d="M 215 270 C 140 180, 110 110, 115 30" />
+    <path d="M 209 220 C 145 140, 125 80, 140 15" />
+    <path d="M 202 170 C 155 105, 145 55, 160 5" />
+    <path d="M 196 110 C 165 65, 160 30, 175 0" />
+
+    <!-- Palm Frond Leaflets Right -->
+    <path d="M 248 700 C 310 680, 390 640, 450 580" />
+    <path d="M 248 700 C 305 685, 380 650, 448 582" stroke="#ba9038" stroke-width="0.8" opacity="0.7" />
+    <path d="M 245 650 C 320 620, 400 570, 465 500" />
+    <path d="M 242 600 C 325 560, 410 495, 470 415" />
+    <path d="M 239 550 C 330 495, 415 425, 465 335" />
+    <path d="M 236 500 C 330 435, 410 350, 455 250" />
+    <path d="M 233 450 C 330 375, 400 280, 435 180" />
+    <path d="M 229 400 C 325 315, 385 220, 410 120" />
+    <path d="M 225 350 C 320 255, 365 160, 380 70" />
+    <path d="M 220 300 C 310 205, 345 120, 345 35" />
+    <path d="M 214 250 C 295 155, 320 85, 310 10" />
+    <path d="M 208 200 C 275 120, 290 60, 275 0" />
+    <path d="M 201 145 C 255 85, 260 40, 240 0" />
+    <path d="M 194 90 C 235 50, 230 20, 210 0" />
+
+    <!-- Delicate Vein Hatching Accents -->
+    <path d="M 240 540 C 270 520, 310 490, 340 450" stroke="#ba9038" stroke-width="0.8" opacity="0.5" />
+    <path d="M 234 490 C 190 460, 140 420, 110 370" stroke="#ba9038" stroke-width="0.8" opacity="0.5" />
+    <path d="M 228 390 C 265 350, 305 300, 330 240" stroke="#ba9038" stroke-width="0.8" opacity="0.5" />
+    <path d="M 218 340 C 180 295, 145 240, 130 180" stroke="#ba9038" stroke-width="0.8" opacity="0.5" />
+  </g>
+</svg>

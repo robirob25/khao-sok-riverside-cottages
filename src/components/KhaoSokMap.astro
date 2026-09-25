@@ -1,0 +1,327 @@
+---
+// KhaoSokMap.astro — 2026 Elite Interactive Map for Khao Sok Directions & Park
+interface Props {
+  mapId: string;
+  type?: 'regional' | 'resort' | 'park';
+  height?: string;
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  mapId,
+  type = 'regional',
+  height = '520px',
+  title = 'Interactive Geographic & Route Guide',
+  subtitle = 'Official Navigation & Coordinates · Khao Sok Riverside Cottages',
+} = Astro.props;
+---
+
+<div class="my-8 rounded-3xl overflow-hidden border border-[#12281b]/15 bg-white/80 shadow-2xl backdrop-blur-md">
+  <!-- Map Header Bar with Layer Switcher & Coordinates -->
+  <div class="bg-[#12281b] text-white px-5 sm:px-8 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#ba9038]/30">
+    <div class="space-y-1">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-[#ba9038]"></span>
+        <span class="text-[11px] font-mono text-[#ba9038] uppercase tracking-[0.2em] font-semibold">{subtitle}</span>
+      </div>
+      <h3 class="font-monumental text-lg sm:text-xl text-white tracking-tight flex items-center gap-2">
+        <span>{title}</span>
+      </h3>
+    </div>
+
+    <!-- Controls Toolbar -->
+    <div class="flex flex-wrap items-center gap-2">
+      <!-- Layer Toggle Buttons -->
+      <div class="inline-flex rounded-xl bg-white/10 p-1 border border-white/15" role="group">
+        <button
+          type="button"
+          data-map-layer={mapId}
+          data-layer="topo"
+          class="map-layer-btn active px-3 py-1.5 rounded-lg text-xs font-mono uppercase tracking-wider font-semibold transition-all bg-[#ba9038] text-[#12281b]"
+        >
+          Terrain
+        </button>
+        <button
+          type="button"
+          data-map-layer={mapId}
+          data-layer="sat"
+          class="map-layer-btn px-3 py-1.5 rounded-lg text-xs font-mono uppercase tracking-wider font-semibold transition-all text-white/80 hover:text-white"
+        >
+          Satellite
+        </button>
+        <button
+          type="button"
+          data-map-layer={mapId}
+          data-layer="street"
+          class="map-layer-btn px-3 py-1.5 rounded-lg text-xs font-mono uppercase tracking-wider font-semibold transition-all text-white/80 hover:text-white"
+        >
+          Street
+        </button>
+      </div>
+
+      <!-- Google Maps External Link -->
+      <a
+        href="https://www.google.com/maps/dir/?api=1&destination=8.911049,98.541834"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-[#ebd082] hover:text-white text-xs font-mono uppercase tracking-wider transition-all font-semibold"
+        title="Open in Google Maps"
+      >
+        <span>Open in Google Maps</span>
+        <span>↗</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Map Canvas Container -->
+  <div class="relative w-full overflow-hidden bg-[#e5e3df]" style={`height: ${height};`}>
+    <div id={mapId} class="w-full h-full z-0" data-map-type={type}></div>
+    
+    <!-- GPS Coordinates Pill (Bottom Left) -->
+    <div class="absolute bottom-3 left-3 z-[400] bg-black/75 backdrop-blur-md text-white text-[11px] font-mono px-3 py-1.5 rounded-lg border border-white/20 shadow-lg pointer-events-none">
+      <span>📍 GPS: 8.911049° N, 98.541834° E</span>
+    </div>
+  </div>
+
+  <!-- Map Footer Caption / Quick Tips -->
+  <div class="px-6 py-3.5 bg-[#f4efeb] border-t border-[#12281b]/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#223e2c]">
+    <div class="flex items-center gap-4 flex-wrap">
+      {type === 'regional' && (
+        <>
+          <span class="inline-flex items-center gap-1.5 font-medium"><img src="/images/map-marker.jpg" class="w-4 h-4 rounded-full border border-gray-400" alt="Resort" /> Riverside Cottages</span>
+          <span class="inline-flex items-center gap-1.5 font-medium"><img src="/images/airport-marker2.png" class="w-4 h-4" alt="Airport" /> Regional Airports</span>
+          <span class="inline-flex items-center gap-1.5 font-medium"><img src="/images/ferry.png" class="w-4 h-4" alt="Ferry" /> Don Sak Pier</span>
+        </>
+      )}
+      {type === 'resort' && (
+        <>
+          <span class="inline-flex items-center gap-1.5 font-medium"><span class="w-3 h-3 rounded-full bg-[#ba9038]"></span> Riverside Cottages Entrance</span>
+          <span class="text-xs text-[#2e5339]">Turn off Highway 401 at the resort sign (2.5 km down lane)</span>
+        </>
+      )}
+      {type === 'park' && (
+        <>
+          <span class="inline-flex items-center gap-1.5 font-medium"><span class="w-3 h-3 rounded-full bg-[#2e6b45]"></span> National Park Landmarks & Cheow Lan Lake</span>
+        </>
+      )}
+    </div>
+    <span class="text-[11px] font-mono text-[#8a6b25] tracking-wider uppercase font-semibold">Interactive · Click any marker for details</span>
+  </div>
+</div>
+
+<!-- Load Leaflet Assets Once -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<script is:inline define:vars={{ mapId, type }}>
+  (function initMap() {
+    function run() {
+      if (typeof L === 'undefined') {
+        setTimeout(run, 50);
+        return;
+      }
+
+      const container = document.getElementById(mapId);
+      if (!container || container._leaflet_id) return;
+
+      // Base tile layers
+      const topoLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Esri &mdash; USGS, NOAA',
+        maxZoom: 18,
+      });
+
+      const satLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Esri, Maxar, Earthstar Geographics',
+        maxZoom: 18,
+      });
+
+      const streetLayer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors',
+        maxZoom: 19,
+      });
+
+      // Markers definition based on type
+      let center = [8.911049, 98.541834];
+      let zoom = 8;
+
+      if (type === 'resort') {
+        center = [8.9116277, 98.5420608];
+        zoom = 14;
+      } else if (type === 'park') {
+        center = [8.98, 98.67];
+        zoom = 11;
+      }
+
+      const map = L.map(mapId, {
+        center: center,
+        zoom: zoom,
+        layers: [topoLayer],
+        scrollWheelZoom: false,
+      });
+
+      // Layer switcher button handlers
+      const buttons = document.querySelectorAll(`[data-map-layer="${mapId}"]`);
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach((b) => {
+            b.classList.remove('bg-[#ba9038]', 'text-[#12281b]');
+            b.classList.add('text-white/80');
+          });
+          btn.classList.add('bg-[#ba9038]', 'text-[#12281b]');
+          btn.classList.remove('text-white/80');
+
+          const layer = btn.getAttribute('data-layer');
+          map.removeLayer(topoLayer);
+          map.removeLayer(satLayer);
+          map.removeLayer(streetLayer);
+
+          if (layer === 'sat') satLayer.addTo(map);
+          else if (layer === 'street') streetLayer.addTo(map);
+          else topoLayer.addTo(map);
+        });
+      });
+
+      // Custom Icon Builders
+      const resortIcon = L.icon({
+        iconUrl: '/images/map-marker.jpg',
+        iconSize: [44, 44],
+        iconAnchor: [22, 22],
+        popupAnchor: [0, -22],
+        className: 'rounded-full shadow-2xl border-2 border-[#ba9038]',
+      });
+
+      const airportIcon = L.icon({
+        iconUrl: '/images/airport-marker2.png',
+        iconSize: [38, 38],
+        iconAnchor: [19, 19],
+        popupAnchor: [0, -19],
+        className: 'filter drop-shadow-md',
+      });
+
+      const ferryIcon = L.icon({
+        iconUrl: '/images/ferry.png',
+        iconSize: [38, 38],
+        iconAnchor: [19, 19],
+        popupAnchor: [0, -19],
+        className: 'filter drop-shadow-md',
+      });
+
+      const parkPinIcon = L.divIcon({
+        className: 'custom-park-pin',
+        html: `<div style="background-color: #2e6b45; color: white; width: 28px; height: 28px; border-radius: 50%; border: 2px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; font-size: 14px;"><span style="width: 8px; height: 8px; border-radius: 50%; background-color: #ffd700;"></span></div>`,
+        iconSize: [28, 28],
+        iconAnchor: [14, 14],
+        popupAnchor: [0, -14],
+      });
+
+      if (type === 'regional') {
+        // 1. Khao Sok Riverside Cottages
+        L.marker([8.91102, 98.54185], { icon: resortIcon })
+          .addTo(map)
+          .bindPopup(`
+            <div style="font-family: sans-serif; min-width: 180px; padding: 4px;">
+              <h4 style="margin: 0 0 4px; font-size: 14px; font-weight: bold; color: #12281b;">Khao Sok Riverside Cottages</h4>
+              <p style="margin: 0 0 8px; font-size: 12px; color: #444;">Your rainforest haven beside the Sok River</p>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=8.911049,98.541834" target="_blank" style="display: inline-block; background: #ba9038; color: #12281b; font-size: 11px; font-weight: bold; padding: 4px 8px; border-radius: 6px; text-decoration: none;">Get Directions →</a>
+            </div>
+          `)
+          .openPopup();
+
+        // 2. Surat Thani Airport
+        L.marker([9.13611, 99.13916], { icon: airportIcon })
+          .addTo(map)
+          .bindPopup(`
+            <div style="font-family: sans-serif; padding: 4px;">
+              <h4 style="margin: 0 0 4px; font-size: 13px; font-weight: bold; color: #12281b;">Surat Thani Airport (URT)</h4>
+              <p style="margin: 0; font-size: 12px; color: #444;">Closest airport to resort (~1.5 hours drive)</p>
+            </div>
+          `);
+
+        // 3. Phuket International Airport
+        L.marker([8.11109, 98.30646], { icon: airportIcon })
+          .addTo(map)
+          .bindPopup(`
+            <div style="font-family: sans-serif; padding: 4px;">
+              <h4 style="margin: 0 0 4px; font-size: 13px; font-weight: bold; color: #12281b;">Phuket International Airport (HKT)</h4>
+              <p style="margin: 0; font-size: 12px; color: #444;">Main international gateway (~2.5 - 3 hours drive)</p>
+            </div>
+          `);
+
+        // 4. Krabi Airport
+        L.marker([8.09928, 98.98319], { icon: airportIcon })
+          .addTo(map)
+          .bindPopup(`
+            <div style="font-family: sans-serif; padding: 4px;">
+              <h4 style="margin: 0 0 4px; font-size: 13px; font-weight: bold; color: #12281b;">Krabi Airport (KBV)</h4>
+              <p style="margin: 0; font-size: 12px; color: #444;">Domestic & regional hub (~2 hours drive)</p>
+            </div>
+          `);
+
+        // 5. Don Sak Pier
+        L.marker([9.32788, 99.74351], { icon: ferryIcon })
+          .addTo(map)
+          .bindPopup(`
+            <div style="font-family: sans-serif; padding: 4px;">
+              <h4 style="margin: 0 0 4px; font-size: 13px; font-weight: bold; color: #12281b;">Don Sak Pier</h4>
+              <p style="margin: 0; font-size: 12px; color: #444;">Ferry transfer point for Koh Samui, Koh Phangan & Koh Tao (~2.5 - 3 hours drive)</p>
+            </div>
+          `);
+
+        // 6. Ranong Airport
+        L.marker([9.77403, 98.58689], { icon: airportIcon })
+          .addTo(map)
+          .bindPopup(`
+            <div style="font-family: sans-serif; padding: 4px;">
+              <h4 style="margin: 0 0 4px; font-size: 13px; font-weight: bold; color: #12281b;">Ranong Airport</h4>
+              <p style="margin: 0; font-size: 12px; color: #444;">Northern flight connection (~2.5 hours drive)</p>
+            </div>
+          `);
+      } else if (type === 'resort') {
+        L.marker([8.9116277, 98.5420608], { icon: resortIcon })
+          .addTo(map)
+          .bindPopup(`
+            <div style="font-family: sans-serif; padding: 4px;">
+              <h4 style="margin: 0 0 4px; font-size: 14px; font-weight: bold; color: #12281b;">Khao Sok Riverside Cottages</h4>
+              <p style="margin: 0 0 6px; font-size: 12px; color: #444;">GPS: 8.911049, 98.541834</p>
+              <p style="margin: 0; font-size: 12px; color: #2e6b45;">Follow resort signs 2.5 km north of Highway 401</p>
+            </div>
+          `)
+          .openPopup();
+      } else if (type === 'park') {
+        const parkPoints = [
+          { name: 'Khao Sam Kloe', coords: [8.99681, 98.70918], desc: 'Iconic three limestone karst pillars of Cheow Lan Lake' },
+          { name: 'Khao Sok Riverside Cottages', coords: [8.91162, 98.54206], desc: 'Resort location & gateway' },
+          { name: 'National Park HQ', coords: [8.91768, 98.52750], desc: 'Main park visitor center and jungle trailheads' },
+          { name: 'Rajjaprabha Dam', coords: [8.97247, 98.80570], desc: 'Scenic lookout and entrance to Cheow Lan Lake' },
+          { name: 'Krai Sorn Viewpoint', coords: [9.02587, 98.60435], desc: 'Panoramic rainforest lake vista' },
+          { name: 'Khao Sok Village', coords: [8.91172, 98.52454], desc: 'Local shops, ATMs, minivan station' },
+          { name: 'Nam Ta Lu Cave', coords: [8.99098, 98.60259], desc: 'Exciting subterranean water cave adventure' },
+          { name: 'Coral Cave (Pakarang)', coords: [9.13177, 98.61606], desc: 'Stalactite & stalagmite cavern reached by bamboo raft' },
+          { name: 'Yuan Sao Waterfall', coords: [9.07625, 98.82407], desc: 'Remote jungle cascade' },
+          { name: 'Pra Kie Phet Cave', coords: [8.96783, 98.70510], desc: 'Diamond cave formations' },
+          { name: 'Chiew Larn Lake View Point', coords: [8.97378, 98.81042], desc: 'Overlook near the dam' },
+          { name: 'Ratchaprapha Marina Pier', coords: [8.97785, 98.82019], desc: 'Departure pier for longtail boat lake safaris' },
+          { name: 'Hin Pad', coords: [9.07390, 98.84838], desc: 'Balanced rock landmark' },
+        ];
+
+        parkPoints.forEach((pt) => {
+          const isResort = pt.name.includes('Riverside Cottages');
+          const marker = L.marker(pt.coords, { icon: isResort ? resortIcon : parkPinIcon }).addTo(map);
+          marker.bindPopup(`
+            <div style="font-family: sans-serif; padding: 4px; min-width: 160px;">
+              <h4 style="margin: 0 0 3px; font-size: 13px; font-weight: bold; color: #12281b;">${pt.name}</h4>
+              <p style="margin: 0; font-size: 12px; color: #444;">${pt.desc}</p>
+            </div>
+          `);
+        });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', run);
+    } else {
+      run();
+    }
+  })();
+</script>
