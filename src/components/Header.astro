@@ -5,6 +5,12 @@ interface Props {
   isHome?: boolean;
 }
 const { isHome = false } = Astro.props;
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase === '/' ? '' : rawBase.replace(/\/$/, '');
+const withBase = (path: string) => {
+  if (!path || !path.startsWith('/') || (base && path.startsWith(base))) return path;
+  return `${base}${path}`;
+};
 ---
 
 <header
@@ -266,7 +272,7 @@ const { isHome = false } = Astro.props;
         ].map((item) => (
           <div
             class="menu-item-group px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl hover:bg-white hover:shadow-xl hover:shadow-[#122319]/5 transition-all duration-300 border border-transparent hover:border-[#122319]/10 group"
-            data-preview-img={item.img}
+            data-preview-img={withBase(item.img)}
             data-preview-title={item.title}
             data-preview-note={item.note}
           >
@@ -294,7 +300,7 @@ const { isHome = false } = Astro.props;
           <div class="relative h-96 rounded-2xl overflow-hidden border border-[#122319]/10 group">
             <img
               id="menu-preview-img"
-              src="/wp-content/uploads/2019/10/khao-sok-riverside-cottages-beach.jpg"
+              src={withBase("/wp-content/uploads/2019/10/khao-sok-riverside-cottages-beach.jpg")}
               alt="Khao Sok Experience Preview"
               class="w-full h-full object-cover transition-all duration-700 transform scale-100 group-hover:scale-105"
               width="600" height="400"
@@ -397,12 +403,18 @@ const { isHome = false } = Astro.props;
     handleScroll();
   }
 
+  const rawBase = import.meta.env.BASE_URL;
+  const clientBase = rawBase === '/' ? '' : rawBase.replace(/\/$/, '');
+
   const items = document.querySelectorAll('.menu-item-group');
   items.forEach((item) => {
     item.addEventListener('mouseenter', () => {
-      const img = item.getAttribute('data-preview-img');
+      let img = item.getAttribute('data-preview-img');
       const title = item.getAttribute('data-preview-title');
       const note = item.getAttribute('data-preview-note');
+      if (img && clientBase && img.startsWith('/') && !img.startsWith(clientBase)) {
+        img = clientBase + img;
+      }
       if (previewImg && img) previewImg.src = img;
       if (previewTitle && title) previewTitle.textContent = title;
       if (previewBadge && note) previewBadge.textContent = note;

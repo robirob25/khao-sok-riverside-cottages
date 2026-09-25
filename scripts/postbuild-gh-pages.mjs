@@ -7,7 +7,7 @@ const basePath = process.env.BASE_PATH || (process.env.GITHUB_REPOSITORY ? `/${p
 if (basePath && fs.existsSync(distDir)) {
   console.log(`[postbuild] Prefixing HTML links with basePath: "${basePath}"`);
   const escapedBase = basePath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const regex = new RegExp(`(href|src)="(\\/(?!${escapedBase.slice(1)}|\\/)[^"]*)"`, 'g');
+  const regex = new RegExp(`(href|src|data-preview-img|data-orig-src|data-[a-zA-Z0-9_-]*img)="(\\/(?!${escapedBase.slice(1)}|\\/)[^"]*)"`, 'g');
 
   let processedCount = 0;
 
