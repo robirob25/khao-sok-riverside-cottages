@@ -1,0 +1,131 @@
+---
+// Khao Sok Room Rates & Transparent Pricing Matrix
+import PageLayout from '../../layouts/PageLayout.astro';
+---
+
+<PageLayout
+  title="Khao Sok Room Rates & Pricing"
+  description="Transparent room rates for Khao Sok Riverside Cottages. Handcrafted wooden cottages, river views, free bus pickup, and guaranteed lowest direct prices."
+  heroImage="/wp-content/uploads/2025/07/cottage-1.jpg"
+  heroTitle="Khao Sok Room Rates"
+  heroSubtitle="Transparent Direct Pricing · Free Bus Pickup · Pay on Arrival"
+  breadcrumbs={[{"label": "Accommodation", "href": "/khao-sok-accommodation/"}, {"label": "Room Rates", "href": "/khao-sok-room-rates/"}]}
+>
+  <article class="max-w-5xl mx-auto space-y-12">
+    <div class="bg-[#faf8f5]/95 border border-[#12281b]/10 rounded-3xl p-6 sm:p-10 md:p-12 shadow-2xl backdrop-blur-md">
+      
+      <div class="flex items-center justify-between border-b border-[#12281b]/10 pb-4 mb-8 font-mono text-[11px] tracking-[0.22em] uppercase text-[#163824]">
+        <div class="flex items-center gap-2 font-semibold">
+          <span class="text-[#7a5813]">KSR</span>
+          <span class="text-[#12281b]/20">/</span>
+          <span>RATES & SEASONS</span>
+        </div>
+        <span class="text-[#7a5813] font-bold">KHAO SOK · THAILAND</span>
+      </div>
+
+      <div class="space-y-6 text-[#223e2c] text-base sm:text-lg leading-relaxed font-normal">
+        <h2 class="font-display text-2xl sm:text-3xl text-[#12281b] font-bold tracking-tight">
+          Guaranteed Lowest Direct Rates
+        </h2>
+
+        <p class="leading-relaxed">
+          When booking directly with Khao Sok Riverside Cottages through our website, WhatsApp, or Beds24 system, you are guaranteed the lowest rates available anywhere online. We charge no booking fees and require no advance credit card deposit.
+        </p>
+
+        <!-- Rate Matrix Table -->
+        <div class="overflow-x-auto my-8 rounded-2xl border border-[#12281b]/15 shadow-sm">
+          <table class="w-full text-left border-collapse text-xs sm:text-sm">
+            <thead>
+              <tr class="bg-[#12281b] text-white font-mono uppercase tracking-wider text-[11px]">
+                <th class="p-4">Cottage Category</th>
+                <th class="p-4">Occupancy</th>
+                <th class="p-4">Low Season (May – Oct)</th>
+                <th class="p-4">High Season (Nov – Apr)</th>
+                <th class="p-4 text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[#12281b]/10 bg-white">
+              <tr class="hover:bg-[#faf8f5] transition-colors">
+                <td class="p-4 font-semibold text-[#12281b]">
+                  Classic Wooden Cottage
+                  <span class="block text-xs font-normal text-[#255038]">Garden & forest setting, double or twin bed, en-suite bathroom</span>
+                </td>
+                <td class="p-4 text-[#223e2c]">1 – 2 Guests</td>
+                <td class="p-4 font-mono font-bold text-[#ba9038]">฿1,100 / nt</td>
+                <td class="p-4 font-mono font-bold text-[#ba9038]">฿1,300 / nt</td>
+                <td class="p-4 text-center">
+                  <a href="/booking-khao-sok-accommodation/?tab=room" class="px-3 py-1.5 bg-[#ba9038] hover:bg-[#d8b257] text-[#12281b] text-[10px] font-mono uppercase font-bold rounded-lg transition-colors inline-block">Book</a>
+                </td>
+              </tr>
+              <tr class="hover:bg-[#faf8f5] transition-colors">
+                <td class="p-4 font-semibold text-[#12281b]">
+                  Riverside View Cottage
+                  <span class="block text-xs font-normal text-[#255038]">Elevated river frontage, private covered balcony over the Sok river</span>
+                </td>
+                <td class="p-4 text-[#223e2c]">1 – 2 Guests</td>
+                <td class="p-4 font-mono font-bold text-[#ba9038]">฿1,400 / nt</td>
+                <td class="p-4 font-mono font-bold text-[#ba9038]">฿1,600 / nt</td>
+                <td class="p-4 text-center">
+                  <a href="/booking-khao-sok-accommodation/?tab=room" class="px-3 py-1.5 bg-[#ba9038] hover:bg-[#d8b257] text-[#12281b] text-[10px] font-mono uppercase font-bold rounded-lg transition-colors inline-block">Book</a>
+                </td>
+              </tr>
+              <tr class="hover:bg-[#faf8f5] transition-colors">
+                <td class="p-4 font-semibold text-[#12281b]">
+                  Family Wooden Cottage
+                  <span class="block text-xs font-normal text-[#255038]">Extra large deck, double bed + 2 singles, ideal for parents & kids</span>
+                </td>
+                <td class="p-4 text-[#223e2c]">Up to 4 Guests</td>
+                <td class="p-4 font-mono font-bold text-[#ba9038]">฿1,800 / nt</td>
+                <td class="p-4 font-mono font-bold text-[#ba9038]">฿2,000 / nt</td>
+                <td class="p-4 text-center">
+                  <a href="/booking-khao-sok-accommodation/?tab=room" class="px-3 py-1.5 bg-[#ba9038] hover:bg-[#d8b257] text-[#12281b] text-[10px] font-mono uppercase font-bold rounded-lg transition-colors inline-block">Book</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Inclusions Grid -->
+        <div class="bg-[#12281b]/5 border border-[#12281b]/10 rounded-2xl p-6 my-8 space-y-3">
+          <h3 class="font-mono text-xs uppercase tracking-widest text-[#7a5813] font-bold">
+            Complimentary Direct Booking Benefits
+          </h3>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-[#223e2c]">
+            <li class="flex items-start gap-2">
+              <span class="text-[#ba9038] font-bold">✓</span>
+              <span><strong>Free bus stop pickup:</strong> We pick you up free from the Highway 401 bus stop.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-[#ba9038] font-bold">✓</span>
+              <span><strong>No prepayment:</strong> Honor system booking — pay in Thai Baht upon check-in.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-[#ba9038] font-bold">✓</span>
+              <span><strong>Free high-speed Wi-Fi:</strong> Available at the restaurant, reception & lounge.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-[#ba9038] font-bold">✓</span>
+              <span><strong>Tour concierge:</strong> Activity booking desk right on-site with local guides.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- CTAs -->
+        <div class="mt-8 pt-8 border-t border-[#12281b]/10 flex flex-wrap gap-4 items-center justify-between">
+          <a
+            href="/booking-khao-sok-accommodation/?tab=room"
+            class="px-8 py-3.5 bg-gradient-to-r from-[#ba9038] to-[#d8b257] hover:from-[#c99f3e] hover:to-[#ebd082] text-[#12281b] font-bold rounded-xl text-xs font-mono uppercase tracking-wider transition-all shadow-md"
+          >
+            Check Availability & Book Room →
+          </a>
+          <a
+            href="/khao-sok-tour-packages/"
+            class="px-6 py-3.5 bg-[#12281b] hover:bg-[#1c3d24] text-white font-medium rounded-xl text-xs font-mono uppercase tracking-wider transition-all"
+          >
+            View All-Inclusive Packages
+          </a>
+        </div>
+      </div>
+    </div>
+  </article>
+</PageLayout>
