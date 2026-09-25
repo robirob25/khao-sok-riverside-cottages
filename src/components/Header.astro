@@ -57,8 +57,8 @@ const withBase = (path: string) => {
           />
         </div>
         <div>
-          <p class="font-monumental text-xs sm:text-sm tracking-[0.12em] sm:tracking-[0.14em] uppercase transition-colors leading-tight">
-            Khao Sok <span class="font-display font-light italic text-[#ba9038] tracking-normal normal-case">Riverside</span>
+          <p class="nav-brand-title font-monumental text-xs sm:text-sm tracking-[0.12em] sm:tracking-[0.14em] uppercase transition-colors leading-tight">
+            Khao Sok <span class="nav-brand-accent font-display font-light italic tracking-normal normal-case">Riverside</span>
           </p>
         </div>
       </a>
@@ -68,20 +68,20 @@ const withBase = (path: string) => {
     <div class="flex items-center gap-2 sm:gap-4">
       
       <!-- Language Switcher -->
-      <div class="lang-switch flex items-center gap-1 sm:gap-1.5 font-sans text-[10px] sm:text-xs tracking-widest uppercase select-none transition-all px-2 sm:px-2.5 py-1 rounded-full">
+      <div class="lang-switch flex items-center p-0.5 rounded-full select-none transition-all font-sans text-[10px] sm:text-xs tracking-widest uppercase">
         <button
           type="button"
           data-lang="th"
-          class="lang-btn transition-colors cursor-pointer px-1 py-0.5 rounded focus:outline-none"
+          class="lang-btn px-2 sm:px-2.5 py-0.5 rounded-full transition-all cursor-pointer focus:outline-none"
           title="ภาษาไทย"
         >
           TH
         </button>
-        <span class="lang-divider opacity-40 text-[10px]">|</span>
+        <span class="lang-divider opacity-30 text-[9px] px-0.5">|</span>
         <button
           type="button"
           data-lang="en"
-          class="lang-btn transition-colors cursor-pointer px-1 py-0.5 rounded focus:outline-none"
+          class="lang-btn px-2 sm:px-2.5 py-0.5 rounded-full transition-all cursor-pointer focus:outline-none"
           title="English"
         >
           EN
@@ -104,16 +104,16 @@ const withBase = (path: string) => {
       <!-- Menu Trigger -->
       <button
         id="menu-trigger"
-        class={`group relative items-center gap-1.5 sm:gap-2.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/90 hover:bg-white border border-[#122319]/20 hover:border-[#ba9038] text-[#122319] hover:text-[#ba9038] transition-all duration-300 shadow-sm backdrop-blur-md ${
+        class={`group relative items-center gap-1.5 sm:gap-2.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full transition-all duration-300 shadow-sm backdrop-blur-md cursor-pointer ${
           isHome ? "hidden" : "flex"
         }`}
         aria-label="Open Curated Navigation"
       >
-        <span class="font-monumental text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] font-medium">Menu</span>
+        <span class="menu-trigger-text font-monumental text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] font-medium">Menu</span>
         <div class="flex flex-col gap-1 w-4 items-end justify-center">
-          <span class="block w-4 h-0.5 bg-[#ba9038] rounded-full transition-all group-hover:w-4"></span>
-          <span class="block w-3 h-0.5 bg-[#122319] rounded-full transition-all group-hover:w-4"></span>
-          <span class="block w-2 h-0.5 bg-[#ba9038] rounded-full transition-all group-hover:w-4"></span>
+          <span class="menu-bar-top block w-4 h-0.5 rounded-full transition-all group-hover:w-4"></span>
+          <span class="menu-bar-mid block w-3 h-0.5 rounded-full transition-all group-hover:w-4"></span>
+          <span class="menu-bar-bot block w-2 h-0.5 rounded-full transition-all group-hover:w-4"></span>
         </div>
       </button>
     </div>
@@ -373,8 +373,8 @@ const withBase = (path: string) => {
     const handleScroll = () => {
       const scrolled = window.scrollY > 40;
       if (scrolled) {
-        mainNav.classList.remove('bg-transparent', 'border-transparent', 'bg-jungle-950/60', 'border-white/10');
-        mainNav.classList.add('nav-scrolled-light');
+        mainNav.classList.remove('bg-transparent', 'border-transparent', 'bg-jungle-950/60', 'border-white/10', 'bg-gradient-to-b', 'from-black/60', 'via-black/20', 'to-transparent');
+        mainNav.classList.add('nav-scrolled', 'nav-scrolled-light');
         if (navBrand && isHome) {
           navBrand.classList.remove('opacity-0', '-translate-x-4', 'pointer-events-none');
           navBrand.classList.add('opacity-100', 'translate-x-0');
@@ -384,7 +384,7 @@ const withBase = (path: string) => {
           navBookBtn.classList.add('opacity-100', 'inline-flex');
         }
       } else {
-        mainNav.classList.remove('nav-scrolled-light');
+        mainNav.classList.remove('nav-scrolled', 'nav-scrolled-light');
         if (isHome) {
           mainNav.classList.add('bg-transparent', 'border-transparent');
           if (navBrand) {
@@ -428,59 +428,83 @@ const withBase = (path: string) => {
 </script>
 
 <style>
-  /* Unscrolled ONLY on home page (transparent over 100vh dark hero photo) */
-  #main-nav[data-is-home="true"]:not(.nav-scrolled) #nav-brand p {
+  /* ========================================================
+     STATE 1: UNSCROLLED (Transparent over dark hero photo)
+     Applies to both Home and Inner Pages when at top of page
+  ======================================================== */
+  :global(#main-nav:not(.nav-scrolled):not(.nav-scrolled-light)) .nav-brand-title {
     color: #ffffff !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85) !important;
   }
-  #main-nav[data-is-home="true"]:not(.nav-scrolled) #nav-brand:hover p {
+  :global(#main-nav:not(.nav-scrolled):not(.nav-scrolled-light)) .nav-brand-accent {
+    color: #e5c158 !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85) !important;
+  }
+  :global(#main-nav:not(.nav-scrolled):not(.nav-scrolled-light)) #nav-brand:hover .nav-brand-title {
     color: #f7e6b5 !important;
-  }
-  #main-nav[data-is-home="true"]:not(.nav-scrolled) .lang-switch {
-    background-color: rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: #ffffff;
-  }
-  #main-nav[data-is-home="true"]:not(.nav-scrolled) .lang-btn {
-    color: rgba(255, 255, 255, 0.85);
-  }
-  #main-nav[data-is-home="true"]:not(.nav-scrolled) .lang-btn:hover {
-    color: #ffffff;
-  }
-  #main-nav[data-is-home="true"]:not(.nav-scrolled) .lang-btn[aria-pressed="true"],
-  #main-nav[data-is-home="true"]:not(.nav-scrolled) .lang-btn.active {
-    color: #f7e6b5 !important;
-    font-weight: 700 !important;
-  }
-  #main-nav[data-is-home="true"]:not(.nav-scrolled) .lang-divider {
-    color: rgba(255, 255, 255, 0.5);
   }
 
-  /* Inner Pages: Default high-contrast dark forest green styling */
-  #main-nav:not([data-is-home="true"]) #nav-brand p {
+  /* Unscrolled Lang Switcher: Dark glass pill with solid luxury gold active chip */
+  :global(#main-nav:not(.nav-scrolled):not(.nav-scrolled-light)) .lang-switch {
+    background-color: rgba(0, 0, 0, 0.45) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
     color: #ffffff !important;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
   }
-  #main-nav:not([data-is-home="true"]) .lang-switch {
-    background-color: rgba(0, 0, 0, 0.45);
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    color: #ffffff;
+  :global(#main-nav:not(.nav-scrolled):not(.nav-scrolled-light)) .lang-btn {
+    color: rgba(255, 255, 255, 0.75) !important;
+    background: transparent !important;
   }
-  #main-nav:not([data-is-home="true"]) .lang-btn {
-    color: rgba(255, 255, 255, 0.85);
+  :global(#main-nav:not(.nav-scrolled):not(.nav-scrolled-light)) .lang-btn:hover {
+    color: #ffffff !important;
   }
-  #main-nav:not([data-is-home="true"]) .lang-btn:hover {
-    color: #ffffff;
-  }
-  #main-nav:not([data-is-home="true"]) .lang-btn[aria-pressed="true"],
-  #main-nav:not([data-is-home="true"]) .lang-btn.active {
-    color: #f7e6b5 !important;
+  :global(#main-nav:not(.nav-scrolled):not(.nav-scrolled-light)) .lang-btn.active,
+  :global(#main-nav:not(.nav-scrolled):not(.nav-scrolled-light)) .lang-btn[aria-pressed="true"] {
+    background-color: #ba9038 !important;
+    color: #12281b !important;
     font-weight: 700 !important;
+    opacity: 1 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3) !important;
   }
-  #main-nav:not([data-is-home="true"]) .lang-divider {
-    color: rgba(255, 255, 255, 0.5);
+  :global(#main-nav:not(.nav-scrolled):not(.nav-scrolled-light)) .lang-divider {
+    color: rgba(255, 255, 255, 0.4) !important;
   }
 
-  /* Scrolled Navbar */
+  /* Unscrolled Home Burger */
+  :global(#main-nav:not(.nav-scrolled):not(.nav-scrolled-light)) #home-burger span {
+    background-color: #ffffff !important;
+  }
+
+  /* Unscrolled Menu Trigger: Subtle dark glass with crisp white text & gold bars */
+  :global(#main-nav:not(.nav-scrolled):not(.nav-scrolled-light)) #menu-trigger {
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+  }
+  :global(#main-nav:not(.nav-scrolled):not(.nav-scrolled-light)) #menu-trigger:hover {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    border-color: #ba9038 !important;
+  }
+  :global(#main-nav:not(.nav-scrolled):not(.nav-scrolled-light)) #menu-trigger .menu-trigger-text {
+    color: #ffffff !important;
+  }
+  :global(#main-nav:not(.nav-scrolled):not(.nav-scrolled-light)) #menu-trigger .menu-bar-top,
+  :global(#main-nav:not(.nav-scrolled):not(.nav-scrolled-light)) #menu-trigger .menu-bar-bot {
+    background-color: #ba9038 !important;
+  }
+  :global(#main-nav:not(.nav-scrolled):not(.nav-scrolled-light)) #menu-trigger .menu-bar-mid {
+    background-color: #ffffff !important;
+  }
+
+  /* ========================================================
+     STATE 2: SCROLLED (Solid luxury ivory background)
+     Applies when window.scrollY > 40 on any page
+  ======================================================== */
   :global(#main-nav.nav-scrolled),
   :global(#main-nav.nav-scrolled-light) {
     background-color: rgba(250, 248, 245, 0.98) !important;
@@ -489,51 +513,119 @@ const withBase = (path: string) => {
     border-bottom: 1px solid rgba(18, 40, 27, 0.12) !important;
     box-shadow: 0 10px 30px -10px rgba(18, 40, 27, 0.1) !important;
   }
-  :global(#main-nav.nav-scrolled #home-burger span),
-  :global(#main-nav.nav-scrolled-light #home-burger span) {
+
+  /* Scrolled Brand: Deep forest obsidian + rich dark bronze gold */
+  :global(#main-nav.nav-scrolled) .nav-brand-title,
+  :global(#main-nav.nav-scrolled-light) .nav-brand-title {
+    color: #12281b !important;
+    text-shadow: none !important;
+  }
+  :global(#main-nav.nav-scrolled) .nav-brand-accent,
+  :global(#main-nav.nav-scrolled-light) .nav-brand-accent {
+    color: #8c671d !important;
+    text-shadow: none !important;
+  }
+  :global(#main-nav.nav-scrolled) #nav-brand:hover .nav-brand-title,
+  :global(#main-nav.nav-scrolled-light) #nav-brand:hover .nav-brand-title {
+    color: #7a5813 !important;
+  }
+
+  /* Scrolled Lang Switcher: High contrast dark pill with solid chip */
+  :global(#main-nav.nav-scrolled) .lang-switch,
+  :global(#main-nav.nav-scrolled-light) .lang-switch {
+    background-color: rgba(18, 40, 27, 0.08) !important;
+    border: 1px solid rgba(18, 40, 27, 0.2) !important;
+    color: #12281b !important;
+    box-shadow: inset 0 1px 2px rgba(18, 40, 27, 0.05) !important;
+  }
+  :global(#main-nav.nav-scrolled) .lang-btn,
+  :global(#main-nav.nav-scrolled-light) .lang-btn {
+    color: #12281b !important;
+    opacity: 0.7 !important;
+    background: transparent !important;
+  }
+  :global(#main-nav.nav-scrolled) .lang-btn:hover,
+  :global(#main-nav.nav-scrolled-light) .lang-btn:hover {
+    color: #12281b !important;
+    opacity: 1 !important;
+  }
+  :global(#main-nav.nav-scrolled) .lang-btn.active,
+  :global(#main-nav.nav-scrolled-light) .lang-btn.active,
+  :global(#main-nav.nav-scrolled) .lang-btn[aria-pressed="true"],
+  :global(#main-nav.nav-scrolled-light) .lang-btn[aria-pressed="true"] {
+    background-color: #12281b !important;
+    color: #f7e6b5 !important;
+    font-weight: 700 !important;
+    opacity: 1 !important;
+    box-shadow: 0 2px 6px rgba(18, 40, 27, 0.25) !important;
+  }
+  :global(#main-nav.nav-scrolled) .lang-divider,
+  :global(#main-nav.nav-scrolled-light) .lang-divider {
+    color: rgba(18, 40, 27, 0.35) !important;
+  }
+
+  /* Scrolled Home Burger */
+  :global(#main-nav.nav-scrolled) #home-burger span,
+  :global(#main-nav.nav-scrolled-light) #home-burger span {
     background-color: #12281b !important;
   }
-  :global(#main-nav.nav-scrolled #nav-brand p),
-  :global(#main-nav.nav-scrolled-light #nav-brand p) {
-    color: #12281b !important;
+
+  /* Scrolled Menu Trigger: Obsidian Luxury Capsule */
+  :global(#main-nav.nav-scrolled) #menu-trigger,
+  :global(#main-nav.nav-scrolled-light) #menu-trigger {
+    background-color: #12281b !important;
+    border: 1px solid #12281b !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(18, 40, 27, 0.18) !important;
   }
-  :global(#main-nav.nav-scrolled #nav-brand:hover p),
-  :global(#main-nav.nav-scrolled-light #nav-brand:hover p) {
-    color: #7a5813 !important;
+  :global(#main-nav.nav-scrolled) #menu-trigger:hover,
+  :global(#main-nav.nav-scrolled-light) #menu-trigger:hover {
+    background-color: #1a3a27 !important;
+    border-color: #ba9038 !important;
   }
-  :global(#main-nav.nav-scrolled .lang-switch),
-  :global(#main-nav.nav-scrolled-light .lang-switch) {
-    background-color: rgba(18, 40, 27, 0.08) !important;
-    border: 1px solid rgba(18, 40, 27, 0.18) !important;
-    color: #12281b !important;
+  :global(#main-nav.nav-scrolled) #menu-trigger .menu-trigger-text,
+  :global(#main-nav.nav-scrolled-light) #menu-trigger .menu-trigger-text {
+    color: #ffffff !important;
   }
-  :global(#main-nav.nav-scrolled .lang-btn),
-  :global(#main-nav.nav-scrolled-light .lang-btn) {
-    color: #12281b !important;
-    opacity: 0.75 !important;
+  :global(#main-nav.nav-scrolled) #menu-trigger .menu-bar-top,
+  :global(#main-nav.nav-scrolled-light) #menu-trigger .menu-bar-top,
+  :global(#main-nav.nav-scrolled) #menu-trigger .menu-bar-bot,
+  :global(#main-nav.nav-scrolled-light) #menu-trigger .menu-bar-bot {
+    background-color: #ba9038 !important;
   }
-  :global(#main-nav.nav-scrolled .lang-btn:hover),
-  :global(#main-nav.nav-scrolled-light .lang-btn:hover) {
-    color: #12281b !important;
-    opacity: 1 !important;
+  :global(#main-nav.nav-scrolled) #menu-trigger .menu-bar-mid,
+  :global(#main-nav.nav-scrolled-light) #menu-trigger .menu-bar-mid {
+    background-color: #ffffff !important;
   }
-  :global(#main-nav.nav-scrolled .lang-btn[aria-pressed="true"]),
-  :global(#main-nav.nav-scrolled-light .lang-btn[aria-pressed="true"]),
-  :global(#main-nav.nav-scrolled .lang-btn.active),
-  :global(#main-nav.nav-scrolled-light .lang-btn.active) {
-    color: #7a5813 !important;
-    opacity: 1 !important;
-    font-weight: 700 !important;
-  }
-  :global(#main-nav.nav-scrolled .lang-divider),
-  :global(#main-nav.nav-scrolled-light .lang-divider) {
-    color: rgba(18, 40, 27, 0.4) !important;
-  }
-  :global(#main-nav.nav-scrolled #nav-book-btn),
-  :global(#main-nav.nav-scrolled-light #nav-book-btn) {
+
+  /* Scrolled Reservation Button */
+  :global(#main-nav.nav-scrolled) #nav-book-btn,
+  :global(#main-nav.nav-scrolled-light) #nav-book-btn {
     background: linear-gradient(135deg, #d8b257 0%, #ba9038 100%) !important;
     border-color: #ba9038 !important;
     color: #12281b !important;
     box-shadow: 0 4px 14px rgba(186, 144, 56, 0.3) !important;
+  }
+
+  /* Overlay Menu Lang Switcher */
+  #menu-overlay .lang-switch {
+    background-color: rgba(18, 40, 27, 0.08) !important;
+    border: 1px solid rgba(18, 40, 27, 0.18) !important;
+  }
+  #menu-overlay .lang-btn {
+    color: #12281b !important;
+    opacity: 0.7 !important;
+    background: transparent !important;
+  }
+  #menu-overlay .lang-btn:hover {
+    opacity: 1 !important;
+  }
+  #menu-overlay .lang-btn.active,
+  #menu-overlay .lang-btn[aria-pressed="true"] {
+    background-color: #12281b !important;
+    color: #f7e6b5 !important;
+    font-weight: 700 !important;
+    opacity: 1 !important;
+    box-shadow: 0 2px 6px rgba(18, 40, 27, 0.25) !important;
   }
 </style>
