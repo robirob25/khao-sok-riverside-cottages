@@ -9,6 +9,8 @@
     // Top Bar & Controls
     'RESERVATION': 'จองห้องพัก / แพ็คเกจ',
     'Reservation': 'จองห้องพัก',
+    'BOOK': 'จองที่พัก',
+    'Book': 'จองที่พัก',
     'Menu': 'เมนู',
     'MENU': 'เมนู',
     'Close': 'ปิด',
