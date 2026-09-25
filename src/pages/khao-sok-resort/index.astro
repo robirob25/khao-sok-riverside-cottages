@@ -1,244 +1,371 @@
 ---
-// Verbatim Authentic Content & Media from Khao Sok Riverside Cottages
+// src/pages/khao-sok-resort/index.astro
+// Our Story — Khao Sok Riverside Cottages
+// Authentic Editorial Presentation: Family Heritage, Right Livelihood & Community Harmony
 import PageLayout from '../../layouts/PageLayout.astro';
 import GoogleReviewsWidget from '../../components/GoogleReviewsWidget.astro';
+
+const communityGallery = [
+  {
+    src: "/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-3e.jpg",
+    title: "Dedicated Resort Family",
+    desc: "Long-standing local staff who bring genuine warmth to every stay.",
+  },
+  {
+    src: "/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-5e.jpg",
+    title: "Team Hospitality",
+    desc: "A supportive workplace committed to fair employment and care.",
+  },
+  {
+    src: "/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-6e.jpg",
+    title: "Sponsored Village School",
+    desc: "Funding safe playgrounds and educational resources for local children.",
+  },
+  {
+    src: "/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-9e.jpg",
+    title: "Sok River Conservation",
+    desc: "Ongoing watershed monitoring and riverbank restoration.",
+  },
+  {
+    src: "/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-11.jpg",
+    title: "Moken Heritage Project",
+    desc: "Preserving traditional 'Kabang' seafaring culture in Southern Thailand.",
+  },
+  {
+    src: "/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-14.jpg",
+    title: "Youth Environmental Education",
+    desc: "Empowering the next generation to protect Khao Sok's rainforest.",
+  },
+];
 ---
 
 <PageLayout
-  title="About Our Khao Sok Resort"
-  description="Our Khao Sok Resort offers an atmosphere that is enjoyable for both guests and staff, and contributes to the local community and the environment."
+  title="Our Story — About Khao Sok Riverside Cottages"
+  description="Discover the story behind Khao Sok Riverside Cottages: a family-run eco-resort founded on principles of right livelihood, community-led tourism, and rainforest conservation."
   heroImage="/wp-content/uploads/2024/03/girls-reception.jpg"
-  heroTitle="About Our Khao Sok Resort"
-  heroSubtitle="The Ancient Rainforest of Southern Thailand"
-  breadcrumbs={[{"label": "Khao Sok Resort", "href": "/khao-sok-resort/"}]}
+  heroTitle="Our Story"
+  heroSubtitle="Family Heritage, Right Livelihood & 25 Years of Community Harmony"
+  breadcrumbs={[
+    { label: "The Resort", href: "/khao-sok-resort/" },
+    { label: "Our Story", href: "/khao-sok-resort/" },
+  ]}
 >
-  <article class="max-w-4xl mx-auto space-y-10">
-    <div class="bg-[#faf8f5]/95 border border-[#12281b]/10 rounded-3xl p-4 sm:p-8 md:p-12 shadow-2xl backdrop-blur-md">
+  <article class="max-w-5xl mx-auto space-y-12">
+    
+    <!-- Top Editorial Dispatch Card -->
+    <div class="bg-[#faf8f5]/95 border border-[#12281b]/10 rounded-3xl p-6 sm:p-10 md:p-12 shadow-2xl backdrop-blur-md">
       
+      <!-- Stamped Header Badge -->
       <div class="flex items-center justify-between border-b border-[#12281b]/10 pb-4 mb-8 font-mono text-[11px] tracking-[0.22em] uppercase text-[#163824]">
         <div class="flex items-center gap-2 font-semibold">
           <span class="text-[#7a5813]">KSR</span>
           <span class="text-[#12281b]/20">/</span>
           <span>FIELD DISPATCH</span>
         </div>
-        <span class="text-[#7a5813] font-bold">KHAO SOK · THAILAND</span>
+        <span class="text-[#7a5813] font-bold">FAMILY-OWNED SINCE 2012</span>
       </div>
 
+      <!-- Lead Quote & Mission -->
       <div class="space-y-6 text-[#223e2c] text-base sm:text-lg leading-relaxed font-normal">
+        <blockquote class="p-6 sm:p-8 rounded-2xl bg-[#f4efeb] border-l-4 border-[#ba9038] text-[#12281b] italic font-serif text-lg sm:text-xl leading-relaxed">
+          "At Riverside Cottages, we believe a successful resort should benefit more than just its guests. We aim to create a peaceful sanctuary for travelers while actively supporting local families and protecting the ancient rainforest landscapes that make Khao Sok extraordinary."
+        </blockquote>
 
-        <ul class="space-y-3 my-6 pl-2">
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="lazyload fusion-image-hover-element hover-type-none"><img decoding="async" src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-3e.jpg" data-orig-src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-3e.jpg" alt="Happy staff - Khao Sok resort" width="1600" height="1062" class="lazyload wp-image-12767" srcset="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271600%27%20height%3D%271062%27%20viewBox%3D%270%200%201600%201062%27%3E%3Crect%20width%3D%271600%27%20height%3D%271062%27%20fill-opacity%3D%220%22%2F%3E%3C%2Fsvg%3E" data-srcset="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-3e-200x133.jpg 200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-3e-400x266.jpg 400w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-3e-600x398.jpg 600w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-3e-800x531.jpg 800w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-3e-1200x797.jpg 1200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-3e.jpg 1600w" data-sizes="auto" data-orig-sizes="(max-width: 1146px) 100vw, (max-width: 640px) 100vw, 1200px" /></span></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="lazyload fusion-image-hover-element hover-type-none"><img decoding="async" src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-5e.jpg" data-orig-src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-5e.jpg" alt="Happy staff - Khao Sok resort" width="1600" height="1062" class="lazyload wp-image-12768" srcset="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271600%27%20height%3D%271062%27%20viewBox%3D%270%200%201600%201062%27%3E%3Crect%20width%3D%271600%27%20height%3D%271062%27%20fill-opacity%3D%220%22%2F%3E%3C%2Fsvg%3E" data-srcset="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-5e-200x133.jpg 200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-5e-400x266.jpg 400w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-5e-600x398.jpg 600w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-5e-800x531.jpg 800w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-5e-1200x797.jpg 1200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-5e.jpg 1600w" data-sizes="auto" data-orig-sizes="(max-width: 1146px) 100vw, (max-width: 640px) 100vw, 1200px" /></span></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="lazyload fusion-image-hover-element hover-type-none"><img decoding="async" src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-6e.jpg" data-orig-src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-6e.jpg" alt="Children&#039;s playground at a sponsored school" width="1477" height="981" class="lazyload wp-image-12769" srcset="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271477%27%20height%3D%27981%27%20viewBox%3D%270%200%201477%20981%27%3E%3Crect%20width%3D%271477%27%20height%3D%27981%27%20fill-opacity%3D%220%22%2F%3E%3C%2Fsvg%3E" data-srcset="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-6e-200x133.jpg 200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-6e-400x266.jpg 400w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-6e-600x399.jpg 600w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-6e-800x531.jpg 800w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-6e-1200x797.jpg 1200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-6e.jpg 1477w" data-sizes="auto" data-orig-sizes="(max-width: 1146px) 100vw, (max-width: 640px) 100vw, 1200px" /></span></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="lazyload fusion-image-hover-element hover-type-none"><img decoding="async" src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-8e.jpg" data-orig-src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-8e.jpg" alt="Children playing at a sponsored school" width="1600" height="1062" class="lazyload wp-image-12770" srcset="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271600%27%20height%3D%271062%27%20viewBox%3D%270%200%201600%201062%27%3E%3Crect%20width%3D%271600%27%20height%3D%271062%27%20fill-opacity%3D%220%22%2F%3E%3C%2Fsvg%3E" data-srcset="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-8e-200x133.jpg 200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-8e-400x266.jpg 400w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-8e-600x398.jpg 600w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-8e-800x531.jpg 800w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-8e-1200x797.jpg 1200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-8e.jpg 1600w" data-sizes="auto" data-orig-sizes="(max-width: 1146px) 100vw, (max-width: 640px) 100vw, 1200px" /></span></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="lazyload fusion-image-hover-element hover-type-none"><img decoding="async" src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-9e.jpg" data-orig-src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-9e.jpg" alt="River inspection" width="1507" height="1001" class="lazyload wp-image-12771" srcset="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271507%27%20height%3D%271001%27%20viewBox%3D%270%200%201507%201001%27%3E%3Crect%20width%3D%271507%27%20height%3D%271001%27%20fill-opacity%3D%220%22%2F%3E%3C%2Fsvg%3E" data-srcset="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-9e-200x133.jpg 200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-9e-400x266.jpg 400w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-9e-600x399.jpg 600w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-9e-800x531.jpg 800w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-9e-1200x797.jpg 1200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-9e.jpg 1507w" data-sizes="auto" data-orig-sizes="(max-width: 1146px) 100vw, (max-width: 640px) 100vw, 1200px" /></span></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="lazyload fusion-image-hover-element hover-type-none"><img decoding="async" src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-11.jpg" data-orig-src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-11.jpg" alt="Kabang - Moken Islands sea gypsies project" width="1600" height="1062" class="lazyload wp-image-12772" srcset="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271600%27%20height%3D%271062%27%20viewBox%3D%270%200%201600%201062%27%3E%3Crect%20width%3D%271600%27%20height%3D%271062%27%20fill-opacity%3D%220%22%2F%3E%3C%2Fsvg%3E" data-srcset="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-11-200x133.jpg 200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-11-400x266.jpg 400w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-11-600x398.jpg 600w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-11-800x531.jpg 800w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-11-1200x797.jpg 1200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-11.jpg 1600w" data-sizes="auto" data-orig-sizes="(max-width: 1146px) 100vw, (max-width: 640px) 100vw, 1200px" /></span></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="lazyload fusion-image-hover-element hover-type-none"><img decoding="async" src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-12.jpg" data-orig-src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-12.jpg" alt="Kabang - Moken Islands sea gypsies project" width="1600" height="1062" class="lazyload wp-image-12773" srcset="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271600%27%20height%3D%271062%27%20viewBox%3D%270%200%201600%201062%27%3E%3Crect%20width%3D%271600%27%20height%3D%271062%27%20fill-opacity%3D%220%22%2F%3E%3C%2Fsvg%3E" data-srcset="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-12-200x133.jpg 200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-12-400x266.jpg 400w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-12-600x398.jpg 600w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-12-800x531.jpg 800w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-12-1200x797.jpg 1200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-12.jpg 1600w" data-sizes="auto" data-orig-sizes="(max-width: 1146px) 100vw, (max-width: 640px) 100vw, 1200px" /></span></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="lazyload fusion-image-hover-element hover-type-none"><img decoding="async" src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-14.jpg" data-orig-src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-14.jpg" alt="Children playing at a sponsored school" width="1600" height="1062" class="lazyload wp-image-12774" srcset="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271600%27%20height%3D%271062%27%20viewBox%3D%270%200%201600%201062%27%3E%3Crect%20width%3D%271600%27%20height%3D%271062%27%20fill-opacity%3D%220%22%2F%3E%3C%2Fsvg%3E" data-srcset="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-14-200x133.jpg 200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-14-400x266.jpg 400w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-14-600x398.jpg 600w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-14-800x531.jpg 800w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-14-1200x797.jpg 1200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-14.jpg 1600w" data-sizes="auto" data-orig-sizes="(max-width: 1146px) 100vw, (max-width: 640px) 100vw, 1200px" /></span></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="lazyload fusion-image-hover-element hover-type-none"><img decoding="async" src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-15.jpg" data-orig-src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-15.jpg" alt="Children playing at a sponsored school" width="1600" height="1062" class="lazyload wp-image-12775" srcset="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271600%27%20height%3D%271062%27%20viewBox%3D%270%200%201600%201062%27%3E%3Crect%20width%3D%271600%27%20height%3D%271062%27%20fill-opacity%3D%220%22%2F%3E%3C%2Fsvg%3E" data-srcset="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-15-200x133.jpg 200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-15-400x266.jpg 400w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-15-600x398.jpg 600w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-15-800x531.jpg 800w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-15-1200x797.jpg 1200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-15.jpg 1600w" data-sizes="auto" data-orig-sizes="(max-width: 1146px) 100vw, (max-width: 640px) 100vw, 1200px" /></span></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="lazyload fusion-image-hover-element hover-type-none"><img decoding="async" src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-16.jpg" data-orig-src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-16.jpg" alt="Kids playing in a waterfall" width="1600" height="1062" class="lazyload wp-image-12776" srcset="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271600%27%20height%3D%271062%27%20viewBox%3D%270%200%201600%201062%27%3E%3Crect%20width%3D%271600%27%20height%3D%271062%27%20fill-opacity%3D%220%22%2F%3E%3C%2Fsvg%3E" data-srcset="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-16-200x133.jpg 200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-16-400x266.jpg 400w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-16-600x398.jpg 600w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-16-800x531.jpg 800w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-16-1200x797.jpg 1200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-16.jpg 1600w" data-sizes="auto" data-orig-sizes="(max-width: 1146px) 100vw, (max-width: 640px) 100vw, 1200px" /></span></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="lazyload fusion-image-hover-element hover-type-none"><img decoding="async" src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-17.jpg" data-orig-src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-17.jpg" alt="Khao Sok resort staff happy with their new cooker" width="1600" height="1062" class="lazyload wp-image-12777" srcset="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271600%27%20height%3D%271062%27%20viewBox%3D%270%200%201600%201062%27%3E%3Crect%20width%3D%271600%27%20height%3D%271062%27%20fill-opacity%3D%220%22%2F%3E%3C%2Fsvg%3E" data-srcset="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-17-200x133.jpg 200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-17-400x266.jpg 400w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-17-600x398.jpg 600w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-17-800x531.jpg 800w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-17-1200x797.jpg 1200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-17.jpg 1600w" data-sizes="auto" data-orig-sizes="(max-width: 1146px) 100vw, (max-width: 640px) 100vw, 1200px" /></span></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="lazyload fusion-image-hover-element hover-type-none"><img decoding="async" src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-18.jpg" data-orig-src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-18.jpg" alt="Kabang - Moken Islands sea gypsies project" width="1600" height="1062" class="lazyload wp-image-12794" srcset="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271600%27%20height%3D%271062%27%20viewBox%3D%270%200%201600%201062%27%3E%3Crect%20width%3D%271600%27%20height%3D%271062%27%20fill-opacity%3D%220%22%2F%3E%3C%2Fsvg%3E" data-srcset="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-18-200x133.jpg 200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-18-400x266.jpg 400w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-18-600x398.jpg 600w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-18-800x531.jpg 800w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-18-1200x797.jpg 1200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2023/04/about-khao-sok-riverside-cottages-18.jpg 1600w" data-sizes="auto" data-orig-sizes="(max-width: 1146px) 100vw, (max-width: 640px) 100vw, 1200px" /></span></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="lazyload fusion-image-hover-element hover-type-none"><img decoding="async" src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/03/girls-reception.jpg" data-orig-src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/03/girls-reception.jpg" alt="Girls on reception" width="1600" height="1066" class="lazyload wp-image-27040" srcset="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271600%27%20height%3D%271066%27%20viewBox%3D%270%200%201600%201066%27%3E%3Crect%20width%3D%271600%27%20height%3D%271066%27%20fill-opacity%3D%220%22%2F%3E%3C%2Fsvg%3E" data-srcset="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/03/girls-reception-200x133.jpg 200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/03/girls-reception-400x267.jpg 400w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/03/girls-reception-600x400.jpg 600w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/03/girls-reception-800x533.jpg 800w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/03/girls-reception-1200x800.jpg 1200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/03/girls-reception.jpg 1600w" data-sizes="auto" data-orig-sizes="(max-width: 1146px) 100vw, (max-width: 640px) 100vw, 1200px" /></span></span>
-          </li>
-        </ul>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          At Riverside Cottages, we believe a successful resort should benefit more than just its guests. We aim to create a welcoming environment for visitors while supporting local communities and helping protect the rainforest landscapes that make Khao Sok such a special place to experience.
-        </p>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Sustainability & Conservation</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Many aspects of Riverside Cottages have been designed to work with the surrounding environment rather than against it. Raised walkways, natural ventilation, locally sourced materials, refill water stations, and other low-impact practices help reduce our environmental footprint while allowing guests to remain closely connected to nature.
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          We also support conservation initiatives, environmental education programmes, and local partnerships that help protect the natural and cultural heritage of the Khao Sok region.
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Learn more about our <a href="/sustainability/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">sustainability practices and conservation efforts</a>.
-        </p>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Community Partnerships</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Riverside Cottages is proud to work alongside local guides, small businesses, educators, and community organisations throughout Southern Thailand. We believe tourism creates the greatest long-term benefit when local people are empowered to share their knowledge, culture, and livelihoods with visitors.
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Through partnerships with organisations supporting education, conservation, and community development, we aim to contribute positively to the communities connected to Khao Sok.
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Discover the story behind our <a href="/sustainable-community-led-tourism/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">community-led tourism philosophy</a>.
-        </p>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Why Guests Choose Riverside Cottages</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Every visitor experiences Khao Sok differently, but many tell us the same thing after they arrive: Riverside Cottages feels connected to the rainforest in a way that is increasingly difficult to find.
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Set beside the Sok River and surrounded by tropical forest, the resort offers a peaceful setting where guests can slow down, relax, and experience nature at their own pace. Monkeys are often seen across the river, birds call from the forest canopy, and the sounds of flowing water and wildlife form the backdrop to everyday life.
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Guests choose Riverside Cottages for many reasons:
-        </p>
-        <ul class="space-y-3 my-6 pl-2">
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span>A quiet riverside location surrounded by nature</span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span>Easy access to<a href="/khao-sok-national-park/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors"> Khao Sok National Park</a> and <a href="/khao-sok-tours/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">local activities</a></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span>Family-run hospitality with local knowledge and personal service</span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span>Ethical, locally guided experiences and adventures</span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span>Comfortable cottages designed to work with the tropical environment</span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span>Fresh food, coffee, and river views at <a href="/khao-sok-restaurant/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Rafflesia Cafe</a></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span>A relaxed atmosphere that encourages guests to disconnect and unwind</span>
-          </li>
-        </ul>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Whether you are visiting Khao Sok for hiking, <a href="/khao-sok-jungle-thailand-rainforest/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">wildlife</a>, lake tours, family adventures, or simply to spend time in nature, our goal is to help you experience the region in a way that feels personal, memorable, and authentic.
-        </p>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Sharing the River with Wildlife</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          One of the most rewarding aspects of staying at Riverside Cottages is the opportunity to observe wildlife without leaving the resort grounds.
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Guests regularly spot monkeys moving through the trees across the river, monitor lizards along the banks, colourful kingfishers, butterflies, and a wide variety of rainforest birds. During quieter moments, simply sitting beside the river with a coffee can become a memorable wildlife experience in itself.
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          The surrounding rainforest is home to an extraordinary diversity of plants and animals, and many guests discover that some of their favourite wildlife encounters happen not on a tour, but from the comfort of the resort itself.
-        </p>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Meet the Riverside Cottages Team</span>
-        </h2>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2015/09/about-khao-sok-riverside-cottages-1-3.jpg"
-            alt="Khao Sok Riverside Cottages staff"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok Riverside Cottages staff</figcaption>
-        </figure>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          <strong>Meet Tu, Bodhi, and Boon</strong>
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          With over 25 years of combined experience in the area, including tsunami relief and community development, Tu and Bodhi are deeply connected to Khao Sok. In addition to being adoring parents to their son Boon, they operate Riverside Cottages as a family-run business inspired by the principles of right livelihood.
-        </p>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2023/04/Mak_Nook-2.jpg"
-            alt="Meet Mack and Nook"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Meet Mack and Nook</figcaption>
-        </figure>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          <strong>Meet Mack and Nook</strong>
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Mak and Nook are essential to your relaxing time at Riverside. Nook welcomes and hosts guests in our on-site restaurant, always with a smile on her face. Mack maintains the entire resort, keeping our facilities safe, beautiful, and comfortable. His tireless work ethic and sense of natural beauty permeate the resort.
-        </p>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2024/03/klong-bo-2.jpg"
-            alt="Meet Klong and Bo"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Meet Klong and Bo</figcaption>
-        </figure>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          <strong>Meet Klong and Bo</strong>
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          If you wonder who makes everything work at our Khao Sok resort, Klong and Bo are probably behind it. From your first welcome, to spotting wildlife, to keeping the restaurant running smoothly, they are an indispensable part of the Riverside Team. Have a question about the flora or fauna of the area? Klong has the answer with his lifelong experience in Khao Sok.
-        </p>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Meet the Riverside Cottages Team</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          <strong>Meet Tu, Bodhi, and Boon</strong>
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          With over 25 years of combined experience in the area, including tsunami relief and community development, Tu and Bodhi are deeply connected to Khao Sok. In addition to being adoring parents to their son Boon, they operate Riverside Cottages as a family-run business inspired by the principles of right livelihood.
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          <strong>Meet Mack and Nook</strong>
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Mack and Nook are essential to your relaxing time at Riverside. Nook welcomes and hosts guests at our on-site restaurant, always with a smile on her face. Mack maintains the entire resort, keeping our facilities safe, beautiful, and comfortable. His tireless work ethic and sense of natural beauty permeate the resort.
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          <strong>Meet Klong and Bo</strong>
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          If you wonder who makes everything work at our Khao Sok resort, Klong and Bo are probably behind it. From your first welcome, to spotting wildlife, to keeping the restaurant running smoothly, they are an indispensable part of the Riverside Team. Have a question about the flora or fauna of the area? Klong has the answer with his lifelong experience in Khao Sok.
+        <p>
+          Nestled beside the crystal waters of the Sok River and bordered by towering limestone karsts, <strong>Khao Sok Riverside Cottages</strong> was born out of a profound love for Southern Thailand's natural ecosystems and the people who call them home. Unlike conventional resorts, our property operates on a foundational commitment to low-impact living, genuine Thai hospitality, and deep respect for the rainforest.
         </p>
       </div>
 
-      <div class="mt-16 pt-12 border-t border-[#12281b]/10"><GoogleReviewsWidget /></div>
+      <!-- ========================================================
+           3 PILLARS BENTO GRID
+      ======================================================== -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-10">
+        
+        <!-- Pillar 1: Sustainability -->
+        <div class="rounded-2xl p-6 bg-white border border-[#12281b]/10 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-[#ba9038]/15 border border-[#ba9038]/30 flex items-center justify-center text-[#7a5813] mb-4 text-lg">
+              🌱
+            </div>
+            <h3 class="font-monumental text-base sm:text-lg text-[#12281b] mb-2 font-semibold">
+              Eco-Conscious Living
+            </h3>
+            <p class="text-xs sm:text-sm text-[#2e5339] leading-relaxed font-light">
+              Elevated wooden boardwalks, natural cross-ventilation, locally harvested bamboo, refill water stations, and zero single-use plastic.
+            </p>
+          </div>
+          <a
+            href="/sustainability/"
+            class="mt-6 text-xs font-mono uppercase tracking-widest text-[#7a5813] font-bold hover:text-[#12281b] flex items-center gap-1.5 transition-colors"
+          >
+            <span>Our Eco Practices</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <!-- Pillar 2: Community -->
+        <div class="rounded-2xl p-6 bg-white border border-[#12281b]/10 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-[#ba9038]/15 border border-[#ba9038]/30 flex items-center justify-center text-[#7a5813] mb-4 text-lg">
+              🤝
+            </div>
+            <h3 class="font-monumental text-base sm:text-lg text-[#12281b] mb-2 font-semibold">
+              Community Tourism
+            </h3>
+            <p class="text-xs sm:text-sm text-[#2e5339] leading-relaxed font-light">
+              100% locally guided safaris, partnerships with village farmers, funding local schools, and cultural heritage preservation.
+            </p>
+          </div>
+          <a
+            href="/sustainable-community-led-tourism/"
+            class="mt-6 text-xs font-mono uppercase tracking-widest text-[#7a5813] font-bold hover:text-[#12281b] flex items-center gap-1.5 transition-colors"
+          >
+            <span>Community Tourism</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <!-- Pillar 3: Wildlife -->
+        <div class="rounded-2xl p-6 bg-white border border-[#12281b]/10 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-[#ba9038]/15 border border-[#ba9038]/30 flex items-center justify-center text-[#7a5813] mb-4 text-lg">
+              🐒
+            </div>
+            <h3 class="font-monumental text-base sm:text-lg text-[#12281b] mb-2 font-semibold">
+              Shared Rainforest
+            </h3>
+            <p class="text-xs sm:text-sm text-[#2e5339] leading-relaxed font-light">
+              Monkeys in the riverbanks, hornbills calling overhead, and nocturnal frogs. Observe authentic wildlife directly from your veranda.
+            </p>
+          </div>
+          <a
+            href="/khao-sok-jungle-thailand-rainforest/"
+            class="mt-6 text-xs font-mono uppercase tracking-widest text-[#7a5813] font-bold hover:text-[#12281b] flex items-center gap-1.5 transition-colors"
+          >
+            <span>Rainforest Wildlife</span>
+            <span>→</span>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- ========================================================
+           MEET THE FOUNDERS: TU, BODHI & BOON
+      ======================================================== -->
+      <section class="my-14 pt-10 border-t border-[#12281b]/10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <div class="lg:col-span-5">
+            <div class="relative rounded-2xl overflow-hidden shadow-xl border-2 border-[#ba9038]/40 group">
+              <img
+                src="/wp-content/uploads/2015/09/about-khao-sok-riverside-cottages-1-3.jpg"
+                alt="Tu, Bodhi, Boon and the Khao Sok Riverside Cottages family"
+                width="800"
+                height="600"
+                class="w-full h-72 sm:h-80 object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+              />
+              <div class="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black/80 to-transparent text-white text-[11px] font-mono tracking-wider">
+                Tu, Bodhi, Boon & the Riverside family
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 space-y-4">
+            <span class="text-[10px] font-mono uppercase tracking-[0.25em] text-[#7a5813] font-bold block">
+              FOUNDERS & GUARDIANS
+            </span>
+            <h3 class="font-monumental text-2xl sm:text-3xl text-[#12281b] font-normal leading-tight">
+              Meet Tu, Bodhi, & Boon
+            </h3>
+            <p class="text-sm sm:text-base text-[#223e2c] leading-relaxed">
+              With over <strong>25 years of combined experience</strong> in Southern Thailand—including grassroots tsunami relief efforts, sustainable agriculture, and community conservation—Tu and Bodhi are woven into the fabric of Khao Sok.
+            </p>
+            <p class="text-sm sm:text-base text-[#223e2c] leading-relaxed">
+              Together with their son Boon, they manage Riverside Cottages not as a commercial resort, but as a living retreat guided by the Buddhist principle of <em>Right Livelihood</em> (Sammā-ājīva): creating honest work that uplifts staff, respects nature, and delivers unforgettable experiences to guests from all corners of the globe.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================================================
+           THE RESORT TEAM: MACK, NOOK, KLONG & BO
+      ======================================================== -->
+      <section class="my-14 pt-10 border-t border-[#12281b]/10">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="text-[10px] font-mono uppercase tracking-[0.25em] text-[#7a5813] font-bold block mb-2">
+            THE RIVERSIDE FAMILY
+          </span>
+          <h3 class="font-monumental text-2xl sm:text-3xl text-[#12281b]">
+            The Heart of Every Guest Experience
+          </h3>
+          <p class="text-xs sm:text-sm text-[#2e5339] mt-2 font-normal">
+            Behind the seamless operations, delicious Thai dishes, and pristine gardens is our dedicated local team.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <!-- Mack & Nook -->
+          <div class="rounded-3xl overflow-hidden bg-white border border-[#12281b]/10 shadow-lg hover:shadow-xl transition-all p-5 sm:p-6 space-y-4">
+            <div class="h-56 sm:h-64 rounded-2xl overflow-hidden border border-[#12281b]/10">
+              <img
+                src="/wp-content/uploads/2023/04/Mak_Nook-2.jpg"
+                alt="Meet Mack and Nook at Khao Sok Riverside Cottages"
+                width="800"
+                height="600"
+                class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+              />
+            </div>
+            <div>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-[#7a5813] font-bold">RESTAURANT & RESORT CARE</span>
+              <h4 class="font-monumental text-xl text-[#12281b] mt-1">Meet Mack & Nook</h4>
+              <p class="text-xs sm:text-sm text-[#2e5339] mt-2 leading-relaxed font-light">
+                Mack and Nook are essential to your relaxing stay. Nook hosts travelers at the <a href="/khao-sok-restaurant/" class="text-[#7a5813] underline font-medium">Rafflesia Cafe</a> with genuine Thai hospitality and an infectious smile. Mack tirelessly maintains our wooden cottages, boardwalks, and riverside gardens, ensuring everything is safe, functional, and in harmony with nature.
+              </p>
+            </div>
+          </div>
+
+          <!-- Klong & Bo -->
+          <div class="rounded-3xl overflow-hidden bg-white border border-[#12281b]/10 shadow-lg hover:shadow-xl transition-all p-5 sm:p-6 space-y-4">
+            <div class="h-56 sm:h-64 rounded-2xl overflow-hidden border border-[#12281b]/10">
+              <img
+                src="/wp-content/uploads/2024/03/klong-bo-2.jpg"
+                alt="Meet Klong and Bo at Khao Sok Riverside Cottages"
+                width="800"
+                height="600"
+                class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+              />
+            </div>
+            <div>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-[#7a5813] font-bold">OPERATIONS & WILDLIFE DESK</span>
+              <h4 class="font-monumental text-xl text-[#12281b] mt-1">Meet Klong & Bo</h4>
+              <p class="text-xs sm:text-sm text-[#2e5339] mt-2 leading-relaxed font-light">
+                If you wonder who keeps everything running smoothly, Klong and Bo are behind it. From your first warm arrival greeting to coordinating morning boat departures on Cheow Lan Lake, they ensure every journey is effortless. Lifelong residents of Khao Sok, they possess encyclopedic knowledge of jungle flora, fauna, and local lore.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================================================
+           COMMUNITY IMPACT PHOTO GALLERY (BENTO GRID)
+      ======================================================== -->
+      <section class="my-14 pt-10 border-t border-[#12281b]/10">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="text-[10px] font-mono uppercase tracking-[0.25em] text-[#7a5813] font-bold block mb-2">
+            GRASSROOTS INITIATIVES
+          </span>
+          <h3 class="font-monumental text-2xl sm:text-3xl text-[#12281b]">
+            Our Community in Action
+          </h3>
+          <p class="text-xs sm:text-sm text-[#2e5339] mt-2 font-normal">
+            A glimpse into the people, schools, and conservation programs we support across Southern Thailand.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {communityGallery.map((item) => (
+            <div class="group rounded-2xl overflow-hidden bg-white border border-[#12281b]/10 shadow-sm hover:shadow-xl transition-all duration-300">
+              <div class="h-48 sm:h-52 overflow-hidden relative">
+                <img
+                  src={item.src}
+                  alt={item.title}
+                  width="600"
+                  height="400"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+              </div>
+              <div class="p-4 sm:p-5">
+                <h4 class="font-monumental text-sm text-[#12281b] group-hover:text-[#ba9038] transition-colors font-semibold">
+                  {item.title}
+                </h4>
+                <p class="text-xs text-[#2e5339] mt-1.5 font-light leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- ========================================================
+           WHY TRAVELERS CHOOSE RIVERSIDE COTTAGES
+      ======================================================== -->
+      <section class="my-14 pt-10 border-t border-[#12281b]/10">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="text-[10px] font-mono uppercase tracking-[0.25em] text-[#7a5813] font-bold block mb-2">
+            WHY STAY WITH US
+          </span>
+          <h3 class="font-monumental text-2xl sm:text-3xl text-[#12281b]">
+            The Riverside Difference
+          </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {[
+            ['Quiet Riverside Location', 'Tucked away from village traffic, surrounded by rainforest canopy and the soothing sounds of the Sok River.'],
+            ['Easy Park & Lake Access', 'Effortless van transfers to Cheow Lan Lake piers, trekking starting points, and ethical elephant sanctuaries.'],
+            ['Honest Family Hospitality', 'Personal care, honest advice, and direct assistance from owners and long-term local residents.'],
+            ['100% Ethical Rainforest Tours', 'Small-group expeditions with licensed guides who prioritize wildlife protection and guest safety.'],
+            ['Fresh Farm-to-Table Dining', 'Authentic Southern Thai curries, vegetarian/vegan options, and fresh espresso at Rafflesia Cafe.'],
+            ['Honor System Direct Booking', 'Zero credit card deposit required. Simply book online and pay in Thai Baht when you check in.'],
+          ].map(([title, desc]) => (
+            <div class="flex items-start gap-3.5 p-4 sm:p-5 rounded-2xl bg-[#f4efeb]/60 border border-[#12281b]/08">
+              <span class="w-6 h-6 rounded-full bg-[#ba9038]/20 text-[#7a5813] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
+                ✓
+              </span>
+              <div>
+                <h4 class="font-monumental text-sm text-[#12281b] font-semibold">{title}</h4>
+                <p class="text-xs text-[#2e5339] mt-1 leading-relaxed font-light">{desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- ========================================================
+           CTA INVITATION
+      ======================================================== -->
+      <div class="my-12 p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#12281b] via-[#1a3826] to-[#0d1f14] text-white text-center space-y-5 shadow-2xl relative overflow-hidden">
+        <div class="absolute -top-12 -right-12 w-48 h-48 bg-[#ba9038]/15 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-[#d8b257] font-bold block">
+          EXPERIENCE THE LIVING JUNGLE
+        </span>
+        <h3 class="font-monumental text-2xl sm:text-3xl text-white max-w-xl mx-auto">
+          Begin Your Journey to Khao Sok
+        </h3>
+        <p class="text-xs sm:text-sm text-[#abd0bb] max-w-md mx-auto font-light leading-relaxed">
+          Pay upon arrival with guaranteed lowest direct rates. We look forward to welcoming you to our family sanctuary.
+        </p>
+
+        <div class="pt-3 flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="/booking-khao-sok-accommodation/?tab=package"
+            class="px-6 py-3 rounded-full bg-gradient-to-r from-[#ba9038] to-[#d8b257] hover:from-[#c99f3e] hover:to-[#ebd082] text-[#12281b] font-bold text-xs font-mono uppercase tracking-wider transition-all shadow-lg hover:shadow-xl"
+          >
+            Book a Tour Package →
+          </a>
+          <a
+            href="/khao-sok-accommodation/"
+            class="px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs font-mono uppercase tracking-wider transition-all"
+          >
+            Explore Cottages
+          </a>
+        </div>
+      </div>
+
+      <!-- Reviews -->
+      <div class="mt-16 pt-12 border-t border-[#12281b]/10">
+        <GoogleReviewsWidget />
+      </div>
+
     </div>
   </article>
 </PageLayout>
