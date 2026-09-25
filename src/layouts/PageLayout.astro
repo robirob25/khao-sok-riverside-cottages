@@ -62,10 +62,8 @@ const heroImage = (!rawHeroImage || rawHeroImage.includes('khao-sok-riverside-co
         />
       </div>
 
-      <!-- Overlays for text legibility -->
-      <div class="absolute inset-0 bg-[#0b1910]/45 pointer-events-none"></div>
-      <div class="absolute inset-0 bg-gradient-to-t from-[#0b1910] via-[#0b1910]/60 to-black/50 pointer-events-none"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(11,25,16,0.85)_100%)] pointer-events-none"></div>
+      <!-- Clean cinematic overlay: keeps photo bright and vibrant with zero muddy grey tint -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-black/40 pointer-events-none"></div>
 
       <!-- Title Box -->
       <div class="relative z-10 max-w-4xl mx-auto px-4 text-center flex flex-col items-center justify-center w-full">

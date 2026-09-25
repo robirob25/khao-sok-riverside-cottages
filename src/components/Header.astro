@@ -297,19 +297,20 @@ const withBase = (path: string) => {
       <!-- Photographic preview (hidden on mobile/tablet) -->
       <div class="hidden lg:block lg:col-span-5">
         <div class="bg-white rounded-3xl p-6 shadow-2xl shadow-[#122319]/10 border border-[#122319]/10 relative overflow-hidden">
-          <div class="relative h-96 rounded-2xl overflow-hidden border border-[#122319]/10 group">
+          <div class="relative h-[420px] rounded-2xl overflow-hidden border border-[#122319]/15 shadow-inner bg-stone-900 group">
             <img
               id="menu-preview-img"
               src={withBase("/wp-content/uploads/2019/10/khao-sok-riverside-cottages-beach.jpg")}
               alt="Khao Sok Experience Preview"
-              class="w-full h-full object-cover transition-all duration-700 transform scale-100 group-hover:scale-105"
-              width="600" height="400"
+              class="w-full h-full object-cover object-center transition-all duration-700 transform scale-100 group-hover:scale-105"
+              width="600" height="450"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#122319]/85 via-[#122319]/20 to-transparent"></div>
-            <div class="absolute bottom-6 left-6 right-6">
-              <span id="menu-preview-badge" class="font-handwriting text-gold-300 text-2xl block mb-1">Authentic Rainforest Immersion</span>
-              <h4 id="menu-preview-title" class="font-monumental text-2xl text-white mb-3">Khao Sok Riverside</h4>
-              <a href="/booking-khao-sok-accommodation/" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-gold-300 hover:text-gold-200 font-semibold font-mono">
+            <!-- Clean, focused bottom scrim only behind text — 70%+ of photo is 100% unobstructed, zero grey zone -->
+            <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/85 via-black/40 to-transparent pointer-events-none"></div>
+            <div class="absolute bottom-6 left-6 right-6 z-10">
+              <span id="menu-preview-badge" class="font-handwriting text-[#f7e6b5] text-2xl block mb-1 drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)]">Authentic Rainforest Immersion</span>
+              <h4 id="menu-preview-title" class="font-monumental text-2xl text-white mb-3 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">Khao Sok Riverside</h4>
+              <a href="/booking-khao-sok-accommodation/" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#f7e6b5] hover:text-white font-semibold font-mono drop-shadow">
                 <span>Instant Reserve</span>
                 <span>→</span>
               </a>
