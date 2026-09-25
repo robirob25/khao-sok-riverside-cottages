@@ -1,0 +1,235 @@
+---
+// BookingChoiceModal.astro — 2026 Elite Bento Booking Modal
+// Triggered on clicking the pinned side BOOK button or header reservation button
+// Offers 2 clear, luxury Bento paths:
+// 1. All-Inclusive Tour Packages (Best Value)
+// 2. Handcrafted Wooden Cottages (Room Only)
+---
+
+<div
+  id="booking-choice-modal"
+  class="fixed inset-0 z-[70] bg-black/75 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-all duration-300"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="booking-modal-title"
+>
+  <div
+    id="booking-modal-container"
+    class="relative w-full max-w-4xl bg-[#faf8f5] text-[#12281b] rounded-3xl p-6 sm:p-8 md:p-10 shadow-2xl border border-[#12281b]/15 transform scale-95 transition-all duration-300 max-h-[92vh] overflow-y-auto"
+  >
+    <!-- Close Button -->
+    <button
+      id="booking-modal-close"
+      type="button"
+      class="absolute top-5 right-5 w-10 h-10 rounded-full bg-[#12281b]/08 hover:bg-[#12281b] text-[#12281b] hover:text-white flex items-center justify-center transition-all cursor-pointer z-20 group"
+      aria-label="Close booking modal"
+    >
+      <svg class="w-5 h-5 transition-transform group-hover:rotate-90 duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ba9038]/15 border border-[#ba9038]/30 text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] text-[#7a5813] font-bold mb-3">
+        <span>KSR</span>
+        <span>•</span>
+        <span>DIRECT SANCTUARY RESERVATIONS</span>
+      </div>
+      <h2 id="booking-modal-title" class="font-monumental text-2xl sm:text-3xl md:text-4xl text-[#12281b] tracking-tight leading-tight">
+        Choose Your <span class="font-display italic font-light text-[#ba9038]">Experience</span>
+      </h2>
+      <p class="text-xs sm:text-sm text-[#2e5339] mt-2 font-normal leading-relaxed">
+        Honor system booking — No prepayment or credit card required. Pay upon arrival at the resort.
+      </p>
+    </div>
+
+    <!-- 2 Bento Pillars -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+      
+      <!-- Bento Card 1: Packages (Recommended) -->
+      <a
+        href="/booking-khao-sok-accommodation/?tab=package"
+        class="group relative rounded-2xl sm:rounded-3xl p-6 sm:p-8 overflow-hidden bg-gradient-to-br from-[#12281b] via-[#173323] to-[#0c1c13] text-white border-2 border-[#ba9038]/60 hover:border-[#ba9038] transition-all duration-300 hover:-translate-y-1.5 shadow-xl hover:shadow-2xl flex flex-col justify-between"
+      >
+        <div class="absolute top-0 right-0 w-32 h-32 bg-[#ba9038]/15 rounded-full blur-2xl pointer-events-none"></div>
+
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-2.5 py-1 rounded-full bg-[#ba9038] text-[#12281b] text-[10px] font-mono uppercase tracking-widest font-bold shadow-md">
+              ★ Recommended
+            </span>
+            <span class="text-xs font-mono uppercase tracking-wider text-[#d8b257] font-semibold">
+              All-Inclusive
+            </span>
+          </div>
+
+          <h3 class="font-monumental text-xl sm:text-2xl text-white group-hover:text-[#f7e6b5] transition-colors leading-snug">
+            Tour Packages
+          </h3>
+          <p class="text-xs sm:text-sm text-[#abd0bb] mt-2 font-light leading-relaxed">
+            Resort cottages + Cheow Lan Lake floating bungalows, ethical elephant sanctuary, and all meals.
+          </p>
+
+          <div class="mt-6 space-y-2 text-xs text-[#e2eee6]/90 border-t border-white/10 pt-4">
+            <div class="flex items-center gap-2">
+              <span class="text-[#ba9038]">✓</span>
+              <span>2N to 4N expeditions (Resort + Lake)</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[#ba9038]">✓</span>
+              <span>All safari boat trips, caves & jungle treks</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[#ba9038]">✓</span>
+              <span>All meals included from check-in to check-out</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 pt-4 flex items-center justify-between">
+          <div>
+            <span class="text-[10px] font-mono uppercase tracking-wider text-[#abd0bb]/70 block">Starting from</span>
+            <span class="font-mono text-lg sm:text-xl font-bold text-[#f7e6b5]">฿4,500</span>
+            <span class="text-[10px] text-[#abd0bb]"> / person</span>
+          </div>
+          <span class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#ba9038] to-[#d8b257] text-[#12281b] font-bold text-xs font-mono uppercase tracking-wider group-hover:from-[#c99f3e] group-hover:to-[#ebd082] transition-all shadow-md flex items-center gap-1.5">
+            <span>Select Package</span>
+            <span>→</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- Bento Card 2: Cottages & Rooms Only -->
+      <a
+        href="/booking-khao-sok-accommodation/?tab=room"
+        class="group relative rounded-2xl sm:rounded-3xl p-6 sm:p-8 overflow-hidden bg-white hover:bg-[#f9f7f4] text-[#12281b] border border-[#12281b]/15 hover:border-[#ba9038] transition-all duration-300 hover:-translate-y-1.5 shadow-lg hover:shadow-xl flex flex-col justify-between"
+      >
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-2.5 py-1 rounded-full bg-[#12281b]/10 text-[#12281b] text-[10px] font-mono uppercase tracking-widest font-bold">
+              Flexible Stay
+            </span>
+            <span class="text-xs font-mono uppercase tracking-wider text-[#7a5813] font-semibold">
+              Room Only
+            </span>
+          </div>
+
+          <h3 class="font-monumental text-xl sm:text-2xl text-[#12281b] group-hover:text-[#ba9038] transition-colors leading-snug">
+            Cottage Only
+          </h3>
+          <p class="text-xs sm:text-sm text-[#2e5339] mt-2 font-normal leading-relaxed">
+            Handcrafted wooden bungalows nestled in botanical gardens beside the Sok River. Choose excursions à la carte.
+          </p>
+
+          <div class="mt-6 space-y-2 text-xs text-[#223e2c] border-t border-[#12281b]/10 pt-4">
+            <div class="flex items-center gap-2">
+              <span class="text-[#7a5813]">✓</span>
+              <span>Garden View, Riverside & Family Cottages</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[#7a5813]">✓</span>
+              <span>Free shuttle to Khao Sok village & bus stop</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[#7a5813]">✓</span>
+              <span>Add tours upon arrival with on-site guides</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 pt-4 flex items-center justify-between">
+          <div>
+            <span class="text-[10px] font-mono uppercase tracking-wider text-[#2e5339]/70 block">Starting from</span>
+            <span class="font-mono text-lg sm:text-xl font-bold text-[#12281b]">฿900</span>
+            <span class="text-[10px] text-[#2e5339]"> / night</span>
+          </div>
+          <span class="px-4 py-2.5 rounded-xl bg-[#12281b] text-white font-bold text-xs font-mono uppercase tracking-wider group-hover:bg-[#ba9038] group-hover:text-[#12281b] transition-all shadow-md flex items-center gap-1.5">
+            <span>Book a Room</span>
+            <span>→</span>
+          </span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Auxiliary Links -->
+    <div class="mt-8 pt-6 border-t border-[#12281b]/10 flex flex-wrap items-center justify-between gap-3 text-xs">
+      <span class="text-[#2e5339]">
+        Looking only for day tours? <a href="/book-khao-sok-activities/" class="font-bold underline text-[#7a5813] hover:text-[#12281b] transition-colors">Book Activities & Day Trips</a>
+      </span>
+      <span class="text-[#2e5339]">
+        Need help? <a href="tel:+6677395159" class="font-mono font-bold text-[#12281b] hover:text-[#ba9038] transition-colors">+66 77 395 159</a>
+      </span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function setupBookingModal() {
+    const modal = document.getElementById('booking-choice-modal');
+    const container = document.getElementById('booking-modal-container');
+    const closeBtn = document.getElementById('booking-modal-close');
+
+    if (!modal) return;
+
+    function openModal(e) {
+      if (e) e.preventDefault();
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100', 'pointer-events-auto');
+      if (container) {
+        container.classList.remove('scale-95');
+        container.classList.add('scale-100');
+      }
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modal.classList.remove('opacity-100', 'pointer-events-auto');
+      if (container) {
+        container.classList.add('scale-95');
+        container.classList.remove('scale-100');
+      }
+      document.body.style.overflow = '';
+    }
+
+    // Attach to side pastille BOOK
+    const pinnedBook = document.getElementById('pinned-book-btn');
+    if (pinnedBook) {
+      pinnedBook.addEventListener('click', openModal);
+    }
+
+    // Attach to header book btn
+    const navBook = document.getElementById('nav-book-btn');
+    if (navBook) {
+      navBook.addEventListener('click', openModal);
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeModal);
+    }
+
+    // Click outside to close
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Escape key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('pointer-events-none')) {
+        closeModal();
+      }
+    });
+  }
+
+  // Init on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupBookingModal);
+  } else {
+    setupBookingModal();
+  }
+</script>

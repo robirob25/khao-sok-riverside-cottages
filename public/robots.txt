@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://robirob25.github.io/khao-sok-riverside-cottages/sitemap.xml

@@ -1,6 +1,8 @@
 ---
 // Header.astro — Borgo Egnazia Minimal Top Bar & Curated Overlay Menu
 // 100% Responsive Mobile & Tablet
+import BookingChoiceModal from './BookingChoiceModal.astro';
+
 interface Props {
   isHome?: boolean;
 }
@@ -122,6 +124,7 @@ const withBase = (path: string) => {
 
 <!-- Pinned Vertical "BOOK" Button on Right Screen Edge (Borgo Egnazia Style) -->
 <a
+  id="pinned-book-btn"
   href="/booking-khao-sok-accommodation/"
   class="fixed top-1/2 -translate-y-1/2 right-0 z-40 flex items-center justify-center bg-[#12281b]/90 hover:bg-[#ba9038] text-white hover:text-[#12281b] backdrop-blur-md border-l border-t border-b border-white/20 hover:border-[#ba9038] rounded-l-xl px-2 sm:px-2.5 py-4 sm:py-6 transition-all duration-300 shadow-2xl group cursor-pointer"
   aria-label="Book Direct"
@@ -130,6 +133,8 @@ const withBase = (path: string) => {
     BOOK
   </span>
 </a>
+
+<BookingChoiceModal />
 
 
 <!-- ============================================================
