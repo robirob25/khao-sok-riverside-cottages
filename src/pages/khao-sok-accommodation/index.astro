@@ -1,19 +1,101 @@
 ---
+// src/pages/khao-sok-accommodation/index.astro — Handcrafted Wooden Cottages on the Sok River
 // Verbatim Authentic Content & Media from Khao Sok Riverside Cottages
+// Elite 2026 Silent Luxury Architecture (Aman / Six Senses Inspired)
 import PageLayout from '../../layouts/PageLayout.astro';
 import GoogleReviewsWidget from '../../components/GoogleReviewsWidget.astro';
+
+const cottages = [
+  {
+    id: "garden-view",
+    name: "Garden View Cottage",
+    tagline: "Comfortable Standalone Wooden Cottages in Botanical Gardens",
+    price: "฿1,100",
+    priceNote: "per night · 1-2 guests",
+    badge: "Most Popular",
+    heroImg: "/wp-content/uploads/2025/07/cottage-1.jpg",
+    gallery: [
+      "/wp-content/uploads/2025/07/cottage-2.jpg",
+      "/wp-content/uploads/2025/07/cottage-3-scaled.jpg",
+      "/wp-content/uploads/2025/07/cottage-4.jpg",
+      "/wp-content/uploads/2025/07/cottage-5.jpg",
+    ],
+    description: "Comfortable standalone wooden cottages ideal for couples or solo travellers wanting a peaceful stay surrounded by nature. Designed with natural cross-ventilation, shaded verandas, and authentic tropical materials.",
+    specs: {
+      capacity: "Ideal for 2 guests",
+      bed: "1 King bed or 2 Twin beds",
+      climate: "Ceiling fan or Air Conditioning options",
+      outdoor: "Private balcony with hammock overlooking lush jungle gardens",
+      bath: "Private en-suite bathroom with hot water shower",
+    },
+    features: ["Private Balcony & Hammock", "En-suite Bathroom & Hot Shower", "Ceiling Fan / AC", "Garden View", "Free Wi-Fi", "Mosquito Netting"],
+    bookUrl: "/booking-khao-sok-accommodation/?tab=room",
+  },
+  {
+    id: "riverside",
+    name: "Riverside Cottage",
+    tagline: "Direct Riverfront Views & Sounds of Flowing Water",
+    price: "฿1,400",
+    priceNote: "per night · 1-2 guests",
+    badge: "Prime Riverfront",
+    heroImg: "/wp-content/uploads/2025/07/deluxe-cottage-1.jpg",
+    gallery: [
+      "/wp-content/uploads/2025/07/deluxe-cottage-2.jpg",
+      "/wp-content/uploads/2025/07/deluxe-cottage-3.jpg",
+      "/wp-content/uploads/2025/07/deluxe-cottage-4.jpg",
+      "/wp-content/uploads/2025/07/deluxe-cottage-5.jpg",
+    ],
+    description: "Our most sought-after room category. Perched directly beside the Sok River with dramatic views of limestone karst cliffs. Relax in your private hammock listening to the gentle flow of the river.",
+    specs: {
+      capacity: "Ideal for 2 guests",
+      bed: "1 King bed",
+      climate: "Natural river breeze, ceiling fan and Air Conditioning",
+      outdoor: "Private waterfront balcony with hammock directly above riverbank",
+      bath: "En-suite bathroom with hot water shower",
+    },
+    features: ["Direct River & Karst Views", "Private Riverfront Balcony", "Air Conditioning", "En-suite Hot Shower", "Hammock Over River", "Free Wi-Fi"],
+    bookUrl: "/booking-khao-sok-accommodation/?tab=room",
+  },
+  {
+    id: "family",
+    name: "Family Wooden Cottage",
+    tagline: "Spacious Multi-Bed Lodging for Families & Small Groups",
+    price: "฿2,000",
+    priceNote: "per night · Up to 4 guests",
+    badge: "Family & Groups",
+    heroImg: "/wp-content/uploads/2025/07/family-cottage-1.jpg",
+    gallery: [
+      "/wp-content/uploads/2025/07/family-cottage-2.jpg",
+      "/wp-content/uploads/2025/07/family-cottage-3.jpg",
+      "/wp-content/uploads/2025/07/family-cottage-4.jpg",
+      "/wp-content/uploads/2025/07/family-cottage-6.jpg",
+    ],
+    description: "Extra-spacious wooden chalets designed for families with children or friends travelling together. Large en-suite bathroom, expansive balcony, and plenty of room to unwind together after a day exploring the national park.",
+    specs: {
+      capacity: "Up to 4 guests",
+      bed: "2 Queen beds or 1 King + 2 Bunk beds",
+      climate: "Ceiling fans & Air Conditioning",
+      outdoor: "Large covered family deck with seating & forest outlook",
+      bath: "Spacious private bathroom with hot shower",
+    },
+    features: ["Sleeps up to 4 Guests", "Spacious Family Balcony", "Air Conditioning & Hot Shower", "Secluded Jungle Setting", "Child Friendly", "Free Wi-Fi"],
+    bookUrl: "/booking-khao-sok-accommodation/?tab=room",
+  },
+];
 ---
 
 <PageLayout
-  title="Khao Sok Accommodation"
-  description="Explore Khao Sok accommodation options that offer comfort, nature, and convenience near the National Park. Book your stay today."
+  title="Khao Sok Accommodation — Handcrafted Cottages on the Sok River"
+  description="Explore Khao Sok accommodation options that offer comfort, nature, and convenience near the National Park. Traditional Thai wooden cottages beside the Sok River."
   heroImage="/wp-content/uploads/2025/07/cottage-1.jpg"
   heroTitle="Khao Sok Accommodation"
   heroSubtitle="Handcrafted Wooden Lodging Beside the Sok River"
   breadcrumbs={[{"label": "Khao Sok Accommodation", "href": "/khao-sok-accommodation/"}]}
 >
-  <article class="max-w-4xl mx-auto space-y-10">
-    <div class="bg-[#faf8f5]/95 border border-[#12281b]/10 rounded-3xl p-4 sm:p-8 md:p-12 shadow-2xl backdrop-blur-md">
+  <article class="max-w-7xl mx-auto space-y-12 sm:space-y-16">
+    
+    <!-- Top Editorial Dispatch Card -->
+    <div class="bg-[#faf8f5]/95 border border-[#12281b]/10 rounded-3xl p-6 sm:p-10 md:p-12 shadow-2xl backdrop-blur-md">
       
       <div class="flex items-center justify-between border-b border-[#12281b]/10 pb-4 mb-8 font-mono text-[11px] tracking-[0.22em] uppercase text-[#163824]">
         <div class="flex items-center gap-2 font-semibold">
@@ -24,561 +106,237 @@ import GoogleReviewsWidget from '../../components/GoogleReviewsWidget.astro';
         <span class="text-[#7a5813] font-bold">KHAO SOK · THAILAND</span>
       </div>
 
-      <div class="space-y-6 text-[#223e2c] text-base sm:text-lg leading-relaxed font-normal">
-
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Riverside Cottages Accommodation</span>
+      <div class="max-w-3xl space-y-5 text-[#223e2c] text-base sm:text-lg leading-relaxed font-normal">
+        <h2 class="font-display text-2xl sm:text-4xl text-[#163824] font-semibold tracking-tight">
+          Riverside Cottages Accommodation
         </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
+        <p class="leading-relaxed">
           Set beside the Sok River and surrounded by tropical forest, the wooden cottages at Riverside Cottages offer a more relaxed and nature-connected style of accommodation in Khao Sok. Designed around natural airflow, shaded gardens, and open-air tropical living, the cottages allow guests to experience the sounds, atmosphere, and slower pace of the rainforest while still enjoying comfort, privacy, and thoughtful hospitality.
         </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
+        <p class="leading-relaxed">
           Whether travelling as a couple, family, or small group, our cottages provide a peaceful base for exploring Khao Sok National Park, Cheow Lan Lake, jungle hikes, canoe trips, and local experiences.
         </p>
-        <ul class="space-y-3 my-6 pl-2">
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa-angle-right fas" aria-hidden="true"></i></span><div class="fusion-li-item-content"><p>Free shuttle to Khao Sok village</p></div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa-angle-right fas" aria-hidden="true"></i></span><div class="fusion-li-item-content"><p>Assistance booking tours and activities</p></div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa-angle-right fas" aria-hidden="true"></i></span><div class="fusion-li-item-content"><p>Friendly English-speaking staff</p></div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa-angle-right fas" aria-hidden="true"></i></span><div class="fusion-li-item-content"><p>Riverside restaurant and tropical gardens</p></div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa-angle-right fas" aria-hidden="true"></i></span><div class="fusion-li-item-content"><p>Peaceful forest setting close to nature</p></div></span>
-          </li>
-        </ul>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>The Perfect Location</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Riverside Cottages is located a few minutes drive from Khao Sok National Park headquarters and approximately one hour from Rajjaprabha Pier, making it easy to explore both the rainforest and nearby lake experiences.
-        </p>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>A Nature-Connected Stay</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          The cottages at Riverside Cottages are designed with high ceilings, natural ventilation, screened windows, ceiling fans, and mosquito nets rather than air conditioning. For many guests, the sounds of the river, birds, frogs, and surrounding rainforest become an important part of the overall Khao Sok experience.
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          This more open and nature-connected style of accommodation allows guests to experience Khao Sok at a slower pace while still enjoying comfort, cleanliness, privacy, and thoughtful hospitality.
-        </p>
-        <h3 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>All cottages feature:</span>
-        </h3>
-        <ul class="space-y-3 my-6 pl-2">
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa-angle-right fas" aria-hidden="true"></i></span><div class="fusion-li-item-content"><p>Spacious interiors</p></div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa-angle-right fas" aria-hidden="true"></i></span><div class="fusion-li-item-content"><p>Private balcony or deck overlooking the jungle</p></div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa-angle-right fas" aria-hidden="true"></i></span><div class="fusion-li-item-content">Comfortable beds with fresh linen</div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa-angle-right fas" aria-hidden="true"></i></span><div class="fusion-li-item-content">Free WiFi</div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa-angle-right fas" aria-hidden="true"></i></span><div class="fusion-li-item-content">Ceiling fans and mosquito nets</div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa-angle-right fas" aria-hidden="true"></i></span><div class="fusion-li-item-content"><p>Daily housekeeping</p></div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa-angle-right fas" aria-hidden="true"></i></span><div class="fusion-li-item-content"><p>Complimentary drinking water</p></div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa-angle-right fas" aria-hidden="true"></i></span><div class="fusion-li-item-content"><p>24-hour electricity</p></div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa-angle-right fas" aria-hidden="true"></i></span><div class="fusion-li-item-content"><p>Hot water bathrooms</p></div></span>
-          </li>
-        </ul>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Room Types</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Experience the beauty of the forest while relaxing in a comfortable wooden cottage surrounded by tropical gardens and riverside rainforest.
-        </p>
-        <h3 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Cottages</span>
-        </h3>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Click Image for Gallery
-        </p>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/cottage-1.jpg"
-            alt="Khao Sok accommodation in a cosy cottage"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok accommodation in a cosy cottage</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/cottage-2.jpg"
-            alt="Cozy Cottage"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Cozy Cottage</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/cottage-3-scaled.jpg"
-            alt="Bathroom"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Bathroom</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/cottage-4.jpg"
-            alt="Cottage Balcony"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Cottage Balcony</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/cottage-5.jpg"
-            alt="Cottage Balcony"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Cottage Balcony</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/cottage-6.jpg"
-            alt="cosy cottage"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">cosy cottage</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/cottage-7.jpg"
-            alt="cosy cottage"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">cosy cottage</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/cottage-8.jpg"
-            alt="Cosy twin bed cottage"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Cosy twin bed cottage</figcaption>
-        </figure>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Comfortable standalone wooden cottages ideal for couples or solo travellers wanting a peaceful stay surrounded by nature.
-        </p>
-        <ul class="space-y-3 my-6 pl-2">
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span>Ideal for 2 guests</span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span>1 queen bed</span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span>Twin bed setup available on request</span>
-          </li>
-        </ul>
-        <h3 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Deluxe Cottages</span>
-        </h3>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Click Image for Gallery
-        </p>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/deluxe-cottage-1.jpg"
-            alt="Deluxe Cottage - Khao Sok accommodation at Riverside Cottages"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Deluxe Cottage - Khao Sok accommodation at Riverside Cottages</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/deluxe-cottage-2.jpg"
-            alt="Deluxe Cottage exterior"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Deluxe Cottage exterior</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/deluxe-cottage-3.jpg"
-            alt="Deluxe Cottage bathroom"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Deluxe Cottage bathroom</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/deluxe-cottage-4.jpg"
-            alt="Riverside Cottages"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Riverside Cottages</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/deluxe-cottage-5.jpg"
-            alt="Triple room at Khao Sok Riverside Cottages"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Triple room at Khao Sok Riverside Cottages</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/deluxe-cottage-6.jpg"
-            alt="Riverside Cottages"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Riverside Cottages</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/deluxe-cottage-7.jpg"
-            alt="Dressing table in a deluxe cottage at Riverside Cottages Khao Sok accommodation"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Dressing table in a deluxe cottage at Riverside Cottages Khao Sok accommodation</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/deluxe-cottage-8.jpg"
-            alt="Riverside Cottages walkway"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Riverside Cottages walkway</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/deluxe-cottage-9.jpg"
-            alt="Deluxe cottages"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Deluxe cottages</figcaption>
-        </figure>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          More spacious cottages ideal for couples, groups of friends, or families wanting additional space and flexibility during their stay.
-        </p>
-        <ul class="space-y-3 my-6 pl-2">
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span>Suitable for 2–3 guests</span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span>1 queen bed and 1 single bed</span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span>Extra mattress available for groups of 4</span>
-          </li>
-        </ul>
-        <h3 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Family Cottages</span>
-        </h3>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Click Image for Gallery
-        </p>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/family-cottage-2.jpg"
-            alt="Khao Sok family cottage interior"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok family cottage interior</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/family-cottage-3.jpg"
-            alt="Family cottage balcony"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Family cottage balcony</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/family-cottage-1.jpg"
-            alt="Khao Sok family accommodation"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok family accommodation</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/family-cottage-4.jpg"
-            alt="Soap and shampoo bottles"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Soap and shampoo bottles</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/family-cottage-6.jpg"
-            alt="Khao Sok family room"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok family room</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/family-cottage-8.jpg"
-            alt="Family bathroom"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Family bathroom</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/family-cottage-7.jpg"
-            alt="Khao Sok family accommodation"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok family accommodation</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2025/07/family-cottage-9.jpg"
-            alt="Cottage in the forest"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Cottage in the forest</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2022/05/khao-sok-riverside-rooms-1.jpg"
-            alt="Khao Sok Riverside Resort rooms"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok Riverside Resort rooms</figcaption>
-        </figure>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Our largest cottages are ideal for families or groups wanting additional comfort while enjoying the peaceful rainforest setting of Riverside Cottages.
-        </p>
-        <ul class="space-y-3 my-6 pl-2">
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span>Ideal for families of 4</span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span>2 queen beds</span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span>Extra mattress available upon request</span>
-          </li>
-        </ul>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Book Your Stay</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Riverside Cottages offers a peaceful riverside setting close to Khao Sok National Park, Cheow Lan Lake, jungle hikes, canoe trips, and local activities.
-        </p>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Thoughtful Jungle Living</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Many aspects of Riverside Cottages have been designed to work with the surrounding environment rather than against it.
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Raised walkways allow rainwater, plants, insects, and wildlife to move naturally beneath the resort while helping guests move comfortably around the property in all weather conditions. The cottages themselves are designed with high ceilings, natural ventilation, and open airflow instead of air conditioning, allowing guests to experience the sounds and atmosphere of the rainforest more closely.
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Additional <a href="/sustainability/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">low-impact practices</a> include refill water stations, solar drying of laundry, locally sourced timber, and careful management of lighting and waste throughout the property.
-        </p>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Rafflesia Cafe</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          <a href="/khao-sok-restaurant/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Rafflesia Cafe</a> overlooks the Sok River and serves breakfast, lunch, dinner, snacks, coffee, fruit shakes, cocktails, beer, and a mix of Thai and Western dishes throughout the day.
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Guests often relax here between activities while watching monkeys across the river, listening to the sounds of the rainforest, or planning their next adventure in Khao Sok.
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Many ingredients are sourced locally, while fresh bread is baked daily at the resort.
-        </p>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Tours & Activities</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Our friendly local staff can help arrange a wide range of activities throughout Khao Sok including jungle hikes, canoe trips, <a href="/khao-sok-lake-cheow-lan-tours/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Cheow Lan Lake tours</a>, floating bungalow overnights, tubing, elephant experiences, cooking classes, and family-friendly adventures.
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Unlike many join-in tours in Khao Sok, our <a href="/khao-sok-trekking-hiking/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">guided hikes</a> are arranged privately with our own local guides for couples, families, and groups travelling together.
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Guests looking for the best value often choose one of our <a href="/khao-sok-tour-packages/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">accommodation and activity packages</a>.
-        </p>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Guest Reviews</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Thousands of travellers have stayed at Riverside Cottages over the years, many returning again to experience the peaceful riverside setting, welcoming staff, tropical gardens, and slower pace of life in Khao Sok.
-        </p>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2016/07/khao-sok-accommodation-2.jpg"
-            alt="Khao Sok Forest Room Exterior"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok Forest Room Exterior</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2016/07/khao-sok-accommodation-3.jpg"
-            alt="Khao Sok Riverside Balcony"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok Riverside Balcony</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2016/07/khao-sok-accommodation-4.jpg"
-            alt="Khao Sok Balcony and Hammock"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok Balcony and Hammock</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2016/07/khao-sok-accommodation-5.jpg"
-            alt="Khao Sok room interior"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok room interior</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2016/07/khao-sok-accommodation-6.jpg"
-            alt="Khao Sok Riverside Room bathroom"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok Riverside Room bathroom</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2016/07/khao-sok-accommodation-8.jpg"
-            alt="Khao Sok Riverside Deluxe Room Interior"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok Riverside Deluxe Room Interior</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2016/07/khao-sok-accommodation-9.jpg"
-            alt="Khao Sok Forest room with balcony"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok Forest room with balcony</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2016/07/khao-sok-accommodation-10.jpg"
-            alt="Khao Sok Forest Room toilet"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok Forest Room toilet</figcaption>
-        </figure>
       </div>
 
-      <div class="mt-16 pt-12 border-t border-[#12281b]/10"><GoogleReviewsWidget /></div>
+      <!-- Key Inclusions Bento Row -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 pt-8 border-t border-[#12281b]/10">
+        <div class="flex items-start gap-3 p-4 rounded-2xl bg-white border border-[#12281b]/10 shadow-sm">
+          <span class="w-8 h-8 rounded-full bg-[#ba9038]/20 flex items-center justify-center text-[#7a5813] font-bold text-sm shrink-0">🚐</span>
+          <div>
+            <span class="block font-semibold text-sm text-[#12281b]">Free Shuttle Service</span>
+            <span class="text-xs text-[#2e5339]">Complimentary transfers to Khao Sok village and bus stop</span>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 p-4 rounded-2xl bg-white border border-[#12281b]/10 shadow-sm">
+          <span class="w-8 h-8 rounded-full bg-[#ba9038]/20 flex items-center justify-center text-[#7a5813] font-bold text-sm shrink-0">🧭</span>
+          <div>
+            <span class="block font-semibold text-sm text-[#12281b]">Tour Desk & Concierge</span>
+            <span class="text-xs text-[#2e5339]">Full assistance booking park guides, lake trips & safaris</span>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 p-4 rounded-2xl bg-white border border-[#12281b]/10 shadow-sm">
+          <span class="w-8 h-8 rounded-full bg-[#ba9038]/20 flex items-center justify-center text-[#7a5813] font-bold text-sm shrink-0">🌿</span>
+          <div>
+            <span class="block font-semibold text-sm text-[#12281b]">Riverside Restaurant</span>
+            <span class="text-xs text-[#2e5339]">Rafflesia Cafe with Thai and Western dishes beside the river</span>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- ============================================================
+         THE 3 COTTAGES SHOWCASES (LUXURY CARDS WITH PHOTO GALLERIES)
+    ============================================================ -->
+    <div class="space-y-12">
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <span class="font-mono text-xs uppercase tracking-[0.25em] text-[#ba9038] font-bold">LODGING SELECTION</span>
+        <h2 class="font-monumental text-3xl sm:text-4xl text-[#12281b] tracking-tight">
+          Handcrafted Wooden Cottages
+        </h2>
+        <p class="text-sm sm:text-base text-[#2e5339]">
+          Select your preferred cottage style. Pay upon arrival with zero advance deposit required.
+        </p>
+      </div>
+
+      <div class="space-y-10">
+        {cottages.map((cottage, idx) => (
+          <div class="bg-[#faf8f5]/95 border border-[#12281b]/10 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-2xl backdrop-blur-md overflow-hidden relative">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              
+              <!-- Left: Image Gallery & Badges (Span 7) -->
+              <div class="lg:col-span-7 space-y-4">
+                <div class="relative rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 aspect-[16/10] group">
+                  <img
+                    src={cottage.heroImg}
+                    alt={cottage.name}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-[1.02]"
+                    loading="lazy"
+                    decoding="async"
+                    width="1200"
+                    height="750"
+                  />
+                  <div class="absolute top-4 left-4 flex gap-2">
+                    <span class="px-3 py-1 rounded-full bg-[#12281b]/90 text-white font-mono text-[10px] uppercase tracking-wider font-semibold backdrop-blur-md border border-white/20">
+                      {cottage.badge}
+                    </span>
+                  </div>
+                  <div class="absolute bottom-4 right-4 px-3.5 py-1.5 rounded-xl bg-white/95 text-[#12281b] font-mono text-xs font-bold shadow-lg backdrop-blur-md border border-[#12281b]/10">
+                    {cottage.price} <span class="font-normal text-[10px] text-[#2e5339]">/ night</span>
+                  </div>
+                </div>
+
+                <!-- 4 Thumbnails Gallery -->
+                <div class="grid grid-cols-4 gap-2 sm:gap-3">
+                  {cottage.gallery.map((thumbImg, tIdx) => (
+                    <div class="relative rounded-xl overflow-hidden aspect-video border border-[#12281b]/10 shadow-sm group cursor-pointer bg-black">
+                      <img
+                        src={thumbImg}
+                        alt={`${cottage.name} photo ${tIdx + 1}`}
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 filter brightness-[0.98]"
+                        loading="lazy"
+                        decoding="async"
+                        width="400"
+                        height="260"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Right: Specs, Pricing & Actions (Span 5) -->
+              <div class="lg:col-span-5 space-y-5">
+                <div>
+                  <span class="text-xs font-mono text-[#ba9038] tracking-widest uppercase font-semibold">0{idx + 1} · ACCOMMODATION</span>
+                  <h3 class="font-display text-2xl sm:text-3xl text-[#12281b] font-bold tracking-tight mt-1">
+                    {cottage.name}
+                  </h3>
+                  <p class="font-serif italic text-sm text-[#7a5813] mt-1">
+                    {cottage.tagline}
+                  </p>
+                </div>
+
+                <p class="text-sm text-[#223e2c] leading-relaxed">
+                  {cottage.description}
+                </p>
+
+                <!-- Detailed Specs List -->
+                <div class="space-y-2 py-3 border-y border-[#12281b]/10 text-xs text-[#223e2c]">
+                  <div class="flex items-center gap-2">
+                    <span class="font-semibold text-[#12281b] w-20 shrink-0">Capacity:</span>
+                    <span>{cottage.specs.capacity}</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="font-semibold text-[#12281b] w-20 shrink-0">Bedding:</span>
+                    <span>{cottage.specs.bed}</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="font-semibold text-[#12281b] w-20 shrink-0">Balcony:</span>
+                    <span>{cottage.specs.outdoor}</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="font-semibold text-[#12281b] w-20 shrink-0">Bathroom:</span>
+                    <span>{cottage.specs.bath}</span>
+                  </div>
+                </div>
+
+                <!-- Features Tags -->
+                <div class="flex flex-wrap gap-1.5">
+                  {cottage.features.map((feat) => (
+                    <span class="px-2.5 py-1 rounded-lg bg-white border border-[#12281b]/10 text-[11px] font-mono text-[#2e5339]">
+                      ✓ {feat}
+                    </span>
+                  ))}
+                </div>
+
+                <!-- Booking Action -->
+                <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                  <a
+                    href={cottage.bookUrl}
+                    class="px-6 py-3.5 bg-gradient-to-r from-[#ba9038] to-[#d8b257] hover:from-[#c99f3e] hover:to-[#ebd082] text-[#12281b] font-bold rounded-xl text-xs font-mono uppercase tracking-wider transition-all shadow-md text-center"
+                  >
+                    Reserve This Cottage →
+                  </a>
+                  <a
+                    href="/contact-khao-sok-riverside-cottages/"
+                    class="px-4 py-3.5 border border-[#12281b]/20 hover:border-[#12281b] text-[#12281b] font-medium rounded-xl text-xs font-mono uppercase tracking-wider transition-all text-center"
+                  >
+                    Inquire
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- ============================================================
+         THE NATURE-CONNECTED STAY & LOCATION ESSENTIALS
+    ============================================================ -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <div class="bg-[#faf8f5]/95 border border-[#12281b]/10 rounded-3xl p-6 sm:p-10 shadow-xl space-y-4">
+        <span class="text-xs font-mono text-[#ba9038] tracking-widest uppercase font-semibold">ECO SANCTUARY</span>
+        <h3 class="font-display text-2xl text-[#12281b] font-bold">
+          A Nature-Connected Stay
+        </h3>
+        <p class="text-sm sm:text-base text-[#223e2c] leading-relaxed">
+          The cottages at Riverside Cottages are designed with high ceilings, natural ventilation, screened windows, ceiling fans, and mosquito nets. For many guests, the sounds of the river, birds, frogs, and surrounding rainforest become an important part of the overall Khao Sok experience.
+        </p>
+        <p class="text-sm sm:text-base text-[#223e2c] leading-relaxed">
+          This more open and nature-connected style of accommodation allows guests to experience Khao Sok at a slower pace while still enjoying comfort, cleanliness, privacy, and thoughtful hospitality.
+        </p>
+      </div>
+
+      <div class="bg-[#faf8f5]/95 border border-[#12281b]/10 rounded-3xl p-6 sm:p-10 shadow-xl space-y-4">
+        <span class="text-xs font-mono text-[#ba9038] tracking-widest uppercase font-semibold">PRIME POSITION</span>
+        <h3 class="font-display text-2xl text-[#12281b] font-bold">
+          The Perfect Location
+        </h3>
+        <p class="text-sm sm:text-base text-[#223e2c] leading-relaxed">
+          Riverside Cottages is located a few minutes drive from Khao Sok National Park headquarters and approximately one hour from Rajjaprabha Pier, making it easy to explore both the rainforest and nearby lake experiences.
+        </p>
+        <p class="text-sm sm:text-base text-[#223e2c] leading-relaxed">
+          We provide free shuttles to and from Khao Sok village and the public bus stop, so you enjoy total serenity without being stranded.
+        </p>
+        <div class="pt-2">
+          <a href="/khao-sok-map-directions/" class="inline-flex items-center gap-2 text-[#7a5813] font-mono text-xs uppercase tracking-wider font-bold hover:underline">
+            <span>View Map & Travel Directions</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Google Reviews Verified Widget -->
+    <GoogleReviewsWidget />
+
+    <!-- Action Footer Banner -->
+    <div class="bg-gradient-to-br from-[#12281b] to-[#1c3d24] text-white rounded-3xl p-8 sm:p-12 text-center space-y-6 shadow-2xl">
+      <span class="font-handwriting text-[#f7e6b5] text-2xl sm:text-3xl block">The Wild Spirit of Khao Sok</span>
+      <h2 class="font-monumental text-3xl sm:text-4xl text-white tracking-tight">
+        Ready to Book Your Riverside Retreat?
+      </h2>
+      <p class="text-sm sm:text-base text-[#e5f0ea] max-w-xl mx-auto font-light leading-relaxed">
+        Reserve directly with no credit card deposit required. Pay only when you arrive at Khao Sok Riverside Cottages.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+        <a
+          href="/booking-khao-sok-accommodation/?tab=room"
+          class="px-8 py-4 bg-gradient-to-r from-[#ba9038] to-[#d8b257] hover:from-[#c99f3e] hover:to-[#ebd082] text-[#12281b] font-bold rounded-xl text-xs font-mono uppercase tracking-wider transition-all shadow-lg"
+        >
+          Book Your Cottage Direct →
+        </a>
+        <a
+          href="/khao-sok-tour-packages/"
+          class="px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium rounded-xl text-xs font-mono uppercase tracking-wider transition-all"
+        >
+          Browse All-Inclusive Packages
+        </a>
+      </div>
+    </div>
+
   </article>
 </PageLayout>

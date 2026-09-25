@@ -1,7 +1,7 @@
 ---
-// Verbatim Authentic Content & Media from Khao Sok Riverside Cottages
+// Verbatim Authentic Copy, Exact Nomenclature & Embedded Media
 import PageLayout from '../../layouts/PageLayout.astro';
-import GoogleReviewsWidget from '../../components/GoogleReviewsWidget.astro';
+import ActivitiesBentoGrid from '../../components/ActivitiesBentoGrid.astro';
 ---
 
 <PageLayout
@@ -12,240 +12,199 @@ import GoogleReviewsWidget from '../../components/GoogleReviewsWidget.astro';
   heroSubtitle="Curated Rainforest Adventures & Park Excursions"
   breadcrumbs={[{"label": "Khao Sok Tours", "href": "/khao-sok-tours/"}]}
 >
-  <article class="max-w-4xl mx-auto space-y-10">
-    <div class="bg-[#faf8f5]/95 border border-[#12281b]/10 rounded-3xl p-4 sm:p-8 md:p-12 shadow-2xl backdrop-blur-md">
+  <article class="max-w-7xl mx-auto space-y-12">
+    <div class="bg-[#faf8f5]/95 border border-[#12281b]/10 rounded-3xl p-6 sm:p-10 md:p-14 shadow-2xl backdrop-blur-md space-y-12">
       
-      <div class="flex items-center justify-between border-b border-[#12281b]/10 pb-4 mb-8 font-mono text-[11px] tracking-[0.22em] uppercase text-[#163824]">
-        <div class="flex items-center gap-2 font-semibold">
-          <span class="text-[#7a5813]">KSR</span>
-          <span class="text-[#12281b]/20">/</span>
-          <span>FIELD DISPATCH</span>
+      <!-- Field Guide Header Badge -->
+      <div class="flex items-center justify-between border-b border-[#12281b]/10 pb-4">
+        <div class="flex items-center gap-2.5 text-[#2e6b45] text-xs uppercase tracking-widest font-semibold">
+          <span class="w-2 h-2 rounded-full bg-[#2e6b45] animate-pulse"></span>
+          <span>Tours & Safari Expeditions</span>
         </div>
-        <span class="text-[#7a5813] font-bold">KHAO SOK · THAILAND</span>
+        <span class="text-[11px] font-mono text-[#ba9038] tracking-widest uppercase font-semibold">Verified Field Guide</span>
       </div>
 
-      <div class="space-y-6 text-[#223e2c] text-base sm:text-lg leading-relaxed font-normal">
-
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
+      <!-- Introduction Section -->
+      <div class="max-w-3xl space-y-4">
+        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight flex items-center gap-3">
+          <span class="w-1.5 h-6 bg-[#2e6b45] rounded-full inline-block"></span>
           <span>Khao Sok Activities</span>
         </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
+
+        <p class="leading-relaxed text-[#223e2c] text-base sm:text-lg">
           If you are staying at Riverside Cottages we can book a wide variety of activities for you. From a Khao Sok day tour to an overnight lake trip. Our activities fall into four categories. Choose your own adventure:
         </p>
-        <ul class="space-y-3 my-6 pl-2">
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><a href="/khao-sok-lake-cheow-lan-tours/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Lake trips</a></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><a href="/khao-sok-trekking-hiking/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Hiking and trekking</a></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><a href="/khao-sok-thailand-adventures/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Local adventures</a></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><a href="/khao-sok-thailand-culture/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Thai culture</a></span>
-          </li>
-        </ul>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
+
+        <p class="leading-relaxed text-[#223e2c] text-sm text-[#2e5339]">
           There is limited availability for many Khao Sok activities in the busy seasons. Book your Khao Sok trips in advance to avoid disappointment.
         </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          You can book all your Khao Sok tours with reception when you arrive.<br /> For best results book a <span><a href="/khao-sok-tour-packages/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors"><u>package</u></a></span> in advance.
-        </p>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2016/07/khao-sok-national-park-2.jpg"
-            alt="Khao Sok lake"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok lake</figcaption>
-        </figure>
-        <h3 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Lake Tours</span>
-        </h3>
-        <ul class="space-y-3 my-6 pl-2">
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa fa-chevron-right" aria-hidden="true"></i></span><div class="fusion-li-item-content"><a href="/khao-sok-lake-cheow-lan-tours/#fulldaylake" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Full Day Cheow Lan Lake Tour</a></div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa fa-chevron-right" aria-hidden="true"></i></span><div class="fusion-li-item-content"><a href="/khao-sok-lake-cheow-lan-tours/#overnightcheowlan" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Overnight at the Lake</a></div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa fa-chevron-right" aria-hidden="true"></i></span><div class="fusion-li-item-content"><a href="/khao-sok-lake-cheow-lan-tours/#private" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Private Overnight Lake Trips</a></div></span>
-          </li>
-        </ul>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2023/03/jungle-hiking-1500-1000.jpg"
-            alt="Khao Sok Jungle trekking and hiking"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok Jungle trekking and hiking</figcaption>
-        </figure>
-        <h3 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Hiking</span>
-        </h3>
-        <ul class="space-y-3 my-6 pl-2">
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa fa-chevron-right" aria-hidden="true"></i></span><div class="fusion-li-item-content"><a href="/khao-sok-trekking-hiking/#half" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Half Day Hike</a> 700 THB</div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa fa-chevron-right" aria-hidden="true"></i></span><div class="fusion-li-item-content"><a href="/khao-sok-trekking-hiking/#full" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Full Day Hike</a> 1,400 THB</div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa fa-chevron-right" aria-hidden="true"></i></span><div class="fusion-li-item-content"><a href="/khao-sok-trekking-hiking/#night" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Night Safari</a> 700 THB</div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa fa-chevron-right" aria-hidden="true"></i></span><div class="fusion-li-item-content"><a href="/khao-sok-trekking-hiking/#daynight" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Jungle Day, Jungle Night</a> 1,600 THB</div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa fa-chevron-right" aria-hidden="true"></i></span><div class="fusion-li-item-content"><a href="/khao-sok-trekking-hiking/#flower" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Rafflesia – Giant Flower</a> Contact for price</div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa fa-chevron-right" aria-hidden="true"></i></span><div class="fusion-li-item-content"><a href="/khao-sok-trekking-hiking/#bang" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Bang Man Cave Hike</a> 1,800 THB</div></span>
-          </li>
-        </ul>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2015/09/Khao-Sok-Canoe-Trip.jpg"
-            alt="Khao Sok Thailand Adventure"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok Thailand Adventure</figcaption>
-        </figure>
-        <h3 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Local Adventures</span>
-        </h3>
-        <ul class="space-y-3 my-6 pl-2">
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa fa-chevron-right" aria-hidden="true"></i></span><div class="fusion-li-item-content"><a href="/khao-sok-thailand-adventures/#canoetrip" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Canoe Trip</a> 750 THB</div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa fa-chevron-right" aria-hidden="true"></i></span><div class="fusion-li-item-content"><a href="/khao-sok-thailand-adventures/#tubing" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">River Tubing</a> 500 THB</div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa fa-chevron-right" aria-hidden="true"></i></span><div class="fusion-li-item-content"><a href="/khao-sok-thailand-adventures/#elephants" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Elephant Experience</a> 1,500 THB</div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa fa-chevron-right" aria-hidden="true"></i></span><div class="fusion-li-item-content"><a href="/khao-sok-thailand-adventures/#caverafthike" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Cave/Raft/Hike</a> 1,700 THB</div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa fa-chevron-right" aria-hidden="true"></i></span><div class="fusion-li-item-content"><a href="/khao-sok-thailand-adventures/#birdwatching" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Bird Watching</a> 1,700 THB</div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa fa-chevron-right" aria-hidden="true"></i></span><div class="fusion-li-item-content"><a href="/khao-sok-thailand-adventures/#camping" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Jungle Camping</a> 3,000 THB</div></span>
-          </li>
-        </ul>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2015/09/Thai-Massage1.jpg"
-            alt="Experience Thai Culture"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Experience Thai Culture</figcaption>
-        </figure>
-        <h3 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Thai Culture</span>
-        </h3>
-        <ul class="space-y-3 my-6 pl-2">
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa fa-chevron-right" aria-hidden="true"></i></span><div class="fusion-li-item-content"><a href="/khao-sok-thailand-culture/#cooking" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Thai Jungle Cooking</a> 1,500 THB</div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa fa-chevron-right" aria-hidden="true"></i></span><div class="fusion-li-item-content"><a href="/khao-sok-thailand-culture/#massage" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Thai Massage</a> 600 THB</div></span>
-          </li>
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span><span class="icon-wrapper circle-no"><i class="fusion-li-icon fa fa-chevron-right" aria-hidden="true"></i></span><div class="fusion-li-item-content"><a href="/khao-sok-thailand-culture/#hotsprings" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Hot Springs</a> 650 THB</div></span>
-          </li>
-        </ul>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>We know Khao Sok</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          We know how to make your Khao Sok vacation memorable because we love exploring ourselves. This helps us suggest half-day hikes, day tours, longer treks, and overnight adventures. <a href="/khao-sok-2-day-tour/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Khao Sok 2-day tours</a> are a popular choice.
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Our knowledgeable and responsible guides help you make the most of your Khao Sok activities. If you do decide to visit Khao Sok you can get here easily from Surat Thani, Phuket, Krabi or Khao Lak. When you arrive, our activities will help you explore Khao Sok. You can enjoy early morning mist safaris and hikes to see amazing mountain views.
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          SUPPORTING<br /> Environmental Sustainability<br /> & Social Responsibility
-        </p>
-        <div class="my-10 aspect-video rounded-2xl overflow-hidden shadow-2xl border border-[#12281b]/15 bg-black">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/LS2YIukmAzA?rel=0"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
+      </div>
+
+      <!-- Elite 2026 Bento Grid for the 4 Categories with Authentic Prices & Reception Notice -->
+      <ActivitiesBentoGrid showTitle={false} />
+
+      <!-- Section: We Know Khao Sok -->
+      <div class="pt-10 border-t border-[#12281b]/10 space-y-8">
+        <div class="max-w-3xl space-y-4">
+          <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight flex items-center gap-3">
+            <span class="w-1.5 h-6 bg-[#2e6b45] rounded-full inline-block"></span>
+            <span>We know Khao Sok</span>
+          </h2>
+          <p class="leading-relaxed text-[#223e2c] text-base sm:text-lg">
+            We know how to make your Khao Sok vacation memorable because we love exploring ourselves. This helps us suggest half-day hikes, day tours, longer treks, and overnight adventures. Khao Sok 2-day tours are a popular choice.
+          </p>
+          <p class="leading-relaxed text-[#223e2c] text-base sm:text-lg">
+            Our knowledgeable and responsible guides help you make the most of your Khao Sok activities. If you do decide to visit Khao Sok you can get here easily from Surat Thani, Phuket, Krabi or Khao Lak. When you arrive, our activities will help you explore Khao Sok. You can enjoy early morning mist safaris and hikes to see amazing mountain views.
+          </p>
         </div>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          <a href="/khao-sok-videos/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Discover more videos here</a>
-        </p>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Khao Sok Trips</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Maybe you are wondering <a href="/top-6-activities-in-khao-sok/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">what to do in Khao Sok</a>? From multi-day excursions, to a Khao Sok day tour, there are options for all! If you are looking for <a href="/khao-sok-family-holiday-thailand/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">family-friendly</a> Khao Sok activities with children, we have fantastic opportunities. If a laid-back, romantic getaway with your partner is more your style, we know just the right places.
-        </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Or, if deep-jungle adventures are what you are seeking, we can arrange tours to meet your needs and get the most from your Khao Sok trips. For best results booking your Khao Sok national park tour to Cheow Lan lake we recommend booking one of our <a href="/khao-sok-tour-packages/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">tour packages</a>.
-        </p>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Thoughts from our Guests</span>
-        </h2>
-        <!-- Luxury Booking CTA Card -->
-        <div class="my-12 p-8 sm:p-10 rounded-3xl bg-[#12281b] text-white shadow-2xl border border-white/10 relative overflow-hidden">
-          <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <div>
-              <span class="text-xs uppercase tracking-widest text-[#ba9038] font-semibold">Reserve Your Experience</span>
-              <h3 class="font-display text-2xl sm:text-3xl text-white font-semibold mt-1">Ready to Book this Experience?</h3>
-              <p class="text-[#abd0bb] text-sm sm:text-base mt-2 max-w-xl">
-                No deposit required — book directly with our honor system guarantee. Free private shuttle pickup from the Khao Sok bus stop included.
-              </p>
+
+        <!-- Environmental Sustainability Callout & Authentic YouTube Video -->
+        <div class="bg-gradient-to-br from-[#12281b] to-[#1c3d24] text-white rounded-3xl p-6 sm:p-10 border border-[#ba9038]/30 shadow-2xl space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-5">
+            <div class="space-y-1">
+              <span class="text-[11px] font-mono text-[#ba9038] tracking-widest uppercase font-semibold">Responsible Tourism</span>
+              <h3 class="font-monumental text-xl sm:text-2xl text-white">
+                Environmental Sustainability & Social Responsibility
+              </h3>
             </div>
             <a
-              href="/booking-khao-sok-accommodation/?tab=package"
-              class="px-8 py-4 rounded-full bg-[#ba9038] hover:bg-[#d8b257] text-[#12281b] font-medium text-sm sm:text-base tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl flex-shrink-0"
+              href="/khao-sok-videos/"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-mono text-xs uppercase tracking-wider transition-all self-start sm:self-auto"
             >
-              Book Package Now →
+              <span>Discover more videos</span>
+              <span>→</span>
+            </a>
+          </div>
+
+          <!-- YouTube Video Responsive Embed (LS2YIukmAzA) -->
+          <div class="rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black aspect-video max-w-4xl mx-auto">
+            <iframe
+              class="w-full h-full"
+              src="https://www.youtube.com/embed/LS2YIukmAzA?rel=0"
+              title="Khao Sok Activities Video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+
+          <div class="text-center pt-2">
+            <a
+              href="/khao-sok-videos/"
+              class="inline-flex items-center gap-2 text-[#ebd082] hover:text-white font-mono text-xs uppercase tracking-widest transition-colors font-medium"
+            >
+              <span>🎥 Discover more Khao Sok videos here</span>
+              <span>→</span>
             </a>
           </div>
         </div>
       </div>
 
-      <div class="mt-16 pt-12 border-t border-[#12281b]/10"><GoogleReviewsWidget /></div>
+      <!-- Section: Khao Sok Trips -->
+      <div class="pt-10 border-t border-[#12281b]/10 max-w-3xl space-y-4">
+        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight flex items-center gap-3">
+          <span class="w-1.5 h-6 bg-[#2e6b45] rounded-full inline-block"></span>
+          <span>Khao Sok Trips</span>
+        </h2>
+        <p class="leading-relaxed text-[#223e2c] text-base sm:text-lg">
+          Maybe you are wondering what to do in Khao Sok? From multi-day excursions, to a Khao Sok day tour, there are options for all! If you are looking for family-friendly Khao Sok activities with children, we have fantastic opportunities. If a laid-back, romantic getaway with your partner is more your style, we know just the right places.
+        </p>
+        <p class="leading-relaxed text-[#223e2c] text-base sm:text-lg">
+          Or, if deep-jungle adventures are what you are seeking, we can arrange tours to meet your needs and get the most from your Khao Sok trips. For best results booking your Khao Sok national park tour to Cheow Lan lake we recommend booking one of our tour packages.
+        </p>
+      </div>
+
+      <!-- Section: Thoughts from our Guests (Reviews & Ratings) -->
+      <div class="pt-10 border-t border-[#12281b]/10 space-y-8">
+        <div class="space-y-3">
+          <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight flex items-center gap-3">
+            <span class="w-1.5 h-6 bg-[#2e6b45] rounded-full inline-block"></span>
+            <span>Thoughts from our Guests</span>
+          </h2>
+          <p class="text-sm font-mono text-[#ba9038] tracking-widest uppercase">Verified Traveler Ratings</p>
+        </div>
+
+        <!-- Rating Badges -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="p-4 rounded-2xl bg-white border border-[#12281b]/10 text-center shadow-sm">
+            <span class="block text-2xl font-monumental text-[#12281b]">4.4 / 5</span>
+            <span class="text-xs text-[#2e5339] font-mono uppercase tracking-wider">564 Google Reviews</span>
+          </div>
+          <div class="p-4 rounded-2xl bg-white border border-[#12281b]/10 text-center shadow-sm">
+            <span class="block text-2xl font-monumental text-[#12281b]">8.9 / 10</span>
+            <span class="text-xs text-[#2e5339] font-mono uppercase tracking-wider">1,098 Booking.com</span>
+          </div>
+          <div class="p-4 rounded-2xl bg-white border border-[#12281b]/10 text-center shadow-sm">
+            <span class="block text-2xl font-monumental text-[#12281b]">4.5 / 5</span>
+            <span class="text-xs text-[#2e5339] font-mono uppercase tracking-wider">397 Tripadvisor</span>
+          </div>
+        </div>
+
+        <!-- Guest Testimonials Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-6 rounded-2xl bg-white/70 border border-[#12281b]/10 shadow-sm space-y-3">
+            <div class="flex items-center gap-1 text-[#ba9038] text-sm">★★★★★</div>
+            <h4 class="font-semibold text-[#163824] text-base">Would highly recommend</h4>
+            <p class="text-sm text-[#223e2c] leading-relaxed italic">
+              "The place is fantastic, you feel immersed in the jungle a million miles from anywhere. The elephant sanctuary was a must-see. The elephant caregivers were amazing and gentle with the beautiful animals. They fed the elephants, gave them a mud bath, and then cleaned them in the river."
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white/70 border border-[#12281b]/10 shadow-sm space-y-3">
+            <div class="flex items-center gap-1 text-[#ba9038] text-sm">★★★★★</div>
+            <h4 class="font-semibold text-[#163824] text-base">Experience Thai Culture</h4>
+            <p class="text-sm text-[#223e2c] leading-relaxed italic">
+              "This is something you have to experience. The other great activity was the organic farm / Thai cooking class visit. The guys there were so great to spend time with and the food was so good. I’ve cooked the red curry several times since we got back."
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white/70 border border-[#12281b]/10 shadow-sm space-y-3">
+            <div class="flex items-center gap-1 text-[#ba9038] text-sm">★★★★★</div>
+            <h4 class="font-semibold text-[#163824] text-base">Fantastic and inspiring</h4>
+            <p class="text-sm text-[#223e2c] leading-relaxed italic">
+              "Fantastic tour with a lot of impressive nature. First 4 km in kayaks up the river where we saw monkeys, snakes and other animals. Later a boat tour across the big manmade lake to a floating restaurant where we were served fantastic food and lots of it. The guide was extremely nice and spoke very understanding German and English."
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white/70 border border-[#12281b]/10 shadow-sm space-y-3">
+            <div class="flex items-center gap-1 text-[#ba9038] text-sm">★★★★★</div>
+            <h4 class="font-semibold text-[#163824] text-base">We could have stayed forever!</h4>
+            <p class="text-sm text-[#223e2c] leading-relaxed italic">
+              "Also we recommend the overnight Cheow Lan lake tour too. The bamboo raft houses and the limestone cliffs were amazing. They include many activities and take care of everything for you. Also a great way to socialise."
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white/70 border border-[#12281b]/10 shadow-sm space-y-3">
+            <div class="flex items-center gap-1 text-[#ba9038] text-sm">★★★★★</div>
+            <h4 class="font-semibold text-[#163824] text-base">Wonderful experience</h4>
+            <p class="text-sm text-[#223e2c] leading-relaxed italic">
+              "We did the 3D2N rainforest & lake tour package, and thoroughly enjoyed our experience. They organized everything well, and the scenery around Khao Sok looked beautiful. Could have spent one extra night there."
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white/70 border border-[#12281b]/10 shadow-sm space-y-3">
+            <div class="flex items-center gap-1 text-[#ba9038] text-sm">★★★★★</div>
+            <h4 class="font-semibold text-[#163824] text-base">Highlight of our entire trip</h4>
+            <p class="text-sm text-[#223e2c] leading-relaxed italic">
+              "The tour was the highlight of our entire trip to Thailand. We had one night in the floating bungalows on the lake in the national park. It was fantastic. The half a day trek including a decent walk and swim inside a cave."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Footer -->
+      <div class="mt-12 flex flex-wrap gap-4 pt-8 border-t border-[#12281b]/10">
+        <a href="/booking-khao-sok-accommodation/" class="px-6 py-3.5 bg-[#ba9038] hover:bg-[#d8b257] text-[#12281b] font-semibold rounded-xl text-sm transition-all duration-200 shadow-lg shadow-[#ba9038]/20">
+          Book Your Stay & Tours
+        </a>
+        <a href="/khao-sok-tour-packages/" class="px-6 py-3.5 bg-[#12281b] hover:bg-[#1c3d24] text-white font-semibold rounded-xl text-sm transition-all duration-200">
+          Explore Tour Packages
+        </a>
+        <a href="/contact-khao-sok-riverside-cottages/" class="px-6 py-3.5 border border-[#12281b]/20 hover:border-[#2e6b45] text-[#12281b] hover:text-[#2e6b45] rounded-xl text-sm transition-all duration-200 font-medium">
+          Contact Concierge
+        </a>
+      </div>
+
     </div>
   </article>
 </PageLayout>

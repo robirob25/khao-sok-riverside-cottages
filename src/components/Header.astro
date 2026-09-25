@@ -415,31 +415,56 @@ const { isHome = false } = Astro.props;
 </script>
 
 <style>
-  /* Unscrolled (transparent over hero) */
-  #main-nav:not(.nav-scrolled) #nav-brand p {
+  /* Unscrolled ONLY on home page (transparent over 100vh dark hero photo) */
+  #main-nav[data-is-home="true"]:not(.nav-scrolled) #nav-brand p {
     color: #ffffff !important;
   }
-  #main-nav:not(.nav-scrolled) #nav-brand:hover p {
+  #main-nav[data-is-home="true"]:not(.nav-scrolled) #nav-brand:hover p {
     color: #f7e6b5 !important;
   }
-  #main-nav:not(.nav-scrolled) .lang-switch {
-    background-color: rgba(0, 0, 0, 0.35);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+  #main-nav[data-is-home="true"]:not(.nav-scrolled) .lang-switch {
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     color: #ffffff;
   }
-  #main-nav:not(.nav-scrolled) .lang-btn {
-    color: rgba(255, 255, 255, 0.75);
+  #main-nav[data-is-home="true"]:not(.nav-scrolled) .lang-btn {
+    color: rgba(255, 255, 255, 0.85);
   }
-  #main-nav:not(.nav-scrolled) .lang-btn:hover {
+  #main-nav[data-is-home="true"]:not(.nav-scrolled) .lang-btn:hover {
     color: #ffffff;
   }
-  #main-nav:not(.nav-scrolled) .lang-btn[aria-pressed="true"],
-  #main-nav:not(.nav-scrolled) .lang-btn.active {
+  #main-nav[data-is-home="true"]:not(.nav-scrolled) .lang-btn[aria-pressed="true"],
+  #main-nav[data-is-home="true"]:not(.nav-scrolled) .lang-btn.active {
     color: #f7e6b5 !important;
     font-weight: 700 !important;
   }
-  #main-nav:not(.nav-scrolled) .lang-divider {
-    color: rgba(255, 255, 255, 0.4);
+  #main-nav[data-is-home="true"]:not(.nav-scrolled) .lang-divider {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  /* Inner Pages: Default high-contrast dark forest green styling */
+  #main-nav:not([data-is-home="true"]) #nav-brand p {
+    color: #ffffff !important;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+  }
+  #main-nav:not([data-is-home="true"]) .lang-switch {
+    background-color: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: #ffffff;
+  }
+  #main-nav:not([data-is-home="true"]) .lang-btn {
+    color: rgba(255, 255, 255, 0.85);
+  }
+  #main-nav:not([data-is-home="true"]) .lang-btn:hover {
+    color: #ffffff;
+  }
+  #main-nav:not([data-is-home="true"]) .lang-btn[aria-pressed="true"],
+  #main-nav:not([data-is-home="true"]) .lang-btn.active {
+    color: #f7e6b5 !important;
+    font-weight: 700 !important;
+  }
+  #main-nav:not([data-is-home="true"]) .lang-divider {
+    color: rgba(255, 255, 255, 0.5);
   }
 
   /* Scrolled Navbar */

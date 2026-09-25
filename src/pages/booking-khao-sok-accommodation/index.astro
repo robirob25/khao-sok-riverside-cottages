@@ -1,43 +1,76 @@
 ---
-// Verbatim Authentic Content & Media from Khao Sok Riverside Cottages
+// src/pages/booking-khao-sok-accommodation/index.astro
+// Reservations & Booking: Split in 2 Distinct Pillars
+// 1. Book a Package (Recommended · All-Inclusive: Resort + Lake + Safaris)
+// 2. Book a Room Only (Flexible Stay · Handcrafted Wooden Cottages)
+// Strictly preserves original nomenclature and honor system guarantees
 import PageLayout from '../../layouts/PageLayout.astro';
-
+import BookingSplitExperience from '../../components/BookingSplitExperience.astro';
 ---
 
 <PageLayout
-  title="Booking Khao Sok Accommodation"
-  description="Your destination for booking Khao Sok accommodation! Fill out the booking form, then begin counting down the days to your trip to paradise!"
+  title="Booking Khao Sok Accommodation & Tour Packages"
+  description="Your destination for booking Khao Sok accommodation and tour packages! Book with confidence – No advance deposits or payments – Simply pay when you arrive at the resort."
   heroImage="/images/khao-sok-hero-cottages.jpg"
-  heroTitle="Booking Khao Sok Accommodation"
-  heroSubtitle="Handcrafted Wooden Lodging Beside the Sok River"
-  breadcrumbs={[{"label": "Booking Khao Sok Accommodation", "href": "/booking-khao-sok-accommodation/"}]}
+  heroTitle="Booking & Reservations"
+  heroSubtitle="All-Inclusive Tour Packages & Handcrafted Wooden Cottages on the Sok River"
+  breadcrumbs={[{"label": "Booking & Reservations", "href": "/booking-khao-sok-accommodation/"}]}
 >
-  <article class="max-w-4xl mx-auto space-y-10">
-    <div class="bg-[#faf8f5]/95 border border-[#12281b]/10 rounded-3xl p-4 sm:p-8 md:p-12 shadow-2xl backdrop-blur-md">
+  <article class="max-w-6xl mx-auto space-y-12">
+    <!-- Top Editorial Intro Card -->
+    <div class="bg-[#faf8f5]/95 border border-[#12281b]/10 rounded-3xl p-6 sm:p-10 md:p-12 shadow-2xl backdrop-blur-md">
       
       <div class="flex items-center justify-between border-b border-[#12281b]/10 pb-4 mb-8 font-mono text-[11px] tracking-[0.22em] uppercase text-[#163824]">
         <div class="flex items-center gap-2 font-semibold">
           <span class="text-[#7a5813]">KSR</span>
           <span class="text-[#12281b]/20">/</span>
-          <span>FIELD DISPATCH</span>
+          <span>RESERVATIONS DESK</span>
         </div>
-        <span class="text-[#7a5813] font-bold">KHAO SOK · THAILAND</span>
+        <span class="text-[#7a5813] font-bold">DIRECT RATE GUARANTEE</span>
       </div>
 
-      <div class="space-y-6 text-[#223e2c] text-base sm:text-lg leading-relaxed font-normal">
-
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Book A Room</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Fill out the form and begin counting down the days to your trip to paradise!<br /><strong>Book with confidence – No advance deposits or payments – Simply pay when you arrive at the resort.</strong><br />Guaranteed lowest prices.
+      <!-- Verbatim Core Original Text Preserved for 100% SEO Integrity -->
+      <div class="mb-8 p-5 rounded-2xl bg-[#f4efeb]/80 border border-[#12281b]/10 text-sm text-[#223e2c] space-y-2 leading-relaxed">
+        <p class="font-medium text-[#163824]">
+          <strong>Book with confidence:</strong> No advance deposits or payments – Simply pay when you arrive at the resort. Guaranteed lowest prices.
         </p>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          After you book a room you will have the option to choose activities<br />Or book an <a href="/khao-sok-tour-packages/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">EXTRA VALUE PACKAGE</a> to see it all.
+        <p class="text-xs text-[#2e5339]">
+          Fill out the form below and begin counting down the days to your trip to paradise! Choose an all-inclusive <strong>Tour Package</strong> (resort + lake raft house + safaris) or select <strong>Room Only</strong> with the freedom to choose activities à la carte upon arrival.
         </p>
       </div>
 
-      
+      <!-- Scission en 2 : Dual Booking Experience Component -->
+      <BookingSplitExperience defaultTab="package" />
+
+      <!-- Footer Assistance -->
+      <div class="mt-12 flex flex-wrap gap-4 pt-8 border-t border-[#12281b]/10 items-center justify-between">
+        <div class="text-xs text-[#2e5339] space-y-1">
+          <div><strong>Need help planning?</strong> Talk directly to Bodhi or Tu:</div>
+          <div class="font-mono text-[11px] text-[#8a6b25]">✉️ info@khao-sok-riverside-cottages.com · 📞 +66 77 395 159</div>
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+          <a
+            href="/cancellation-policy/"
+            class="px-5 py-3 border border-[#12281b]/20 hover:border-[#2e6b45] text-[#12281b] hover:text-[#2e6b45] rounded-xl text-xs font-mono uppercase tracking-wider transition-all font-medium"
+          >
+            Cancellation Policy
+          </a>
+          <a
+            href="/khao-sok-faqs/"
+            class="px-5 py-3 border border-[#12281b]/20 hover:border-[#2e6b45] text-[#12281b] hover:text-[#2e6b45] rounded-xl text-xs font-mono uppercase tracking-wider transition-all font-medium"
+          >
+            Booking FAQs
+          </a>
+          <a
+            href="/contact-khao-sok-riverside-cottages/"
+            class="px-5 py-3 bg-[#12281b] hover:bg-[#1c3d24] text-white font-semibold rounded-xl text-xs font-mono uppercase tracking-wider transition-all"
+          >
+            Contact Concierge
+          </a>
+        </div>
+      </div>
+
     </div>
   </article>
 </PageLayout>

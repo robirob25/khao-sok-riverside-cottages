@@ -65,12 +65,21 @@ import PageLayout from '../../layouts/PageLayout.astro';
             <span>For activities marked with * symbol, the listed price does not include entrance fee to National Park (currently 340 Baht).</span>
           </li>
         </ul>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Activities and tours are arranged exclusively for guests staying at Riverside Cottages. If you have not yet booked your stay, please arrange your accommodation first before completing this form.
-        </p>
+        <div class="mt-8 pt-8 border-t border-[#12281b]/10 flex flex-wrap gap-4">
+          <a
+            href="/khao-sok-tours/"
+            class="px-6 py-3.5 bg-gradient-to-r from-[#ba9038] to-[#d8b257] hover:from-[#c99f3e] hover:to-[#ebd082] text-[#12281b] font-bold rounded-xl text-xs font-mono uppercase tracking-wider transition-all shadow-md"
+          >
+            Explore All Activities & Rates →
+          </a>
+          <a
+            href="/booking-khao-sok-accommodation/?tab=package"
+            class="px-6 py-3.5 bg-[#12281b] hover:bg-[#1c3d24] text-white font-medium rounded-xl text-xs font-mono uppercase tracking-wider transition-all"
+          >
+            Book an All-Inclusive Package
+          </a>
+        </div>
       </div>
-
-      
     </div>
   </article>
 </PageLayout>
