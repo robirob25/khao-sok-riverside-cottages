@@ -1,6 +1,7 @@
 ---
 // Verbatim Authentic Content & Media from Khao Sok Riverside Cottages
 import PageLayout from '../../layouts/PageLayout.astro';
+import DualVideoPlayer from '../../components/DualVideoPlayer.astro';
 
 ---
 
@@ -86,26 +87,11 @@ import PageLayout from '../../layouts/PageLayout.astro';
         <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
           <span>Thailand Culture – Massage</span>
         </h2>
-        <div class="my-10 aspect-video rounded-2xl overflow-hidden shadow-2xl border border-[#12281b]/15 bg-black">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/crW39GTubV0?rel=0"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
-        <div class="my-10 max-w-[340px] mx-auto rounded-2xl overflow-hidden shadow-2xl border border-[#12281b]/15 bg-black aspect-[9/16]">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/1VRgvD05P_8?rel=0"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
+        <DualVideoPlayer
+          landscapeSrc="https://www.youtube.com/embed/crW39GTubV0?rel=0"
+          shortSrc="https://www.youtube.com/embed/1VRgvD05P_8?rel=0"
+          caption="Thai Massage Experience"
+        />
         <p class="mb-5 leading-relaxed text-[#223e2c]">
           <span>We have a beautiful open-air massage room by the river. It is a soothing way to unwind in the jungle. Our trained masseuses offer a choice of relaxing oil massage or traditional Thai style massage. Massage is an integral part of Thai culture. Learn more about the <a href="https://www.medicalnewstoday.com/articles/323687" target="_blank" rel="noopener noreferrer" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">potential health benefits of Thai massage</a>.</span>
         </p>
@@ -121,26 +107,11 @@ import PageLayout from '../../layouts/PageLayout.astro';
         <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
           <span>Khao Sok Hot Springs</span>
         </h2>
-        <div class="my-10 aspect-video rounded-2xl overflow-hidden shadow-2xl border border-[#12281b]/15 bg-black">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/33MAMT57XqY?rel=0"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
-        <div class="my-10 max-w-[340px] mx-auto rounded-2xl overflow-hidden shadow-2xl border border-[#12281b]/15 bg-black aspect-[9/16]">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/2MZHBTJ_V68?rel=0"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
+        <DualVideoPlayer
+          landscapeSrc="https://www.youtube.com/embed/33MAMT57XqY?rel=0"
+          shortSrc="https://www.youtube.com/embed/2MZHBTJ_V68?rel=0"
+          caption="Khao Sok Hot Springs"
+        />
         <p class="mb-5 leading-relaxed text-[#223e2c]">
           Looking for total relaxation? The naturally heated water pours from the springs into tiled pools where you can sit and relax. With a clean, modern style, the hot springs are a popular place for locals, so you get a taste of Thailand culture. The 15 minute drive from our resort includes a stop at a viewpoint with a dramatic vista of the Khao Sok valley.
         </p>

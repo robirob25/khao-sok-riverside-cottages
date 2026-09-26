@@ -1,6 +1,7 @@
 ---
 // Verbatim Authentic Content & Media from Khao Sok Riverside Cottages
 import PageLayout from '../../layouts/PageLayout.astro';
+import DualVideoPlayer from '../../components/DualVideoPlayer.astro';
 
 ---
 
@@ -26,26 +27,11 @@ import PageLayout from '../../layouts/PageLayout.astro';
 
       <div class="space-y-6 text-[#223e2c] text-base sm:text-lg leading-relaxed font-normal">
 
-        <div class="my-10 aspect-video rounded-2xl overflow-hidden shadow-2xl border border-[#12281b]/15 bg-black">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/q5Cs7wk3RxQ?rel=0"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
-        <div class="my-10 max-w-[340px] mx-auto rounded-2xl overflow-hidden shadow-2xl border border-[#12281b]/15 bg-black aspect-[9/16]">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/HRVqaKyQU3I?rel=0"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
+        <DualVideoPlayer
+          landscapeSrc="https://www.youtube.com/embed/q5Cs7wk3RxQ?rel=0"
+          shortSrc="https://www.youtube.com/embed/HRVqaKyQU3I?rel=0"
+          caption="Jungle Cooking Class"
+        />
         <p class="mb-5 leading-relaxed text-[#223e2c]">
           Nearly everyone that visits Thailand loves Thai food, and it is easy to understand why. Thailand’s abundance of herbs and spices make seasoning food easy. Additionally, Thais have mastered the art of blending these spices into masterworks of taste and texture. Spicy, sweet, sour, salty: every bite of a well-prepared Thai dish has a little of each. It is no surprise that Thai cooking courses are so popular among Westerners traveling here. Who doesn’t want to learn a little of this culinary magic to take home? Here at Khao Sok Riverside Cottages, we have our own twist on the standard Thai cooking course. Here, deep in one of the oldest forests on the planet, our guests learn Khao Sok jungle cooking!
         </p>

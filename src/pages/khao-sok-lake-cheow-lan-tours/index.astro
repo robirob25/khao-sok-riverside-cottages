@@ -1,6 +1,7 @@
 ---
 // Verbatim Authentic Content & Media from Khao Sok Riverside Cottages
 import PageLayout from '../../layouts/PageLayout.astro';
+import DualVideoPlayer from '../../components/DualVideoPlayer.astro';
 
 ---
 
@@ -92,26 +93,11 @@ import PageLayout from '../../layouts/PageLayout.astro';
         <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
           <span>Overnight lake tour</span>
         </h2>
-        <div class="my-10 aspect-video rounded-2xl overflow-hidden shadow-2xl border border-[#12281b]/15 bg-black">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/06CtCq41X6o?rel=0"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
-        <div class="my-10 max-w-[340px] mx-auto rounded-2xl overflow-hidden shadow-2xl border border-[#12281b]/15 bg-black aspect-[9/16]">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/zlA4MJ4AzD4?rel=0"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
+        <DualVideoPlayer
+          landscapeSrc="https://www.youtube.com/embed/06CtCq41X6o?rel=0"
+          shortSrc="https://www.youtube.com/embed/zlA4MJ4AzD4?rel=0"
+          caption="Overnight Lake Expedition"
+        />
         <p class="mb-5 leading-relaxed text-[#223e2c]">
           The best way to appreciate the lake is on an overnight tour. On your first day you will experience everything included in the 1-day trip. Board a longtail boat for an incredible wildlife safari to spot the local wildlife. You can expect to see monkeys, giant hornbills, and maybe even wild elephants.
         </p>
@@ -124,26 +110,11 @@ import PageLayout from '../../layouts/PageLayout.astro';
         <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
           <span>Private Overnight Lake Tours</span>
         </h2>
-        <div class="my-10 aspect-video rounded-2xl overflow-hidden shadow-2xl border border-[#12281b]/15 bg-black">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/sTj1qcYTpBM?rel=0"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
-        <div class="my-10 max-w-[340px] mx-auto rounded-2xl overflow-hidden shadow-2xl border border-[#12281b]/15 bg-black aspect-[9/16]">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/6wy6o6iIbbE?rel=0"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
+        <DualVideoPlayer
+          landscapeSrc="https://www.youtube.com/embed/sTj1qcYTpBM?rel=0"
+          shortSrc="https://www.youtube.com/embed/6wy6o6iIbbE?rel=0"
+          caption="Private Lake Expedition"
+        />
         <p class="mb-5 leading-relaxed text-[#223e2c]">
           If you do not want to join a group, we can set up private tours. These tours offer flexible activities and choices of floating bungalows. Options include bamboo raft houses (with shared bathrooms) or deluxe bungalows with private bathrooms and air-conditioning.
         </p>

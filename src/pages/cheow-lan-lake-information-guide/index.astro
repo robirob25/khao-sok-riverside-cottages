@@ -1,6 +1,7 @@
 ---
 // Verbatim Authentic Content & Media from Khao Sok Riverside Cottages
 import PageLayout from '../../layouts/PageLayout.astro';
+import DualVideoPlayer from '../../components/DualVideoPlayer.astro';
 
 ---
 
@@ -62,26 +63,11 @@ import PageLayout from '../../layouts/PageLayout.astro';
             <span><strong>Scenery:</strong> The lake’s serene atmosphere and striking karst formations make it an unforgettable escape from Thailand’s busier beaches and cities.</span>
           </li>
         </ul>
-        <div class="my-10 aspect-video rounded-2xl overflow-hidden shadow-2xl border border-[#12281b]/15 bg-black">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/06CtCq41X6o?rel=0"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
-        <div class="my-10 max-w-[340px] mx-auto rounded-2xl overflow-hidden shadow-2xl border border-[#12281b]/15 bg-black aspect-[9/16]">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/lkPrjYFEsD0?rel=0"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
+        <DualVideoPlayer
+          landscapeSrc="https://www.youtube.com/embed/06CtCq41X6o?rel=0"
+          shortSrc="https://www.youtube.com/embed/lkPrjYFEsD0?rel=0"
+          caption="Cheow Lan Lake Highlights"
+        />
         <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
           <span>Why Is It So Famous?</span>
         </h2>

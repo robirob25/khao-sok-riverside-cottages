@@ -1,6 +1,7 @@
 ---
 // Verbatim Authentic Content & Media from Khao Sok Riverside Cottages
 import PageLayout from '../../layouts/PageLayout.astro';
+import DualVideoPlayer from '../../components/DualVideoPlayer.astro';
 
 ---
 
@@ -57,26 +58,11 @@ import PageLayout from '../../layouts/PageLayout.astro';
         <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
           <span>Half Day Jungle Hike</span>
         </h2>
-        <div class="my-10 aspect-video rounded-2xl overflow-hidden shadow-2xl border border-[#12281b]/15 bg-black">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/lidrzbqNuDM?rel=0"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
-        <div class="my-10 max-w-[340px] mx-auto rounded-2xl overflow-hidden shadow-2xl border border-[#12281b]/15 bg-black aspect-[9/16]">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/dNdnN0f4-lQ?rel=0"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
+        <DualVideoPlayer
+          landscapeSrc="https://www.youtube.com/embed/lidrzbqNuDM?rel=0"
+          shortSrc="https://www.youtube.com/embed/dNdnN0f4-lQ?rel=0"
+          caption="Half Day Jungle Hike"
+        />
         <p class="mb-5 leading-relaxed text-[#223e2c]">
           Explore the rainforest trails of Khao Sok National Park on a relaxed half-day jungle hike suitable for couples, families, and anyone wanting to experience the rainforest at a comfortable pace.
         </p>
@@ -95,26 +81,11 @@ import PageLayout from '../../layouts/PageLayout.astro';
         <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
           <span>Khao Sok Trekking Full Day Hike</span>
         </h2>
-        <div class="my-10 aspect-video rounded-2xl overflow-hidden shadow-2xl border border-[#12281b]/15 bg-black">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/F6h6--ve1VQ?rel=0"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
-        <div class="my-10 max-w-[340px] mx-auto rounded-2xl overflow-hidden shadow-2xl border border-[#12281b]/15 bg-black aspect-[9/16]">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/gQWWp_op6g0?rel=0"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
+        <DualVideoPlayer
+          landscapeSrc="https://www.youtube.com/embed/F6h6--ve1VQ?rel=0"
+          shortSrc="https://www.youtube.com/embed/gQWWp_op6g0?rel=0"
+          caption="Full Day Trekking Expedition"
+        />
         <p class="mb-5 leading-relaxed text-[#223e2c]">
           Spend a full day trekking deeper into the rainforest of Khao Sok National Park with one of our local guides. These longer hikes allow more time to explore quieter jungle trails, rivers, waterfalls, and remote areas of the forest while learning about the plants, wildlife, and ecology of one of the oldest rainforests in the world.
         </p>
@@ -136,26 +107,11 @@ import PageLayout from '../../layouts/PageLayout.astro';
         <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
           <span>Night Safari</span>
         </h2>
-        <div class="my-10 aspect-video rounded-2xl overflow-hidden shadow-2xl border border-[#12281b]/15 bg-black">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/dNg0P5Qx-Cg?rel=0"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
-        <div class="my-10 max-w-[340px] mx-auto rounded-2xl overflow-hidden shadow-2xl border border-[#12281b]/15 bg-black aspect-[9/16]">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/Xn0zX0ulTFs?rel=0"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
+        <DualVideoPlayer
+          landscapeSrc="https://www.youtube.com/embed/dNg0P5Qx-Cg?rel=0"
+          shortSrc="https://www.youtube.com/embed/Xn0zX0ulTFs?rel=0"
+          caption="Night Safari Experience"
+        />
         <p class="mb-5 leading-relaxed text-[#223e2c]">
           When darkness falls in Khao Sok, the rainforest changes completely. Join one of our local guides on a <a href="/khao-sok-night-safari/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">night safari</a> and experience the sounds, movement, and atmosphere of the jungle after sunset.
         </p>
@@ -174,26 +130,11 @@ import PageLayout from '../../layouts/PageLayout.astro';
         <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
           <span>Jungle Day, Jungle Night</span>
         </h2>
-        <div class="my-10 aspect-video rounded-2xl overflow-hidden shadow-2xl border border-[#12281b]/15 bg-black">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/dp8H0Ic8HRM?rel=0"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
-        <div class="my-10 max-w-[340px] mx-auto rounded-2xl overflow-hidden shadow-2xl border border-[#12281b]/15 bg-black aspect-[9/16]">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/tXq9ovhJCQY?rel=0"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
+        <DualVideoPlayer
+          landscapeSrc="https://www.youtube.com/embed/dp8H0Ic8HRM?rel=0"
+          shortSrc="https://www.youtube.com/embed/tXq9ovhJCQY?rel=0"
+          caption="Jungle Day & Night Adventure"
+        />
         <p class="mb-5 leading-relaxed text-[#223e2c]">
           Experience the rainforest through both daylight and darkness on this extended jungle adventure combining afternoon trekking with a guided night safari.
         </p>
