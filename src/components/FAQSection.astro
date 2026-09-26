@@ -1,0 +1,149 @@
+---
+// FAQSection.astro — 2026 Interactive FAQ Accordion Component
+// Silent Luxury Editorial Design matching Aman / Six Senses Aesthetic
+
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  eyebrow = "07 / GUEST INTELLIGENCE",
+  title = "Frequently Asked Questions",
+  subtitle = "Everything you need to know before visiting Khao Sok National Park and Riverside Cottages.",
+} = Astro.props;
+
+const faqs = [
+  {
+    question: "How do we get to Khao Sok Riverside Cottages from Phuket, Krabi, or Surat Thani?",
+    answer: "Riverside Cottages is centrally situated in southern Thailand and very easy to reach: approximately 2.5 hours by road from Phuket, 2 hours from Krabi, and 1 hour from Surat Thani Airport or Railway Station. We provide a **complimentary free shuttle pickup** from the local Khao Sok bus stop and minivan drop-off point. We can also arrange seamless private door-to-door car or minivan transfers directly from your hotel, airport, or ferry pier.",
+    category: "Arrival & Transfers"
+  },
+  {
+    question: "Do the cottages have air conditioning, hot water, and private bathrooms?",
+    answer: "Yes, absolutely. All of our handcrafted standalone wooden chalets feature private en-suite bathrooms with hot water showers, private shaded balconies with hammocks, ceiling fans, and fine mesh mosquito screens. We offer both dedicated Air Conditioning (AC) cottages and natural river-breeze cottages so you can choose your preferred style of stay.",
+    category: "Cottages & Comfort"
+  },
+  {
+    question: "Do I need to pay a deposit in advance to reserve a cottage or package?",
+    answer: "No advance payment is needed! At Khao Sok Riverside Cottages, we operate on a trusted honor system with **zero advance credit card deposit required**. You reserve your stay or all-inclusive tour package online, receive an immediate written confirmation, and pay only when you arrive at our reception with Thai Baht cash or credit card.",
+    category: "Booking & Payment"
+  },
+  {
+    question: "When is the best time of year to visit Khao Sok and Cheow Lan Lake?",
+    answer: "Khao Sok is an extraordinary destination all 12 months of the year. The **Dry Season (December to April)** features warm sunny days, lower humidity, and calm turquoise waters on Cheow Lan Lake. The **Green / Rainy Season (May to November)** brings mystical misty mornings, roaring jungle waterfalls, lush tropical foliage, and the highest wildlife activity along the riverbanks.",
+    category: "Weather & Seasons"
+  },
+  {
+    question: "What should I pack for jungle trekking and Cheow Lan Lake overnight trips?",
+    answer: "We recommend light, breathable quick-dry clothing, comfortable walking shoes or sports sandals with good grip, a swimsuit, insect repellent, sunscreen, a hat, a small waterproof dry bag for longtail boat cruises, and a lightweight rain jacket. We provide life vests for all lake tours and river canoeing, and walking sticks are available upon request.",
+    category: "Packing Guide"
+  },
+  {
+    question: "Are meals included, and can you cater to vegetarian, vegan, or gluten-free diets?",
+    answer: "All our tour packages include daily breakfast, along with lunches and dinners specified in your itinerary. Our on-site open-air **Rafflesia Cafe** prepares delicious authentic Thai delicacies and familiar Western favourites daily. Our kitchen team happily prepares vegetarian, vegan, gluten-free, dairy-free, and halal-friendly options with fresh local produce.",
+    category: "Dining & Cafe"
+  },
+  {
+    question: "Is Khao Sok safe and suitable for families traveling with children?",
+    answer: "Very much so! Riverside Cottages is family-owned and loves welcoming families. We have multi-bed Family Wooden Cottages, calm river canoeing with child-sized life vests, gentle half-day guided walks, and ethical elephant experiences where children can feed and bathe elephants in the river. Our tranquil gardens offer a safe, enclosed sanctuary for curious little explorers.",
+    category: "Family Travel"
+  },
+  {
+    question: "Can we book extra tours and activities after arriving at the resort?",
+    answer: "Yes! Our on-site tour desk and concierge team can arrange any activity upon your arrival, including river tubing, bamboo rafting, night safaris, traditional Thai massages, and day tours to Cheow Lan Lake. For multi-day packages with floating lake bungalow overnights during peak season (December–February), we recommend reserving in advance to secure bungalow availability on the lake.",
+    category: "Tours & Concierge"
+  }
+];
+---
+
+<section id="faq" class="py-16 sm:py-28 md:py-36 px-4 sm:px-10 lg:px-16 bg-[#faf8f5] relative overflow-hidden border-t border-[#12281b]/10">
+  
+  <div class="max-w-5xl mx-auto space-y-12 sm:space-y-16 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ba9038]/10 border border-[#ba9038]/20 text-[#8a6b25] text-xs font-mono uppercase tracking-[0.2em] font-semibold">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#ba9038]"></span>
+        <span>{eyebrow}</span>
+      </div>
+      <h2 class="font-monumental text-3xl sm:text-4xl lg:text-5xl text-[#12281b] tracking-tight">
+        {title}
+      </h2>
+      <p class="text-[#2e5339] text-base sm:text-lg font-light leading-relaxed">
+        {subtitle}
+      </p>
+    </div>
+
+    <!-- Interactive Accordions Grid -->
+    <div class="space-y-4" data-faq-accordion>
+      {faqs.map((faq, index) => (
+        <details
+          class="group bg-white/80 hover:bg-white border border-[#12281b]/10 rounded-2xl p-5 sm:p-7 transition-all duration-300 hover:border-[#ba9038]/40 hover:shadow-md open:border-[#ba9038]/60 open:shadow-xl open:bg-white cursor-pointer"
+          open={index === 0}
+        >
+          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none select-none">
+            <div class="space-y-1 pr-2">
+              <span class="text-[10px] font-mono uppercase tracking-widest text-[#ba9038] font-semibold block">
+                {faq.category}
+              </span>
+              <h3 class="font-display text-lg sm:text-xl text-[#12281b] font-semibold tracking-tight group-hover:text-[#7a5813] transition-colors leading-snug">
+                {faq.question}
+              </h3>
+            </div>
+            
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#12281b]/5 group-hover:bg-[#ba9038]/20 flex items-center justify-center text-[#12281b] group-open:text-[#7a5813] group-open:bg-[#ba9038]/20 transition-all duration-300 shrink-0">
+              <svg
+                class="w-4 h-4 transition-transform duration-300 group-open:rotate-180"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </summary>
+
+          <div class="mt-4 pt-4 border-t border-[#12281b]/10 text-sm sm:text-base text-[#264634] leading-relaxed font-light space-y-2">
+            <p set:html={faq.answer.replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-[#12281b]">$1</strong>')} />
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <!-- Concierge Question Assistance Box -->
+    <div class="bg-gradient-to-r from-[#12281b] to-[#1c3d24] rounded-3xl p-6 sm:p-10 text-white shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="space-y-2 text-center md:text-left">
+        <span class="font-mono text-xs uppercase tracking-widest text-[#f7e6b5] font-semibold block">
+          Still Have Questions?
+        </span>
+        <h3 class="font-monumental text-xl sm:text-2xl text-white">
+          Our Local Reception Team is Standing By
+        </h3>
+        <p class="text-sm text-[#e5f0ea] font-light max-w-xl">
+          Get fast, friendly assistance about transfers, private boat charters, or custom family itineraries.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-3 shrink-0">
+        <a
+          href="https://wa.me/6677395159?text=Hello%20Khao%20Sok%20Riverside%20Cottages,%20I%20have%20a%20question%20about%20booking"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-mono text-xs uppercase tracking-wider font-bold transition-all shadow-md flex items-center gap-2"
+        >
+          <span>💬 WhatsApp Us</span>
+        </a>
+        <a
+          href="/contact-khao-sok-riverside-cottages/"
+          class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/25 text-white font-mono text-xs uppercase tracking-wider font-semibold transition-all"
+        >
+          <span>Email Concierge</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
