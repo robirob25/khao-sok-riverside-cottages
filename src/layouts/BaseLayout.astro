@@ -107,10 +107,6 @@ const siteTitle = title.includes('Khao Sok') ? title : `${title} | Khao Sok Rive
   </head>
   <body class="bg-[#faf8f5] text-[#223e2c] antialiased font-sans relative selection:bg-gold-500/30 selection:text-[#12281b] overflow-x-hidden">
     
-    <!-- Minimalist Custom Cursor (Luxury Dot & Follower Ring) -->
-    <div id="cursor-dot" class="fixed top-0 left-0 w-2 h-2 rounded-full bg-gold-400 pointer-events-none z-50 transition-transform duration-75 hidden lg:block -translate-x-1/2 -translate-y-1/2" aria-hidden="true"></div>
-    <div id="cursor-ring" class="fixed top-0 left-0 w-8 h-8 rounded-full border border-gold-400/50 pointer-events-none z-50 transition-all duration-300 ease-out hidden lg:flex items-center justify-center -translate-x-1/2 -translate-y-1/2 text-[8px] font-mono tracking-widest text-gold-200" aria-hidden="true"></div>
-
     <slot />
 
     <!-- Back to Top Button (Luxury Floating Pill, All Pages) -->
@@ -200,34 +196,7 @@ const siteTitle = title.includes('Khao Sok') ? title : `${title} | Khao Sok Rive
           });
         });
 
-        // 5. Custom Cursor Tracking (desktop only)
-        const dot = document.getElementById('cursor-dot');
-        const ring = document.getElementById('cursor-ring');
-        if (dot && ring && window.matchMedia('(pointer: fine)').matches) {
-          window.addEventListener('mousemove', (e) => {
-            dot.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-            ring.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-          }, { passive: true });
-
-          document.querySelectorAll('[data-cursor="explore"]').forEach((el) => {
-            el.addEventListener('mouseenter', () => {
-              ring.style.width = '64px';
-              ring.style.height = '64px';
-              ring.style.backgroundColor = 'rgba(202, 160, 52, 0.2)';
-              ring.style.borderColor = 'rgba(226, 191, 94, 0.9)';
-              ring.textContent = 'EXPLORE';
-            });
-            el.addEventListener('mouseleave', () => {
-              ring.style.width = '32px';
-              ring.style.height = '32px';
-              ring.style.backgroundColor = 'transparent';
-              ring.style.borderColor = 'rgba(226, 191, 94, 0.5)';
-              ring.textContent = '';
-            });
-          });
-        }
-
-        // 6. Hero Parallax Scroll
+        // 5. Hero Parallax Scroll
         const heroParallax = document.getElementById('hero-parallax-bg');
         const heroText = document.getElementById('hero-parallax-text');
         if (heroParallax && heroText) {

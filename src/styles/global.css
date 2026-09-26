@@ -321,33 +321,9 @@ img {
     0 4px 10px rgba(18, 35, 25, 0.05);
 }
 
-/* Cadres d'orfèvrerie discrets */
+/* Cadres naturels */
 .bamboo-frame {
   position: relative;
-}
-.bamboo-frame::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: -1px;
-  width: 14px;
-  height: 14px;
-  border-top: 2px solid rgba(186, 144, 56, 0.7);
-  border-left: 2px solid rgba(186, 144, 56, 0.7);
-  pointer-events: none;
-  z-index: 10;
-}
-.bamboo-frame::after {
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  right: -1px;
-  width: 14px;
-  height: 14px;
-  border-bottom: 2px solid rgba(186, 144, 56, 0.7);
-  border-right: 2px solid rgba(186, 144, 56, 0.7);
-  pointer-events: none;
-  z-index: 10;
 }
 
 /* ===== LUXURY DIVIDERS ===== */
@@ -685,13 +661,6 @@ p, li, td, th {
 @media (max-width: 480px) {
   footer .grid {
     grid-template-columns: 1fr !important;
-  }
-}
-
-/* Cursor dot — disable on touch screens */
-@media (hover: none) {
-  #cursor-dot, #cursor-ring {
-    display: none !important;
   }
 }
 

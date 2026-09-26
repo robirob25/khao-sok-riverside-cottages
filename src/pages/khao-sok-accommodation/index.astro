@@ -13,12 +13,12 @@ const cottages = [
     price: "฿1,100",
     priceNote: "per night · 1-2 guests",
     badge: "Most Popular",
-    heroImg: "/wp-content/uploads/2025/07/cottage-1.jpg",
-    gallery: [
-      "/wp-content/uploads/2025/07/cottage-2.jpg",
-      "/wp-content/uploads/2025/07/cottage-3-scaled.jpg",
-      "/wp-content/uploads/2025/07/cottage-4.jpg",
-      "/wp-content/uploads/2025/07/cottage-5.jpg",
+    photos: [
+      { src: "/wp-content/uploads/2025/07/cottage-1.jpg", label: "Master Bedroom" },
+      { src: "/wp-content/uploads/2025/07/cottage-2.jpg", label: "Garden Exterior" },
+      { src: "/wp-content/uploads/2025/07/cottage-3-scaled.jpg", label: "Stone Bathroom" },
+      { src: "/wp-content/uploads/2025/07/cottage-4.jpg", label: "Balcony & Hammock" },
+      { src: "/wp-content/uploads/2025/07/cottage-5.jpg", label: "Covered Veranda" },
     ],
     description: "Comfortable standalone wooden cottages ideal for couples or solo travellers wanting a peaceful stay surrounded by nature. Designed with natural cross-ventilation, shaded verandas, and authentic tropical materials.",
     specs: {
@@ -38,12 +38,12 @@ const cottages = [
     price: "฿1,400",
     priceNote: "per night · 1-2 guests",
     badge: "Prime Riverfront",
-    heroImg: "/wp-content/uploads/2025/07/deluxe-cottage-1.jpg",
-    gallery: [
-      "/wp-content/uploads/2025/07/deluxe-cottage-2.jpg",
-      "/wp-content/uploads/2025/07/deluxe-cottage-3.jpg",
-      "/wp-content/uploads/2025/07/deluxe-cottage-4.jpg",
-      "/wp-content/uploads/2025/07/deluxe-cottage-5.jpg",
+    photos: [
+      { src: "/wp-content/uploads/2025/07/deluxe-cottage-1.jpg", label: "Riverfront Balcony View" },
+      { src: "/wp-content/uploads/2025/07/deluxe-cottage-2.jpg", label: "Handcrafted Bedroom" },
+      { src: "/wp-content/uploads/2025/07/deluxe-cottage-3.jpg", label: "Hammock Over River" },
+      { src: "/wp-content/uploads/2025/07/deluxe-cottage-4.jpg", label: "En-suite Bathroom" },
+      { src: "/wp-content/uploads/2025/07/deluxe-cottage-5.jpg", label: "Riverbank Exterior" },
     ],
     description: "Our most sought-after room category. Perched directly beside the Sok River with dramatic views of limestone karst cliffs. Relax in your private hammock listening to the gentle flow of the river.",
     specs: {
@@ -63,12 +63,12 @@ const cottages = [
     price: "฿2,000",
     priceNote: "per night · Up to 4 guests",
     badge: "Family & Groups",
-    heroImg: "/wp-content/uploads/2025/07/family-cottage-1.jpg",
-    gallery: [
-      "/wp-content/uploads/2025/07/family-cottage-2.jpg",
-      "/wp-content/uploads/2025/07/family-cottage-3.jpg",
-      "/wp-content/uploads/2025/07/family-cottage-4.jpg",
-      "/wp-content/uploads/2025/07/family-cottage-6.jpg",
+    photos: [
+      { src: "/wp-content/uploads/2025/07/family-cottage-1.jpg", label: "Family Bedroom" },
+      { src: "/wp-content/uploads/2025/07/family-cottage-2.jpg", label: "Multi-Bed Setup" },
+      { src: "/wp-content/uploads/2025/07/family-cottage-3.jpg", label: "Covered Family Deck" },
+      { src: "/wp-content/uploads/2025/07/family-cottage-4.jpg", label: "Spacious Bathroom" },
+      { src: "/wp-content/uploads/2025/07/family-cottage-6.jpg", label: "Jungle Garden Setting" },
     ],
     description: "Extra-spacious wooden chalets designed for families with children or friends travelling together. Large en-suite bathroom, expansive balcony, and plenty of room to unwind together after a day exploring the national park.",
     specs: {
@@ -94,14 +94,14 @@ const cottages = [
 >
   <article class="max-w-7xl mx-auto space-y-12 sm:space-y-16">
     
-    <!-- Top Editorial Dispatch Card -->
+    <!-- Top Editorial Card -->
     <div class="bg-[#faf8f5]/95 border border-[#12281b]/10 rounded-3xl p-6 sm:p-10 md:p-12 shadow-2xl backdrop-blur-md">
       
       <div class="flex items-center justify-between border-b border-[#12281b]/10 pb-4 mb-8 font-mono text-[11px] tracking-[0.22em] uppercase text-[#163824]">
         <div class="flex items-center gap-2 font-semibold">
           <span class="text-[#7a5813]">KSR</span>
           <span class="text-[#12281b]/20">/</span>
-          <span>FIELD DISPATCH</span>
+          <span>ACCOMMODATION GUIDE</span>
         </div>
         <span class="text-[#7a5813] font-bold">KHAO SOK · THAILAND</span>
       </div>
@@ -145,7 +145,7 @@ const cottages = [
     </div>
 
     <!-- ============================================================
-         THE 3 COTTAGES SHOWCASES (LUXURY CARDS WITH PHOTO GALLERIES)
+         THE 3 COTTAGES SHOWCASES (LUXURY CARDS WITH DIAPORAMA)
     ============================================================ -->
     <div class="space-y-12">
       <div class="text-center max-w-2xl mx-auto space-y-3">
@@ -163,42 +163,106 @@ const cottages = [
           <div class="bg-[#faf8f5]/95 border border-[#12281b]/10 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-2xl backdrop-blur-md overflow-hidden relative">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               
-              <!-- Left: Image Gallery & Badges (Span 7) -->
-              <div class="lg:col-span-7 space-y-4">
-                <div class="relative rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 aspect-[16/10] group">
-                  <img
-                    src={cottage.heroImg}
-                    alt={cottage.name}
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-[1.02]"
-                    loading="lazy"
-                    decoding="async"
-                    width="1200"
-                    height="750"
-                  />
-                  <div class="absolute top-4 left-4 flex gap-2">
-                    <span class="px-3 py-1 rounded-full bg-[#12281b]/90 text-white font-mono text-[10px] uppercase tracking-wider font-semibold backdrop-blur-md border border-white/20">
+              <!-- Left: Interactive Diaporama (Span 7) -->
+              <div class="lg:col-span-7 space-y-3.5" data-cottage-gallery id={`gallery-${cottage.id}`}>
+                
+                <!-- Main Featured Display with Controls -->
+                <div class="relative rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 aspect-[16/10] bg-[#12281b]/5 group select-none">
+                  
+                  <!-- Main Clickable Image -->
+                  <div class="w-full h-full cursor-zoom-in relative" data-main-click title="Click to view full screen">
+                    <img
+                      data-main-img
+                      src={cottage.photos[0].src}
+                      alt={`${cottage.name} — ${cottage.photos[0].label}`}
+                      class="w-full h-full object-cover transition-opacity duration-300 filter brightness-[1.02]"
+                      loading="lazy"
+                      decoding="async"
+                      width="1200"
+                      height="750"
+                    />
+                    
+                    <!-- Zoom Hint Pill on Hover -->
+                    <div class="absolute bottom-4 left-4 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/50 text-white text-[11px] font-mono tracking-wide backdrop-blur-md border border-white/15 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+                      <span>Click to zoom</span>
+                    </div>
+                  </div>
+
+                  <!-- Prev Arrow Button -->
+                  <button
+                    type="button"
+                    data-prev-btn
+                    aria-label="Previous photo"
+                    class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-md border border-white/20 transition-all opacity-85 hover:opacity-100 hover:scale-105 shadow-md z-10 cursor-pointer"
+                  >
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+
+                  <!-- Next Arrow Button -->
+                  <button
+                    type="button"
+                    data-next-btn
+                    aria-label="Next photo"
+                    class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-md border border-white/20 transition-all opacity-85 hover:opacity-100 hover:scale-105 shadow-md z-10 cursor-pointer"
+                  >
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+
+                  <!-- Badge (Top Left) -->
+                  <div class="absolute top-4 left-4 flex gap-2 pointer-events-none z-10">
+                    <span class="px-3 py-1 rounded-full bg-[#12281b]/90 text-white font-mono text-[10px] uppercase tracking-wider font-semibold backdrop-blur-md border border-white/20 shadow-sm">
                       {cottage.badge}
                     </span>
                   </div>
-                  <div class="absolute bottom-4 right-4 px-3.5 py-1.5 rounded-xl bg-white/95 text-[#12281b] font-mono text-xs font-bold shadow-lg backdrop-blur-md border border-[#12281b]/10">
+
+                  <!-- Counter Indicator (Top Right) -->
+                  <div class="absolute top-4 right-4 pointer-events-none z-10">
+                    <span
+                      data-counter
+                      class="px-2.5 py-1 rounded-full bg-black/60 text-white font-mono text-[11px] font-semibold backdrop-blur-md border border-white/20 shadow-sm"
+                    >
+                      1 / {cottage.photos.length}
+                    </span>
+                  </div>
+
+                  <!-- Price Tag (Bottom Right) -->
+                  <div class="absolute bottom-4 right-4 px-3.5 py-1.5 rounded-xl bg-white/95 text-[#12281b] font-mono text-xs font-bold shadow-lg backdrop-blur-md border border-[#12281b]/10 z-10 pointer-events-none">
                     {cottage.price} <span class="font-normal text-[10px] text-[#2e5339]">/ night</span>
                   </div>
                 </div>
 
-                <!-- 4 Thumbnails Gallery -->
-                <div class="grid grid-cols-4 gap-2 sm:gap-3">
-                  {cottage.gallery.map((thumbImg, tIdx) => (
-                    <div class="relative rounded-xl overflow-hidden aspect-video border border-[#12281b]/10 shadow-sm group cursor-pointer bg-black">
+                <!-- 5 Clickable Thumbnails Row -->
+                <div class="grid grid-cols-5 gap-2 sm:gap-2.5">
+                  {cottage.photos.map((photo, tIdx) => (
+                    <button
+                      type="button"
+                      data-thumb-btn
+                      data-index={tIdx}
+                      data-src={photo.src}
+                      data-alt={`${cottage.name} — ${photo.label}`}
+                      aria-label={`View ${photo.label}`}
+                      aria-selected={tIdx === 0 ? "true" : "false"}
+                      class={`relative rounded-xl overflow-hidden aspect-[4/3] transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ba9038] group ${
+                        tIdx === 0
+                          ? "ring-2 ring-[#ba9038] ring-offset-2 ring-offset-[#faf8f5] opacity-100 scale-[1.02] shadow-sm"
+                          : "opacity-60 hover:opacity-100 border border-[#12281b]/15"
+                      }`}
+                    >
                       <img
-                        src={thumbImg}
-                        alt={`${cottage.name} photo ${tIdx + 1}`}
-                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 filter brightness-[0.98]"
+                        src={photo.src}
+                        alt={`${cottage.name} — ${photo.label}`}
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         loading="lazy"
                         decoding="async"
-                        width="400"
-                        height="260"
+                        width="200"
+                        height="150"
                       />
-                    </div>
+                    </button>
                   ))}
                 </div>
               </div>
@@ -339,4 +403,261 @@ const cottages = [
     </div>
 
   </article>
+
+  <!-- Fullscreen Luxury Lightbox Modal -->
+  <div
+    id="cottage-lightbox"
+    class="fixed inset-0 z-[999] hidden bg-black/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 select-none"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Image gallery fullscreen preview"
+  >
+    <!-- Close Button -->
+    <button
+      id="lightbox-close"
+      type="button"
+      aria-label="Close fullscreen gallery"
+      class="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition-all cursor-pointer z-30 backdrop-blur-sm border border-white/20"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Counter & Title -->
+    <div class="absolute top-5 left-5 flex items-center gap-3 z-30">
+      <span id="lightbox-counter" class="font-mono text-xs text-white/90 bg-black/50 px-3 py-1.5 rounded-full border border-white/15 backdrop-blur-sm">
+        1 / 5
+      </span>
+      <span id="lightbox-caption" class="hidden sm:inline-block font-display text-sm text-white/80 drop-shadow">
+        Cottage Photo
+      </span>
+    </div>
+
+    <!-- Prev Button -->
+    <button
+      id="lightbox-prev"
+      type="button"
+      aria-label="Previous photo"
+      class="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition-all cursor-pointer z-30 backdrop-blur-sm border border-white/20 hover:scale-105"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <!-- Next Button -->
+    <button
+      id="lightbox-next"
+      type="button"
+      aria-label="Next photo"
+      class="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition-all cursor-pointer z-30 backdrop-blur-sm border border-white/20 hover:scale-105"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+
+    <!-- Main Lightbox Image Viewport -->
+    <div class="relative max-w-6xl max-h-[88vh] flex items-center justify-center overflow-hidden">
+      <img
+        id="lightbox-img"
+        src=""
+        alt="Full screen photo"
+        class="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl transition-opacity duration-200"
+      />
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      function setupGalleries() {
+        const galleries = document.querySelectorAll('[data-cottage-gallery]');
+        const lightbox = document.getElementById('cottage-lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCounter = document.getElementById('lightbox-counter');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
+
+        let activeLightboxImages = [];
+        let activeLightboxIndex = 0;
+
+        function updateLightbox() {
+          if (!lightbox || !lightboxImg || !activeLightboxImages.length) return;
+          const current = activeLightboxImages[activeLightboxIndex];
+          lightboxImg.style.opacity = '0.4';
+          lightboxImg.src = current.src;
+          lightboxImg.alt = current.alt || 'Cottage view';
+          lightboxImg.onload = () => { lightboxImg.style.opacity = '1'; };
+          setTimeout(() => { lightboxImg.style.opacity = '1'; }, 100);
+
+          if (lightboxCounter) {
+            lightboxCounter.textContent = (activeLightboxIndex + 1) + ' / ' + activeLightboxImages.length;
+          }
+          if (lightboxCaption) {
+            lightboxCaption.textContent = current.alt || '';
+          }
+        }
+
+        function openLightbox(images, index) {
+          if (!lightbox) return;
+          activeLightboxImages = images;
+          activeLightboxIndex = index;
+          updateLightbox();
+          lightbox.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+          if (!lightbox) return;
+          lightbox.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+
+        if (lightboxClose) lightboxClose.onclick = closeLightbox;
+        if (lightbox) {
+          lightbox.onclick = (e) => {
+            if (e.target === lightbox || e.target.parentElement === lightbox) {
+              closeLightbox();
+            }
+          };
+        }
+        if (lightboxPrev) {
+          lightboxPrev.onclick = (e) => {
+            e.stopPropagation();
+            activeLightboxIndex = (activeLightboxIndex - 1 + activeLightboxImages.length) % activeLightboxImages.length;
+            updateLightbox();
+          };
+        }
+        if (lightboxNext) {
+          lightboxNext.onclick = (e) => {
+            e.stopPropagation();
+            activeLightboxIndex = (activeLightboxIndex + 1) % activeLightboxImages.length;
+            updateLightbox();
+          };
+        }
+
+        document.addEventListener('keydown', (e) => {
+          if (!lightbox || lightbox.classList.contains('hidden')) return;
+          if (e.key === 'Escape') closeLightbox();
+          if (e.key === 'ArrowLeft') {
+            activeLightboxIndex = (activeLightboxIndex - 1 + activeLightboxImages.length) % activeLightboxImages.length;
+            updateLightbox();
+          }
+          if (e.key === 'ArrowRight') {
+            activeLightboxIndex = (activeLightboxIndex + 1) % activeLightboxImages.length;
+            updateLightbox();
+          }
+        });
+
+        galleries.forEach((gallery) => {
+          if (gallery.dataset.ready === 'true') return;
+          gallery.dataset.ready = 'true';
+
+          const mainImg = gallery.querySelector('[data-main-img]');
+          const counter = gallery.querySelector('[data-counter]');
+          const prevBtn = gallery.querySelector('[data-prev-btn]');
+          const nextBtn = gallery.querySelector('[data-next-btn]');
+          const mainClick = gallery.querySelector('[data-main-click]');
+          const thumbs = Array.from(gallery.querySelectorAll('[data-thumb-btn]'));
+
+          const images = thumbs.map((btn) => ({
+            src: btn.getAttribute('data-src') || '',
+            alt: btn.getAttribute('data-alt') || '',
+          }));
+
+          let currentIndex = 0;
+
+          function setPhoto(idx) {
+            if (idx < 0) idx = images.length - 1;
+            if (idx >= images.length) idx = 0;
+            currentIndex = idx;
+
+            const activeData = images[currentIndex];
+            if (!activeData) return;
+
+            if (mainImg) {
+              mainImg.style.opacity = '0.4';
+              mainImg.src = activeData.src;
+              mainImg.alt = activeData.alt;
+              mainImg.onload = () => { mainImg.style.opacity = '1'; };
+              setTimeout(() => { mainImg.style.opacity = '1'; }, 100);
+            }
+
+            if (counter) {
+              counter.textContent = (currentIndex + 1) + ' / ' + images.length;
+            }
+
+            thumbs.forEach((btn, i) => {
+              if (i === currentIndex) {
+                btn.classList.remove('opacity-60', 'border', 'border-[#12281b]/15');
+                btn.classList.add('ring-2', 'ring-[#ba9038]', 'ring-offset-2', 'ring-offset-[#faf8f5]', 'opacity-100', 'scale-[1.02]', 'shadow-sm');
+                btn.setAttribute('aria-selected', 'true');
+              } else {
+                btn.classList.add('opacity-60', 'border', 'border-[#12281b]/15');
+                btn.classList.remove('ring-2', 'ring-[#ba9038]', 'ring-offset-2', 'ring-offset-[#faf8f5]', 'opacity-100', 'scale-[1.02]', 'shadow-sm');
+                btn.setAttribute('aria-selected', 'false');
+              }
+            });
+          }
+
+          // Thumbnails click: puts small photo in large!
+          thumbs.forEach((btn, i) => {
+            btn.addEventListener('click', (e) => {
+              e.preventDefault();
+              setPhoto(i);
+            });
+          });
+
+          // Prev & Next arrows
+          if (prevBtn) {
+            prevBtn.addEventListener('click', (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setPhoto(currentIndex - 1);
+            });
+          }
+
+          if (nextBtn) {
+            nextBtn.addEventListener('click', (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setPhoto(currentIndex + 1);
+            });
+          }
+
+          // Click main image to open lightbox
+          if (mainClick) {
+            mainClick.addEventListener('click', () => {
+              openLightbox(images, currentIndex);
+            });
+          }
+
+          // Touch swiping on mobile
+          let touchStartX = 0;
+          let touchEndX = 0;
+          gallery.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+          }, { passive: true });
+          gallery.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 45) {
+              setPhoto(currentIndex + 1); // swipe left -> next
+            } else if (touchEndX - touchStartX > 45) {
+              setPhoto(currentIndex - 1); // swipe right -> prev
+            }
+          }, { passive: true });
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupGalleries);
+      } else {
+        setupGalleries();
+      }
+      document.addEventListener('astro:page-load', setupGalleries);
+    })();
+  </script>
 </PageLayout>
