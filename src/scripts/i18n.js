@@ -84,6 +84,7 @@
     'Choose How You Wish to Stay': 'เลือกประสบการณ์การพักผ่อนของคุณ',
     'Book a Tour Package': 'จองแพ็คเกจทัวร์รวมกิจกรรม',
     'Book a Room Only': 'จองเฉพาะห้องพัก (เลือกกิจกรรมภายหลัง)',
+    'Most Popular · Best Value': 'ยอดนิยมสูงสุด · คุ้มค่าที่สุด',
     '★ Most Popular · Best Value': '★ ยอดนิยมสูงสุด · คุ้มค่าที่สุด',
     'Flexible Stay': 'พักผ่อนแบบยืดหยุ่น',
     'Resort cottages + Cheow Lan Lake floating house + safaris + all meals.': 'บ้านพักริมน้ำ + แพลอยน้ำเขื่อนเชี่ยวหลาน + ส่องสัตว์ + อาหารครบทุกมื้อ',

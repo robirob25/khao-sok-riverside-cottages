@@ -151,7 +151,6 @@ const explorerPackages = [
   {showTitle && (
     <div class="text-center max-w-3xl mx-auto space-y-3">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#7a5813]/10 border border-[#7a5813]/25 text-[#7a5813] text-xs font-sans uppercase tracking-[0.2em] font-semibold">
-        <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]"></span>
         <span>Curated Tour Packages · Guaranteed Lowest Direct Rates</span>
       </div>
       <h2 class="font-monumental text-3xl sm:text-4xl lg:text-5xl text-[#12281b] tracking-tight">
@@ -299,7 +298,7 @@ const explorerPackages = [
               <ul class="space-y-2.5 text-xs sm:text-sm text-[#223e2c]">
                 {pkg.highlights.map((item) => (
                   <li class="flex items-start gap-2.5 leading-relaxed">
-                    <span class="w-1.5 h-1.5 rounded-full bg-[#ba9038]/80 shrink-0 mt-2"></span>
+                    <span class="text-[#ba9038] font-bold text-xs shrink-0 mt-0.5">✓</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -468,7 +467,7 @@ const explorerPackages = [
               <ul class="space-y-2 text-xs sm:text-sm text-[#223e2c]">
                 {pkg.highlights.map((item) => (
                   <li class="flex items-start gap-2.5 leading-relaxed">
-                    <span class="w-1.5 h-1.5 rounded-full bg-[#ba9038]/80 shrink-0 mt-2"></span>
+                    <span class="text-[#ba9038] font-bold text-xs shrink-0 mt-0.5">✓</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -554,7 +553,6 @@ const explorerPackages = [
     <div class="w-px h-8 bg-white/15 hidden lg:block"></div>
 
     <div class="flex items-center gap-2 text-xs font-sans text-emerald-100 font-medium">
-      <span class="w-2 h-2 rounded-full bg-[#ba9038]"></span>
       <span>No Advance Deposit Required · Free Bus Pickup</span>
     </div>
   </div>
