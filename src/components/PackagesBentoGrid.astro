@@ -150,8 +150,8 @@ const explorerPackages = [
 <div class="space-y-10 my-10">
   {showTitle && (
     <div class="text-center max-w-3xl mx-auto space-y-3">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ba9038]/10 border border-[#ba9038]/20 text-[#8a6b25] text-xs font-mono uppercase tracking-[0.2em] font-semibold">
-        <span class="w-1.5 h-1.5 rounded-full bg-[#ba9038]"></span>
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#7a5813]/10 border border-[#7a5813]/25 text-[#7a5813] text-xs font-sans uppercase tracking-[0.2em] font-semibold">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]"></span>
         <span>Curated Tour Packages · Guaranteed Lowest Direct Rates</span>
       </div>
       <h2 class="font-monumental text-3xl sm:text-4xl lg:text-5xl text-[#12281b] tracking-tight">
@@ -189,8 +189,8 @@ const explorerPackages = [
               <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none"></div>
 
               <!-- Zoom Hint Pill on Hover -->
-              <div class="absolute bottom-4 left-4 hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/50 text-white text-[10px] font-mono tracking-wide backdrop-blur-md border border-white/15 opacity-0 group-hover/img:opacity-100 transition-opacity pointer-events-none z-10">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+              <div class="absolute bottom-4 left-4 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/60 text-white text-xs font-sans tracking-wide backdrop-blur-md border border-white/20 opacity-0 group-hover/img:opacity-100 transition-opacity pointer-events-none z-10">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
                 <span>Click to zoom</span>
               </div>
             </div>
@@ -200,9 +200,9 @@ const explorerPackages = [
               type="button"
               data-prev-btn
               aria-label="Previous photo"
-              class="absolute left-2.5 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/45 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-md border border-white/20 transition-all opacity-85 hover:opacity-100 hover:scale-105 shadow-md z-10 cursor-pointer"
+              class="absolute left-2.5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-md border border-white/25 transition-all opacity-85 hover:opacity-100 hover:scale-105 shadow-md z-10 cursor-pointer"
             >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
               </svg>
             </button>
@@ -212,21 +212,21 @@ const explorerPackages = [
               type="button"
               data-next-btn
               aria-label="Next photo"
-              class="absolute right-2.5 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/45 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-md border border-white/20 transition-all opacity-85 hover:opacity-100 hover:scale-105 shadow-md z-10 cursor-pointer"
+              class="absolute right-2.5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-md border border-white/25 transition-all opacity-85 hover:opacity-100 hover:scale-105 shadow-md z-10 cursor-pointer"
             >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </button>
 
             <!-- Top Badges Overlay -->
             <div class="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2 z-10 pointer-events-none">
-              <span class="px-3.5 py-1.5 rounded-full text-[11px] font-mono uppercase tracking-[0.16em] font-bold shadow-md backdrop-blur-md border bg-gradient-to-r from-[#ba9038] to-[#d8b257] text-[#12281b] border-[#ba9038]">
+              <span class="px-3.5 py-1.5 rounded-full text-xs font-sans uppercase tracking-[0.14em] font-bold shadow-md backdrop-blur-md border bg-gradient-to-r from-[#ba9038] to-[#d8b257] text-[#12281b] border-[#ba9038]">
                 {pkg.badge}
               </span>
               <span
                 data-counter
-                class="px-2.5 py-1 rounded-full bg-black/60 text-white font-mono text-[10px] font-semibold backdrop-blur-md border border-white/20 shadow-sm"
+                class="px-2.5 py-1 rounded-full bg-black/60 text-white font-sans text-xs font-semibold backdrop-blur-md border border-white/20 shadow-sm"
               >
                 1 / {pkg.photos.length}
               </span>
@@ -235,15 +235,15 @@ const explorerPackages = [
             <!-- Bottom Photo Overlay: Duration & Price Tag -->
             <div class="absolute bottom-4 left-5 right-5 z-10 flex items-end justify-between gap-3 pointer-events-none">
               <div>
-                <span class="px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-md text-[11px] font-mono text-[#ebd082] uppercase tracking-wider font-semibold border border-white/10">
+                <span class="px-3 py-1 rounded-lg bg-black/60 backdrop-blur-md text-xs font-sans text-[#f7e6b5] uppercase tracking-wider font-semibold border border-white/15">
                   {pkg.duration}
                 </span>
               </div>
               <div class="bg-black/75 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-white/15 text-right shrink-0 shadow-lg">
-                <span class="text-[10px] text-white/70 uppercase font-mono block">From</span>
-                <p class="text-xl font-bold font-mono text-[#ebd082] leading-none">
+                <span class="text-xs text-white/80 uppercase font-sans block">From</span>
+                <p class="text-xl font-bold font-sans text-[#f7e6b5] leading-none">
                   {pkg.currency}{pkg.price}
-                  <span class="text-[10px] font-normal text-white/80 block mt-0.5">{pkg.unit}</span>
+                  <span class="text-xs font-normal text-white/90 block mt-0.5">{pkg.unit}</span>
                 </p>
               </div>
             </div>
@@ -287,7 +287,7 @@ const explorerPackages = [
                 <h3 class="font-monumental text-2xl text-[#12281b] group-hover:text-[#ba9038] transition-colors leading-tight mb-2">
                   {pkg.title}
                 </h3>
-                <div class="flex items-center gap-2 text-xs font-mono text-[#255038] bg-[#f4efeb] px-3.5 py-2 rounded-xl border border-[#12281b]/5 font-medium">
+                <div class="flex items-center gap-2 text-xs font-sans text-[#1b432c] bg-[#f4efeb] px-3.5 py-2 rounded-xl border border-[#12281b]/5 font-medium">
                   <svg class="w-4 h-4 text-[#ba9038] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                   </svg>
@@ -306,8 +306,8 @@ const explorerPackages = [
               </ul>
 
               <!-- Note -->
-              <div class="text-[11px] font-mono text-[#255038] bg-emerald-50/80 p-2.5 rounded-lg border border-emerald-200/60 flex items-center gap-2">
-                <span class="text-[10px] font-bold text-[#2e6b45] uppercase tracking-wider bg-white/90 px-2 py-0.5 rounded border border-emerald-200/50">EXPEDITION</span>
+              <div class="text-xs font-sans text-[#1b432c] bg-emerald-50/80 p-2.5 rounded-lg border border-emerald-200/60 flex items-center gap-2">
+                <span class="text-xs font-bold text-[#1b432c] uppercase tracking-wider bg-white/90 px-2 py-0.5 rounded border border-emerald-200/50">EXPEDITION</span>
                 <span>{pkg.note}</span>
               </div>
             </div>
@@ -316,7 +316,7 @@ const explorerPackages = [
             <div class="pt-5 border-t border-[#12281b]/10 flex flex-col sm:flex-row items-center gap-3">
               <a
                 href="/booking-khao-sok-accommodation/?tab=package"
-                class="w-full sm:flex-1 py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#ba9038] to-[#d8b257] hover:from-[#a67e2a] hover:to-[#ba9038] text-[#12281b] font-mono text-xs uppercase tracking-widest font-bold text-center transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2 group/btn"
+                class="w-full sm:flex-1 py-3.5 px-4 min-h-[44px] rounded-xl bg-gradient-to-r from-[#ba9038] to-[#d8b257] hover:from-[#a67e2a] hover:to-[#ba9038] text-[#12281b] font-sans text-xs uppercase tracking-widest font-bold text-center transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2 group/btn"
               >
                 <span>Book This Package</span>
                 <span class="transition-transform group-hover/btn:translate-x-1">→</span>
@@ -324,7 +324,7 @@ const explorerPackages = [
 
               <a
                 href={pkg.slug}
-                class="w-full sm:w-auto py-3.5 px-5 rounded-xl border border-[#12281b]/15 hover:border-[#12281b]/40 hover:bg-[#f4efeb] text-[#12281b] font-mono text-xs uppercase tracking-wider font-semibold text-center transition-all duration-300"
+                class="w-full sm:w-auto py-3.5 px-5 min-h-[44px] rounded-xl border border-[#12281b]/15 hover:border-[#12281b]/40 hover:bg-[#f4efeb] text-[#12281b] font-sans text-xs uppercase tracking-wider font-semibold text-center transition-all duration-300 flex items-center justify-center"
               >
                 Full Itinerary
               </a>
@@ -358,8 +358,8 @@ const explorerPackages = [
               <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none"></div>
 
               <!-- Zoom Hint Pill on Hover -->
-              <div class="absolute bottom-4 left-4 hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/50 text-white text-[10px] font-mono tracking-wide backdrop-blur-md border border-white/15 opacity-0 group-hover/img:opacity-100 transition-opacity pointer-events-none z-10">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+              <div class="absolute bottom-4 left-4 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/60 text-white text-xs font-sans tracking-wide backdrop-blur-md border border-white/20 opacity-0 group-hover/img:opacity-100 transition-opacity pointer-events-none z-10">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
                 <span>Zoom</span>
               </div>
             </div>
@@ -369,9 +369,9 @@ const explorerPackages = [
               type="button"
               data-prev-btn
               aria-label="Previous photo"
-              class="absolute left-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/45 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-md border border-white/20 transition-all opacity-85 hover:opacity-100 hover:scale-105 shadow-md z-10 cursor-pointer"
+              class="absolute left-2.5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-md border border-white/25 transition-all opacity-85 hover:opacity-100 hover:scale-105 shadow-md z-10 cursor-pointer"
             >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
               </svg>
             </button>
@@ -381,21 +381,21 @@ const explorerPackages = [
               type="button"
               data-next-btn
               aria-label="Next photo"
-              class="absolute right-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/45 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-md border border-white/20 transition-all opacity-85 hover:opacity-100 hover:scale-105 shadow-md z-10 cursor-pointer"
+              class="absolute right-2.5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-md border border-white/25 transition-all opacity-85 hover:opacity-100 hover:scale-105 shadow-md z-10 cursor-pointer"
             >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </button>
 
             <!-- Top Badges Overlay -->
             <div class="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2 z-10 pointer-events-none">
-              <span class="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-[0.16em] font-bold shadow-md backdrop-blur-md border bg-white/95 text-[#12281b] border-white/20">
+              <span class="px-3.5 py-1.5 rounded-full text-xs font-sans uppercase tracking-[0.14em] font-bold shadow-md backdrop-blur-md border bg-white/95 text-[#12281b] border-white/20">
                 {pkg.badge}
               </span>
               <span
                 data-counter
-                class="px-2.5 py-1 rounded-full bg-black/60 text-white font-mono text-[10px] font-semibold backdrop-blur-md border border-white/20 shadow-sm"
+                class="px-2.5 py-1 rounded-full bg-black/60 text-white font-sans text-xs font-semibold backdrop-blur-md border border-white/20 shadow-sm"
               >
                 1 / {pkg.photos.length}
               </span>
@@ -404,15 +404,15 @@ const explorerPackages = [
             <!-- Bottom Photo Overlay: Duration & Price Tag -->
             <div class="absolute bottom-4 left-5 right-5 z-10 flex items-end justify-between gap-3 pointer-events-none">
               <div>
-                <span class="px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-md text-[11px] font-mono text-[#ebd082] uppercase tracking-wider font-semibold border border-white/10">
+                <span class="px-3 py-1 rounded-lg bg-black/60 backdrop-blur-md text-xs font-sans text-[#f7e6b5] uppercase tracking-wider font-semibold border border-white/15">
                   {pkg.duration}
                 </span>
               </div>
-              <div class="bg-black/75 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/15 text-right shrink-0 shadow-lg">
-                <span class="text-[10px] text-white/70 uppercase font-mono block">From</span>
-                <p class="text-lg font-bold font-mono text-[#ebd082] leading-none">
+              <div class="bg-black/75 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-white/15 text-right shrink-0 shadow-lg">
+                <span class="text-xs text-white/80 uppercase font-sans block">From</span>
+                <p class="text-lg font-bold font-sans text-[#f7e6b5] leading-none">
                   {pkg.currency}{pkg.price}
-                  <span class="text-[10px] font-normal text-white/80 block mt-0.5">{pkg.unit}</span>
+                  <span class="text-xs font-normal text-white/90 block mt-0.5">{pkg.unit}</span>
                 </p>
               </div>
             </div>
@@ -456,7 +456,7 @@ const explorerPackages = [
                 <h3 class="font-monumental text-xl text-[#12281b] group-hover:text-[#ba9038] transition-colors leading-tight mb-2 min-h-[3rem] flex items-center">
                   {pkg.title}
                 </h3>
-                <div class="flex items-center gap-2 text-xs font-mono text-[#255038] bg-[#f4efeb] px-3.5 py-2 rounded-xl border border-[#12281b]/5 font-medium">
+                <div class="flex items-center gap-2 text-xs font-sans text-[#1b432c] bg-[#f4efeb] px-3.5 py-2 rounded-xl border border-[#12281b]/5 font-medium">
                   <svg class="w-4 h-4 text-[#ba9038] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                   </svg>
@@ -475,8 +475,8 @@ const explorerPackages = [
               </ul>
 
               <!-- Note -->
-              <div class="text-[11px] font-mono text-amber-900 bg-amber-50/80 p-2.5 rounded-lg border border-amber-200/60 min-h-[3.25rem] flex items-center gap-2">
-                <span class="text-[10px] font-bold text-amber-800 uppercase tracking-wider bg-white/90 px-2 py-0.5 rounded border border-amber-200/50 shrink-0">DAY TOUR</span>
+              <div class="text-xs font-sans text-amber-950 bg-amber-50/80 p-2.5 rounded-lg border border-amber-200/60 min-h-[3.25rem] flex items-center gap-2">
+                <span class="text-xs font-bold text-amber-900 uppercase tracking-wider bg-white/90 px-2 py-0.5 rounded border border-amber-200/50 shrink-0">DAY TOUR</span>
                 <span>{pkg.note}</span>
               </div>
             </div>
@@ -485,7 +485,7 @@ const explorerPackages = [
             <div class="pt-4 border-t border-[#12281b]/10 flex flex-col sm:flex-row items-center gap-2.5">
               <a
                 href="/booking-khao-sok-accommodation/?tab=package"
-                class="w-full sm:flex-1 py-3 px-3.5 rounded-xl bg-gradient-to-r from-[#ba9038] to-[#d8b257] hover:from-[#a67e2a] hover:to-[#ba9038] text-[#12281b] font-mono text-xs uppercase tracking-widest font-bold text-center transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-1.5 group/btn"
+                class="w-full sm:flex-1 py-3 px-3.5 min-h-[44px] rounded-xl bg-gradient-to-r from-[#ba9038] to-[#d8b257] hover:from-[#a67e2a] hover:to-[#ba9038] text-[#12281b] font-sans text-xs uppercase tracking-widest font-bold text-center transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-1.5 group/btn"
               >
                 <span>Book Package</span>
                 <span class="transition-transform group-hover/btn:translate-x-1">→</span>
@@ -493,7 +493,7 @@ const explorerPackages = [
 
               <a
                 href={pkg.slug}
-                class="w-full sm:w-auto py-3 px-3.5 rounded-xl border border-[#12281b]/15 hover:border-[#12281b]/40 hover:bg-[#f4efeb] text-[#12281b] font-mono text-xs uppercase tracking-wider font-semibold text-center transition-all duration-300"
+                class="w-full sm:w-auto py-3 px-3.5 min-h-[44px] rounded-xl border border-[#12281b]/15 hover:border-[#12281b]/40 hover:bg-[#f4efeb] text-[#12281b] font-sans text-xs uppercase tracking-wider font-semibold text-center transition-all duration-300 flex items-center justify-center"
               >
                 Details
               </a>
@@ -516,7 +516,7 @@ const explorerPackages = [
         loading="lazy"
       />
       <div>
-        <p class="font-mono text-xs text-[#ebd082] uppercase tracking-widest font-semibold">TripAdvisor</p>
+        <p class="font-sans text-xs text-[#f7e6b5] uppercase tracking-wider font-semibold">TripAdvisor</p>
         <p class="text-sm sm:text-base font-bold text-white">4.5 / 5 · Excellent (397+)</p>
       </div>
     </div>
@@ -531,7 +531,7 @@ const explorerPackages = [
         loading="lazy"
       />
       <div>
-        <p class="font-mono text-xs text-[#ebd082] uppercase tracking-widest font-semibold">Booking.com</p>
+        <p class="font-sans text-xs text-[#f7e6b5] uppercase tracking-wider font-semibold">Booking.com</p>
         <p class="text-sm sm:text-base font-bold text-white">8.9 / 10 · Fabulous (1,098+)</p>
       </div>
     </div>
@@ -546,14 +546,14 @@ const explorerPackages = [
         loading="lazy"
       />
       <div>
-        <p class="font-mono text-xs text-[#ebd082] uppercase tracking-widest font-semibold">Google Reviews</p>
+        <p class="font-sans text-xs text-[#f7e6b5] uppercase tracking-wider font-semibold">Google Reviews</p>
         <p class="text-sm sm:text-base font-bold text-white">4.4 / 5 · Verified Guests</p>
       </div>
     </div>
 
     <div class="w-px h-8 bg-white/15 hidden lg:block"></div>
 
-    <div class="flex items-center gap-2 text-xs font-mono text-emerald-200">
+    <div class="flex items-center gap-2 text-xs font-sans text-emerald-100 font-medium">
       <span class="w-2 h-2 rounded-full bg-[#ba9038]"></span>
       <span>No Advance Deposit Required · Free Bus Pickup</span>
     </div>
@@ -580,7 +580,7 @@ const explorerPackages = [
   </button>
 
   <div class="absolute top-5 left-5 flex items-center gap-3 z-30">
-    <span id="pkg-lightbox-counter" class="font-mono text-xs text-white/90 bg-black/50 px-3 py-1.5 rounded-full border border-white/15 backdrop-blur-sm">
+    <span id="pkg-lightbox-counter" class="font-sans text-xs text-white/90 bg-black/50 px-3 py-1.5 rounded-full border border-white/15 backdrop-blur-sm font-medium">
       1 / 5
     </span>
     <span id="pkg-lightbox-caption" class="hidden sm:inline-block font-display text-sm text-white/80 drop-shadow">
