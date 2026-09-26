@@ -69,10 +69,10 @@ body {
 }
 
 /* ===== PERFORMANCE: Image rendering optimization ===== */
-img {
-  /* Prevents layout shift on images without explicit dimensions */
-  max-width: 100%;
-  height: auto;
+@layer base {
+  img {
+    max-width: 100%;
+  }
 }
 
 /* content-visibility: auto defers off-screen rendering — massive LCP boost */

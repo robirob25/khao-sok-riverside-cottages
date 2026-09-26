@@ -200,23 +200,35 @@ import FAQSection from '../components/FAQSection.astro';
         <!-- Sticky Left Visual Window (Remains pinned as user reads narrative) -->
         <div class="lg:col-span-5 lg:sticky lg:top-28">
           <div class="teak-panel bamboo-frame rounded-2xl p-2.5 sm:p-3 shadow-xl relative" data-cursor="explore">
-            <div class="relative h-64 sm:h-80 md:h-[420px] lg:h-[480px] rounded-xl overflow-hidden border border-[#122319]/10 group">
+            <div class="relative h-72 sm:h-96 md:h-[440px] lg:h-[500px] rounded-xl overflow-hidden border border-[#122319]/10 group">
+              <!-- Full Bleed Photo (Guaranteed 100% cover with zero gap) -->
               <img
                 src="/wp-content/uploads/2016/07/khao-sok-national-park-2.jpg"
                 alt="Khao Sok National Park scenic ancient rainforest"
-                class="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
                 loading="lazy"
                 width="1200" height="800"
               />
-              <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/80 via-black/25 to-transparent pointer-events-none"></div>
               
-              <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 flex items-end justify-between">
-                <div>
-                  <span class="font-handwriting text-[#f7e6b5] text-xl sm:text-2xl block mb-0.5 sm:mb-1">Untouched Wilderness</span>
-                  <p class="font-display text-lg sm:text-2xl text-white">Khao Sok National Park</p>
+              <!-- Subtle Ambient Vignette (Soft lighting, not a solid dark bar) -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none"></div>
+
+              <!-- Top-Right Editorial Badge -->
+              <div class="absolute top-4 right-4 z-10 pointer-events-none">
+                <span class="px-3 py-1 rounded-full bg-black/45 backdrop-blur-md text-white/90 text-[10px] font-mono uppercase tracking-widest font-semibold border border-white/20">
+                  Cheow Lan Lake
+                </span>
+              </div>
+              
+              <!-- Floating Luxury Frosted Editorial Card (Replaces the muddy grey bar) -->
+              <div class="absolute bottom-4 left-4 right-4 p-4 sm:p-5 rounded-2xl bg-[#0e2115]/85 backdrop-blur-md border border-white/20 shadow-2xl flex items-center justify-between text-white z-10 transition-all duration-300 group-hover:bg-[#0e2115]/95">
+                <div class="space-y-0.5">
+                  <span class="font-handwriting text-[#f7e6b5] text-lg sm:text-xl block leading-tight">Untouched Wilderness</span>
+                  <p class="font-display text-base sm:text-xl text-white font-semibold tracking-tight">Khao Sok National Park</p>
+                  <p class="font-mono text-[10px] text-white/70 uppercase tracking-widest">Primary Rainforest Sanctuary</p>
                 </div>
-                <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-black/40 backdrop-blur-md border border-white/30 flex items-center justify-center text-[#f7e6b5] shadow-lg">
-                  <svg class="w-4 h-4 sm:w-5 sm:h-5 text-[#ebd082]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-[#ebd082] shadow-inner shrink-0 group-hover:scale-105 transition-transform">
+                  <svg class="w-5 h-5 text-[#ebd082]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                     <circle cx="12" cy="12" r="9" stroke="currentColor"/>
                     <path d="M12 3v3m0 12v3M3 12h3m12 0h3"/>
                     <polygon points="12,7 14,12 12,17 10,12" fill="currentColor"/>
