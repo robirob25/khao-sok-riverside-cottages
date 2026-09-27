@@ -295,28 +295,46 @@ const withBase = (path: string) => {
             ],
           },
           {
-            num: '07', title: 'Contact', note: 'Directions, FAQs & Concierge',
+            num: '07', title: 'Journal', note: '46 Rainforest Chronicles',
+            badge: '46 Stories',
+            href: '/khao-sok-blog/',
+            img: '/wp-content/uploads/2026/03/bamboo-rafting-khao-sok.jpg',
+            sublinks: [
+              ['Explore All 46 Articles', '/khao-sok-blog/'],
+              ['Rainforest Expeditions', '/khao-sok-cave-raft-hike-tour/'],
+              ['Wild Mushrooms & Fungi', '/fungal-in-the-jungle-the-hidden-mushrooms-of-khao-sok/'],
+              ['Rainy Season Guide', '/thailand-rainy-season-is-it-a-good-time-to-visit-khao-sok/'],
+              ['Arrival Routes & Minivans', '/krabi-to-khao-sok/'],
+              ['Endangered Wildlife', '/rare-endangered-species-khao-sok/'],
+            ],
+          },
+          {
+            num: '08', title: 'Contact', note: 'Directions, FAQs & Concierge',
             href: '/contact-khao-sok-riverside-cottages/',
             img: '/wp-content/uploads/2018/12/khao-sok-national-park-tours.jpg',
             sublinks: [
               ['Contact Us', '/contact-khao-sok-riverside-cottages/'],
               ['Plan Your Stay', '/plan-your-stay/'],
               ['Map & Directions', '/khao-sok-map-directions/'],
-              ['FAQs (46 Questions)', '/khao-sok-faqs/'],
-              ['Field Blog', '/khao-sok-blog/'],
+              ['Guest FAQs (46 Questions)', '/khao-sok-faqs/'],
             ],
           },
         ].map((item) => (
           <div
-            class="menu-item-group px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl hover:bg-white hover:shadow-xl hover:shadow-[#122319]/5 transition-all duration-300 border border-transparent hover:border-[#122319]/10 group"
+            class="menu-item-group px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl hover:bg-white hover:shadow-xl hover:shadow-[#122319]/5 transition-all duration-300 border border-transparent hover:border-[#122319]/10 group"
             data-preview-img={withBase(item.img)}
             data-preview-title={item.title}
             data-preview-note={item.note}
           >
             <div class="flex items-baseline justify-between mb-0.5 sm:mb-1">
-              <a href={item.href} class="font-monumental text-lg sm:text-xl md:text-2xl text-[#122319] group-hover:text-[#ba9038] transition-colors flex items-baseline gap-2 sm:gap-3 tracking-tight">
+              <a href={item.href} class="font-monumental text-lg sm:text-xl md:text-2xl text-[#122319] group-hover:text-[#ba9038] transition-colors flex items-center gap-2 sm:gap-3 tracking-tight">
                 <span class="text-[10px] sm:text-xs font-sans text-[#7a5813] font-bold">{item.num}</span>
                 <span>{item.title}</span>
+                {item.badge && (
+                  <span class="px-2 py-0.5 rounded-full bg-[#ba9038]/15 border border-[#ba9038]/30 text-[#7a5813] text-[9px] font-sans font-bold uppercase tracking-wider">
+                    {item.badge}
+                  </span>
+                )}
               </a>
               <span class="font-handwriting text-[#183424] text-base sm:text-lg font-medium hidden md:inline">{item.note}</span>
             </div>
@@ -331,10 +349,10 @@ const withBase = (path: string) => {
         ))}
       </nav>
 
-      <!-- Photographic preview (hidden on mobile/tablet) -->
-      <div class="hidden lg:block lg:col-span-5">
-        <div class="bg-white rounded-3xl p-6 shadow-2xl shadow-[#122319]/10 border border-[#122319]/10 relative overflow-hidden">
-          <div class="relative h-[420px] rounded-2xl overflow-hidden border border-[#122319]/15 shadow-inner bg-stone-900 group">
+      <!-- Photographic preview + Editorial Journal Feature (hidden on mobile/tablet) -->
+      <div class="hidden lg:block lg:col-span-5 space-y-4">
+        <div class="bg-white rounded-3xl p-5 shadow-2xl shadow-[#122319]/10 border border-[#122319]/10 relative overflow-hidden">
+          <div class="relative h-[310px] rounded-2xl overflow-hidden border border-[#122319]/15 shadow-inner bg-stone-900 group">
             <img
               id="menu-preview-img"
               src={withBase("/wp-content/uploads/2019/10/khao-sok-riverside-cottages-beach.jpg")}
@@ -344,20 +362,50 @@ const withBase = (path: string) => {
             />
             <!-- Clean, focused bottom scrim only behind text — 70%+ of photo is 100% unobstructed, zero grey zone -->
             <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/85 via-black/40 to-transparent pointer-events-none"></div>
-            <div class="absolute bottom-6 left-6 right-6 z-10">
-              <span id="menu-preview-badge" class="font-handwriting text-[#f7e6b5] text-2xl block mb-1 drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)]">Authentic Rainforest Immersion</span>
-              <h4 id="menu-preview-title" class="font-monumental text-2xl text-white mb-3 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">Khao Sok Riverside</h4>
+            <div class="absolute bottom-5 left-5 right-5 z-10">
+              <span id="menu-preview-badge" class="font-handwriting text-[#f7e6b5] text-xl block mb-1 drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)]">Authentic Rainforest Immersion</span>
+              <h4 id="menu-preview-title" class="font-monumental text-xl text-white mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">Khao Sok Riverside</h4>
               <a href="/booking-khao-sok-accommodation/" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#f7e6b5] hover:text-white font-semibold font-sans drop-shadow min-h-[44px]">
                 <span>Instant Reserve</span>
                 <span>→</span>
               </a>
             </div>
           </div>
-          <div class="mt-4 pt-4 border-t border-[#122319]/10 flex items-center justify-between text-xs text-[#1b3e2a] font-sans font-medium">
+          <div class="mt-3 pt-3 border-t border-[#122319]/10 flex items-center justify-between text-xs text-[#1b3e2a] font-sans font-medium">
             <span>COORDINATES: 08°54'N 98°31'E</span>
             <span class="text-[#7a5813] font-bold">SURAT THANI · THAILAND</span>
           </div>
         </div>
+
+        <!-- Featured Editorial Journal Card in Mega Menu -->
+        <a
+          href="/khao-sok-blog/"
+          class="p-4 rounded-2xl bg-gradient-to-r from-[#12281b] to-[#1a3826] hover:from-[#173423] hover:to-[#214731] text-white border border-[#ba9038]/30 hover:border-[#ba9038] transition-all duration-300 flex items-center gap-4 group shadow-xl block"
+        >
+          <div class="relative w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-white/20 shadow-md">
+            <img
+              src="/wp-content/uploads/2026/03/bamboo-rafting-khao-sok.jpg"
+              alt="Khao Sok Field Journal"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+              loading="lazy"
+              width="100" height="100"
+            />
+            <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+          </div>
+          <div class="flex-1 min-w-0 space-y-0.5">
+            <div class="flex items-center gap-2">
+              <span class="text-[9px] uppercase tracking-widest text-[#d8b257] font-sans font-bold">Rainforest Field Journal</span>
+              <span class="px-1.5 py-0.2 rounded-full bg-[#ba9038]/25 text-[#f7e6b5] text-[9px] font-sans font-semibold">46 Articles</span>
+            </div>
+            <h5 class="font-monumental text-xs sm:text-sm text-white group-hover:text-[#f7e6b5] transition-colors truncate tracking-wide">
+              Chronicles, Maps & Wildlife Guides
+            </h5>
+            <div class="flex items-center gap-1 text-[10px] text-[#abd0bb] font-sans pt-0.5">
+              <span>Explore all 46 field dispatches</span>
+              <span class="group-hover:translate-x-1 transition-transform text-[#d8b257]">→</span>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
 
