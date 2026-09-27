@@ -1,7 +1,58 @@
 ---
 // Verbatim Authentic Content & Media from Khao Sok Riverside Cottages
 import PageLayout from '../../layouts/PageLayout.astro';
+import ImageGalleryLightbox from '../../components/ImageGalleryLightbox.astro';
 
+const parkGalleryImages = [
+  {
+    src: '/wp-content/uploads/2026/07/new-khao-sok-national-park-1.jpg',
+    alt: 'Khao Sok national park aerial view of Cheow Lan lake.',
+    title: 'Cheow Lan Lake Aerial View',
+    caption: 'Aerial panorama of the emerald waters and limestone karst islands of Cheow Lan Lake.',
+  },
+  {
+    src: '/wp-content/uploads/2026/07/new-khao-sok-national-park-7e.jpg',
+    alt: 'A hornbill in full flight gliding through the forest',
+    title: 'Great Hornbill in Flight',
+    caption: 'A majestic hornbill in full flight gliding gracefully through the ancient rainforest canopy.',
+  },
+  {
+    src: '/wp-content/uploads/2026/07/new-khao-sok-national-park-2.jpg',
+    alt: 'Khao Sok National Park - View from a cave',
+    title: 'View from Limestone Cave',
+    caption: 'Dramatic silhouette looking out into the dense tropical jungle from a limestone cave chamber.',
+  },
+  {
+    src: '/wp-content/uploads/2026/07/new-khao-sok-national-park-6.jpg',
+    alt: 'Khao Sok National Park - Rafflesia flower',
+    title: 'Rare Giant Rafflesia Flower',
+    caption: 'The extraordinary Rafflesia kerrii, one of the world\'s largest and rarest parasitic flowers.',
+  },
+  {
+    src: '/wp-content/uploads/2026/07/new-khao-sok-national-park-11.jpg',
+    alt: 'Macaques in the rainforest of Khao Sok.',
+    title: 'Rainforest Macaques',
+    caption: 'Curious wild macaques foraging amidst the primary rainforest canopy of Khao Sok.',
+  },
+  {
+    src: '/wp-content/uploads/2026/07/new-khao-sok-national-park-12e.jpg',
+    alt: 'Cooking - jungle style with an open fire and using utensils gathered from the forest',
+    title: 'Authentic Jungle Cooking',
+    caption: 'Cooking jungle style over bamboo embers using handmade utensils gathered from the forest.',
+  },
+  {
+    src: '/wp-content/uploads/2026/07/new-khao-sok-national-park-10.jpg',
+    alt: 'A long tail boat makes its way across the Cheow Lan lake in the Khao Sok national park, Thailand.',
+    title: 'Cheow Lan Lake Boat Safari',
+    caption: 'A traditional longtail boat gliding across Cheow Lan Lake beneath mist-covered limestone karsts.',
+  },
+  {
+    src: '/wp-content/uploads/2026/07/new-khao-sok-national-park-3.jpg',
+    alt: 'Khao Sok National Park - bungalows on a misty morning',
+    title: 'Floating Bungalows at Dawn',
+    caption: 'Peaceful bamboo and wooden floating bungalows resting on the emerald lake at sunrise.',
+  },
+];
 ---
 
 <PageLayout
@@ -26,86 +77,13 @@ import PageLayout from '../../layouts/PageLayout.astro';
 
       <div class="space-y-6 text-[#223e2c] text-base sm:text-lg leading-relaxed font-normal">
 
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2026/07/new-khao-sok-national-park-1.jpg"
-            alt="Khao Sok national park arial view of Cheow Lan lake."
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#183424] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok national park arial view of Cheow Lan lake.</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2026/07/new-khao-sok-national-park-7e.jpg"
-            alt="A hornbill in full flight gliding through the forest"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#183424] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">A hornbill in full flight gliding through the forest</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2026/07/new-khao-sok-national-park-2.jpg"
-            alt="Khao Sok National Park - View from a cave"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#183424] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok National Park - View from a cave</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2026/07/new-khao-sok-national-park-6.jpg"
-            alt="Khao Sok National Park - Rafflesia flower"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#183424] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok National Park - Rafflesia flower</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2026/07/new-khao-sok-national-park-11.jpg"
-            alt="Macaques in the rainforest of Khao Sok."
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#183424] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Macaques in the rainforest of Khao Sok.</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2026/07/new-khao-sok-national-park-12e.jpg"
-            alt="Cooking - jungle style with an open fire and using utensils gathered from the forest"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#183424] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Cooking - jungle style with an open fire and using utensils gathered from the forest</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2026/07/new-khao-sok-national-park-10.jpg"
-            alt="A long tail boat makes its way across the Cheow Lan lake in the Khao Sok national park, Thailand. The mist covered karst mountains behind add to the drama."
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#183424] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">A long tail boat makes its way across the Cheow Lan lake in the Khao Sok national park, Thailand. The mist covered karst mountains behind add to the drama.</figcaption>
-        </figure>
-        <figure class="my-10 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
-          <img
-            src="/wp-content/uploads/2026/07/new-khao-sok-national-park-3.jpg"
-            alt="Khao Sok National Park - bungalows on a misty morning"
-            class="w-full h-52 sm:h-72 md:h-80 object-cover object-center"
-            loading="lazy"
-            decoding="async"
-           width="1200" height="800" />
-          <figcaption class="p-3.5 text-xs text-[#183424] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok National Park - bungalows on a misty morning</figcaption>
-        </figure>
+        <!-- Interactive Photo Gallery Showcase with Fullscreen Lightbox -->
+        <ImageGalleryLightbox
+          galleryId="khao-sok-national-park-gallery"
+          eyebrow="Visual Highlights"
+          title="Landscapes, Wildlife & Wonders of Khao Sok"
+          images={parkGalleryImages}
+        />
         <p class="mb-5 leading-relaxed text-[#223e2c]">
           Khao Sok National Park, Thailand
         </p>

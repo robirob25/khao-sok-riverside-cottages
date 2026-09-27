@@ -1,0 +1,390 @@
+---
+// ImageGalleryLightbox.astro — 2026 Elite Interactive Photo Gallery with Fullscreen Lightbox
+// Replaces vertical image stacks with an interactive showcase: main viewer, thumbnail navigation, and modal zoom.
+
+interface ImageItem {
+  src: string;
+  alt: string;
+  title: string;
+  caption?: string;
+}
+
+interface Props {
+  galleryId?: string;
+  eyebrow?: string;
+  title?: string;
+  images: ImageItem[];
+}
+
+const {
+  galleryId = 'khao-sok-park-gallery',
+  eyebrow = 'Photo Dispatch',
+  title = 'Wild Landscapes & Wildlife of Khao Sok',
+  images = [],
+} = Astro.props;
+---
+
+<section class="gallery-showcase-container my-8 sm:my-10 space-y-3" id={galleryId}>
+  <!-- Header Bar -->
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-[#12281b]/10">
+    <div class="space-y-0.5">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-[#ba9038] animate-pulse"></span>
+        <span class="text-[10px] font-sans uppercase tracking-[0.2em] text-[#7a5813] font-bold">
+          {eyebrow}
+        </span>
+      </div>
+      <h3 class="font-display text-lg sm:text-xl font-bold text-[#12281b]">
+        {title}
+      </h3>
+    </div>
+    <div class="flex items-center gap-2.5 text-xs text-[#183424]">
+      <span class="px-2.5 py-1 rounded-full bg-[#12281b]/08 text-[#12281b] font-sans text-[11px] font-semibold">
+        {images.length} Photos
+      </span>
+      <span class="text-[#7a5813] font-medium hidden sm:inline-flex items-center gap-1">
+        <span>⤢</span> Click any photo to zoom
+      </span>
+    </div>
+  </div>
+
+  <!-- Main Interactive Display -->
+  <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-[#12281b] border border-[#12281b]/15 shadow-lg group">
+    <!-- Featured Image -->
+    <div
+      class="main-image-viewport relative aspect-[16/10] sm:aspect-[16/9] w-full cursor-zoom-in overflow-hidden flex items-center justify-center select-none"
+      role="button"
+      tabindex="0"
+      aria-label="Click to enlarge photo in fullscreen"
+    >
+      <img
+        id={`${galleryId}-main-img`}
+        src={images[0]?.src}
+        alt={images[0]?.alt}
+        class="w-full h-full object-cover transition-all duration-300 group-hover:scale-[1.02]"
+        loading="eager"
+        decoding="async"
+      />
+
+      <!-- Ambient Gradient Shadow -->
+      <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none"></div>
+
+      <!-- Top Right Zoom Icon Badge -->
+      <div class="absolute top-3.5 right-3.5 z-10 px-3 py-1.5 rounded-full bg-black/50 hover:bg-black/75 text-white backdrop-blur-md border border-white/20 text-xs font-sans font-medium flex items-center gap-1.5 transition-transform hover:scale-105 pointer-events-none">
+        <svg class="w-3.5 h-3.5 text-[#f7e6b5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+        </svg>
+        <span>Enlarge</span>
+      </div>
+
+      <!-- Bottom Caption Bar -->
+      <div class="absolute bottom-3 sm:bottom-4 left-3 sm:left-5 right-3 sm:right-5 z-10 flex flex-col sm:flex-row sm:items-end justify-between gap-2 text-white pointer-events-none">
+        <div class="max-w-xl space-y-0.5">
+          <div id={`${galleryId}-main-title`} class="font-display font-bold text-sm sm:text-base text-[#faf8f5] drop-shadow-md">
+            {images[0]?.title}
+          </div>
+          <p id={`${galleryId}-main-caption`} class="text-[11px] sm:text-xs text-[#e5f0ea]/90 font-light line-clamp-2 drop-shadow-sm">
+            {images[0]?.caption || images[0]?.alt}
+          </p>
+        </div>
+
+        <div class="flex items-center gap-2 self-start sm:self-auto shrink-0">
+          <span id={`${galleryId}-main-counter`} class="px-2.5 py-1 rounded-full bg-black/60 text-[#f7e6b5] text-[11px] font-sans font-bold border border-white/15 backdrop-blur-md">
+            1 / {images.length}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Arrows -->
+    <button
+      type="button"
+      id={`${galleryId}-btn-prev`}
+      aria-label="Previous photo"
+      class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-md border border-white/20 transition-all hover:scale-105 cursor-pointer z-20 opacity-80 group-hover:opacity-100"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <button
+      type="button"
+      id={`${galleryId}-btn-next`}
+      aria-label="Next photo"
+      class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-md border border-white/20 transition-all hover:scale-105 cursor-pointer z-20 opacity-80 group-hover:opacity-100"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Thumbnails Row -->
+  <div class="grid grid-cols-4 sm:grid-cols-8 gap-2 pt-1">
+    {images.map((img, idx) => (
+      <button
+        type="button"
+        class={`gallery-thumb-btn group relative aspect-[4/3] rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${
+          idx === 0
+            ? 'border-[#ba9038] ring-2 ring-[#ba9038]/40 shadow-sm opacity-100'
+            : 'border-[#12281b]/15 opacity-70 hover:opacity-100 hover:border-[#ba9038]/60'
+        }`}
+        data-index={idx}
+        aria-label={`View photo ${idx + 1}: ${img.title}`}
+      >
+        <img
+          src={img.src}
+          alt={img.alt}
+          class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+        <span class="absolute bottom-1 right-1 text-[9px] font-sans font-bold bg-black/70 text-white px-1.5 py-0.5 rounded leading-none backdrop-blur-xs">
+          {idx + 1}
+        </span>
+      </button>
+    ))}
+  </div>
+
+  <!-- Fullscreen Modal Lightbox -->
+  <div
+    id={`${galleryId}-lightbox`}
+    class="fixed inset-0 z-[100] hidden bg-black/95 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 md:p-8 select-none"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Image gallery fullscreen preview"
+  >
+    <!-- Close Button -->
+    <button
+      id={`${galleryId}-lightbox-close`}
+      type="button"
+      aria-label="Close fullscreen gallery"
+      class="absolute top-4 right-4 sm:top-6 sm:right-6 w-11 h-11 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition-all cursor-pointer z-40 backdrop-blur-md border border-white/20"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Top Left Header Info -->
+    <div class="absolute top-4 left-4 sm:top-6 sm:left-6 flex items-center gap-3 z-40">
+      <span id={`${galleryId}-lightbox-counter`} class="font-sans text-xs text-[#f7e6b5] bg-black/60 px-3 py-1.5 rounded-full border border-white/20 backdrop-blur-md font-bold">
+        1 / {images.length}
+      </span>
+      <span id={`${galleryId}-lightbox-title`} class="hidden sm:inline-block font-display text-sm text-white/90 drop-shadow font-semibold">
+        {images[0]?.title}
+      </span>
+    </div>
+
+    <!-- Prev Button -->
+    <button
+      type="button"
+      id={`${galleryId}-lightbox-prev`}
+      aria-label="Previous photo"
+      class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition-all cursor-pointer z-40 backdrop-blur-md border border-white/20 hover:scale-105"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <!-- Next Button -->
+    <button
+      type="button"
+      id={`${galleryId}-lightbox-next`}
+      aria-label="Next photo"
+      class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition-all cursor-pointer z-40 backdrop-blur-md border border-white/20 hover:scale-105"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+
+    <!-- Lightbox Main Image & Caption -->
+    <div class="relative max-w-5xl max-h-[85vh] flex flex-col items-center justify-center overflow-hidden">
+      <img
+        id={`${galleryId}-lightbox-img`}
+        src={images[0]?.src}
+        alt={images[0]?.alt}
+        class="max-w-full max-h-[75vh] object-contain rounded-2xl shadow-2xl transition-opacity duration-200"
+      />
+      <p id={`${galleryId}-lightbox-caption`} class="mt-3 text-xs sm:text-sm text-center text-white/80 font-sans max-w-2xl px-4">
+        {images[0]?.caption || images[0]?.alt}
+      </p>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ galleryId, images }}>
+  (() => {
+    let currentIndex = 0;
+
+    // Elements
+    const root = document.getElementById(galleryId);
+    if (!root) return;
+
+    const mainImg = document.getElementById(`${galleryId}-main-img`);
+    const mainTitle = document.getElementById(`${galleryId}-main-title`);
+    const mainCaption = document.getElementById(`${galleryId}-main-caption`);
+    const mainCounter = document.getElementById(`${galleryId}-main-counter`);
+    const viewport = root.querySelector('.main-image-viewport');
+
+    const btnPrev = document.getElementById(`${galleryId}-btn-prev`);
+    const btnNext = document.getElementById(`${galleryId}-btn-next`);
+    const thumbBtns = root.querySelectorAll('.gallery-thumb-btn');
+
+    // Lightbox Elements
+    const lightbox = document.getElementById(`${galleryId}-lightbox`);
+    const lightboxClose = document.getElementById(`${galleryId}-lightbox-close`);
+    const lightboxImg = document.getElementById(`${galleryId}-lightbox-img`);
+    const lightboxTitle = document.getElementById(`${galleryId}-lightbox-title`);
+    const lightboxCaption = document.getElementById(`${galleryId}-lightbox-caption`);
+    const lightboxCounter = document.getElementById(`${galleryId}-lightbox-counter`);
+    const lightboxPrev = document.getElementById(`${galleryId}-lightbox-prev`);
+    const lightboxNext = document.getElementById(`${galleryId}-lightbox-next`);
+
+    function updateMainDisplay(index) {
+      if (!images || !images[index]) return;
+      currentIndex = index;
+      const item = images[currentIndex];
+
+      if (mainImg) {
+        mainImg.style.opacity = '0.5';
+        mainImg.src = item.src;
+        mainImg.alt = item.alt;
+        setTimeout(() => { mainImg.style.opacity = '1'; }, 100);
+      }
+
+      if (mainTitle) mainTitle.textContent = item.title;
+      if (mainCaption) mainCaption.textContent = item.caption || item.alt;
+      if (mainCounter) mainCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+
+      // Update active thumbnail styles
+      thumbBtns.forEach((btn, idx) => {
+        if (idx === currentIndex) {
+          btn.className = 'gallery-thumb-btn group relative aspect-[4/3] rounded-xl overflow-hidden border-2 transition-all cursor-pointer border-[#ba9038] ring-2 ring-[#ba9038]/40 shadow-sm opacity-100';
+        } else {
+          btn.className = 'gallery-thumb-btn group relative aspect-[4/3] rounded-xl overflow-hidden border-2 transition-all cursor-pointer border-[#12281b]/15 opacity-70 hover:opacity-100 hover:border-[#ba9038]/60';
+        }
+      });
+    }
+
+    function openLightbox(index) {
+      if (!lightbox) return;
+      currentIndex = index;
+      updateLightboxDisplay();
+      lightbox.classList.remove('hidden');
+      if (lightboxClose) lightboxClose.focus();
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      if (!lightbox) return;
+      lightbox.classList.add('hidden');
+      document.body.style.overflow = '';
+      if (viewport) viewport.focus();
+    }
+
+    function updateLightboxDisplay() {
+      const item = images[currentIndex];
+      if (!item) return;
+
+      if (lightboxImg) {
+        lightboxImg.style.opacity = '0.4';
+        lightboxImg.src = item.src;
+        lightboxImg.alt = item.alt;
+        lightboxImg.onload = () => { lightboxImg.style.opacity = '1'; };
+        setTimeout(() => { lightboxImg.style.opacity = '1'; }, 80);
+      }
+
+      if (lightboxTitle) lightboxTitle.textContent = item.title;
+      if (lightboxCaption) lightboxCaption.textContent = item.caption || item.alt;
+      if (lightboxCounter) lightboxCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+    }
+
+    // In-page Prev / Next
+    if (btnPrev) {
+      btnPrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const nextIdx = (currentIndex - 1 + images.length) % images.length;
+        updateMainDisplay(nextIdx);
+      });
+    }
+
+    if (btnNext) {
+      btnNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const nextIdx = (currentIndex + 1) % images.length;
+        updateMainDisplay(nextIdx);
+      });
+    }
+
+    // Thumbnail Clicks
+    thumbBtns.forEach((btn, idx) => {
+      btn.addEventListener('click', () => {
+        updateMainDisplay(idx);
+      });
+    });
+
+    // Viewport Click to open Lightbox
+    if (viewport) {
+      viewport.addEventListener('click', () => {
+        openLightbox(currentIndex);
+      });
+      viewport.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(currentIndex);
+        }
+      });
+    }
+
+    // Lightbox Controls
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+
+    if (lightboxPrev) {
+      lightboxPrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateLightboxDisplay();
+        updateMainDisplay(currentIndex);
+      });
+    }
+
+    if (lightboxNext) {
+      lightboxNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex + 1) % images.length;
+        updateLightboxDisplay();
+        updateMainDisplay(currentIndex);
+      });
+    }
+
+    // Backdrop click
+    if (lightbox) {
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+    }
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      if (!lightbox || lightbox.classList.contains('hidden')) return;
+
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowLeft') {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateLightboxDisplay();
+        updateMainDisplay(currentIndex);
+      } else if (e.key === 'ArrowRight') {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateLightboxDisplay();
+        updateMainDisplay(currentIndex);
+      }
+    });
+
+  })();
+</script>
