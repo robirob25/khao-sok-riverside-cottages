@@ -5,7 +5,7 @@
 // 2. Book a Room Only (Flexible Stay · Handcrafted Wooden Cottages)
 // Strictly preserves original nomenclature and honor system guarantees
 import PageLayout from '../../layouts/PageLayout.astro';
-import BookingSplitExperience from '../../components/BookingSplitExperience.astro';
+import BookingStepper from '../../components/BookingStepper.astro';
 ---
 
 <PageLayout
@@ -29,18 +29,8 @@ import BookingSplitExperience from '../../components/BookingSplitExperience.astr
         <span class="text-[#7a5813] font-bold">DIRECT RATE GUARANTEE</span>
       </div>
 
-      <!-- Verbatim Core Original Text Preserved for 100% SEO Integrity -->
-      <div class="mb-8 p-5 rounded-2xl bg-[#f4efeb]/80 border border-[#12281b]/10 text-sm text-[#223e2c] space-y-2 leading-relaxed">
-        <p class="font-medium text-[#163824]">
-          <strong>Book with confidence:</strong> No advance deposits or payments – Simply pay when you arrive at the resort. Guaranteed lowest prices.
-        </p>
-        <p class="text-xs text-[#183424]">
-          Fill out the form below and begin counting down the days to your trip to paradise! Choose an all-inclusive <strong>Tour Package</strong> (resort + lake raft house + safaris) or select <strong>Room Only</strong> with the freedom to choose activities à la carte upon arrival.
-        </p>
-      </div>
-
-      <!-- Scission en 2 : Dual Booking Experience Component -->
-      <BookingSplitExperience defaultTab="package" />
+      <!-- Unified 3-Step Guided Reservation Stepper -->
+      <BookingStepper />
 
       <!-- Footer Assistance -->
       <div class="mt-12 flex flex-wrap gap-4 pt-8 border-t border-[#12281b]/10 items-center justify-between">

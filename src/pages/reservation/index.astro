@@ -1,0 +1,48 @@
+---
+// src/pages/reservation/index.astro — 2026 Unified 3-Step Reservation Page
+import PageLayout from '../../layouts/PageLayout.astro';
+import BookingStepper from '../../components/BookingStepper.astro';
+---
+
+<PageLayout
+  title="Reserve Your Stay · Khao Sok Riverside Cottages"
+  description="Book your Khao Sok accommodation and all-inclusive tour packages with zero advance deposit. Pay upon arrival with our honor system guarantee."
+  heroImage="/images/khao-sok-hero-cottages.jpg"
+  heroTitle="Reservation Desk"
+  heroSubtitle="All-Inclusive Tour Packages & Handcrafted Wooden Cottages on the Sok River"
+  breadcrumbs={[{"label": "Reservation", "href": "/reservation/"}]}
+>
+  <article class="max-w-5xl mx-auto space-y-12 py-4 sm:py-8">
+    <BookingStepper />
+
+    <!-- Assistance & Guarantees Footer -->
+    <div class="bg-[#faf8f5]/95 border border-[#12281b]/10 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="text-xs text-[#183424] space-y-1 text-center md:text-left">
+        <div class="font-bold text-[#12281b]">Need personalized help or customized dates?</div>
+        <div>Contact Bodhi, Tu & the reservation team directly:</div>
+        <div class="font-sans text-[11px] text-[#8a6b25] font-semibold">✉️ info@khao-sok-riverside-cottages.com · 📞 +66 77 395 159</div>
+      </div>
+
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a
+          href="/cancellation-policy/"
+          class="px-4 py-2.5 border border-[#12281b]/20 hover:border-[#2e6b45] text-[#12281b] hover:text-[#2e6b45] rounded-xl text-xs font-sans uppercase tracking-wider transition-all font-medium min-h-[44px] flex items-center"
+        >
+          Cancellation Policy
+        </a>
+        <a
+          href="/khao-sok-faqs/"
+          class="px-4 py-2.5 border border-[#12281b]/20 hover:border-[#2e6b45] text-[#12281b] hover:text-[#2e6b45] rounded-xl text-xs font-sans uppercase tracking-wider transition-all font-medium min-h-[44px] flex items-center"
+        >
+          Booking FAQs
+        </a>
+        <a
+          href="/contact-khao-sok-riverside-cottages/"
+          class="px-5 py-2.5 bg-[#12281b] hover:bg-[#1c3d24] text-white font-semibold rounded-xl text-xs font-sans uppercase tracking-wider transition-all min-h-[44px] flex items-center"
+        >
+          Contact Concierge
+        </a>
+      </div>
+    </div>
+  </article>
+</PageLayout>

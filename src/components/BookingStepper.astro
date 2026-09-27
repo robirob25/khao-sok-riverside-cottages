@@ -1,0 +1,1118 @@
+---
+// BookingStepper.astro — 2026 Unified 3-Step Guided Reservation Funnel
+// 100% Mobile-First, Vanilla JS State Management, Honor System Alignment
+interface Props {
+  defaultType?: 'package' | 'room';
+}
+
+const { defaultType = 'package' } = Astro.props;
+
+const tourPackages = [
+  { id: 'cheow-lan-lake-3d2n', title: '3D/2N Cheow Lan Lake & Wildlife Expedition', price: '฿6,400', duration: '3 Days / 2 Nights', popular: true },
+  { id: 'spirit-tour-2d1n', title: '2D/1N Khao Sok Spirit Tour', price: '฿2,300', duration: '2 Days / 1 Night', popular: false },
+  { id: 'epic-lake-jungle-4d3n', title: '4D/3N Epic Lake & Jungle Safari', price: '฿7,100', duration: '4 Days / 3 Nights', popular: false },
+  { id: 'jungle-discovery-3d2n', title: '3D/2N Rainforest Discovery & River Fun', price: '฿4,500', duration: '3 Days / 2 Nights', popular: false },
+  { id: 'lake-overnight-raft-2d1n', title: '2D/1N Lake Overnight Raft House Safari', price: '฿3,200', duration: '2 Days / 1 Night', popular: false },
+];
+
+const cottageRooms = [
+  { id: 'riverside', name: 'Riverside Cottage', price: '฿1,400', note: 'per night · 1 King Bed', popular: true },
+  { id: 'garden-view', name: 'Garden View Cottage', price: '฿1,100', note: 'per night · King or Twins', popular: false },
+  { id: 'family', name: 'Family Wooden Cottage', price: '฿2,000', note: 'per night · Sleeps up to 4', popular: false },
+];
+---
+
+<div id="booking-stepper-root" class="max-w-4xl mx-auto space-y-8" data-default-type={defaultType}>
+
+  <!-- ============================================================
+       TOP VALUE PROPOSITION CAPSULE & HONOR SYSTEM GUARANTEE
+  ============================================================ -->
+  <div class="bg-gradient-to-br from-[#12281b] to-[#1e442c] rounded-3xl p-6 sm:p-8 text-white shadow-lg relative overflow-hidden">
+    <div class="absolute -right-10 -bottom-10 w-56 h-56 bg-[#ba9038]/15 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div class="space-y-2 max-w-xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ba9038]/20 border border-[#ba9038]/40 text-[#f7e6b5] text-[11px] font-sans uppercase tracking-[0.2em] font-bold">
+          <span>KSR</span>
+          <span>/</span>
+          <span>HONOR SYSTEM RESERVATIONS</span>
+        </div>
+        <h2 class="font-monumental text-xl sm:text-2xl md:text-3xl text-white tracking-tight leading-tight">
+          Reserve with <span class="font-display italic font-light text-[#d8b257]">Confidence</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-[#abd0bb] leading-relaxed">
+          Zero deposit required. No credit card upfront. Pay at resort check-in with free cancellation anytime.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 sm:gap-4 shrink-0 bg-white/10 p-3.5 sm:p-4 rounded-2xl border border-white/15 backdrop-blur-md">
+        <div class="text-center sm:text-left">
+          <div class="text-lg sm:text-xl font-monumental font-bold text-[#d8b257]">4.5 / 5</div>
+          <div class="text-[10px] font-sans uppercase tracking-wider text-[#abd0bb]">731+ Google Reviews</div>
+        </div>
+        <div class="text-center sm:text-left border-l border-white/10 pl-3 sm:pl-4">
+          <div class="text-lg sm:text-xl font-monumental font-bold text-[#d8b257]">8.9 / 10</div>
+          <div class="text-[10px] font-sans uppercase tracking-wider text-[#abd0bb]">Booking.com Fabulous</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       STEPPER PROGRESS BAR (100% WCAG 2.1 AA / MOBILE-FRIENDLY)
+  ============================================================ -->
+  <div class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-[#12281b]/10 shadow-sm space-y-4">
+    <div class="grid grid-cols-3 gap-2 sm:gap-4">
+      
+      <!-- Step Tab 1 -->
+      <button
+        type="button"
+        id="stepper-tab-1"
+        class="stepper-nav-btn group flex flex-col sm:flex-row items-center sm:items-start gap-2 sm:gap-3 text-center sm:text-left p-2 rounded-xl transition-all cursor-pointer"
+        data-step="1"
+      >
+        <span class="step-num w-8 h-8 rounded-full flex items-center justify-center font-sans font-bold text-xs shrink-0 transition-all bg-[#12281b] text-white shadow-sm ring-2 ring-[#ba9038]/50">
+          1
+        </span>
+        <div class="min-w-0">
+          <span class="block text-[10px] font-sans uppercase tracking-wider text-[#7a5813] font-bold">Step 01</span>
+          <span class="step-label block text-xs sm:text-sm font-semibold text-[#12281b] truncate">Your Stay</span>
+        </div>
+      </button>
+
+      <!-- Step Tab 2 -->
+      <button
+        type="button"
+        id="stepper-tab-2"
+        class="stepper-nav-btn group flex flex-col sm:flex-row items-center sm:items-start gap-2 sm:gap-3 text-center sm:text-left p-2 rounded-xl transition-all cursor-pointer opacity-60 hover:opacity-100"
+        data-step="2"
+      >
+        <span class="step-num w-8 h-8 rounded-full flex items-center justify-center font-sans font-bold text-xs shrink-0 transition-all bg-[#f4efeb] text-[#12281b] border border-[#12281b]/15">
+          2
+        </span>
+        <div class="min-w-0">
+          <span class="block text-[10px] font-sans uppercase tracking-wider text-[#183424] font-medium">Step 02</span>
+          <span class="step-label block text-xs sm:text-sm font-semibold text-[#12281b] truncate">Experience</span>
+        </div>
+      </button>
+
+      <!-- Step Tab 3 -->
+      <button
+        type="button"
+        id="stepper-tab-3"
+        class="stepper-nav-btn group flex flex-col sm:flex-row items-center sm:items-start gap-2 sm:gap-3 text-center sm:text-left p-2 rounded-xl transition-all cursor-pointer opacity-60 hover:opacity-100"
+        data-step="3"
+      >
+        <span class="step-num w-8 h-8 rounded-full flex items-center justify-center font-sans font-bold text-xs shrink-0 transition-all bg-[#f4efeb] text-[#12281b] border border-[#12281b]/15">
+          3
+        </span>
+        <div class="min-w-0">
+          <span class="block text-[10px] font-sans uppercase tracking-wider text-[#183424] font-medium">Step 03</span>
+          <span class="step-label block text-xs sm:text-sm font-semibold text-[#12281b] truncate">Details</span>
+        </div>
+      </button>
+
+    </div>
+
+    <!-- Active progress track line -->
+    <div class="w-full bg-[#f4efeb] h-1.5 rounded-full overflow-hidden">
+      <div id="stepper-progress-fill" class="h-full bg-gradient-to-r from-[#ba9038] to-[#d8b257] transition-all duration-300 w-1/3"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       STEPPER PANELS CONTAINER
+  ============================================================ -->
+  <div class="bg-white rounded-3xl border border-[#12281b]/10 p-6 sm:p-8 md:p-10 shadow-sm relative overflow-hidden">
+
+    <!-- ========================================================
+         STEP 1 : YOUR STAY (DATES & GUESTS)
+    ======================================================== -->
+    <div id="step-panel-1" class="step-panel space-y-8 animate-fadeIn">
+      <div class="border-b border-[#12281b]/10 pb-5">
+        <span class="text-[11px] font-sans uppercase tracking-widest text-[#ba9038] font-bold">Step 1 of 3</span>
+        <h3 class="font-display text-2xl sm:text-3xl text-[#12281b] font-semibold tracking-tight mt-1">
+          When will you be joining us?
+        </h3>
+        <p class="text-xs sm:text-sm text-[#183424] mt-1.5 leading-relaxed">
+          Select your arrival and departure dates. You can adjust or cancel anytime with zero cancellation fees.
+        </p>
+      </div>
+
+      <!-- Dates Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div class="space-y-2">
+          <label for="step-date-checkin" class="block text-xs font-sans uppercase tracking-wider text-[#12281b] font-semibold">
+            Check-In Date *
+          </label>
+          <div class="relative">
+            <input
+              type="date"
+              id="step-date-checkin"
+              name="checkin_date"
+              required
+              lang="en-US"
+              class="w-full pl-4 pr-10 py-3.5 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] font-medium text-sm focus:outline-none focus:ring-2 focus:ring-[#ba9038]/20 transition-all"
+            />
+            <div class="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#7a5813]">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <label for="step-date-checkout" class="block text-xs font-sans uppercase tracking-wider text-[#12281b] font-semibold">
+            Check-Out Date *
+          </label>
+          <div class="relative">
+            <input
+              type="date"
+              id="step-date-checkout"
+              name="checkout_date"
+              required
+              lang="en-US"
+              class="w-full pl-4 pr-10 py-3.5 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] font-medium text-sm focus:outline-none focus:ring-2 focus:ring-[#ba9038]/20 transition-all"
+            />
+            <div class="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#7a5813]">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Guests Numeric Selectors -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+        
+        <!-- Adults Numeric Stepper -->
+        <div class="p-4 rounded-2xl bg-[#faf8f5] border border-[#12281b]/10 flex items-center justify-between">
+          <div>
+            <div class="text-xs font-sans uppercase tracking-wider text-[#12281b] font-semibold">Adults *</div>
+            <div class="text-[11px] text-[#183424]">Ages 12 and above</div>
+          </div>
+          <div class="flex items-center gap-3">
+            <button
+              type="button"
+              id="btn-adults-minus"
+              class="w-9 h-9 rounded-full bg-white hover:bg-[#12281b] hover:text-white text-[#12281b] border border-[#12281b]/15 flex items-center justify-center font-bold text-base transition-colors cursor-pointer select-none"
+              aria-label="Decrease adults"
+            >
+              -
+            </button>
+            <span id="display-adults" class="font-monumental text-lg font-bold text-[#12281b] w-6 text-center">2</span>
+            <input type="hidden" id="step-adults-input" name="adults" value="2" />
+            <button
+              type="button"
+              id="btn-adults-plus"
+              class="w-9 h-9 rounded-full bg-white hover:bg-[#12281b] hover:text-white text-[#12281b] border border-[#12281b]/15 flex items-center justify-center font-bold text-base transition-colors cursor-pointer select-none"
+              aria-label="Increase adults"
+            >
+              +
+            </button>
+          </div>
+        </div>
+
+        <!-- Children Numeric Stepper -->
+        <div class="p-4 rounded-2xl bg-[#faf8f5] border border-[#12281b]/10 flex items-center justify-between">
+          <div>
+            <div class="text-xs font-sans uppercase tracking-wider text-[#12281b] font-semibold">Children</div>
+            <div class="text-[11px] text-[#183424]">Ages under 12</div>
+          </div>
+          <div class="flex items-center gap-3">
+            <button
+              type="button"
+              id="btn-children-minus"
+              class="w-9 h-9 rounded-full bg-white hover:bg-[#12281b] hover:text-white text-[#12281b] border border-[#12281b]/15 flex items-center justify-center font-bold text-base transition-colors cursor-pointer select-none"
+              aria-label="Decrease children"
+            >
+              -
+            </button>
+            <span id="display-children" class="font-monumental text-lg font-bold text-[#12281b] w-6 text-center">0</span>
+            <input type="hidden" id="step-children-input" name="children" value="0" />
+            <button
+              type="button"
+              id="btn-children-plus"
+              class="w-9 h-9 rounded-full bg-white hover:bg-[#12281b] hover:text-white text-[#12281b] border border-[#12281b]/15 flex items-center justify-center font-bold text-base transition-colors cursor-pointer select-none"
+              aria-label="Increase children"
+            >
+              +
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Error helper banner -->
+      <div id="step-1-error" class="hidden p-4 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 text-xs font-medium flex items-center gap-2.5">
+        <svg class="w-4 h-4 text-amber-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+        </svg>
+        <span id="step-1-error-text">Please select valid Check-In and Check-Out dates.</span>
+      </div>
+
+      <!-- Action Button -->
+      <div class="pt-6 border-t border-[#12281b]/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2 text-xs text-[#183424]">
+          <span class="text-[#ba9038]">✓</span>
+          <span>No credit card required to check availability</span>
+        </div>
+
+        <button
+          type="button"
+          id="btn-step-1-next"
+          class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-[#ba9038] to-[#d8b257] hover:from-[#c99f3e] hover:to-[#ebd082] text-[#12281b] font-bold text-xs font-sans uppercase tracking-wider transition-all shadow-sm hover:shadow-md cursor-pointer flex items-center justify-center gap-2 min-h-[44px]"
+        >
+          <span>Continue to Experience</span>
+          <span>→</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ========================================================
+         STEP 2 : YOUR EXPERIENCE (PRE-FILLED SELECTION)
+    ======================================================== -->
+    <div id="step-panel-2" class="step-panel hidden space-y-8 animate-fadeIn">
+      <div class="border-b border-[#12281b]/10 pb-5">
+        <span class="text-[11px] font-sans uppercase tracking-widest text-[#ba9038] font-bold">Step 2 of 3</span>
+        <h3 class="font-display text-2xl sm:text-3xl text-[#12281b] font-semibold tracking-tight mt-1">
+          Select Your Experience
+        </h3>
+        <p class="text-xs sm:text-sm text-[#183424] mt-1.5 leading-relaxed">
+          Pre-selected according to your preference. You can easily switch between all-inclusive package or flexible cottage stay.
+        </p>
+      </div>
+
+      <!-- 2 Interactive Cards (Option A vs Option B) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        
+        <!-- Option A: All-Inclusive Tour Package (Highlighted & Recommended) -->
+        <div
+          id="card-option-package"
+          class="experience-card relative rounded-2xl sm:rounded-3xl p-6 sm:p-7 overflow-hidden cursor-pointer transition-all duration-300 flex flex-col justify-between border-2 bg-gradient-to-br from-[#12281b] via-[#173323] to-[#0c1c13] text-white border-[#ba9038] ring-2 ring-[#ba9038]/30 shadow-md"
+          data-type="package"
+        >
+          <div class="absolute top-0 right-0 w-32 h-32 bg-[#ba9038]/15 rounded-full blur-2xl pointer-events-none"></div>
+
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-full bg-[#ba9038] text-[#12281b] text-[10px] font-sans uppercase tracking-wider font-bold shadow-sm">
+                Recommended · 90% of Guests
+              </span>
+              <span class="card-radio-icon w-6 h-6 rounded-full bg-[#ba9038] text-[#12281b] flex items-center justify-center font-bold text-xs">
+                ✓
+              </span>
+            </div>
+
+            <div>
+              <h4 class="font-monumental text-lg sm:text-xl text-white">
+                All-Inclusive Package
+              </h4>
+              <p class="text-xs text-[#abd0bb] mt-1.5 leading-relaxed">
+                Resort cottages + Cheow Lan Lake floating house + guided wildlife safaris + all meals.
+              </p>
+            </div>
+
+            <ul class="space-y-2 text-xs text-[#e2eee6]/90 border-t border-white/10 pt-3">
+              <li class="flex items-center gap-2">
+                <span class="text-[#ba9038]">✓</span>
+                <span>Cheow Lan Lake floating bungalow overnight</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-[#ba9038]">✓</span>
+                <span>Longtail boat safaris & cave explorations</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-[#ba9038]">✓</span>
+                <span>All authentic Thai meals included</span>
+              </li>
+            </ul>
+
+            <!-- Specific Package Sub-Selector -->
+            <div class="pt-2">
+              <label for="select-sub-package" class="block text-[10px] font-sans uppercase tracking-wider text-[#d8b257] font-semibold mb-1">
+                Choose Specific Itinerary:
+              </label>
+              <select
+                id="select-sub-package"
+                name="sub_package"
+                class="w-full px-3 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white font-medium text-xs focus:outline-none focus:ring-2 focus:ring-[#ba9038]"
+              >
+                {tourPackages.map((pkg) => (
+                  <option value={pkg.id} selected={pkg.popular} class="text-[#12281b] bg-white">
+                    {pkg.title} — {pkg.price} / person ({pkg.duration})
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs">
+            <div>
+              <span class="text-[10px] font-sans uppercase tracking-wider text-[#abd0bb]/70 block">Starting from</span>
+              <span class="font-sans text-base sm:text-lg font-bold text-[#f7e6b5]">฿4,500</span>
+              <span class="text-[10px] text-[#abd0bb]"> / person</span>
+            </div>
+            <span class="text-xs font-bold text-[#d8b257] uppercase tracking-wider">Selected ✓</span>
+          </div>
+        </div>
+
+        <!-- Option B: Cottage Room Only (Flexible Stay) -->
+        <div
+          id="card-option-room"
+          class="experience-card relative rounded-2xl sm:rounded-3xl p-6 sm:p-7 overflow-hidden cursor-pointer transition-all duration-300 flex flex-col justify-between border-2 bg-white text-[#12281b] border-neutral-200 hover:border-[#ba9038]/50 shadow-sm"
+          data-type="room"
+        >
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-full bg-[#12281b]/10 text-[#12281b] text-[10px] font-sans uppercase tracking-wider font-bold">
+                Flexible Stay
+              </span>
+              <span class="card-radio-icon w-6 h-6 rounded-full bg-[#f4efeb] text-transparent border border-[#12281b]/20 flex items-center justify-center font-bold text-xs">
+                ✓
+              </span>
+            </div>
+
+            <div>
+              <h4 class="font-monumental text-lg sm:text-xl text-[#12281b]">
+                Room Only
+              </h4>
+              <p class="text-xs text-[#183424] mt-1.5 leading-relaxed">
+                Handcrafted wooden bungalows nestled in botanical gardens beside the Sok River.
+              </p>
+            </div>
+
+            <ul class="space-y-2 text-xs text-[#223e2c] border-t border-[#12281b]/10 pt-3">
+              <li class="flex items-center gap-2">
+                <span class="text-[#7a5813]">✓</span>
+                <span>Garden View, Riverside & Family Cottages</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-[#7a5813]">✓</span>
+                <span>Book lake tours and safaris à la carte upon arrival</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-[#7a5813]">✓</span>
+                <span>Free bus stop shuttle included</span>
+              </li>
+            </ul>
+
+            <!-- Specific Cottage Sub-Selector -->
+            <div class="pt-2">
+              <label for="select-sub-room" class="block text-[10px] font-sans uppercase tracking-wider text-[#7a5813] font-semibold mb-1">
+                Choose Cottage Category:
+              </label>
+              <select
+                id="select-sub-room"
+                name="sub_room"
+                class="w-full px-3 py-2.5 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 text-[#12281b] font-medium text-xs focus:outline-none focus:ring-2 focus:ring-[#ba9038]"
+              >
+                {cottageRooms.map((room) => (
+                  <option value={room.id} selected={room.popular}>
+                    {room.name} — {room.price} ({room.note})
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-[#12281b]/10 flex items-center justify-between text-xs">
+            <div>
+              <span class="text-[10px] font-sans uppercase tracking-wider text-[#183424]/80 block">Starting from</span>
+              <span class="font-sans text-base sm:text-lg font-bold text-[#12281b]">฿1,100</span>
+              <span class="text-[10px] text-[#183424]"> / night</span>
+            </div>
+            <span class="text-xs font-semibold text-[#183424] uppercase tracking-wider">Click to select</span>
+          </div>
+        </div>
+
+      </div>
+
+      <input type="hidden" id="selected-experience-type" name="experience_type" value={defaultType} />
+
+      <!-- Action Buttons -->
+      <div class="pt-6 border-t border-[#12281b]/10 flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
+        <button
+          type="button"
+          id="btn-step-2-back"
+          class="w-full sm:w-auto px-6 py-3.5 rounded-xl border border-[#12281b]/20 hover:border-[#12281b] text-[#12281b] font-bold text-xs font-sans uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2 min-h-[44px]"
+        >
+          <span>←</span>
+          <span>Back to Dates</span>
+        </button>
+
+        <button
+          type="button"
+          id="btn-step-2-next"
+          class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-[#ba9038] to-[#d8b257] hover:from-[#c99f3e] hover:to-[#ebd082] text-[#12281b] font-bold text-xs font-sans uppercase tracking-wider transition-all shadow-sm hover:shadow-md cursor-pointer flex items-center justify-center gap-2 min-h-[44px]"
+        >
+          <span>Continue to Guest Details</span>
+          <span>→</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ========================================================
+         STEP 3 : GUEST DETAILS & CONFIRMATION (FINAL FORM)
+    ======================================================== -->
+    <div id="step-panel-3" class="step-panel hidden space-y-8 animate-fadeIn">
+      <div class="border-b border-[#12281b]/10 pb-5">
+        <span class="text-[11px] font-sans uppercase tracking-widest text-[#ba9038] font-bold">Step 3 of 3</span>
+        <h3 class="font-display text-2xl sm:text-3xl text-[#12281b] font-semibold tracking-tight mt-1">
+          Lead Guest Details & Confirmation
+        </h3>
+        <p class="text-xs sm:text-sm text-[#183424] mt-1.5 leading-relaxed">
+          Provide your contact details. Our team confirms availability and sends your itinerary via WhatsApp/Email within 12 hours.
+        </p>
+      </div>
+
+      <!-- Live Trip Recap Pill -->
+      <div class="p-4 sm:p-5 rounded-2xl bg-[#faf8f5] border border-[#ba9038]/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs">
+        <div class="space-y-1">
+          <div class="font-sans uppercase tracking-wider text-[10px] text-[#7a5813] font-bold">Reservation Summary</div>
+          <div id="summary-dates-guests" class="font-semibold text-sm text-[#12281b]">
+            Dates: Not selected yet
+          </div>
+          <div id="summary-selection-name" class="text-xs text-[#183424]">
+            Experience: Tour Package
+          </div>
+        </div>
+        <button
+          type="button"
+          id="btn-edit-summary"
+          class="text-xs font-bold text-[#ba9038] hover:text-[#7a5813] underline transition-colors cursor-pointer shrink-0"
+        >
+          Edit Selection ✎
+        </button>
+      </div>
+
+      <!-- Main Form -->
+      <form id="unified-stepper-form" novalidate class="space-y-6">
+        
+        <!-- Text Inputs: Full Name & Email -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div class="space-y-2">
+            <label for="step-guest-name" class="block text-xs font-sans uppercase tracking-wider text-[#12281b] font-semibold">
+              Full Name *
+            </label>
+            <input
+              type="text"
+              id="step-guest-name"
+              name="full_name"
+              required
+              placeholder="e.g. Sarah Jenkins"
+              class="w-full px-4 py-3.5 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] text-sm focus:outline-none focus:ring-2 focus:ring-[#ba9038]/20 transition-all"
+            />
+          </div>
+
+          <div class="space-y-2">
+            <label for="step-guest-email" class="block text-xs font-sans uppercase tracking-wider text-[#12281b] font-semibold">
+              Email Address *
+            </label>
+            <input
+              type="email"
+              id="step-guest-email"
+              name="email"
+              required
+              placeholder="sarah@example.com"
+              class="w-full px-4 py-3.5 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] text-sm focus:outline-none focus:ring-2 focus:ring-[#ba9038]/20 transition-all"
+            />
+          </div>
+        </div>
+
+        <!-- Phone / WhatsApp & Transfer Options -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div class="space-y-2">
+            <label for="step-guest-phone" class="block text-xs font-sans uppercase tracking-wider text-[#12281b] font-semibold">
+              WhatsApp / Mobile Phone *
+            </label>
+            <input
+              type="tel"
+              id="step-guest-phone"
+              name="phone"
+              required
+              placeholder="+44 7123 456789"
+              class="w-full px-4 py-3.5 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] text-sm focus:outline-none focus:ring-2 focus:ring-[#ba9038]/20 transition-all"
+            />
+          </div>
+
+          <div class="space-y-2">
+            <label for="step-transfer-option" class="block text-xs font-sans uppercase tracking-wider text-[#12281b] font-semibold">
+              Arrival Transfer Option
+            </label>
+            <select
+              id="step-transfer-option"
+              name="transfer_option"
+              class="w-full px-4 py-3.5 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] text-sm focus:outline-none focus:ring-2 focus:ring-[#ba9038]/20 transition-all"
+            >
+              <option value="free-bus-stop" selected>Free pickup at Khao Sok Bus Stop (Hwy 401)</option>
+              <option value="own-transport">Arriving by own car / rental</option>
+              <option value="surat-thani-airport">Surat Thani Airport (URT) Private Transfer</option>
+              <option value="surat-thani-train">Surat Thani Train Station Transfer</option>
+              <option value="phuket">Phuket (Airport or Hotel) Transfer</option>
+              <option value="krabi">Krabi (Airport or Ao Nang) Transfer</option>
+              <option value="khao-lak">Khao Lak Transfer</option>
+              <option value="other">Other location (specify in notes)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Special Requests -->
+        <div class="space-y-2">
+          <label for="step-guest-notes" class="block text-xs font-sans uppercase tracking-wider text-[#12281b] font-semibold">
+            Dietary Needs or Special Requests (Optional)
+          </label>
+          <input
+            type="text"
+            id="step-guest-notes"
+            name="notes"
+            placeholder="e.g. Vegetarian meals, late evening check-in, honeymoon celebration"
+            class="w-full px-4 py-3 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] text-sm focus:outline-none focus:ring-2 focus:ring-[#ba9038]/20 transition-all"
+          />
+        </div>
+
+        <!-- Error helper banner -->
+        <div id="step-3-error" class="hidden p-4 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 text-xs font-medium flex items-center gap-2.5">
+          <svg class="w-4 h-4 text-amber-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+          </svg>
+          <span>Please complete your full name, email and phone number to send your request.</span>
+        </div>
+
+        <!-- Honor System Reassurance Badge -->
+        <div class="p-4 rounded-2xl bg-[#f4efeb] border border-[#12281b]/10 text-xs text-[#223e2c] space-y-1">
+          <div class="font-bold text-[#12281b]">✓ 100% Honor System Guarantee</div>
+          <div>No advance deposit or prepayment required. Pay upon arrival at the resort. Free cancellation anytime.</div>
+        </div>
+
+        <!-- Actions & Beds24 Alternative -->
+        <div class="pt-6 border-t border-[#12281b]/10 space-y-4">
+          <div class="flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
+            <button
+              type="button"
+              id="btn-step-3-back"
+              class="w-full sm:w-auto px-6 py-3.5 rounded-xl border border-[#12281b]/20 hover:border-[#12281b] text-[#12281b] font-bold text-xs font-sans uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2 min-h-[44px]"
+            >
+              <span>←</span>
+              <span>Back to Experience</span>
+            </button>
+
+            <!-- Main CTA Button -->
+            <button
+              type="submit"
+              id="btn-submit-stepper"
+              class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-[#ba9038] to-[#d8b257] hover:from-[#c99f3e] hover:to-[#ebd082] text-[#12281b] font-bold text-sm font-sans uppercase tracking-wider transition-all shadow-md hover:shadow-lg cursor-pointer flex items-center justify-center gap-2 min-h-[44px]"
+            >
+              <span>Send Reservation Request (No deposit required)</span>
+              <span>→</span>
+            </button>
+          </div>
+
+          <!-- Discrete Alternative Link for Beds24 -->
+          <div class="text-center pt-2">
+            <a
+              id="stepper-beds24-link"
+              href="https://beds24.com/booking2.php?propid=42681"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-xs text-[#7a5813] hover:text-[#12281b] underline decoration-[#ba9038]/50 hover:decoration-[#12281b] transition-colors"
+            >
+              Prefer to lock your dates instantly with a credit card? Use our secure booking engine ↗
+            </a>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+
+  <!-- ============================================================
+       SUCCESS MODAL (CONFIRMATION STATE)
+  ============================================================ -->
+  <div
+    id="stepper-success-modal"
+    class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 flex items-center justify-center p-4"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="stepper-modal-title"
+  >
+    <div class="bg-[#faf8f5] border border-neutral-200 rounded-3xl max-w-lg w-full p-6 sm:p-8 md:p-10 shadow-2xl space-y-6 relative transform scale-95 transition-transform duration-300 max-h-[92vh] overflow-y-auto">
+      <div class="w-16 h-16 rounded-full bg-[#183424]/10 border border-[#183424]/20 text-[#183424] flex items-center justify-center text-3xl mx-auto font-bold">
+        ✓
+      </div>
+
+      <div class="text-center space-y-2">
+        <span class="text-xs font-sans uppercase tracking-[0.25em] text-[#ba9038] font-bold">Request Received</span>
+        <h3 id="stepper-modal-title" class="font-display text-2xl sm:text-3xl font-bold text-[#12281b]">
+          Reservation Request Sent!
+        </h3>
+        <p class="text-xs sm:text-sm text-[#183424] leading-relaxed" id="stepper-modal-summary-text">
+          Thank you! Bodhi, Tu and the Khao Sok Riverside team have received your request and will confirm your dates and pickup details via WhatsApp and Email within 12 hours.
+        </p>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-[#f4efeb] border border-neutral-200 text-xs text-[#183424] space-y-2 font-sans">
+        <div class="flex justify-between">
+          <span class="text-[#7a5813] font-semibold">Status:</span>
+          <span class="font-bold text-[#12281b]">Pending Confirmation (Honor System)</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-[#7a5813] font-semibold">Deposit:</span>
+          <span class="font-bold text-[#12281b]">฿0 Required (Pay on arrival)</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-[#7a5813] font-semibold">Cancellation:</span>
+          <span class="font-bold text-[#12281b]">Free cancellation anytime</span>
+        </div>
+      </div>
+
+      <div class="space-y-3">
+        <a
+          id="btn-whatsapp-instant"
+          href="https://wa.me/6677395159"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full py-3.5 px-4 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-sm"
+        >
+          <span>Chat with Front Desk on WhatsApp 💬</span>
+        </a>
+
+        <button
+          type="button"
+          id="btn-stepper-close-modal"
+          class="w-full py-3.5 rounded-xl bg-[#12281b] hover:bg-[#1f402c] text-white font-bold text-xs font-sans uppercase tracking-wider transition-colors cursor-pointer"
+        >
+          Understood & Return to Website
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================
+     VANILLA JS STEPPER CONTROLLER (ZERO EXTERNAL DEPENDENCY)
+============================================================ -->
+<script is:inline>
+  (function initBookingStepper() {
+    const root = document.getElementById('booking-stepper-root');
+    if (!root) return;
+
+    let currentStep = 1;
+    let selectedType = root.getAttribute('data-default-type') || 'package';
+
+    // Tabs & Progress
+    const tab1 = document.getElementById('stepper-tab-1');
+    const tab2 = document.getElementById('stepper-tab-2');
+    const tab3 = document.getElementById('stepper-tab-3');
+    const progressFill = document.getElementById('stepper-progress-fill');
+
+    // Panels
+    const panel1 = document.getElementById('step-panel-1');
+    const panel2 = document.getElementById('step-panel-2');
+    const panel3 = document.getElementById('step-panel-3');
+
+    // Step 1 Elements
+    const inputCheckin = document.getElementById('step-date-checkin');
+    const inputCheckout = document.getElementById('step-date-checkout');
+    const displayAdults = document.getElementById('display-adults');
+    const inputAdults = document.getElementById('step-adults-input');
+    const btnAdultsMinus = document.getElementById('btn-adults-minus');
+    const btnAdultsPlus = document.getElementById('btn-adults-plus');
+    const displayChildren = document.getElementById('display-children');
+    const inputChildren = document.getElementById('step-children-input');
+    const btnChildrenMinus = document.getElementById('btn-children-minus');
+    const btnChildrenPlus = document.getElementById('btn-children-plus');
+    const error1 = document.getElementById('step-1-error');
+    const error1Text = document.getElementById('step-1-error-text');
+    const btnStep1Next = document.getElementById('btn-step-1-next');
+
+    // Step 2 Elements
+    const cardPackage = document.getElementById('card-option-package');
+    const cardRoom = document.getElementById('card-option-room');
+    const hiddenType = document.getElementById('selected-experience-type');
+    const selectPackage = document.getElementById('select-sub-package');
+    const selectRoom = document.getElementById('select-sub-room');
+    const btnStep2Back = document.getElementById('btn-step-2-back');
+    const btnStep2Next = document.getElementById('btn-step-2-next');
+
+    // Step 3 Elements
+    const form = document.getElementById('unified-stepper-form');
+    const summaryDates = document.getElementById('summary-dates-guests');
+    const summarySelection = document.getElementById('summary-selection-name');
+    const btnEditSummary = document.getElementById('btn-edit-summary');
+    const btnStep3Back = document.getElementById('btn-step-3-back');
+    const beds24Link = document.getElementById('stepper-beds24-link');
+    const error3 = document.getElementById('step-3-error');
+
+    // Modal
+    const modal = document.getElementById('stepper-success-modal');
+    const btnCloseModal = document.getElementById('btn-stepper-close-modal');
+    const modalSummary = document.getElementById('stepper-modal-summary-text');
+    const whatsappBtn = document.getElementById('btn-whatsapp-instant');
+
+    // Init Dates with Min Dates
+    const today = new Date();
+    const todayStr = today.toISOString().split('T')[0];
+    if (inputCheckin) {
+      inputCheckin.min = todayStr;
+      inputCheckin.addEventListener('change', () => {
+        if (inputCheckin.value) {
+          const nextDay = new Date(inputCheckin.value);
+          nextDay.setDate(nextDay.getDate() + 1);
+          const nextDayStr = nextDay.toISOString().split('T')[0];
+          inputCheckout.min = nextDayStr;
+          if (!inputCheckout.value || inputCheckout.value <= inputCheckin.value) {
+            inputCheckout.value = nextDayStr;
+          }
+        }
+        if (error1) error1.classList.add('hidden');
+      });
+    }
+
+    if (inputCheckout) {
+      inputCheckout.addEventListener('change', () => {
+        if (error1) error1.classList.add('hidden');
+      });
+    }
+
+    // Adults Stepper
+    let adultsCount = 2;
+    if (btnAdultsMinus && btnAdultsPlus && displayAdults && inputAdults) {
+      btnAdultsMinus.addEventListener('click', () => {
+        if (adultsCount > 1) {
+          adultsCount--;
+          displayAdults.textContent = adultsCount;
+          inputAdults.value = adultsCount;
+        }
+      });
+      btnAdultsPlus.addEventListener('click', () => {
+        if (adultsCount < 12) {
+          adultsCount++;
+          displayAdults.textContent = adultsCount;
+          inputAdults.value = adultsCount;
+        }
+      });
+    }
+
+    // Children Stepper
+    let childrenCount = 0;
+    if (btnChildrenMinus && btnChildrenPlus && displayChildren && inputChildren) {
+      btnChildrenMinus.addEventListener('click', () => {
+        if (childrenCount > 0) {
+          childrenCount--;
+          displayChildren.textContent = childrenCount;
+          inputChildren.value = childrenCount;
+        }
+      });
+      btnChildrenPlus.addEventListener('click', () => {
+        if (childrenCount < 8) {
+          childrenCount++;
+          displayChildren.textContent = childrenCount;
+          inputChildren.value = childrenCount;
+        }
+      });
+    }
+
+    // URL Query Parameter Reading (?type=package or ?type=room or ?tab=package or ?tab=room)
+    const urlParams = new URLSearchParams(window.location.search);
+    const paramType = urlParams.get('type') || urlParams.get('tab');
+    if (paramType === 'room') {
+      selectedType = 'room';
+    } else if (paramType === 'package') {
+      selectedType = 'package';
+    }
+
+    // Set Experience Type Visuals
+    function updateExperienceSelection(type) {
+      selectedType = type;
+      if (hiddenType) hiddenType.value = type;
+
+      if (!cardPackage || !cardRoom) return;
+
+      if (type === 'package') {
+        cardPackage.classList.remove('bg-white', 'text-[#12281b]', 'border-neutral-200');
+        cardPackage.classList.add('bg-gradient-to-br', 'from-[#12281b]', 'via-[#173323]', 'to-[#0c1c13]', 'text-white', 'border-[#ba9038]', 'ring-2', 'ring-[#ba9038]/30', 'shadow-md');
+        const iconA = cardPackage.querySelector('.card-radio-icon');
+        if (iconA) {
+          iconA.className = 'card-radio-icon w-6 h-6 rounded-full bg-[#ba9038] text-[#12281b] flex items-center justify-center font-bold text-xs';
+          iconA.textContent = '✓';
+        }
+
+        cardRoom.classList.remove('bg-gradient-to-br', 'from-[#12281b]', 'via-[#173323]', 'to-[#0c1c13]', 'text-white', 'border-[#ba9038]', 'ring-2', 'ring-[#ba9038]/30', 'shadow-md');
+        cardRoom.classList.add('bg-white', 'text-[#12281b]', 'border-neutral-200');
+        const iconB = cardRoom.querySelector('.card-radio-icon');
+        if (iconB) {
+          iconB.className = 'card-radio-icon w-6 h-6 rounded-full bg-[#f4efeb] text-transparent border border-[#12281b]/20 flex items-center justify-center font-bold text-xs';
+          iconB.textContent = '';
+        }
+
+        if (beds24Link) {
+          beds24Link.href = 'https://beds24.com/booking2.php?propid=42681';
+        }
+      } else {
+        cardRoom.classList.remove('bg-white', 'text-[#12281b]', 'border-neutral-200');
+        cardRoom.classList.add('bg-gradient-to-br', 'from-[#12281b]', 'via-[#173323]', 'to-[#0c1c13]', 'text-white', 'border-[#ba9038]', 'ring-2', 'ring-[#ba9038]/30', 'shadow-md');
+        const iconB = cardRoom.querySelector('.card-radio-icon');
+        if (iconB) {
+          iconB.className = 'card-radio-icon w-6 h-6 rounded-full bg-[#ba9038] text-[#12281b] flex items-center justify-center font-bold text-xs';
+          iconB.textContent = '✓';
+        }
+
+        cardPackage.classList.remove('bg-gradient-to-br', 'from-[#12281b]', 'via-[#173323]', 'to-[#0c1c13]', 'text-white', 'border-[#ba9038]', 'ring-2', 'ring-[#ba9038]/30', 'shadow-md');
+        cardPackage.classList.add('bg-white', 'text-[#12281b]', 'border-neutral-200');
+        const iconA = cardPackage.querySelector('.card-radio-icon');
+        if (iconA) {
+          iconA.className = 'card-radio-icon w-6 h-6 rounded-full bg-[#f4efeb] text-transparent border border-[#12281b]/20 flex items-center justify-center font-bold text-xs';
+          iconA.textContent = '';
+        }
+
+        if (beds24Link) {
+          beds24Link.href = 'https://beds24.com/booking2.php?propid=8735&numadult=2&referer=iframe';
+        }
+      }
+    }
+
+    if (cardPackage) {
+      cardPackage.addEventListener('click', () => updateExperienceSelection('package'));
+    }
+    if (cardRoom) {
+      cardRoom.addEventListener('click', () => updateExperienceSelection('room'));
+    }
+
+    // Initial update based on URL parameter
+    updateExperienceSelection(selectedType);
+
+    // Switch Stepper Step
+    function goToStep(step) {
+      currentStep = step;
+
+      // Update Panels
+      if (panel1) panel1.classList.toggle('hidden', step !== 1);
+      if (panel2) panel2.classList.toggle('hidden', step !== 2);
+      if (panel3) panel3.classList.toggle('hidden', step !== 3);
+
+      // Update Navigation Tabs
+      [tab1, tab2, tab3].forEach((tab, idx) => {
+        if (!tab) return;
+        const num = idx + 1;
+        const numBadge = tab.querySelector('.step-num');
+
+        if (num === step) {
+          tab.classList.remove('opacity-60');
+          tab.classList.add('opacity-100');
+          if (numBadge) {
+            numBadge.className = 'step-num w-8 h-8 rounded-full flex items-center justify-center font-sans font-bold text-xs shrink-0 transition-all bg-[#12281b] text-white shadow-sm ring-2 ring-[#ba9038]/50';
+          }
+        } else if (num < step) {
+          tab.classList.remove('opacity-60');
+          tab.classList.add('opacity-100');
+          if (numBadge) {
+            numBadge.className = 'step-num w-8 h-8 rounded-full flex items-center justify-center font-sans font-bold text-xs shrink-0 transition-all bg-[#2e6b45] text-white shadow-xs';
+            numBadge.textContent = '✓';
+          }
+        } else {
+          tab.classList.add('opacity-60');
+          tab.classList.remove('opacity-100');
+          if (numBadge) {
+            numBadge.className = 'step-num w-8 h-8 rounded-full flex items-center justify-center font-sans font-bold text-xs shrink-0 transition-all bg-[#f4efeb] text-[#12281b] border border-[#12281b]/15';
+            numBadge.textContent = num.toString();
+          }
+        }
+      });
+
+      // Update Progress Track
+      if (progressFill) {
+        if (step === 1) progressFill.style.width = '33%';
+        else if (step === 2) progressFill.style.width = '66%';
+        else progressFill.style.width = '100%';
+      }
+
+      // If entering Step 3, refresh summary
+      if (step === 3) {
+        updateStep3Summary();
+      }
+
+      // Smooth scroll to top of stepper
+      root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Validate Step 1
+    function validateStep1() {
+      const inVal = inputCheckin ? inputCheckin.value : '';
+      const outVal = inputCheckout ? inputCheckout.value : '';
+
+      if (!inVal || !outVal) {
+        if (error1 && error1Text) {
+          error1Text.textContent = 'Please select both Check-In and Check-Out dates.';
+          error1.classList.remove('hidden');
+        }
+        return false;
+      }
+
+      if (outVal <= inVal) {
+        if (error1 && error1Text) {
+          error1Text.textContent = 'Check-Out date must be after Check-In date.';
+          error1.classList.remove('hidden');
+        }
+        return false;
+      }
+
+      if (error1) error1.classList.add('hidden');
+      return true;
+    }
+
+    // Step 1 Next
+    if (btnStep1Next) {
+      btnStep1Next.addEventListener('click', () => {
+        if (validateStep1()) {
+          goToStep(2);
+        }
+      });
+    }
+
+    // Step 2 Next & Back
+    if (btnStep2Back) {
+      btnStep2Back.addEventListener('click', () => goToStep(1));
+    }
+    if (btnStep2Next) {
+      btnStep2Next.addEventListener('click', () => goToStep(3));
+    }
+
+    // Step 3 Back & Edit
+    if (btnStep3Back) {
+      btnStep3Back.addEventListener('click', () => goToStep(2));
+    }
+    if (btnEditSummary) {
+      btnEditSummary.addEventListener('click', () => goToStep(1));
+    }
+
+    // Step Tabs Direct Click (Allowed for steps already visited)
+    if (tab1) tab1.addEventListener('click', () => goToStep(1));
+    if (tab2) tab2.addEventListener('click', () => {
+      if (validateStep1()) goToStep(2);
+    });
+    if (tab3) tab3.addEventListener('click', () => {
+      if (validateStep1()) goToStep(3);
+    });
+
+    // Calculate Nights & Format Summary
+    function updateStep3Summary() {
+      const inVal = inputCheckin ? inputCheckin.value : '';
+      const outVal = inputCheckout ? inputCheckout.value : '';
+      let nights = 0;
+      if (inVal && outVal) {
+        const d1 = new Date(inVal);
+        const d2 = new Date(outVal);
+        nights = Math.max(1, Math.round((d2 - d1) / (1000 * 60 * 60 * 24)));
+      }
+
+      if (summaryDates) {
+        const guestsStr = `${adultsCount} Adult${adultsCount > 1 ? 's' : ''}${childrenCount > 0 ? `, ${childrenCount} Child${childrenCount > 1 ? 'ren' : ''}` : ''}`;
+        summaryDates.textContent = `${inVal || 'TBD'} → ${outVal || 'TBD'} (${nights} night${nights > 1 ? 's' : ''}) · ${guestsStr}`;
+      }
+
+      if (summarySelection) {
+        if (selectedType === 'package') {
+          const pkgTitle = selectPackage ? selectPackage.options[selectPackage.selectedIndex].text.split('—')[0].trim() : 'All-Inclusive Package';
+          summarySelection.textContent = `Experience: Tour Package (${pkgTitle})`;
+        } else {
+          const roomTitle = selectRoom ? selectRoom.options[selectRoom.selectedIndex].text.split('—')[0].trim() : 'Cottage Only';
+          summarySelection.textContent = `Experience: Room Only (${roomTitle})`;
+        }
+      }
+    }
+
+    // Handle Form Submit
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const nameInput = document.getElementById('step-guest-name');
+        const emailInput = document.getElementById('step-guest-email');
+        const phoneInput = document.getElementById('step-guest-phone');
+
+        const name = (nameInput?.value || '').trim();
+        const email = (emailInput?.value || '').trim();
+        const phone = (phoneInput?.value || '').trim();
+
+        if (!name || !email || !phone) {
+          if (error3) error3.classList.remove('hidden');
+          return;
+        }
+
+        if (error3) error3.classList.add('hidden');
+
+        // Prepare Summary for modal and WhatsApp link
+        const inVal = inputCheckin ? inputCheckin.value : 'Flexible';
+        const outVal = inputCheckout ? inputCheckout.value : 'Flexible';
+        const chosenExp = selectedType === 'package'
+          ? (selectPackage ? selectPackage.options[selectPackage.selectedIndex].text.split('—')[0].trim() : 'Tour Package')
+          : (selectRoom ? selectRoom.options[selectRoom.selectedIndex].text.split('—')[0].trim() : 'Cottage Only');
+
+        if (modalSummary) {
+          modalSummary.textContent = `Thank you ${name}! We have received your reservation request for "${chosenExp}" (${inVal} to ${outVal}, ${adultsCount} Adults). Our reservation desk will confirm availability and send your itinerary within 12 hours.`;
+        }
+
+        // WhatsApp direct link generator
+        if (whatsappBtn) {
+          const waMsg = encodeURIComponent(
+            `Hello Khao Sok Riverside Cottages! I just sent a reservation request: Name: ${name}, Dates: ${inVal} to ${outVal}, Guests: ${adultsCount} Adults, Experience: ${chosenExp}. Could you please confirm availability? Thank you!`
+          );
+          whatsappBtn.href = `https://wa.me/6677395159?text=${waMsg}`;
+        }
+
+        openModal();
+      });
+    }
+
+    function openModal() {
+      if (!modal) return;
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      const inner = modal.querySelector('div');
+      if (inner) inner.classList.remove('scale-95');
+      if (btnCloseModal) btnCloseModal.focus();
+    }
+
+    function closeModal() {
+      if (!modal) return;
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      const inner = modal.querySelector('div');
+      if (inner) inner.classList.add('scale-95');
+    }
+
+    if (btnCloseModal) {
+      btnCloseModal.addEventListener('click', closeModal);
+    }
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (!modal || modal.classList.contains('pointer-events-none')) return;
+      if (e.key === 'Escape') closeModal();
+    });
+
+  })();
+</script>
+
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fadeIn {
+    animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+</style>
