@@ -295,8 +295,7 @@ const withBase = (path: string) => {
             ],
           },
           {
-            num: '07', title: 'Journal', note: '46 Rainforest Chronicles',
-            badge: '46 Stories',
+            num: '07', title: 'Journal', note: 'Rainforest Chronicles',
             href: '/khao-sok-blog/',
             img: '/wp-content/uploads/2026/03/bamboo-rafting-khao-sok.jpg',
             sublinks: [
@@ -327,14 +326,9 @@ const withBase = (path: string) => {
             data-preview-note={item.note}
           >
             <div class="flex items-baseline justify-between mb-0.5 sm:mb-1">
-              <a href={item.href} class="font-monumental text-lg sm:text-xl md:text-2xl text-[#122319] group-hover:text-[#ba9038] transition-colors flex items-center gap-2 sm:gap-3 tracking-tight">
+              <a href={item.href} class="font-monumental text-lg sm:text-xl md:text-2xl text-[#122319] group-hover:text-[#ba9038] transition-colors flex items-baseline gap-2 sm:gap-3 tracking-tight">
                 <span class="text-[10px] sm:text-xs font-sans text-[#7a5813] font-bold">{item.num}</span>
                 <span>{item.title}</span>
-                {item.badge && (
-                  <span class="px-2 py-0.5 rounded-full bg-[#ba9038]/15 border border-[#ba9038]/30 text-[#7a5813] text-[9px] font-sans font-bold uppercase tracking-wider">
-                    {item.badge}
-                  </span>
-                )}
               </a>
               <span class="font-handwriting text-[#183424] text-base sm:text-lg font-medium hidden md:inline">{item.note}</span>
             </div>
