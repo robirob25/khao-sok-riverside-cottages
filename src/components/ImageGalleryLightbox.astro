@@ -22,6 +22,15 @@ const {
   title = 'Wild Landscapes & Wildlife of Khao Sok',
   images = [],
 } = Astro.props;
+
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase === '/' ? '' : rawBase.replace(/\/$/, '');
+const normalizedImages = images.map((img) => ({
+  ...img,
+  src: img.src.startsWith('http') || (base && img.src.startsWith(base))
+    ? img.src
+    : `${base}${img.src.startsWith('/') ? '' : '/'}${img.src}`,
+}));
 ---
 
 <section class="gallery-showcase-container my-8 sm:my-10 space-y-3" id={galleryId}>
@@ -40,7 +49,7 @@ const {
     </div>
     <div class="flex items-center gap-2.5 text-xs text-[#183424]">
       <span class="px-2.5 py-1 rounded-full bg-[#12281b]/08 text-[#12281b] font-sans text-[11px] font-semibold">
-        {images.length} Photos
+        {normalizedImages.length} Photos
       </span>
       <span class="text-[#7a5813] font-medium hidden sm:inline-flex items-center gap-1">
         <span>⤢</span> Click any photo to zoom
@@ -59,8 +68,8 @@ const {
     >
       <img
         id={`${galleryId}-main-img`}
-        src={images[0]?.src}
-        alt={images[0]?.alt}
+        src={normalizedImages[0]?.src}
+        alt={normalizedImages[0]?.alt}
         class="w-full h-full object-cover transition-all duration-300 group-hover:scale-[1.02]"
         loading="eager"
         decoding="async"
@@ -81,16 +90,16 @@ const {
       <div class="absolute bottom-3 sm:bottom-4 left-3 sm:left-5 right-3 sm:right-5 z-10 flex flex-col sm:flex-row sm:items-end justify-between gap-2 text-white pointer-events-none">
         <div class="max-w-xl space-y-0.5">
           <div id={`${galleryId}-main-title`} class="font-display font-bold text-sm sm:text-base text-[#faf8f5] drop-shadow-md">
-            {images[0]?.title}
+            {normalizedImages[0]?.title}
           </div>
           <p id={`${galleryId}-main-caption`} class="text-[11px] sm:text-xs text-[#e5f0ea]/90 font-light line-clamp-2 drop-shadow-sm">
-            {images[0]?.caption || images[0]?.alt}
+            {normalizedImages[0]?.caption || normalizedImages[0]?.alt}
           </p>
         </div>
 
         <div class="flex items-center gap-2 self-start sm:self-auto shrink-0">
           <span id={`${galleryId}-main-counter`} class="px-2.5 py-1 rounded-full bg-black/60 text-[#f7e6b5] text-[11px] font-sans font-bold border border-white/15 backdrop-blur-md">
-            1 / {images.length}
+            1 / {normalizedImages.length}
           </span>
         </div>
       </div>
@@ -122,7 +131,7 @@ const {
 
   <!-- Thumbnails Row -->
   <div class="grid grid-cols-4 sm:grid-cols-8 gap-2 pt-1">
-    {images.map((img, idx) => (
+    {normalizedImages.map((img, idx) => (
       <button
         type="button"
         class={`gallery-thumb-btn group relative aspect-[4/3] rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${
@@ -131,6 +140,7 @@ const {
             : 'border-[#12281b]/15 opacity-70 hover:opacity-100 hover:border-[#ba9038]/60'
         }`}
         data-index={idx}
+        data-src={img.src}
         aria-label={`View photo ${idx + 1}: ${img.title}`}
       >
         <img
@@ -171,10 +181,10 @@ const {
     <!-- Top Left Header Info -->
     <div class="absolute top-4 left-4 sm:top-6 sm:left-6 flex items-center gap-3 z-40">
       <span id={`${galleryId}-lightbox-counter`} class="font-sans text-xs text-[#f7e6b5] bg-black/60 px-3 py-1.5 rounded-full border border-white/20 backdrop-blur-md font-bold">
-        1 / {images.length}
+        1 / {normalizedImages.length}
       </span>
       <span id={`${galleryId}-lightbox-title`} class="hidden sm:inline-block font-display text-sm text-white/90 drop-shadow font-semibold">
-        {images[0]?.title}
+        {normalizedImages[0]?.title}
       </span>
     </div>
 
@@ -206,18 +216,18 @@ const {
     <div class="relative max-w-5xl max-h-[85vh] flex flex-col items-center justify-center overflow-hidden">
       <img
         id={`${galleryId}-lightbox-img`}
-        src={images[0]?.src}
-        alt={images[0]?.alt}
+        src={normalizedImages[0]?.src}
+        alt={normalizedImages[0]?.alt}
         class="max-w-full max-h-[75vh] object-contain rounded-2xl shadow-2xl transition-opacity duration-200"
       />
       <p id={`${galleryId}-lightbox-caption`} class="mt-3 text-xs sm:text-sm text-center text-white/80 font-sans max-w-2xl px-4">
-        {images[0]?.caption || images[0]?.alt}
+        {normalizedImages[0]?.caption || normalizedImages[0]?.alt}
       </p>
     </div>
   </div>
 </section>
 
-<script define:vars={{ galleryId, images }}>
+<script define:vars={{ galleryId, images: normalizedImages }}>
   (() => {
     let currentIndex = 0;
 
@@ -245,14 +255,35 @@ const {
     const lightboxPrev = document.getElementById(`${galleryId}-lightbox-prev`);
     const lightboxNext = document.getElementById(`${galleryId}-lightbox-next`);
 
+    function resolveSrc(url) {
+      if (!url) return '';
+      if (url.startsWith('http://') || url.startsWith('https://')) return url;
+      const isGhPages = window.location.pathname.startsWith('/khao-sok-riverside-cottages');
+      const basePath = isGhPages ? '/khao-sok-riverside-cottages' : '';
+      if (basePath && !url.startsWith(basePath)) {
+        return `${basePath}${url.startsWith('/') ? '' : '/'}${url}`;
+      }
+      return url;
+    }
+
+    function getImageSrc(index) {
+      const thumbEl = thumbBtns[index]?.querySelector('img');
+      if (thumbEl && thumbEl.src) {
+        return thumbEl.src;
+      }
+      const item = images[index];
+      return item ? resolveSrc(item.src) : '';
+    }
+
     function updateMainDisplay(index) {
       if (!images || !images[index]) return;
       currentIndex = index;
       const item = images[currentIndex];
+      const targetSrc = getImageSrc(currentIndex);
 
       if (mainImg) {
         mainImg.style.opacity = '0.5';
-        mainImg.src = item.src;
+        mainImg.src = targetSrc;
         mainImg.alt = item.alt;
         setTimeout(() => { mainImg.style.opacity = '1'; }, 100);
       }
@@ -290,10 +321,11 @@ const {
     function updateLightboxDisplay() {
       const item = images[currentIndex];
       if (!item) return;
+      const targetSrc = getImageSrc(currentIndex);
 
       if (lightboxImg) {
         lightboxImg.style.opacity = '0.4';
-        lightboxImg.src = item.src;
+        lightboxImg.src = targetSrc;
         lightboxImg.alt = item.alt;
         lightboxImg.onload = () => { lightboxImg.style.opacity = '1'; };
         setTimeout(() => { lightboxImg.style.opacity = '1'; }, 80);

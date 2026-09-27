@@ -26,27 +26,35 @@ const withBase = (path: string) => {
 >
   <div class="max-w-7xl mx-auto flex items-center justify-between">
 
-    <!-- Burger (Home page / transparent navbar) -->
+    <!-- Left Controls -->
     <div class="flex items-center gap-2 sm:gap-4">
-      <button
-        id="home-burger"
-        class={`group flex flex-col justify-center gap-1.5 w-9 h-9 p-1 cursor-pointer focus:outline-none transition-opacity ${
-          isHome ? "opacity-100" : "hidden"
-        }`}
-        aria-label="Open Navigation"
-        aria-expanded="false"
-        aria-controls="menu-overlay"
-      >
-        <span class="block w-6 h-[1.5px] bg-white transition-all group-hover:w-7 group-hover:bg-gold-400"></span>
-        <span class="block w-6 h-[1.5px] bg-white transition-all group-hover:w-7 group-hover:bg-gold-400"></span>
-        <span class="block w-6 h-[1.5px] bg-white transition-all group-hover:w-7 group-hover:bg-gold-400"></span>
-      </button>
+      {isHome && (
+        <div class="lang-switch flex items-center p-0.5 rounded-full select-none transition-all font-sans text-[10px] sm:text-xs tracking-widest uppercase shrink-0">
+          <button
+            type="button"
+            data-lang="th"
+            class="lang-btn px-2 sm:px-2.5 py-0.5 rounded-full transition-all cursor-pointer focus:outline-none"
+            title="ภาษาไทย"
+          >
+            TH
+          </button>
+          <span class="lang-divider opacity-30 text-[9px] px-0.5">|</span>
+          <button
+            type="button"
+            data-lang="en"
+            class="lang-btn px-2 sm:px-2.5 py-0.5 rounded-full transition-all cursor-pointer focus:outline-none"
+            title="English"
+          >
+            EN
+          </button>
+        </div>
+      )}
 
       <!-- Brand -->
       <a
         id="nav-brand"
         href="/"
-        class={`flex items-center gap-2 sm:gap-3.5 group transition-all duration-500 ${
+        class={`flex items-center gap-2 sm:gap-3.5 group transition-all duration-500 shrink-0 ${
           isHome ? "opacity-0 -translate-x-4 pointer-events-none" : "opacity-100 translate-x-0"
         }`}
       >
@@ -61,8 +69,8 @@ const withBase = (path: string) => {
           />
         </div>
         <div>
-          <p class="nav-brand-title font-monumental text-xs sm:text-sm tracking-[0.12em] sm:tracking-[0.14em] uppercase transition-colors leading-tight">
-            Khao Sok <span class="nav-brand-accent font-display font-light italic tracking-normal normal-case">Riverside</span>
+          <p class="nav-brand-title font-monumental text-xs sm:text-sm tracking-[0.12em] sm:tracking-[0.14em] uppercase transition-colors leading-tight whitespace-nowrap">
+            Khao Sok <span class="nav-brand-accent font-display font-light italic tracking-normal normal-case hidden xs:inline sm:inline">Riverside</span>
           </p>
         </div>
       </a>
@@ -70,33 +78,33 @@ const withBase = (path: string) => {
 
     <!-- Right Controls -->
     <div class="flex items-center gap-2 sm:gap-4">
-      
-      <!-- Language Switcher -->
-      <div class="lang-switch flex items-center p-0.5 rounded-full select-none transition-all font-sans text-[10px] sm:text-xs tracking-widest uppercase">
-        <button
-          type="button"
-          data-lang="th"
-          class="lang-btn px-2 sm:px-2.5 py-0.5 rounded-full transition-all cursor-pointer focus:outline-none"
-          title="ภาษาไทย"
-        >
-          TH
-        </button>
-        <span class="lang-divider opacity-30 text-[9px] px-0.5">|</span>
-        <button
-          type="button"
-          data-lang="en"
-          class="lang-btn px-2 sm:px-2.5 py-0.5 rounded-full transition-all cursor-pointer focus:outline-none"
-          title="English"
-        >
-          EN
-        </button>
-      </div>
+      {!isHome && (
+        <div class="lang-switch flex items-center p-0.5 rounded-full select-none transition-all font-sans text-[10px] sm:text-xs tracking-widest uppercase shrink-0">
+          <button
+            type="button"
+            data-lang="th"
+            class="lang-btn px-2 sm:px-2.5 py-0.5 rounded-full transition-all cursor-pointer focus:outline-none"
+            title="ภาษาไทย"
+          >
+            TH
+          </button>
+          <span class="lang-divider opacity-30 text-[9px] px-0.5">|</span>
+          <button
+            type="button"
+            data-lang="en"
+            class="lang-btn px-2 sm:px-2.5 py-0.5 rounded-full transition-all cursor-pointer focus:outline-none"
+            title="English"
+          >
+            EN
+          </button>
+        </div>
+      )}
 
       <!-- Reservation Button -->
       <a
         id="nav-book-btn"
         href="/booking-khao-sok-accommodation/"
-        class={`items-center gap-1.5 px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-[#ba9038] to-[#d8b257] hover:from-[#c99f3e] hover:to-[#ebd082] text-[#12281b] border border-[#ba9038] text-[10px] sm:text-xs font-bold uppercase tracking-[0.14em] sm:tracking-[0.18em] transition-all duration-300 shadow-md hover:shadow-lg ${
+        class={`items-center gap-1.5 px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-[#ba9038] to-[#d8b257] hover:from-[#c99f3e] hover:to-[#ebd082] text-[#12281b] border border-[#ba9038] text-[10px] sm:text-xs font-bold uppercase tracking-[0.14em] sm:tracking-[0.18em] transition-all duration-300 shadow-md hover:shadow-lg shrink-0 ${
           isHome ? "hidden md:inline-flex opacity-0 pointer-events-none" : "flex opacity-100"
         }`}
       >
@@ -104,23 +112,38 @@ const withBase = (path: string) => {
         <span class="sm:hidden">Book</span>
       </a>
 
-      <!-- Menu Trigger -->
-      <button
-        id="menu-trigger"
-        class={`group relative items-center gap-1.5 sm:gap-2.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full transition-all duration-300 shadow-sm backdrop-blur-md cursor-pointer ${
-          isHome ? "hidden" : "flex"
-        }`}
-        aria-label="Open Curated Navigation"
-        aria-expanded="false"
-        aria-controls="menu-overlay"
-      >
-        <span class="menu-trigger-text font-monumental text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] font-medium">Menu</span>
-        <div class="flex flex-col gap-1 w-4 items-end justify-center">
-          <span class="menu-bar-top block w-4 h-0.5 rounded-full transition-all group-hover:w-4"></span>
-          <span class="menu-bar-mid block w-3 h-0.5 rounded-full transition-all group-hover:w-4"></span>
-          <span class="menu-bar-bot block w-2 h-0.5 rounded-full transition-all group-hover:w-4"></span>
-        </div>
-      </button>
+      <!-- Burger (Home page: Top-Right) -->
+      {isHome && (
+        <button
+          id="home-burger"
+          class="group flex flex-col justify-center gap-1.5 w-9 h-9 p-1 cursor-pointer focus:outline-none transition-opacity opacity-100 shrink-0"
+          aria-label="Open Navigation"
+          aria-expanded="false"
+          aria-controls="menu-overlay"
+        >
+          <span class="block w-6 h-[1.5px] bg-white transition-all group-hover:w-7 group-hover:bg-gold-400"></span>
+          <span class="block w-6 h-[1.5px] bg-white transition-all group-hover:w-7 group-hover:bg-gold-400"></span>
+          <span class="block w-6 h-[1.5px] bg-white transition-all group-hover:w-7 group-hover:bg-gold-400"></span>
+        </button>
+      )}
+
+      <!-- Menu Trigger (Inner pages: Right side) -->
+      {!isHome && (
+        <button
+          id="menu-trigger"
+          class="group relative flex items-center gap-1.5 sm:gap-2.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full transition-all duration-300 shadow-sm backdrop-blur-md cursor-pointer shrink-0"
+          aria-label="Open Curated Navigation"
+          aria-expanded="false"
+          aria-controls="menu-overlay"
+        >
+          <span class="menu-trigger-text font-monumental text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] font-medium">Menu</span>
+          <div class="flex flex-col gap-1 w-4 items-end justify-center">
+            <span class="menu-bar-top block w-4 h-0.5 rounded-full transition-all group-hover:w-4"></span>
+            <span class="menu-bar-mid block w-3 h-0.5 rounded-full transition-all group-hover:w-4"></span>
+            <span class="menu-bar-bot block w-2 h-0.5 rounded-full transition-all group-hover:w-4"></span>
+          </div>
+        </button>
+      )}
     </div>
   </div>
 </header>
