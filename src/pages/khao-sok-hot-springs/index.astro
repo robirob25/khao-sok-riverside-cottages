@@ -12,7 +12,7 @@ import PageLayout from '../../layouts/PageLayout.astro';
   breadcrumbs={[{"label": "Activities", "href": "/khao-sok-tours/"}, {"label": "Hot Springs", "href": "/khao-sok-hot-springs/"}]}
 >
   <article class="max-w-4xl mx-auto space-y-10">
-    <div class="bg-[#faf8f5]/95 border border-[#12281b]/10 rounded-3xl p-6 sm:p-10 md:p-12 shadow-2xl backdrop-blur-md">
+    <div class="bg-[#faf8f5]/95 border border-[#12281b]/10 rounded-3xl p-6 sm:p-10 md:p-12 shadow-sm backdrop-blur-md">
       
       <div class="flex items-center justify-between border-b border-[#12281b]/10 pb-4 mb-8 font-sans text-[11px] tracking-[0.2em] font-medium uppercase text-[#163824]">
         <div class="flex items-center gap-2 font-semibold">
@@ -38,27 +38,27 @@ import PageLayout from '../../layouts/PageLayout.astro';
 
         <!-- Highlights Card -->
         <div class="bg-[#12281b]/5 border border-[#12281b]/10 rounded-2xl p-6 my-8 space-y-4">
-          <h3 class="font-mono text-xs uppercase tracking-widest text-[#7a5813] font-bold">
+          <h3 class="font-sans text-xs uppercase tracking-widest text-[#7a5813] font-bold">
             Key Information & Rates
           </h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-[#223e2c]">
             <div class="p-3 bg-white/70 rounded-xl border border-[#12281b]/10">
-              <span class="text-xs text-[#255038] uppercase font-mono block">Price per Person</span>
+              <span class="text-xs text-[#183424] uppercase font-sans font-semibold tracking-wider block">Price per Person</span>
               <span class="font-bold text-base text-[#12281b]">฿600 – ฿800 Baht</span>
               <span class="text-xs text-[#12281b]/70 block mt-0.5">Includes round-trip private transport</span>
             </div>
             <div class="p-3 bg-white/70 rounded-xl border border-[#12281b]/10">
-              <span class="text-xs text-[#255038] uppercase font-mono block">Duration & Distance</span>
+              <span class="text-xs text-[#183424] uppercase font-sans font-semibold tracking-wider block">Duration & Distance</span>
               <span class="font-bold text-base text-[#12281b]">Approx. 2 Hours</span>
               <span class="text-xs text-[#12281b]/70 block mt-0.5">15-min scenic drive from resort</span>
             </div>
             <div class="p-3 bg-white/70 rounded-xl border border-[#12281b]/10">
-              <span class="text-xs text-[#255038] uppercase font-mono block">Scenic Stop Included</span>
+              <span class="text-xs text-[#183424] uppercase font-sans font-semibold tracking-wider block">Scenic Stop Included</span>
               <span class="font-bold text-base text-[#12281b]">Khao Sok Valley Viewpoint</span>
               <span class="text-xs text-[#12281b]/70 block mt-0.5">Dramatic vista of limestone towers</span>
             </div>
             <div class="p-3 bg-white/70 rounded-xl border border-[#12281b]/10">
-              <span class="text-xs text-[#255038] uppercase font-mono block">Attire Etiquette</span>
+              <span class="text-xs text-[#183424] uppercase font-sans font-semibold tracking-wider block">Attire Etiquette</span>
               <span class="font-bold text-base text-[#12281b]">Modest Swimwear</span>
               <span class="text-xs text-[#12281b]/70 block mt-0.5">Shorts & t-shirt recommended for local culture</span>
             </div>
@@ -76,18 +76,18 @@ import PageLayout from '../../layouts/PageLayout.astro';
         <div class="mt-10 pt-8 border-t border-[#12281b]/10 flex flex-wrap gap-4 items-center justify-between">
           <div>
             <h4 class="font-semibold text-sm text-[#12281b]">Reserve Upon Arrival</h4>
-            <p class="text-xs text-[#255038]">You can book this excursion at reception anytime during your stay.</p>
+            <p class="text-xs text-[#183424]">You can book this excursion at reception anytime during your stay.</p>
           </div>
           <div class="flex flex-wrap gap-3">
             <a
               href="/booking-khao-sok-accommodation/?tab=room"
-              class="px-6 py-3 bg-gradient-to-r from-[#ba9038] to-[#d8b257] hover:from-[#c99f3e] hover:to-[#ebd082] text-[#12281b] font-bold rounded-xl text-xs font-mono uppercase tracking-wider transition-all shadow-md"
+              class="px-6 py-3 bg-gradient-to-r from-[#ba9038] to-[#d8b257] hover:from-[#c99f3e] hover:to-[#ebd082] text-[#12281b] font-bold rounded-xl text-xs font-sans uppercase tracking-wider transition-all shadow-sm hover:shadow-md"
             >
               Book Room at Resort
             </a>
             <a
               href="/khao-sok-tours/"
-              class="px-6 py-3 bg-[#12281b] hover:bg-[#1c3d24] text-white font-medium rounded-xl text-xs font-mono uppercase tracking-wider transition-all"
+              class="px-6 py-3 bg-[#12281b] hover:bg-[#1c3d24] text-white font-medium rounded-xl text-xs font-sans uppercase tracking-wider transition-all"
             >
               All Activities
             </a>

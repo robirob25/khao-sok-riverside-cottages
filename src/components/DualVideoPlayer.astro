@@ -51,7 +51,7 @@ const uniqueId = `video-player-${Math.random().toString(36).substring(2, 9)}`;
           role="tab"
           aria-selected="false"
           data-tab="short"
-          class="video-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-sans uppercase tracking-wider font-semibold transition-all duration-200 cursor-pointer text-[#2e5339] hover:text-[#12281b] hover:bg-white/80 flex items-center gap-1.5"
+          class="video-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-sans uppercase tracking-wider font-semibold transition-all duration-200 cursor-pointer text-[#183424] hover:text-[#12281b] hover:bg-white/80 flex items-center gap-1.5"
         >
           <span>📱</span>
           <span>{shortTitle}</span>
@@ -111,12 +111,12 @@ const uniqueId = `video-player-${Math.random().toString(36).substring(2, 9)}`;
 
           tabs.forEach((t) => {
             t.classList.remove('active', 'bg-[#12281b]', 'text-white', 'shadow-sm');
-            t.classList.add('text-[#2e5339]');
+            t.classList.add('text-[#183424]');
             t.setAttribute('aria-selected', 'false');
           });
 
           tab.classList.add('active', 'bg-[#12281b]', 'text-white', 'shadow-sm');
-          tab.classList.remove('text-[#2e5339]');
+          tab.classList.remove('text-[#183424]');
           tab.setAttribute('aria-selected', 'true');
 
           if (target === 'landscape') {

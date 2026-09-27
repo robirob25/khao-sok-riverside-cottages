@@ -34,6 +34,8 @@ const withBase = (path: string) => {
           isHome ? "opacity-100" : "hidden"
         }`}
         aria-label="Open Navigation"
+        aria-expanded="false"
+        aria-controls="menu-overlay"
       >
         <span class="block w-6 h-[1.5px] bg-white transition-all group-hover:w-7 group-hover:bg-gold-400"></span>
         <span class="block w-6 h-[1.5px] bg-white transition-all group-hover:w-7 group-hover:bg-gold-400"></span>
@@ -109,6 +111,8 @@ const withBase = (path: string) => {
           isHome ? "hidden" : "flex"
         }`}
         aria-label="Open Curated Navigation"
+        aria-expanded="false"
+        aria-controls="menu-overlay"
       >
         <span class="menu-trigger-text font-monumental text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] font-medium">Menu</span>
         <div class="flex flex-col gap-1 w-4 items-end justify-center">
@@ -142,6 +146,9 @@ const withBase = (path: string) => {
 <div
   id="menu-overlay"
   class="fixed inset-0 z-[60] opacity-0 pointer-events-none transition-all duration-500 flex flex-col overflow-y-auto bg-[#faf8f5]/98 backdrop-blur-3xl text-[#122319]"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Navigation Menu"
 >
   <!-- Background gradients -->
   <div class="absolute top-0 right-0 w-72 sm:w-[550px] h-72 sm:h-[550px] bg-[radial-gradient(circle,rgba(186,144,56,0.07),transparent_70%)] pointer-events-none"></div>
@@ -285,7 +292,7 @@ const withBase = (path: string) => {
                 <span class="text-[10px] sm:text-xs font-sans text-[#7a5813] font-bold">{item.num}</span>
                 <span>{item.title}</span>
               </a>
-              <span class="font-handwriting text-[#255038] text-base sm:text-lg font-medium hidden md:inline">{item.note}</span>
+              <span class="font-handwriting text-[#183424] text-base sm:text-lg font-medium hidden md:inline">{item.note}</span>
             </div>
             <div class="flex flex-wrap gap-x-3 sm:gap-x-4 gap-y-0.5 sm:gap-y-1 text-[10px] sm:text-xs text-[#1b3e2a] font-medium pl-5 sm:pl-7 md:pl-8">
               {item.sublinks.map(([sublabel, subhref]) => (
@@ -334,7 +341,7 @@ const withBase = (path: string) => {
         <a href="tel:+6677395159" class="hover:text-[#ba9038] transition-colors font-medium">📞 +66 77 395 159</a>
         <a href="mailto:info@khao-sok-riverside-cottages.com" class="hover:text-[#ba9038] transition-colors font-medium">✉️ info@khao-sok-riverside-cottages.com</a>
       </div>
-      <div class="font-handwriting text-[#255038] text-lg sm:text-xl font-medium">
+      <div class="font-handwriting text-[#183424] text-lg sm:text-xl font-medium">
         "Where nature remains untouched."
       </div>
     </div>
@@ -353,19 +360,46 @@ const withBase = (path: string) => {
   const previewImg = document.getElementById('menu-preview-img') as HTMLImageElement;
   const previewTitle = document.getElementById('menu-preview-title');
   const previewBadge = document.getElementById('menu-preview-badge');
+  let previousActiveElement: HTMLElement | null = null;
+
+  function getFocusableElements(): HTMLElement[] {
+    if (!overlay) return [];
+    const focusable = overlay.querySelectorAll<HTMLElement>(
+      'button:not([disabled]), [href]:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    return Array.from(focusable);
+  }
 
   function openMenu() {
     if (!overlay) return;
+    previousActiveElement = document.activeElement as HTMLElement;
     overlay.classList.remove('opacity-0', 'pointer-events-none');
     overlay.classList.add('opacity-100', 'pointer-events-auto');
+    if (trigger) trigger.setAttribute('aria-expanded', 'true');
+    if (homeBurger) homeBurger.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
+
+    requestAnimationFrame(() => {
+      if (close) {
+        close.focus();
+      } else {
+        const focusables = getFocusableElements();
+        if (focusables.length > 0) focusables[0].focus();
+      }
+    });
   }
 
   function closeMenu() {
     if (!overlay) return;
     overlay.classList.add('opacity-0', 'pointer-events-none');
     overlay.classList.remove('opacity-100', 'pointer-events-auto');
+    if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    if (homeBurger) homeBurger.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+
+    if (previousActiveElement && typeof previousActiveElement.focus === 'function') {
+      previousActiveElement.focus();
+    }
   }
 
   if (trigger) trigger.addEventListener('click', openMenu);
@@ -427,7 +461,30 @@ const withBase = (path: string) => {
   });
 
   window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeMenu();
+    if (overlay && !overlay.classList.contains('pointer-events-none')) {
+      if (e.key === 'Escape') {
+        closeMenu();
+        return;
+      }
+      if (e.key === 'Tab') {
+        const focusables = getFocusableElements();
+        if (focusables.length === 0) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === first || !overlay.contains(document.activeElement)) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last || !overlay.contains(document.activeElement)) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
+    }
   });
 </script>
 

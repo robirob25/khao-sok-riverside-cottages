@@ -17,12 +17,12 @@ const {
 } = Astro.props;
 ---
 
-<div class="my-8 rounded-3xl overflow-hidden border border-[#12281b]/15 bg-white/80 shadow-2xl backdrop-blur-md">
+<div class="my-8 rounded-3xl overflow-hidden border border-neutral-200 bg-white/80 shadow-md backdrop-blur-md">
   <!-- Map Header Bar with Layer Switcher & Coordinates -->
   <div class="bg-[#12281b] text-white px-5 sm:px-8 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#ba9038]/30">
     <div class="space-y-1">
       <div class="flex items-center gap-2">
-        <span class="text-[11px] font-mono text-[#ba9038] uppercase tracking-[0.2em] font-semibold">{subtitle}</span>
+        <span class="text-[11px] font-sans text-[#ba9038] uppercase tracking-[0.2em] font-semibold">{subtitle}</span>
       </div>
       <h3 class="font-monumental text-lg sm:text-xl text-white tracking-tight flex items-center gap-2">
         <span>{title}</span>
@@ -37,7 +37,7 @@ const {
           type="button"
           data-map-layer={mapId}
           data-layer="topo"
-          class="map-layer-btn active px-3 py-1.5 rounded-lg text-xs font-mono uppercase tracking-wider font-semibold transition-all bg-[#ba9038] text-[#12281b]"
+          class="map-layer-btn active px-3 py-1.5 rounded-lg text-xs font-sans uppercase tracking-wider font-semibold transition-all bg-[#ba9038] text-[#12281b]"
         >
           Terrain
         </button>
@@ -45,7 +45,7 @@ const {
           type="button"
           data-map-layer={mapId}
           data-layer="sat"
-          class="map-layer-btn px-3 py-1.5 rounded-lg text-xs font-mono uppercase tracking-wider font-semibold transition-all text-white/80 hover:text-white"
+          class="map-layer-btn px-3 py-1.5 rounded-lg text-xs font-sans uppercase tracking-wider font-semibold transition-all text-white/80 hover:text-white"
         >
           Satellite
         </button>
@@ -53,7 +53,7 @@ const {
           type="button"
           data-map-layer={mapId}
           data-layer="street"
-          class="map-layer-btn px-3 py-1.5 rounded-lg text-xs font-mono uppercase tracking-wider font-semibold transition-all text-white/80 hover:text-white"
+          class="map-layer-btn px-3 py-1.5 rounded-lg text-xs font-sans uppercase tracking-wider font-semibold transition-all text-white/80 hover:text-white"
         >
           Street
         </button>
@@ -64,7 +64,7 @@ const {
         href="https://www.google.com/maps/dir/?api=1&destination=8.911049,98.541834"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-[#ebd082] hover:text-white text-xs font-mono uppercase tracking-wider transition-all font-semibold"
+        class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-[#ebd082] hover:text-white text-xs font-sans uppercase tracking-wider transition-all font-semibold"
         title="Open in Google Maps"
       >
         <span>Open in Google Maps</span>
@@ -78,13 +78,13 @@ const {
     <div id={mapId} class="w-full h-full z-0" data-map-type={type}></div>
     
     <!-- GPS Coordinates Pill (Bottom Left) -->
-    <div class="absolute bottom-3 left-3 z-[400] bg-black/75 backdrop-blur-md text-white text-[11px] font-mono px-3 py-1.5 rounded-lg border border-white/20 shadow-lg pointer-events-none">
+    <div class="absolute bottom-3 left-3 z-[400] bg-black/75 backdrop-blur-md text-white text-[11px] font-sans px-3 py-1.5 rounded-lg border border-white/20 shadow-md pointer-events-none">
       <span>📍 GPS: 8.911049° N, 98.541834° E</span>
     </div>
   </div>
 
   <!-- Map Footer Caption / Quick Tips -->
-  <div class="px-6 py-3.5 bg-[#f4efeb] border-t border-[#12281b]/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#223e2c]">
+  <div class="px-6 py-3.5 bg-[#f4efeb] border-t border-neutral-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#223e2c]">
     <div class="flex items-center gap-4 flex-wrap">
       {type === 'regional' && (
         <>
@@ -96,7 +96,7 @@ const {
       {type === 'resort' && (
         <>
           <span class="inline-flex items-center gap-1.5 font-medium"><span class="w-3 h-3 rounded-full bg-[#ba9038]"></span> Riverside Cottages Entrance</span>
-          <span class="text-xs text-[#2e5339]">Turn off Highway 401 at the resort sign (2.5 km down lane)</span>
+          <span class="text-xs text-[#183424]">Turn off Highway 401 at the resort sign (2.5 km down lane)</span>
         </>
       )}
       {type === 'park' && (
@@ -105,7 +105,7 @@ const {
         </>
       )}
     </div>
-    <span class="text-[11px] font-mono text-[#8a6b25] tracking-wider uppercase font-semibold">Interactive · Click any marker for details</span>
+    <span class="text-[11px] font-sans text-[#7a5813] tracking-wider uppercase font-semibold">Interactive · Click any marker for details</span>
   </div>
 </div>
 

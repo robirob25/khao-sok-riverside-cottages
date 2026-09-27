@@ -119,26 +119,26 @@ const cottages = [
       </div>
 
       <!-- Key Inclusions Bento Row -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 pt-8 border-t border-[#12281b]/10">
-        <div class="flex items-start gap-3 p-4 rounded-2xl bg-white border border-[#12281b]/10 shadow-sm">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 pt-8 border-t border-neutral-200">
+        <div class="flex items-start gap-3 p-4 rounded-2xl bg-white border border-neutral-200 shadow-sm">
           <span class="w-8 h-8 rounded-full bg-[#ba9038]/20 flex items-center justify-center text-[#7a5813] font-bold text-sm shrink-0">🚐</span>
           <div>
             <span class="block font-semibold text-sm text-[#12281b]">Free Shuttle Service</span>
-            <span class="text-xs text-[#2e5339]">Complimentary transfers to Khao Sok village and bus stop</span>
+            <span class="text-xs text-[#183424]">Complimentary transfers to Khao Sok village and bus stop</span>
           </div>
         </div>
-        <div class="flex items-start gap-3 p-4 rounded-2xl bg-white border border-[#12281b]/10 shadow-sm">
+        <div class="flex items-start gap-3 p-4 rounded-2xl bg-white border border-neutral-200 shadow-sm">
           <span class="w-8 h-8 rounded-full bg-[#ba9038]/20 flex items-center justify-center text-[#7a5813] font-bold text-sm shrink-0">🧭</span>
           <div>
             <span class="block font-semibold text-sm text-[#12281b]">Tour Desk & Concierge</span>
-            <span class="text-xs text-[#2e5339]">Full assistance booking park guides, lake trips & safaris</span>
+            <span class="text-xs text-[#183424]">Full assistance booking park guides, lake trips & safaris</span>
           </div>
         </div>
-        <div class="flex items-start gap-3 p-4 rounded-2xl bg-white border border-[#12281b]/10 shadow-sm">
+        <div class="flex items-start gap-3 p-4 rounded-2xl bg-white border border-neutral-200 shadow-sm">
           <span class="w-8 h-8 rounded-full bg-[#ba9038]/20 flex items-center justify-center text-[#7a5813] font-bold text-sm shrink-0">🌿</span>
           <div>
             <span class="block font-semibold text-sm text-[#12281b]">Riverside Restaurant</span>
-            <span class="text-xs text-[#2e5339]">Rafflesia Cafe with Thai and Western dishes beside the river</span>
+            <span class="text-xs text-[#183424]">Rafflesia Cafe with Thai and Western dishes beside the river</span>
           </div>
         </div>
       </div>
@@ -150,24 +150,24 @@ const cottages = [
     <div class="space-y-12">
       <div class="text-center max-w-2xl mx-auto space-y-3">
         <span class="font-sans text-xs uppercase tracking-[0.22em] text-[#7a5813] font-bold">LODGING SELECTION</span>
-        <h2 class="font-monumental text-3xl sm:text-4xl text-[#12281b] tracking-tight">
+        <h2 class="font-monumental text-2xl sm:text-3xl md:text-4xl text-[#12281b] tracking-tight">
           Handcrafted Wooden Cottages
         </h2>
-        <p class="text-sm sm:text-base text-[#2e5339]">
+        <p class="text-sm sm:text-base text-[#183424]">
           Select your preferred cottage style. Pay upon arrival with zero advance deposit required.
         </p>
       </div>
 
       <div class="space-y-10">
         {cottages.map((cottage, idx) => (
-          <div class="bg-[#faf8f5]/95 border border-[#12281b]/10 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-2xl backdrop-blur-md overflow-hidden relative">
+          <div class="bg-[#faf8f5]/95 border border-neutral-200 rounded-3xl p-6 sm:p-8 lg:p-10 backdrop-blur-md overflow-hidden relative">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               
               <!-- Left: Interactive Diaporama (Span 7) -->
               <div class="lg:col-span-7 space-y-3.5" data-cottage-gallery id={`gallery-${cottage.id}`}>
                 
                 <!-- Main Featured Display with Controls -->
-                <div class="relative rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 aspect-[16/10] bg-[#12281b]/5 group select-none">
+                <div class="relative rounded-2xl overflow-hidden border border-neutral-200 aspect-[16/10] bg-[#12281b]/5 group select-none">
                   
                   <!-- Main Clickable Image -->
                   <div class="w-full h-full cursor-zoom-in relative" data-main-click title="Click to view full screen">
@@ -231,8 +231,8 @@ const cottages = [
                   </div>
 
                   <!-- Price Tag (Bottom Right) -->
-                  <div class="absolute bottom-4 right-4 px-3.5 py-1.5 rounded-xl bg-white/95 text-[#12281b] font-sans text-xs font-bold shadow-lg backdrop-blur-md border border-[#12281b]/10 z-10 pointer-events-none">
-                    {cottage.price} <span class="font-normal text-[10px] text-[#2e5339]">/ night</span>
+                  <div class="absolute bottom-4 right-4 px-3.5 py-1.5 rounded-xl bg-white/95 text-[#12281b] font-sans text-xs font-bold shadow-md backdrop-blur-md border border-[#12281b]/10 z-10 pointer-events-none">
+                    {cottage.price} <span class="font-normal text-[10px] text-[#183424]">/ night</span>
                   </div>
                 </div>
 
@@ -250,7 +250,7 @@ const cottages = [
                       class={`relative rounded-xl overflow-hidden aspect-[4/3] transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7a5813] group ${
                         tIdx === 0
                           ? "ring-2 ring-[#7a5813] ring-offset-2 ring-offset-[#faf8f5] opacity-100 scale-[1.02] shadow-sm"
-                          : "opacity-60 hover:opacity-100 border border-[#12281b]/15"
+                          : "opacity-60 hover:opacity-100 border border-neutral-200"
                       }`}
                     >
                       <img
@@ -306,7 +306,7 @@ const cottages = [
                 <!-- Features Tags -->
                 <div class="flex flex-wrap gap-1.5">
                   {cottage.features.map((feat) => (
-                    <span class="px-2.5 py-1 rounded-lg bg-white border border-[#12281b]/10 text-[11px] font-sans font-medium text-[#2e5339]">
+                    <span class="px-2.5 py-1 rounded-lg bg-white border border-neutral-200 text-[11px] font-sans font-medium text-[#183424]">
                       ✓ {feat}
                     </span>
                   ))}
@@ -340,7 +340,7 @@ const cottages = [
     ============================================================ -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       
-      <div class="bg-[#faf8f5]/95 border border-[#12281b]/10 rounded-3xl p-6 sm:p-10 shadow-xl space-y-4">
+      <div class="bg-[#faf8f5]/95 border border-neutral-200 rounded-3xl p-6 sm:p-10 shadow-sm space-y-4">
         <span class="text-xs font-sans text-[#7a5813] tracking-widest uppercase font-bold">ECO SANCTUARY</span>
         <h3 class="font-display text-2xl text-[#12281b] font-bold">
           A Nature-Connected Stay
@@ -353,7 +353,7 @@ const cottages = [
         </p>
       </div>
 
-      <div class="bg-[#faf8f5]/95 border border-[#12281b]/10 rounded-3xl p-6 sm:p-10 shadow-xl space-y-4">
+      <div class="bg-[#faf8f5]/95 border border-neutral-200 rounded-3xl p-6 sm:p-10 shadow-sm space-y-4">
         <span class="text-xs font-sans text-[#7a5813] tracking-widest uppercase font-bold">PRIME POSITION</span>
         <h3 class="font-display text-2xl text-[#12281b] font-bold">
           The Perfect Location
@@ -380,7 +380,7 @@ const cottages = [
     <!-- Action Footer Banner -->
     <div class="bg-gradient-to-br from-[#12281b] to-[#1c3d24] text-white rounded-3xl p-8 sm:p-12 text-center space-y-6 shadow-2xl">
       <span class="font-handwriting text-[#f7e6b5] text-2xl sm:text-3xl block">The Wild Spirit of Khao Sok</span>
-      <h2 class="font-monumental text-3xl sm:text-4xl text-white tracking-tight">
+      <h2 class="font-monumental text-2xl sm:text-3xl md:text-4xl text-white tracking-tight">
         Ready to Book Your Riverside Retreat?
       </h2>
       <p class="text-sm sm:text-base text-[#e5f0ea] max-w-xl mx-auto font-light leading-relaxed">
@@ -501,19 +501,36 @@ const cottages = [
           }
         }
 
+        let previousActiveElement = null;
+
+        function getFocusableElements() {
+          if (!lightbox) return [];
+          return Array.from(lightbox.querySelectorAll(
+            'button:not([disabled]), [href]:not([disabled]), [tabindex]:not([tabindex="-1"])'
+          ));
+        }
+
         function openLightbox(images, index) {
           if (!lightbox) return;
+          previousActiveElement = document.activeElement;
           activeLightboxImages = images;
           activeLightboxIndex = index;
           updateLightbox();
           lightbox.classList.remove('hidden');
           document.body.style.overflow = 'hidden';
+
+          requestAnimationFrame(() => {
+            if (lightboxClose) lightboxClose.focus();
+          });
         }
 
         function closeLightbox() {
           if (!lightbox) return;
           lightbox.classList.add('hidden');
           document.body.style.overflow = '';
+          if (previousActiveElement && typeof previousActiveElement.focus === 'function') {
+            previousActiveElement.focus();
+          }
         }
 
         if (lightboxClose) lightboxClose.onclick = closeLightbox;
@@ -549,6 +566,23 @@ const cottages = [
           if (e.key === 'ArrowRight') {
             activeLightboxIndex = (activeLightboxIndex + 1) % activeLightboxImages.length;
             updateLightbox();
+          }
+          if (e.key === 'Tab') {
+            const focusables = getFocusableElements();
+            if (focusables.length === 0) return;
+            const first = focusables[0];
+            const last = focusables[focusables.length - 1];
+            if (e.shiftKey) {
+              if (document.activeElement === first || !lightbox.contains(document.activeElement)) {
+                e.preventDefault();
+                last.focus();
+              }
+            } else {
+              if (document.activeElement === last || !lightbox.contains(document.activeElement)) {
+                e.preventDefault();
+                first.focus();
+              }
+            }
           }
         });
 

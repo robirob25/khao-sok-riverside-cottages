@@ -19,11 +19,11 @@ import KhaoSokMap from '../../components/KhaoSokMap.astro';
     <div class="bg-[#faf8f5]/95 border border-[#12281b]/10 rounded-3xl p-6 sm:p-10 md:p-14 shadow-2xl backdrop-blur-md space-y-12">
       
       <!-- Verified Header Badge -->
-      <div class="flex items-center justify-between border-b border-[#12281b]/10 pb-4">
-        <div class="flex items-center gap-2.5 text-[#2e6b45] text-xs uppercase tracking-widest font-semibold">
+      <div class="flex items-center justify-between border-b border-neutral-200 pb-4">
+        <div class="flex items-center gap-2.5 text-[#183424] text-xs uppercase tracking-widest font-semibold">
           <span>The Resort · Arrival & Transportation Guide</span>
         </div>
-        <span class="text-[11px] font-mono text-[#ba9038] tracking-widest uppercase font-semibold">GPS: 8.911049, 98.541834</span>
+        <span class="text-[11px] font-sans text-[#ba9038] tracking-widest uppercase font-semibold">GPS: 8.911049, 98.541834</span>
       </div>
 
       <!-- Top Primary Interactive Map: Southern Thailand Regional Map (Exact Authentic Setup) -->
@@ -33,7 +33,7 @@ import KhaoSokMap from '../../components/KhaoSokMap.astro';
             <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight">
               Southern Thailand Regional Map
             </h2>
-            <p class="text-sm text-[#2e5339] font-light mt-1">
+            <p class="text-sm text-[#183424] font-light mt-1">
               Showing Khao Sok Riverside Cottages, surrounding airports, and ferry piers
             </p>
           </div>
@@ -41,7 +41,7 @@ import KhaoSokMap from '../../components/KhaoSokMap.astro';
             href="https://www.google.com/maps/dir/?api=1&destination=8.911049,98.541834"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#ba9038] hover:bg-[#d8b257] text-[#12281b] font-mono text-xs uppercase tracking-wider font-bold transition-all shadow-md shrink-0"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#ba9038] hover:bg-[#d8b257] text-[#12281b] font-sans text-xs uppercase tracking-wider font-bold transition-all shadow-sm shrink-0 min-h-[44px]"
           >
             <span>Directions on Google Maps</span>
             <span>↗</span>
@@ -80,10 +80,10 @@ import KhaoSokMap from '../../components/KhaoSokMap.astro';
           </p>
         </div>
 
-        <div class="overflow-x-auto rounded-2xl border border-[#12281b]/15 shadow-md bg-white">
+        <div class="overflow-x-auto rounded-2xl border border-[#12281b]/15 shadow-sm bg-white">
           <table class="w-full text-left border-collapse text-sm sm:text-base">
             <thead>
-              <tr class="bg-[#12281b] text-white font-mono text-xs uppercase tracking-wider">
+              <tr class="bg-[#12281b] text-white font-sans text-xs uppercase tracking-wider font-semibold">
                 <th class="p-4 border-r border-white/10">Location</th>
                 <th class="p-4 border-r border-white/10 text-center w-36">Car Price (THB)</th>
                 <th class="p-4 text-center w-36">Van Price (THB)</th>
@@ -92,53 +92,53 @@ import KhaoSokMap from '../../components/KhaoSokMap.astro';
             <tbody class="divide-y divide-[#12281b]/10 text-[#12281b]">
               <tr class="hover:bg-[#f4efeb] transition-colors">
                 <td class="p-4 font-medium">Surathani Airport or Train Station to Khao Sok</td>
-                <td class="p-4 text-center font-mono font-semibold text-[#8a6b25] border-r border-[#12281b]/10">฿2,000</td>
-                <td class="p-4 text-center font-mono font-semibold text-[#8a6b25]">฿2,100</td>
+                <td class="p-4 text-center font-sans font-semibold text-[#8a6b25] border-r border-[#12281b]/10">฿2,000</td>
+                <td class="p-4 text-center font-sans font-semibold text-[#8a6b25]">฿2,100</td>
               </tr>
               <tr class="hover:bg-[#f4efeb] transition-colors">
                 <td class="p-4 font-medium">Surathani Town to Khao Sok</td>
-                <td class="p-4 text-center font-mono font-semibold text-[#8a6b25] border-r border-[#12281b]/10">฿2,300</td>
-                <td class="p-4 text-center font-mono font-semibold text-[#8a6b25]">฿2,400</td>
+                <td class="p-4 text-center font-sans font-semibold text-[#8a6b25] border-r border-[#12281b]/10">฿2,300</td>
+                <td class="p-4 text-center font-sans font-semibold text-[#8a6b25]">฿2,400</td>
               </tr>
               <tr class="hover:bg-[#f4efeb] transition-colors">
                 <td class="p-4 font-medium">Tapee Pier to Khao Sok (Lomprayah Ferry)</td>
-                <td class="p-4 text-center font-mono font-semibold text-[#8a6b25] border-r border-[#12281b]/10">฿2,400</td>
-                <td class="p-4 text-center font-mono font-semibold text-[#8a6b25]">฿2,500</td>
+                <td class="p-4 text-center font-sans font-semibold text-[#8a6b25] border-r border-[#12281b]/10">฿2,400</td>
+                <td class="p-4 text-center font-sans font-semibold text-[#8a6b25]">฿2,500</td>
               </tr>
               <tr class="hover:bg-[#f4efeb] transition-colors">
                 <td class="p-4 font-medium">Don Sak Pier to Khao Sok (Raja or Seatran Ferry)</td>
-                <td class="p-4 text-center font-mono font-semibold text-[#8a6b25] border-r border-[#12281b]/10">฿3,200</td>
-                <td class="p-4 text-center font-mono font-semibold text-[#8a6b25]">฿3,400</td>
+                <td class="p-4 text-center font-sans font-semibold text-[#8a6b25] border-r border-[#12281b]/10">฿3,200</td>
+                <td class="p-4 text-center font-sans font-semibold text-[#8a6b25]">฿3,400</td>
               </tr>
               <tr class="hover:bg-[#f4efeb] transition-colors">
                 <td class="p-4 font-medium">Ao Nang / Krabi to Khao Sok (including Krabi Airport)</td>
-                <td class="p-4 text-center font-mono font-semibold text-[#8a6b25] border-r border-[#12281b]/10">฿2,900</td>
-                <td class="p-4 text-center font-mono font-semibold text-[#8a6b25]">฿3,100</td>
+                <td class="p-4 text-center font-sans font-semibold text-[#8a6b25] border-r border-[#12281b]/10">฿2,900</td>
+                <td class="p-4 text-center font-sans font-semibold text-[#8a6b25]">฿3,100</td>
               </tr>
               <tr class="hover:bg-[#f4efeb] transition-colors">
                 <td class="p-4 font-medium">Khao Lak to Khao Sok</td>
-                <td class="p-4 text-center font-mono font-semibold text-[#8a6b25] border-r border-[#12281b]/10">฿1,900</td>
-                <td class="p-4 text-center font-mono font-semibold text-[#8a6b25]">฿2,000</td>
+                <td class="p-4 text-center font-sans font-semibold text-[#8a6b25] border-r border-[#12281b]/10">฿1,900</td>
+                <td class="p-4 text-center font-sans font-semibold text-[#8a6b25]">฿2,000</td>
               </tr>
               <tr class="hover:bg-[#f4efeb] transition-colors">
                 <td class="p-4 font-medium">Phuket Airport to Khao Sok</td>
-                <td class="p-4 text-center font-mono font-semibold text-[#8a6b25] border-r border-[#12281b]/10">฿2,900</td>
-                <td class="p-4 text-center font-mono font-semibold text-[#8a6b25]">฿3,100</td>
+                <td class="p-4 text-center font-sans font-semibold text-[#8a6b25] border-r border-[#12281b]/10">฿2,900</td>
+                <td class="p-4 text-center font-sans font-semibold text-[#8a6b25]">฿3,100</td>
               </tr>
               <tr class="hover:bg-[#f4efeb] transition-colors">
                 <td class="p-4 font-medium">Phuket Town to Khao Sok</td>
-                <td class="p-4 text-center font-mono font-semibold text-[#8a6b25] border-r border-[#12281b]/10">฿3,200</td>
-                <td class="p-4 text-center font-mono font-semibold text-[#8a6b25]">฿3,400</td>
+                <td class="p-4 text-center font-sans font-semibold text-[#8a6b25] border-r border-[#12281b]/10">฿3,200</td>
+                <td class="p-4 text-center font-sans font-semibold text-[#8a6b25]">฿3,400</td>
               </tr>
               <tr class="hover:bg-[#f4efeb] transition-colors">
                 <td class="p-4 font-medium">Patong, Kata, Karon, Katu, or Rawai</td>
-                <td class="p-4 text-center font-mono font-semibold text-[#8a6b25] border-r border-[#12281b]/10">฿3,500</td>
-                <td class="p-4 text-center font-mono font-semibold text-[#8a6b25]">฿3,700</td>
+                <td class="p-4 text-center font-sans font-semibold text-[#8a6b25] border-r border-[#12281b]/10">฿3,500</td>
+                <td class="p-4 text-center font-sans font-semibold text-[#8a6b25]">฿3,700</td>
               </tr>
               <tr class="bg-[#ba9038]/10 hover:bg-[#ba9038]/15 transition-colors">
                 <td class="p-4 font-semibold text-[#12281b]">Shared pick up from Surathani Airport</td>
-                <td class="p-4 text-center font-mono font-semibold text-[#8a6b25] border-r border-[#12281b]/10">—</td>
-                <td class="p-4 text-center font-mono font-bold text-[#ba9038]">฿250 / person</td>
+                <td class="p-4 text-center font-sans font-semibold text-[#8a6b25] border-r border-[#12281b]/10">—</td>
+                <td class="p-4 text-center font-sans font-bold text-[#ba9038]">฿250 / person</td>
               </tr>
             </tbody>
           </table>
@@ -179,7 +179,7 @@ import KhaoSokMap from '../../components/KhaoSokMap.astro';
             loading="lazy"
             decoding="async"
           />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">The road to Khao Sok</figcaption>
+          <figcaption class="p-3.5 text-xs text-[#183424] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">The road to Khao Sok</figcaption>
         </figure>
       </div>
 
@@ -208,22 +208,22 @@ import KhaoSokMap from '../../components/KhaoSokMap.astro';
         </p>
 
         <!-- Shuttle Contact Box -->
-        <div class="rounded-2xl p-6 bg-gradient-to-br from-[#12281b] to-[#1c3d24] text-white border border-[#ba9038]/30 shadow-xl space-y-3">
-          <span class="text-[11px] font-mono text-[#ba9038] tracking-widest uppercase font-semibold">Free Shuttle Pickup Service</span>
+        <div class="rounded-2xl p-6 bg-gradient-to-br from-[#12281b] to-[#1c3d24] text-white border border-[#ba9038]/30 shadow-sm space-y-3">
+          <span class="text-[11px] font-sans text-[#ba9038] tracking-widest uppercase font-semibold">Free Shuttle Pickup Service</span>
           <p class="text-sm text-emerald-100/90 leading-relaxed">
             If you do not see our driver, please call us, and we will come to pick you up. Our phone numbers are <strong class="text-white">077 395 159</strong>, and <strong class="text-white">+66 910 415 061</strong> (also for WhatsApp). If you don’t have a phone, you can walk across the highway and ask at one of the shops to call Riverside Cottages.
           </p>
           <div class="pt-2 flex flex-wrap gap-3">
-            <a href="tel:+6677395159" class="px-4 py-2 rounded-xl bg-[#ba9038] text-[#12281b] font-mono text-xs uppercase font-bold tracking-wider hover:bg-[#d8b257] transition-all">
+            <a href="tel:+6677395159" class="px-4 py-2.5 rounded-xl bg-[#ba9038] text-[#12281b] font-sans text-xs uppercase font-bold tracking-wider hover:bg-[#d8b257] transition-all">
               Call 077 395 159
             </a>
-            <a href="https://wa.me/66910415061" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-mono text-xs uppercase tracking-wider transition-all">
+            <a href="https://wa.me/66910415061" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-sans text-xs uppercase tracking-wider transition-all">
               WhatsApp +66 910 415 061
             </a>
           </div>
         </div>
 
-        <figure class="my-8 rounded-2xl overflow-hidden shadow-xl border border-[#12281b]/10 bg-white/50">
+        <figure class="my-8 rounded-2xl overflow-hidden shadow-sm border border-[#12281b]/10 bg-white/50">
           <img
             src="/wp-content/uploads/2016/07/directions-3.jpg"
             alt="Girls in a pickup"
@@ -231,7 +231,7 @@ import KhaoSokMap from '../../components/KhaoSokMap.astro';
             loading="lazy"
             decoding="async"
           />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Girls in a pickup</figcaption>
+          <figcaption class="p-3.5 text-xs text-[#183424] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Girls in a pickup</figcaption>
         </figure>
 
         <p class="leading-relaxed text-[#223e2c] text-sm">
@@ -317,7 +317,7 @@ import KhaoSokMap from '../../components/KhaoSokMap.astro';
             loading="lazy"
             decoding="async"
           />
-          <figcaption class="p-3.5 text-xs text-[#255038] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok national park map and sign</figcaption>
+          <figcaption class="p-3.5 text-xs text-[#183424] font-serif italic border-t border-[#12281b]/10 bg-[#f4efeb]/60">Khao Sok national park map and sign</figcaption>
         </figure>
       </div>
 
@@ -332,7 +332,7 @@ import KhaoSokMap from '../../components/KhaoSokMap.astro';
         <p class="leading-relaxed text-[#223e2c] text-base sm:text-lg">
           Conversely, if you are opting for public transportation, you will find daily shared vans and buses heading toward all major destinations. Our staff are happy to help you navigate the confusing network of bus and minivan schedules. Guests leaving our resort for public transport will be delivered to Khao Sok town via our resort shuttle. As a result, we can ensure punctual arrival at the bus stop, and a smooth departure from town. In other words, you will find your departure as easy and relaxing as your stay with us!
         </p>
-        <p class="leading-relaxed text-[#2e5339] text-sm">
+        <p class="leading-relaxed text-[#183424] text-sm">
           For a deeper dive into Khao Sok browse our blog and check out our FAQs.
         </p>
       </div>
@@ -365,7 +365,7 @@ import KhaoSokMap from '../../components/KhaoSokMap.astro';
             <span class="w-1.5 h-6 bg-[#2e6b45] rounded-full inline-block"></span>
             <span>Original Photography & Visual Field Gallery</span>
           </h2>
-          <p class="text-xs sm:text-sm text-[#2e6b45] font-mono uppercase tracking-widest font-semibold">
+          <p class="text-xs sm:text-sm text-[#183424] font-sans uppercase tracking-widest font-semibold">
             Authentic full-resolution imagery from Khao Sok Riverside Cottages
           </p>
         </div>
@@ -379,7 +379,7 @@ import KhaoSokMap from '../../components/KhaoSokMap.astro';
             ['Khao Sok Map and directions - the sign to Khao Sok', '/wp-content/uploads/2016/07/directions-9.jpg'],
             ['Khao Sok Map driveway', '/wp-content/uploads/2016/07/directions-10.jpg'],
           ].map(([alt, src]) => (
-            <div class="group relative rounded-2xl overflow-hidden shadow-md border border-[#12281b]/10 bg-white/60 hover:shadow-2xl transition-all duration-300">
+            <div class="group relative rounded-2xl overflow-hidden shadow-sm border border-[#12281b]/10 bg-white/60 hover:shadow-md transition-all duration-300">
               <img
                 src={src}
                 alt={alt}

@@ -130,10 +130,10 @@ const categories = [
       <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#7a5813]/10 border border-[#7a5813]/25 text-[#7a5813] text-xs font-sans uppercase tracking-[0.2em] font-semibold">
         <span>Four Adventure Chapters · Reserve Upon Arrival</span>
       </div>
-      <h2 class="font-monumental text-3xl sm:text-4xl lg:text-5xl text-[#12281b] tracking-tight">
+      <h2 class="font-monumental text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#12281b] tracking-tight">
         Choose Your Adventure
       </h2>
-      <p class="text-[#2e5339] text-base sm:text-lg font-light leading-relaxed">
+      <p class="text-[#183424] text-base sm:text-lg font-light leading-relaxed">
         From Cheow Lan lake day tours to overnight floating raft houses, river canoeing and jungle night safaris — our local naturalist guides take care of everything.
       </p>
     </div>
@@ -142,7 +142,7 @@ const categories = [
   <!-- 2026 Elite Bento Grid: Balanced 2-Column Responsive Layout -->
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
     {categories.map((cat) => (
-      <div class="group relative flex flex-col justify-between rounded-3xl bg-white border border-[#12281b]/10 hover:border-[#7a5813]/40 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden backdrop-blur-md" data-activity-gallery id={`act-gallery-${cat.id}`}>
+      <div class="group relative flex flex-col justify-between rounded-3xl bg-white border border-neutral-200 hover:border-[#7a5813]/40 transition-all duration-300 overflow-hidden" data-activity-gallery id={`act-gallery-${cat.id}`}>
         
         <!-- Photographic Banner: Interactive Diaporama -->
         <div class="relative w-full h-64 sm:h-72 overflow-hidden bg-[#12281b] shrink-0 select-none group/img">
@@ -207,7 +207,7 @@ const categories = [
 
           <!-- Bottom Photo Title & Subtitle Overlay -->
           <div class="absolute bottom-4 left-5 right-5 z-10 pointer-events-none">
-            <h3 class="font-monumental text-2xl sm:text-3xl text-white group-hover:text-[#f7e6b5] transition-colors drop-shadow-md leading-tight">
+            <h3 class="font-monumental text-lg sm:text-xl md:text-2xl text-white group-hover:text-[#f7e6b5] transition-colors drop-shadow-md leading-tight">
               {cat.title}
             </h3>
             <p class="text-white/85 text-xs font-sans tracking-wider mt-1 drop-shadow">
@@ -217,7 +217,7 @@ const categories = [
         </div>
 
         <!-- Clickable Thumbnails Row -->
-        <div class="px-4 py-2.5 bg-[#faf8f5] border-b border-[#12281b]/10 grid grid-cols-4 gap-2">
+        <div class="px-4 py-2.5 bg-[#faf8f5] border-b border-neutral-200 grid grid-cols-4 gap-2">
           {cat.photos.map((photo, tIdx) => (
             <button
               type="button"
@@ -230,7 +230,7 @@ const categories = [
               class={`relative rounded-lg overflow-hidden aspect-[16/10] transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7a5813] group ${
                 tIdx === 0
                   ? "ring-2 ring-[#7a5813] ring-offset-1 opacity-100 scale-[1.03] shadow-sm"
-                  : "opacity-60 hover:opacity-100 border border-[#12281b]/15"
+                  : "opacity-60 hover:opacity-100 border border-neutral-200"
               }`}
             >
               <img
@@ -266,7 +266,7 @@ const categories = [
                     </span>
                   </div>
                   {item.detail && (
-                    <p class="text-xs text-[#2e5339]/80 pl-6 mt-1.5 font-light leading-relaxed">
+                    <p class="text-xs text-[#183424]/90 pl-6 mt-1.5 font-light leading-relaxed">
                       {item.detail}
                     </p>
                   )}
@@ -415,19 +415,36 @@ const categories = [
         }
       }
 
+      let previousActiveElement = null;
+
+      function getFocusableElements() {
+        if (!lightbox) return [];
+        return Array.from(lightbox.querySelectorAll(
+          'button:not([disabled]), [href]:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        ));
+      }
+
       function openLightbox(images, index) {
         if (!lightbox) return;
+        previousActiveElement = document.activeElement;
         activeImages = images;
         activeIndex = index;
         updateLightbox();
         lightbox.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
+
+        requestAnimationFrame(() => {
+          if (lightboxClose) lightboxClose.focus();
+        });
       }
 
       function closeLightbox() {
         if (!lightbox) return;
         lightbox.classList.add('hidden');
         document.body.style.overflow = '';
+        if (previousActiveElement && typeof previousActiveElement.focus === 'function') {
+          previousActiveElement.focus();
+        }
       }
 
       if (lightboxClose) lightboxClose.onclick = closeLightbox;
@@ -463,6 +480,23 @@ const categories = [
         if (e.key === 'ArrowRight') {
           activeIndex = (activeIndex + 1) % activeImages.length;
           updateLightbox();
+        }
+        if (e.key === 'Tab') {
+          const focusables = getFocusableElements();
+          if (focusables.length === 0) return;
+          const first = focusables[0];
+          const last = focusables[focusables.length - 1];
+          if (e.shiftKey) {
+            if (document.activeElement === first || !lightbox.contains(document.activeElement)) {
+              e.preventDefault();
+              last.focus();
+            }
+          } else {
+            if (document.activeElement === last || !lightbox.contains(document.activeElement)) {
+              e.preventDefault();
+              first.focus();
+            }
+          }
         }
       });
 

@@ -153,10 +153,10 @@ const explorerPackages = [
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#7a5813]/10 border border-[#7a5813]/25 text-[#7a5813] text-xs font-sans uppercase tracking-[0.2em] font-semibold">
         <span>Curated Tour Packages · Guaranteed Lowest Direct Rates</span>
       </div>
-      <h2 class="font-monumental text-3xl sm:text-4xl lg:text-5xl text-[#12281b] tracking-tight">
+      <h2 class="font-monumental text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#12281b] tracking-tight">
         Choose Your Khao Sok Expedition
       </h2>
-      <p class="text-[#2e5339] text-base sm:text-lg font-light leading-relaxed">
+      <p class="text-[#183424] text-base sm:text-lg font-light leading-relaxed">
         All packages include fresh daily breakfast, licensed park activities, and our warm family hospitality with zero advance deposit required.
       </p>
     </div>
@@ -168,7 +168,7 @@ const explorerPackages = [
     <!-- Row 1: The 2 Premier Lake Overnight Packages (Balanced 50/50 Grid) -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
       {premierPackages.map((pkg) => (
-        <div class="group relative flex flex-col justify-between rounded-3xl bg-white border border-[#12281b]/10 hover:border-[#ba9038]/60 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden backdrop-blur-md" data-package-gallery id={`pkg-gallery-${pkg.id}`}>
+        <div class="group relative flex flex-col justify-between rounded-3xl bg-white border border-neutral-200 hover:border-[#ba9038]/60 transition-all duration-300 overflow-hidden" data-package-gallery id={`pkg-gallery-${pkg.id}`}>
           
           <!-- Top Photo Frame: Interactive Diaporama -->
           <div class="relative w-full aspect-[16/10] overflow-hidden bg-[#12281b] shrink-0 select-none group/img">
@@ -283,7 +283,7 @@ const explorerPackages = [
             <div class="space-y-4">
               <!-- Title & Stay Breakdown -->
               <div>
-                <h3 class="font-monumental text-2xl text-[#12281b] group-hover:text-[#ba9038] transition-colors leading-tight mb-2">
+                <h3 class="font-monumental text-xl sm:text-2xl text-[#12281b] group-hover:text-[#ba9038] transition-colors leading-tight mb-2">
                   {pkg.title}
                 </h3>
                 <div class="flex items-center gap-2 text-xs font-sans text-[#1b432c] bg-[#f4efeb] px-3.5 py-2 rounded-xl border border-[#12281b]/5 font-medium">
@@ -337,7 +337,7 @@ const explorerPackages = [
     <!-- Row 2: The 3 Discovery & Adventure Packages (Balanced 3-Column Grid) -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
       {explorerPackages.map((pkg) => (
-        <div class="group relative flex flex-col justify-between rounded-3xl bg-white border border-[#12281b]/10 hover:border-[#ba9038]/60 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden backdrop-blur-md" data-package-gallery id={`pkg-gallery-${pkg.id}`}>
+        <div class="group relative flex flex-col justify-between rounded-3xl bg-white border border-neutral-200 hover:border-[#ba9038]/60 transition-all duration-300 overflow-hidden" data-package-gallery id={`pkg-gallery-${pkg.id}`}>
           
           <!-- Top Photo Frame: Interactive Diaporama -->
           <div class="relative w-full aspect-[16/10] overflow-hidden bg-[#12281b] shrink-0 select-none group/img">
@@ -452,7 +452,7 @@ const explorerPackages = [
             <div class="space-y-4">
               <!-- Title & Stay Breakdown -->
               <div>
-                <h3 class="font-monumental text-xl text-[#12281b] group-hover:text-[#ba9038] transition-colors leading-tight mb-2 min-h-[3rem] flex items-center">
+                <h3 class="font-monumental text-lg sm:text-xl text-[#12281b] group-hover:text-[#ba9038] transition-colors leading-tight mb-2 min-h-[3rem] flex items-center">
                   {pkg.title}
                 </h3>
                 <div class="flex items-center gap-2 text-xs font-sans text-[#1b432c] bg-[#f4efeb] px-3.5 py-2 rounded-xl border border-[#12281b]/5 font-medium">
@@ -484,7 +484,7 @@ const explorerPackages = [
             <div class="pt-4 border-t border-[#12281b]/10 flex flex-col sm:flex-row items-center gap-2.5">
               <a
                 href="/booking-khao-sok-accommodation/?tab=package"
-                class="w-full sm:flex-1 py-3 px-3.5 min-h-[44px] rounded-xl bg-gradient-to-r from-[#ba9038] to-[#d8b257] hover:from-[#a67e2a] hover:to-[#ba9038] text-[#12281b] font-sans text-xs uppercase tracking-widest font-bold text-center transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-1.5 group/btn"
+                class="w-full sm:flex-1 py-3 px-3.5 min-h-[44px] rounded-xl bg-gradient-to-r from-[#ba9038] to-[#d8b257] hover:from-[#a67e2a] hover:to-[#ba9038] text-[#12281b] font-sans text-xs uppercase tracking-widest font-bold text-center transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-1.5 group/btn"
               >
                 <span>Book Package</span>
                 <span class="transition-transform group-hover/btn:translate-x-1">→</span>
@@ -506,7 +506,7 @@ const explorerPackages = [
   </div>
 
   <!-- Bento Trust Bar (Ratings & Guarantees) -->
-  <div class="bg-gradient-to-r from-[#12281b] via-[#1a3826] to-[#12281b] rounded-2xl p-6 sm:p-8 text-white shadow-xl border border-[#ba9038]/30 flex flex-wrap items-center justify-around gap-6">
+  <div class="bg-gradient-to-r from-[#12281b] via-[#1a3826] to-[#12281b] rounded-2xl p-6 sm:p-8 text-white border border-[#ba9038]/30 shadow-sm flex flex-wrap items-center justify-around gap-6">
     <div class="flex items-center gap-3.5">
       <img
         src="/wp-content/uploads/2025/01/tripadvisor.jpg"
@@ -650,19 +650,36 @@ const explorerPackages = [
         }
       }
 
+      let previousActiveElement = null;
+
+      function getFocusableElements() {
+        if (!lightbox) return [];
+        return Array.from(lightbox.querySelectorAll(
+          'button:not([disabled]), [href]:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        ));
+      }
+
       function openLightbox(images, index) {
         if (!lightbox) return;
+        previousActiveElement = document.activeElement;
         activeImages = images;
         activeIndex = index;
         updateLightbox();
         lightbox.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
+
+        requestAnimationFrame(() => {
+          if (lightboxClose) lightboxClose.focus();
+        });
       }
 
       function closeLightbox() {
         if (!lightbox) return;
         lightbox.classList.add('hidden');
         document.body.style.overflow = '';
+        if (previousActiveElement && typeof previousActiveElement.focus === 'function') {
+          previousActiveElement.focus();
+        }
       }
 
       if (lightboxClose) lightboxClose.onclick = closeLightbox;
@@ -698,6 +715,23 @@ const explorerPackages = [
         if (e.key === 'ArrowRight') {
           activeIndex = (activeIndex + 1) % activeImages.length;
           updateLightbox();
+        }
+        if (e.key === 'Tab') {
+          const focusables = getFocusableElements();
+          if (focusables.length === 0) return;
+          const first = focusables[0];
+          const last = focusables[focusables.length - 1];
+          if (e.shiftKey) {
+            if (document.activeElement === first || !lightbox.contains(document.activeElement)) {
+              e.preventDefault();
+              last.focus();
+            }
+          } else {
+            if (document.activeElement === last || !lightbox.contains(document.activeElement)) {
+              e.preventDefault();
+              first.focus();
+            }
+          }
         }
       });
 
