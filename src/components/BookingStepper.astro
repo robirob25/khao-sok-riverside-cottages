@@ -10,6 +10,7 @@ const { defaultType = 'package' } = Astro.props;
 const tourPackages = [
   {
     id: 'grand-jungle',
+    slugId: 'grand-jungle',
     title: '4D / 3N Grand Jungle & Lake Overnight',
     tagline: 'The Ultimate Rainforest & Cheow Lan Lake Expedition',
     price: '฿7,100',
@@ -32,6 +33,7 @@ const tourPackages = [
   },
   {
     id: 'lake-rafthouse',
+    slugId: 'riverside-rafthouse',
     title: '3D / 2N Riverside & Lake Rafthouse',
     tagline: 'The Perfect Balance of Riverfront & Lake Wilderness',
     price: '฿5,400',
@@ -54,6 +56,7 @@ const tourPackages = [
   },
   {
     id: 'rainforest-adventure',
+    slugId: 'rainforest-adventure',
     title: '3D / 2N Rainforest Adventure',
     tagline: 'Ethical Elephant Encounters & Deep Jungle Immersion',
     price: '฿5,200',
@@ -76,6 +79,7 @@ const tourPackages = [
   },
   {
     id: 'delight',
+    slugId: 'khao-sok-delight',
     title: '3D / 2N Khao Sok Delight',
     tagline: 'Full-Day Lake Tour & Sok River Exploration',
     price: '฿4,500',
@@ -98,6 +102,7 @@ const tourPackages = [
   },
   {
     id: 'spirit',
+    slugId: 'spirit-of-khao-sok',
     title: '2D / 1N Spirit of Khao Sok',
     tagline: 'Essential Jungle Getaway for Tight Itineraries',
     price: '฿2,300',
@@ -324,6 +329,7 @@ const cottageRooms = [
                   : 'border-[#12281b]/10 hover:border-[#ba9038]'
               }`}
               data-item-id={pkg.id}
+              data-item-alias={pkg.slugId}
               data-item-title={pkg.title}
               data-item-price={pkg.price}
               data-item-type="package"
@@ -348,8 +354,8 @@ const cottageRooms = [
                   </span>
                   
                   <!-- Checkmark badge (visible when selected) -->
-                  <span class="select-check-badge w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs transition-all shadow-md bg-[#ba9038] text-[#12281b]">
-                    ✓
+                  <span class={`select-check-badge w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs transition-all shadow-md ${pkg.popular ? 'bg-[#ba9038] text-[#12281b]' : 'bg-white/80 text-transparent'}`}>
+                    {pkg.popular ? '✓' : ''}
                   </span>
                 </div>
 
@@ -385,8 +391,8 @@ const cottageRooms = [
 
                 <!-- Select Action Button -->
                 <div class="pt-3 border-t border-[#12281b]/10">
-                  <div class="btn-card-select w-full py-2.5 px-4 rounded-xl text-center font-sans text-xs uppercase tracking-wider font-bold transition-all bg-[#12281b] text-white">
-                    Selected ✓
+                  <div class={`btn-card-select w-full py-2.5 px-4 rounded-xl text-center font-sans text-xs uppercase tracking-wider font-bold transition-all ${pkg.popular ? 'bg-[#12281b] text-white' : 'bg-[#faf8f5] border border-[#12281b]/15 text-[#12281b] hover:bg-[#12281b] hover:text-white'}`}>
+                    {pkg.popular ? 'Selected ✓' : 'Select This Package'}
                   </div>
                 </div>
               </div>
@@ -428,8 +434,8 @@ const cottageRooms = [
 
                 <!-- Top Checkmark -->
                 <div class="absolute top-3 right-3">
-                  <span class="select-check-badge w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs transition-all shadow-md bg-white/80 text-transparent">
-                    ✓
+                  <span class={`select-check-badge w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs transition-all shadow-md ${room.popular ? 'bg-[#ba9038] text-[#12281b]' : 'bg-white/80 text-transparent'}`}>
+                    {room.popular ? '✓' : ''}
                   </span>
                 </div>
 
@@ -465,8 +471,8 @@ const cottageRooms = [
 
                 <!-- Select Action Button -->
                 <div class="pt-3 border-t border-[#12281b]/10">
-                  <div class="btn-card-select w-full py-2.5 px-4 rounded-xl text-center font-sans text-xs uppercase tracking-wider font-bold transition-all bg-[#faf8f5] border border-[#12281b]/15 text-[#12281b] hover:bg-[#12281b] hover:text-white">
-                    Select This Cottage
+                  <div class={`btn-card-select w-full py-2.5 px-4 rounded-xl text-center font-sans text-xs uppercase tracking-wider font-bold transition-all ${room.popular ? 'bg-[#12281b] text-white' : 'bg-[#faf8f5] border border-[#12281b]/15 text-[#12281b] hover:bg-[#12281b] hover:text-white'}`}>
+                    {room.popular ? 'Selected ✓' : 'Select This Cottage'}
                   </div>
                 </div>
               </div>
@@ -1046,7 +1052,7 @@ const cottageRooms = [
     }
 
     // Switch Category (Package vs Room)
-    function setCategory(cat) {
+    function setCategory(cat, resetSelection = true) {
       currentCategory = cat;
       if (cat === 'package') {
         if (pillPackage) {
@@ -1059,7 +1065,7 @@ const cottageRooms = [
         if (containerRooms) containerRooms.classList.add('hidden');
 
         // If currently selected is room, switch to default package
-        if (selectedItem.type !== 'package') {
+        if (resetSelection && selectedItem.type !== 'package') {
           selectCardById('grand-jungle', 'package');
         }
       } else {
@@ -1073,7 +1079,7 @@ const cottageRooms = [
         if (containerPackages) containerPackages.classList.add('hidden');
 
         // If currently selected is package, switch to default room
-        if (selectedItem.type !== 'room') {
+        if (resetSelection && selectedItem.type !== 'room') {
           selectCardById('riverside', 'room');
         }
       }
@@ -1084,6 +1090,7 @@ const cottageRooms = [
 
     // Handle Bento Card Click Selection
     function selectCard(card) {
+      if (!card) return;
       const id = card.getAttribute('data-item-id');
       const title = card.getAttribute('data-item-title');
       const price = card.getAttribute('data-item-price');
@@ -1097,6 +1104,7 @@ const cottageRooms = [
       document.querySelectorAll('.bento-card-item').forEach((c) => {
         const check = c.querySelector('.select-check-badge');
         const btn = c.querySelector('.btn-card-select');
+        const cardItemType = c.getAttribute('data-item-type') || type;
 
         if (c.getAttribute('data-item-id') === id) {
           c.classList.add('border-[#ba9038]', 'ring-2', 'ring-[#ba9038]/40', 'bg-[#faf8f5]');
@@ -1118,7 +1126,7 @@ const cottageRooms = [
           }
           if (btn) {
             btn.className = 'btn-card-select w-full py-2.5 px-4 rounded-xl text-center font-sans text-xs uppercase tracking-wider font-bold transition-all bg-[#faf8f5] border border-[#12281b]/15 text-[#12281b] hover:bg-[#12281b] hover:text-white';
-            btn.textContent = type === 'package' ? 'Select This Package' : 'Select This Cottage';
+            btn.textContent = cardItemType === 'package' ? 'Select This Package' : 'Select This Cottage';
           }
         }
       });
@@ -1141,8 +1149,33 @@ const cottageRooms = [
       }
     }
 
+    // Alias mapping for both packages and rooms
+    const aliasMap = {
+      'riverside-rafthouse': 'lake-rafthouse',
+      'khao-sok-lake-package-river-raft': 'lake-rafthouse',
+      'lake-rafthouse': 'lake-rafthouse',
+      'grand-jungle': 'grand-jungle',
+      '4-day-khao-sok-jungle-tour-lake-overnight': 'grand-jungle',
+      'rainforest-adventure': 'rainforest-adventure',
+      'khao-sok-lake-tour-rainforest': 'rainforest-adventure',
+      'khao-sok-delight': 'delight',
+      'delight': 'delight',
+      'khao-sok-tour-package-delight': 'delight',
+      'spirit-of-khao-sok': 'spirit',
+      'spirit-khao-sok': 'spirit',
+      'khao-sok-package-tour-spirit': 'spirit',
+      'khao-sok-2-day-tour': 'spirit',
+      'spirit': 'spirit',
+      'riverside': 'riverside',
+      'garden-view': 'garden-view',
+      'garden': 'garden-view',
+      'family': 'family',
+    };
+
     function selectCardById(id, type) {
-      const card = document.querySelector(`.bento-card-item[data-item-id="${id}"]`);
+      if (!id) return;
+      const targetId = aliasMap[id.toLowerCase()] || id.toLowerCase();
+      const card = document.querySelector(`.bento-card-item[data-item-id="${targetId}"], .bento-card-item[data-item-alias="${targetId}"]`);
       if (card) {
         selectCard(card);
       }
@@ -1152,9 +1185,24 @@ const cottageRooms = [
       card.addEventListener('click', () => selectCard(card));
     });
 
-    // Init category from URL
-    setCategory(currentCategory);
-    selectCardById(selectedItem.id, selectedItem.type);
+    // Parse URL query parameter (?item=... or ?package=... or ?room=...)
+    const paramItem = urlParams.get('item') || urlParams.get('package') || urlParams.get('room') || urlParams.get('pkg') || urlParams.get('id');
+    let matchedTargetCard = null;
+    if (paramItem) {
+      const resolved = aliasMap[paramItem.toLowerCase()] || paramItem.toLowerCase();
+      matchedTargetCard = document.querySelector(`.bento-card-item[data-item-id="${resolved}"], .bento-card-item[data-item-alias="${resolved}"]`);
+    }
+
+    if (matchedTargetCard) {
+      const targetType = matchedTargetCard.getAttribute('data-item-type') || 'package';
+      setCategory(targetType, false);
+      selectCard(matchedTargetCard);
+    } else {
+      const initialCat = (paramType === 'room' || paramType === 'cottage') ? 'room' : 'package';
+      setCategory(initialCat, false);
+      const defaultId = initialCat === 'room' ? 'riverside' : 'grand-jungle';
+      selectCardById(defaultId, initialCat);
+    }
 
     // ==========================================
     // STEP NAVIGATION CONTROLLER

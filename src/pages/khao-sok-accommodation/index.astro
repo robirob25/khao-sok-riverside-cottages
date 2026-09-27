@@ -29,7 +29,7 @@ const cottages = [
       bath: "Private en-suite bathroom with hot water shower",
     },
     features: ["Private Balcony & Hammock", "En-suite Bathroom & Hot Shower", "Ceiling Fan / AC", "Garden View", "Free Wi-Fi", "Mosquito Netting"],
-    bookUrl: "/booking-khao-sok-accommodation/?tab=room",
+    bookUrl: "/reservation/?type=room&item=garden-view",
   },
   {
     id: "riverside",
@@ -54,7 +54,7 @@ const cottages = [
       bath: "En-suite bathroom with hot water shower",
     },
     features: ["Direct River & Karst Views", "Private Riverfront Balcony", "Air Conditioning", "En-suite Hot Shower", "Hammock Over River", "Free Wi-Fi"],
-    bookUrl: "/booking-khao-sok-accommodation/?tab=room",
+    bookUrl: "/reservation/?type=room&item=riverside",
   },
   {
     id: "family",
@@ -79,7 +79,7 @@ const cottages = [
       bath: "Spacious private bathroom with hot shower",
     },
     features: ["Sleeps up to 4 Guests", "Spacious Family Balcony", "Air Conditioning & Hot Shower", "Secluded Jungle Setting", "Child Friendly", "Free Wi-Fi"],
-    bookUrl: "/booking-khao-sok-accommodation/?tab=room",
+    bookUrl: "/reservation/?type=room&item=family",
   },
 ];
 ---
@@ -388,7 +388,7 @@ const cottages = [
       </p>
       <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
         <a
-          href="/booking-khao-sok-accommodation/?tab=room"
+          href="/reservation/?type=room"
           class="px-8 py-4 bg-gradient-to-r from-[#ba9038] to-[#d8b257] hover:from-[#c99f3e] hover:to-[#ebd082] text-[#12281b] font-bold rounded-xl text-xs font-sans uppercase tracking-wider transition-all shadow-lg min-h-[44px] flex items-center justify-center"
         >
           Book Your Cottage Direct →
