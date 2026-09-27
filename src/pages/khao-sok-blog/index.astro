@@ -1,148 +1,286 @@
 ---
-// Verbatim Authentic Content & Media from Khao Sok Riverside Cottages
+// Khao Sok Blog Index — Luxury Editorial Magazine Layout
+// 2026 High-Conversion Travel Journal & Field Dispatches
 import PageLayout from '../../layouts/PageLayout.astro';
 
+const articles = [
+  {
+    title: 'Cave, Raft & Hike Adventure in Khlong Phanom National Park',
+    slug: '/khao-sok-cave-raft-hike-tour/',
+    image: '/wp-content/uploads/2026/03/bamboo-rafting-khao-sok.jpg',
+    category: 'Expedition',
+    readTime: '4 min read',
+    excerpt: 'A half-day adventure near Khao Sok combining peaceful bamboo rafting down clear jungle rivers, guided rainforest trekking, and exploring the limestone caverns of Tam Kaew Cave.',
+    featured: true,
+  },
+  {
+    title: 'Fungal in the Jungle – the Hidden Mushrooms of Khao Sok',
+    slug: '/fungal-in-the-jungle-the-hidden-mushrooms-of-khao-sok/',
+    image: '/wp-content/uploads/2025/08/mushroom-types-khao-sok-e.jpg',
+    category: 'Biodiversity',
+    readTime: '5 min read',
+    excerpt: 'Scattered across the 160-million-year-old forest floor is a forgotten kingdom of wild mushrooms. An in-depth exploration of rare, luminous, and exotic fungi of southern Thailand.',
+    featured: false,
+  },
+  {
+    title: 'Thailand Rainy Season – Is It a Good Time to Visit Khao Sok?',
+    slug: '/thailand-rainy-season-is-it-a-good-time-to-visit-khao-sok/',
+    image: '/wp-content/uploads/2025/05/rain-clouds-over-cheow-lan-lake.jpg',
+    category: 'Travel Advice',
+    readTime: '6 min read',
+    excerpt: 'Why the Green Season brings mystical morning mists, dramatic jungle waterfalls, roaring wildlife activity, and calm emerald waters on Cheow Lan Lake with far fewer visitors.',
+    featured: false,
+  },
+  {
+    title: 'How to Get from Krabi to Khao Sok',
+    slug: '/krabi-to-khao-sok/',
+    image: '/wp-content/uploads/2024/05/krabi-airport.jpg',
+    category: 'Logistics & Arrival',
+    readTime: '4 min read',
+    excerpt: 'A complete practical guide on traveling from Ao Nang, Krabi Town, and Krabi Airport to Khao Sok by minivan, local bus, or direct private air-conditioned transfer.',
+    featured: false,
+  },
+  {
+    title: 'Phuket to Khao Sok – Travel Guide & Bus Schedules',
+    slug: '/phuket-to-khao-sok/',
+    image: '/wp-content/uploads/2024/05/phuket-airport.jpg',
+    category: 'Logistics & Arrival',
+    readTime: '4 min read',
+    excerpt: 'Direct travel routes from Phuket International Airport, Patong, and Phuket Town to the national park gates, including hourly buses, minivans, and private cars.',
+    featured: false,
+  },
+  {
+    title: 'Rare and Endangered Species of Khao Sok National Park',
+    slug: '/rare-endangered-species-khao-sok/',
+    image: '/wp-content/uploads/2024/12/endangered-species-khao-sok-1.jpg',
+    category: 'Wildlife Conservation',
+    readTime: '7 min read',
+    excerpt: 'Discover the ancient rainforest sanctuary protecting wild Asian elephants, Malayan tapirs, clouded leopards, great hornbills, and the parasitic giant Rafflesia Kerrii flower.',
+    featured: false,
+  },
+  {
+    title: 'Khao Sok Travel Guide – How Many Days to Stay?',
+    slug: '/khao-sok-travel-guide-how-many-days-to-stay-in-khao-sok/',
+    image: '/wp-content/uploads/2024/09/khao-sok-travel-guide-2.jpg',
+    category: 'Itinerary Planning',
+    readTime: '5 min read',
+    excerpt: 'Whether you have 2 days or a full week, discover the optimal balance between riverside relaxation, night wildlife safaris, and overnight floating bungalows on Cheow Lan Lake.',
+    featured: false,
+  },
+  {
+    title: 'Riverside Cottages Nature Trail & Botanical Walk',
+    slug: '/riverside-cottages-nature-trail/',
+    image: '/wp-content/uploads/2024/07/kha-sok-nature-trail-g-standard-v2-4x.jpg',
+    category: 'Lodge Experience',
+    readTime: '3 min read',
+    excerpt: 'Step outside your wooden chalet and wander our dedicated botanical trail along the Sok River, identifying wild ginger, ancient ficus trees, and birds of paradise.',
+    featured: false,
+  },
+  {
+    title: 'The Ultimate Guide to Finding the Closest Airport to Khao Sok',
+    slug: '/guide-to-finding-the-closest-airport-to-khao-sok-national-park/',
+    image: '/wp-content/uploads/2024/05/surat-thani-airport-2.jpg',
+    category: 'Travel Advice',
+    readTime: '5 min read',
+    excerpt: 'Comparing Surat Thani (URT), Phuket (HKT), and Krabi (KBV) airports for flight prices, transfer durations, and convenience when planning your trip to Khao Sok.',
+    featured: false,
+  },
+  {
+    title: 'Dive Into Nature: Khao Sok 2-Day Jungle & Lake Tour',
+    slug: '/khao-sok-2-day-tour/',
+    image: '/wp-content/uploads/2024/03/kha0-sok-2-day-tour.jpg',
+    category: 'Expedition Review',
+    readTime: '6 min read',
+    excerpt: 'An intimate guest dispatch reviewing the iconic 2-day jungle & lake overnight expedition: limestone spires, floating raft houses, and tranquil sunrise canoeing.',
+    featured: false,
+  },
+];
+
+const featuredArticle = articles[0];
+const gridArticles = articles.slice(1);
 ---
 
 <PageLayout
-  title="Khao Sok Blog"
-  description="Khao Sok Blog by Riverside Cottagess. Experience Khao Sok National Park with in depth reviews of local activities, culture and wildlife on our blog!"
+  title="Khao Sok Blog & Field Dispatches | Riverside Cottages"
+  description="Official travel guide and nature journal for Khao Sok National Park. In-depth advice on lake tours, wildlife encounters, seasons, and logistics from our riverside team."
   heroImage="/images/khao-sok-hero-cottages.jpg"
-  heroTitle="Khao Sok Blog"
-  heroSubtitle="The Ancient Rainforest of Southern Thailand"
+  heroTitle="Khao Sok Travel Journal"
+  heroSubtitle="Field Dispatches, Wildlife Guides & Rainforest Stories"
   breadcrumbs={[{"label": "Khao Sok Blog", "href": "/khao-sok-blog/"}]}
 >
-  <article class="max-w-4xl mx-auto space-y-10">
-    <div class="bg-[#faf8f5]/95 border border-[#12281b]/10 rounded-3xl p-4 sm:p-8 md:p-12 shadow-2xl backdrop-blur-md">
-      
-      <div class="flex items-center justify-between border-b border-[#12281b]/10 pb-4 mb-8 font-sans text-[11px] tracking-[0.2em] font-medium uppercase text-[#163824]">
-        <div class="flex items-center gap-2 font-semibold">
-          <span class="text-[#7a5813]">KSR</span>
-          <span class="text-[#12281b]/20">/</span>
-          <span>FIELD DISPATCH</span>
-        </div>
-        <span class="text-[#7a5813] font-bold">KHAO SOK · THAILAND</span>
-      </div>
+  <div class="max-w-7xl mx-auto space-y-12 sm:space-y-16">
 
-      <div class="space-y-6 text-[#223e2c] text-base sm:text-lg leading-relaxed font-normal">
-
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Cave, Raft & Hike Adventure in Khlong Phanom National Park</span>
+    <!-- Top Editorial Header & Category Filter Bar -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#12281b]/10 pb-8">
+      <div class="space-y-2 max-w-2xl">
+        <span class="font-sans text-xs uppercase tracking-[0.25em] text-[#7a5813] font-bold block">
+          DISPATCHES FROM THE SOK RIVER
+        </span>
+        <h2 class="font-monumental text-3xl sm:text-4xl text-[#122319] tracking-tight">
+          Rainforest Chronicles & Travel Wisdom
         </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          A half-day adventure near Khao Sok If you are looking for an adventure that combines bamboo rafting, jungle trekking and cave exploration, this Cave, Raft & Hike tour in Khlong Phanom National Park offers one of the most diverse half-day experiences near Khao Sok. Located just 30–40 minutes from Khao Sok village in Surat Thani Province, this guided tour takes you into one of the region’s less-visited national parks, where limestone mountains, rainforest rivers and hidden caves create an unforgettable jungle adventure. Many visitors to Khao Sok focus on Cheow Lan Lake, but the surrounding forests offer many other [...]
-        </p>
-        <ul class="space-y-3 my-6 pl-2">
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span> <img width="320" height="202" src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2025/08/mushroom-types-khao-sok-e-320x202.jpg" class="attachment-blog-medium size-blog-medium lazyload wp-post-image" alt="Common mushrooms of Khao Sok - types found in and around the National Park" decoding="async" srcset="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271536%27%20height%3D%271024%27%20viewBox%3D%270%200%201536%201024%27%3E%3Crect%20width%3D%271536%27%20height%3D%271024%27%20fill-opacity%3D%220%22%2F%3E%3C%2Fsvg%3E" data-orig-src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2025/08/mushroom-types-khao-sok-e-320x202.jpg" data-srcset="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2025/08/mushroom-types-khao-sok-e-320x202.jpg 320w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2025/08/mushroom-types-khao-sok-e-700x441.jpg 700w" data-sizes="auto" /> <a href="/fungal-in-the-jungle-the-hidden-mushrooms-of-khao-sok/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors"> Fungal in the Jungle – the Hidden Mushrooms of Khao Sok </a><a href="/category/uncategorized/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Everything Else</a>, <a href="/category/khao-sok-national-park-thailand/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">National Park</a> <a href="/fungal-in-the-jungle-the-hidden-mushrooms-of-khao-sok/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors"></a></span>
-          </li>
-        </ul>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Fungal in the Jungle – the Hidden Mushrooms of Khao Sok</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          When people think of Khao Sok, they usually picture the green jungle, tropical birds and stomping elephants. But scattered across the forest floor is a forgotten kingdom; the hidden world of wild mushrooms. The mushrooms of Khao Sok are often overlooked, but they are a vital part of forest ecosystems. I recently ventured deep into one of the world's oldest forests to search for these hidden gems. I couldn’t believe how much I uncovered. Let’s dive into the world of the mushrooms and explore what we found. Finding the Fungi Once we hit the trail, I focused all my attention on [...]
-        </p>
-        <ul class="space-y-3 my-6 pl-2">
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span> <img width="320" height="202" src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2025/05/rain-clouds-over-cheow-lan-lake-320x202.jpg" class="attachment-blog-medium size-blog-medium lazyload wp-post-image" alt="Rain clouds over Cheow Lan lake" decoding="async" srcset="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271989%27%20height%3D%271326%27%20viewBox%3D%270%200%201989%201326%27%3E%3Crect%20width%3D%271989%27%20height%3D%271326%27%20fill-opacity%3D%220%22%2F%3E%3C%2Fsvg%3E" data-orig-src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2025/05/rain-clouds-over-cheow-lan-lake-320x202.jpg" data-srcset="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2025/05/rain-clouds-over-cheow-lan-lake-320x202.jpg 320w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2025/05/rain-clouds-over-cheow-lan-lake-700x441.jpg 700w" data-sizes="auto" /> <a href="/thailand-rainy-season-is-it-a-good-time-to-visit-khao-sok/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors"> Thailand Rainy Season – Is It a Good Time to Visit Khao Sok? </a><a href="/category/uncategorized/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Everything Else</a>, <a href="/category/khao-sok-travel-information/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Travel Information</a> <a href="/thailand-rainy-season-is-it-a-good-time-to-visit-khao-sok/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors"></a></span>
-          </li>
-        </ul>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Thailand Rainy Season – Is It a Good Time to Visit Khao Sok?</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Most people visit Thailand in the cooler months between November and the end of April. It is much drier, so they avoid the afternoon showers associated with wet season. In April it can be incredibly hot and dry but In May the cooling rains arrive. The Thailand rainy season is when we experience some of the most exciting things that the country has to offer, and it is certainly true for visitors to Khao Sok. Short answer - yes, it is a great time to visit Thailand and Khao Sok. When is the rainy season [...]
-        </p>
-        <ul class="space-y-3 my-6 pl-2">
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span> <img width="320" height="202" src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/05/krabi-airport-320x202.jpg" class="attachment-blog-medium size-blog-medium lazyload wp-post-image" alt="Krabi to Khao Sok - Krabi Airport" decoding="async" srcset="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271353%27%20height%3D%27902%27%20viewBox%3D%270%200%201353%20902%27%3E%3Crect%20width%3D%271353%27%20height%3D%27902%27%20fill-opacity%3D%220%22%2F%3E%3C%2Fsvg%3E" data-orig-src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/05/krabi-airport-320x202.jpg" data-srcset="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/05/krabi-airport-320x202.jpg 320w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/05/krabi-airport-700x441.jpg 700w" data-sizes="auto" /> <a href="/krabi-to-khao-sok/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors"> Krabi to Khao Sok </a><a href="/category/khao-sok-travel-information/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Travel Information</a> <a href="/krabi-to-khao-sok/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors"></a></span>
-          </li>
-        </ul>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Krabi to Khao Sok</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          How to Get from Krabi to Khao Sok Khao Sok is a must-visit destination for nature lovers and adventure enthusiasts. Located in southern Thailand, this gem is home to one of the oldest rainforests in the world and the breathtaking Cheow Lan Lake. If you're in Krabi, you're just a few hours away from this tropical paradise. But how do you get from Krabi to Khao Sok? Let’s break it down. Travelling by Private Car If you value privacy and flexibility, a private car is your best bet. Direct travel with no stops. You can customize your itinerary. Ideal for [...]
-        </p>
-        <ul class="space-y-3 my-6 pl-2">
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span> <img width="320" height="202" src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/05/phuket-airport-320x202.jpg" class="attachment-blog-medium size-blog-medium lazyload wp-post-image" alt="Phuket to Khao Sok - Phuket airport bus to the town center" decoding="async" srcset="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271297%27%20height%3D%27865%27%20viewBox%3D%270%200%201297%20865%27%3E%3Crect%20width%3D%271297%27%20height%3D%27865%27%20fill-opacity%3D%220%22%2F%3E%3C%2Fsvg%3E" data-orig-src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/05/phuket-airport-320x202.jpg" data-srcset="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/05/phuket-airport-320x202.jpg 320w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/05/phuket-airport-700x441.jpg 700w" data-sizes="auto" /> <a href="/phuket-to-khao-sok/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors"> Phuket to Khao Sok </a><a href="/category/khao-sok-travel-information/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Travel Information</a> <a href="/phuket-to-khao-sok/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors"></a></span>
-          </li>
-        </ul>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Phuket to Khao Sok</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          The airport is quite a way from Phuket town center. People travelling from the airport may find themselves heading South to Phuket town in order to continue their journey from Phuket to Khao Sok. Phuket to Khao Sok From the Town Center The bus for Khao Sok leaves from “Bus Terminal 2” in Phuket town. They are quite frequent and depart roughly every hour from 7am to 3pm. Board a bus that is heading for Surat Thani, and tell the driver to stop at the Khao Sok bus station. This is the only bus route that goes directly from Phuket to [...]
-        </p>
-        <ul class="space-y-3 my-6 pl-2">
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span> <img width="320" height="202" src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/12/endangered-species-khao-sok-1-320x202.jpg" class="attachment-blog-medium size-blog-medium lazyload wp-post-image" alt="Khao Sok national park - Endangered species" decoding="async" srcset="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271918%27%20height%3D%271279%27%20viewBox%3D%270%200%201918%201279%27%3E%3Crect%20width%3D%271918%27%20height%3D%271279%27%20fill-opacity%3D%220%22%2F%3E%3C%2Fsvg%3E" data-orig-src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/12/endangered-species-khao-sok-1-320x202.jpg" data-srcset="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/12/endangered-species-khao-sok-1-320x202.jpg 320w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/12/endangered-species-khao-sok-1-700x441.jpg 700w" data-sizes="auto" /> <a href="/rare-endangered-species-khao-sok/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors"> Rare and Endangered species of the Khao Sok national park </a><a href="/category/khao-sok-national-park-thailand/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">National Park</a> <a href="/rare-endangered-species-khao-sok/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors"></a></span>
-          </li>
-        </ul>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Rare and Endangered species of the Khao Sok national park</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          This area of Thailand that we now call Khao Sok has always been remote and inaccessible. The result, an incredible explosion of nature. Being so remote we find many unique and even endemic species. However, changes in the environment and the encroachment of people put many of these species at risk. This article lists some of the endangered animals and other rare and endangered species of the Khao Sok national park in Thailand. History of the area The dramatic limestone topography makes access to this area extremely difficulty. It is the fundamental reason why there is such a [...]
-        </p>
-        <ul class="space-y-3 my-6 pl-2">
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span> <img width="320" height="202" src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/09/khao-sok-travel-guide-2-320x202.jpg" class="attachment-blog-medium size-blog-medium lazyload wp-post-image" alt="Khao Sok travel guide to the karst scenery" decoding="async" srcset="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271600%27%20height%3D%271067%27%20viewBox%3D%270%200%201600%201067%27%3E%3Crect%20width%3D%271600%27%20height%3D%271067%27%20fill-opacity%3D%220%22%2F%3E%3C%2Fsvg%3E" data-orig-src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/09/khao-sok-travel-guide-2-320x202.jpg" data-srcset="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/09/khao-sok-travel-guide-2-320x202.jpg 320w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/09/khao-sok-travel-guide-2-700x441.jpg 700w" data-sizes="auto" /> <a href="/khao-sok-travel-guide-how-many-days-to-stay-in-khao-sok/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors"> Khao Sok Travel Guide – How many days to stay in Khao Sok? </a><a href="/category/khao-sok-travel-information/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Travel Information</a> <a href="/khao-sok-travel-guide-how-many-days-to-stay-in-khao-sok/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors"></a></span>
-          </li>
-        </ul>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Khao Sok Travel Guide – How many days to stay in Khao Sok?</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Hi - are you thinking of going to the national park? If so you will be glad of our Khao Sok travel guide. We will help you decide how many days to stay in Khao Sok. First things first: Is it worth going to Khao Sok? A fair question if you haven't been. The National Park is 100% worth going to if you are in Southern Thailand. It is an absolute must if you are traveling between Phuket, Krabi and/or Koh Samui. It is easy to get here from all three popular beach destinations. Enjoy a jungle escape [...]
-        </p>
-        <ul class="space-y-3 my-6 pl-2">
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span> <img width="303" height="202" src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/07/kha-sok-nature-trail-g-standard-v2-4x-320x213.jpg" class="attachment-blog-medium size-blog-medium lazyload wp-post-image" alt="Khao Sok nature trail at Riverside Cottages" decoding="async" srcset="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271600%27%20height%3D%271066%27%20viewBox%3D%270%200%201600%201066%27%3E%3Crect%20width%3D%271600%27%20height%3D%271066%27%20fill-opacity%3D%220%22%2F%3E%3C%2Fsvg%3E" data-orig-src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/07/kha-sok-nature-trail-g-standard-v2-4x-320x213.jpg" data-srcset="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/07/kha-sok-nature-trail-g-standard-v2-4x-66x44.jpg 66w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/07/kha-sok-nature-trail-g-standard-v2-4x-200x133.jpg 200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/07/kha-sok-nature-trail-g-standard-v2-4x-300x200.jpg 300w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/07/kha-sok-nature-trail-g-standard-v2-4x-320x213.jpg 320w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/07/kha-sok-nature-trail-g-standard-v2-4x-400x266.jpg 400w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/07/kha-sok-nature-trail-g-standard-v2-4x-600x400.jpg 600w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/07/kha-sok-nature-trail-g-standard-v2-4x-669x446.jpg 669w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/07/kha-sok-nature-trail-g-standard-v2-4x-700x466.jpg 700w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/07/kha-sok-nature-trail-g-standard-v2-4x-768x512.jpg 768w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/07/kha-sok-nature-trail-g-standard-v2-4x-800x533.jpg 800w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/07/kha-sok-nature-trail-g-standard-v2-4x-1024x682.jpg 1024w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/07/kha-sok-nature-trail-g-standard-v2-4x-1200x799.jpg 1200w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/07/kha-sok-nature-trail-g-standard-v2-4x-1536x1023.jpg 1536w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/07/kha-sok-nature-trail-g-standard-v2-4x.jpg 1600w" data-sizes="auto" /> <a href="/riverside-cottages-nature-trail/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors"> Riverside Cottages Nature Trail </a><a href="/category/khao-sok-activities/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Activities</a>, <a href="/category/riverside-cottages/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Riverside Cottages</a> <a href="/riverside-cottages-nature-trail/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors"></a></span>
-          </li>
-        </ul>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Riverside Cottages Nature Trail</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Amidst the verdant splendor of the Khao Sok forest, lies a treasure trove of botanical wonders waiting to be discovered at the Riverside Cottages Nature Trail. Embark on this journey of exploration, and let the beauty of nature's creations captivate your soul. We recently created a nature trail full of interesting information - please try it yourself once you are here. Until then, here is a brief preview of the highlights, along with sounds from the jungle! The forest and gardens nestled within Riverside Cottages are filled with endemic species, fruit trees, and wildlife - a trail of natural delight. As sunlight filters [...]
-        </p>
-        <ul class="space-y-3 my-6 pl-2">
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span> <img width="320" height="202" src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/05/surat-thani-airport-320x202.jpg" class="attachment-blog-medium size-blog-medium lazyload wp-post-image" alt="Surat Thani airport - the closest airport to Khao Sok" decoding="async" srcset="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271600%27%20height%3D%271067%27%20viewBox%3D%270%200%201600%201067%27%3E%3Crect%20width%3D%271600%27%20height%3D%271067%27%20fill-opacity%3D%220%22%2F%3E%3C%2Fsvg%3E" data-orig-src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/05/surat-thani-airport-320x202.jpg" data-srcset="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/05/surat-thani-airport-320x202.jpg 320w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/05/surat-thani-airport-700x441.jpg 700w" data-sizes="auto" /> <a href="/guide-to-finding-the-closest-airport-to-khao-sok-national-park/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors"> The Ultimate Guide to Finding the Closest Airport to Khao Sok National Park </a><a href="/category/khao-sok-travel-information/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Travel Information</a> <a href="/guide-to-finding-the-closest-airport-to-khao-sok-national-park/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors"></a></span>
-          </li>
-        </ul>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>The Ultimate Guide to Finding the Closest Airport to Khao Sok National Park</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Welcome to your comprehensive guide on selecting the nearest airport to Khao Sok National Park, a gem hidden in the lush landscape of Thailand. This guide is meticulously crafted to ensure your journey is as seamless and enjoyable as the destination itself. Khao Sok National Park is not just a destination; it's an entry into a world of ancient rainforests, majestic limestone mountains, deep valleys, mesmerizing lakes, and abundant wildlife. The convenience of your travel greatly depends on choosing the right airport, and this guide is here to navigate you through finding the closest airport to Khao Sok with ease. [...]
-        </p>
-        <ul class="space-y-3 my-6 pl-2">
-          <li class="flex items-start gap-3 text-[#223e2c] text-base leading-relaxed">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#7a5813]/70 mt-2.5 flex-shrink-0"></span>
-            <span> <img width="320" height="202" src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/03/kha0-sok-2-day-tour-320x202.jpg" class="attachment-blog-medium size-blog-medium lazyload wp-post-image" alt="Sunset on our Khao Sok 2 day tour" decoding="async" srcset="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271600%27%20height%3D%271067%27%20viewBox%3D%270%200%201600%201067%27%3E%3Crect%20width%3D%271600%27%20height%3D%271067%27%20fill-opacity%3D%220%22%2F%3E%3C%2Fsvg%3E" data-orig-src="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/03/kha0-sok-2-day-tour-320x202.jpg" data-srcset="https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/03/kha0-sok-2-day-tour-320x202.jpg 320w, https://www.khao-sok-riverside-cottages.com/wp-content/uploads/2024/03/kha0-sok-2-day-tour-700x441.jpg 700w" data-sizes="auto" /> <a href="/khao-sok-2-day-tour/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors"> Dive Into Nature: Khao Sok 2-Day Tour </a><a href="/category/khao-sok-national-park-thailand/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">National Park</a>, <a href="/category/riverside-cottages/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors">Riverside Cottages</a> <a href="/khao-sok-2-day-tour/" class="text-[#1b432c] underline decoration-[#ba9038]/60 underline-offset-2 hover:decoration-[#ba9038] hover:text-[#7a5813] transition-colors"></a></span>
-          </li>
-        </ul>
-        <h2 class="font-display text-2xl sm:text-3xl text-[#163824] font-semibold tracking-tight mt-10 mb-4 pt-6 border-t border-[#12281b]/10">
-          <span>Dive Into Nature: Khao Sok 2-Day Tour</span>
-        </h2>
-        <p class="mb-5 leading-relaxed text-[#223e2c]">
-          Khao Sok National Park and the floating houses are must-see spots for every traveler visiting Thailand. The unique imagination of unreal sunrise and sunset colors is one of the true highlights of Southern Thailand. A great way to enjoy the bungalows is on a Khao Sok 2-day tour. This is a personal guide to our overnight stay on the lake. Volunteers Toti and Ale took this tour while staying at Khao Sok Riverside Cottages. They enjoyed a nice retreat away from the land. We delve into everything you need to know about our Khao Sok 2-day tour. Enjoy two amazing days and one [...]
+        <p class="text-[#264634] text-sm sm:text-base font-light leading-relaxed">
+          Curated by our resident naturalists and local guides. Everything you need to plan an authentic, unforgettable journey into southern Thailand's oldest jungle.
         </p>
       </div>
 
-      
+      <div class="flex items-center gap-3">
+        <a
+          href="/booking-khao-sok-accommodation/"
+          class="btn-couture-gold shadow-md text-xs py-2.5 px-5 font-bold uppercase tracking-wider"
+        >
+          <span>Plan Your Stay</span>
+          <span>→</span>
+        </a>
+      </div>
     </div>
-  </article>
+
+    <!-- ===== FEATURED LEAD ARTICLE (Singita Hero Card) ===== -->
+    <article class="teak-panel bamboo-frame rounded-3xl overflow-hidden shadow-xl border border-[#12281b]/10 group hover:border-[#ba9038]/60 transition-all duration-500">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
+        <!-- Lead Image -->
+        <a href={featuredArticle.slug} class="lg:col-span-7 relative h-72 sm:h-96 lg:h-full min-h-[320px] overflow-hidden block">
+          <img
+            src={featuredArticle.image}
+            alt={featuredArticle.title}
+            class="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+            loading="eager"
+            width="1200"
+            height="800"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+          <div class="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-[10px] uppercase tracking-widest text-[#122319] font-sans font-bold shadow-md">
+            ★ Featured Dispatch · {featuredArticle.category}
+          </div>
+        </a>
+
+        <!-- Lead Content -->
+        <div class="lg:col-span-5 p-6 sm:p-10 lg:p-12 flex flex-col justify-between space-y-6 bg-white">
+          <div class="space-y-4">
+            <div class="flex items-center gap-3 text-xs text-[#7a5813] font-sans font-semibold tracking-wider uppercase">
+              <span>{featuredArticle.category}</span>
+              <span>•</span>
+              <span>{featuredArticle.readTime}</span>
+            </div>
+
+            <h3 class="font-monumental text-2xl sm:text-3xl text-[#122319] leading-snug group-hover:text-[#ba9038] transition-colors font-semibold">
+              <a href={featuredArticle.slug}>
+                {featuredArticle.title}
+              </a>
+            </h3>
+
+            <p class="text-[#264634] text-sm sm:text-base font-light leading-relaxed">
+              {featuredArticle.excerpt}
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-[#12281b]/10 flex items-center justify-between">
+            <a
+              href={featuredArticle.slug}
+              class="inline-flex items-center gap-2 text-xs font-sans uppercase tracking-widest text-[#7a5813] hover:text-[#122319] font-bold group-hover:translate-x-1 transition-all"
+            >
+              <span>Read Full Article</span>
+              <span>→</span>
+            </a>
+            <span class="text-xs text-[#264634]/60 font-sans">Khao Sok National Park</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== ARTICLE MAGAZINE GRID (9 Articles) ===== -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      {gridArticles.map((article, idx) => (
+        <article
+          class={`teak-panel bamboo-frame rounded-2xl overflow-hidden shadow-md hover:shadow-2xl border border-[#12281b]/10 hover:border-[#ba9038]/60 transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between bg-white group reveal reveal-delay-${(idx % 3) + 1}`}
+        >
+          <div>
+            <!-- Article Image -->
+            <a href={article.slug} class="relative block h-52 sm:h-56 overflow-hidden">
+              <img
+                src={article.image}
+                alt={article.title}
+                class="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                loading="lazy"
+                width="800"
+                height="533"
+              />
+              <div class="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/30 to-transparent pointer-events-none"></div>
+              <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-md text-[9px] uppercase tracking-widest text-[#122319] font-sans font-bold">
+                {article.category}
+              </div>
+            </a>
+
+            <!-- Article Body -->
+            <div class="p-5 sm:p-6 space-y-3">
+              <div class="flex items-center gap-2 text-[10px] text-[#7a5813] font-sans font-semibold uppercase tracking-wider">
+                <span>{article.category}</span>
+                <span>•</span>
+                <span>{article.readTime}</span>
+              </div>
+
+              <h3 class="font-display text-lg sm:text-xl text-[#122319] leading-snug group-hover:text-[#ba9038] transition-colors font-semibold">
+                <a href={article.slug}>
+                  {article.title}
+                </a>
+              </h3>
+
+              <p class="text-xs sm:text-sm text-[#264634] font-light leading-relaxed line-clamp-3">
+                {article.excerpt}
+              </p>
+            </div>
+          </div>
+
+          <!-- Card Footer -->
+          <div class="px-5 sm:px-6 pb-5 sm:pb-6 pt-2 border-t border-[#12281b]/10 flex items-center justify-between">
+            <a
+              href={article.slug}
+              class="inline-flex items-center gap-1.5 text-xs font-sans uppercase tracking-wider text-[#7a5813] group-hover:text-[#122319] font-bold transition-colors"
+            >
+              <span>Read Story</span>
+              <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+            <span class="text-[10px] font-sans uppercase tracking-wider text-[#264634]/60">Guide</span>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- ===== INVITATION BANNER AT BOTTOM ===== -->
+    <div class="rounded-3xl p-8 sm:p-12 text-center bg-[#0b1910] text-white space-y-6 relative overflow-hidden shadow-2xl border border-white/10">
+      <!-- Ambient Botanical Light -->
+      <div class="pointer-events-none absolute -right-10 -bottom-10 w-48 sm:w-64 opacity-20 filter brightness-150">
+        <img
+          src="/images/botanical-rafflesia.webp"
+          alt="Botanical Rafflesia Accent"
+          class="w-full h-auto"
+          loading="lazy"
+          width="582"
+          height="516"
+        />
+      </div>
+
+      <div class="relative z-10 max-w-2xl mx-auto space-y-4">
+        <span class="font-sans text-xs uppercase tracking-[0.25em] text-[#d8b257] font-bold block">
+          READY FOR YOUR EXPEDITION?
+        </span>
+        <h3 class="font-monumental text-2xl sm:text-4xl text-white tracking-tight">
+          Experience Khao Sok Beyond the Words
+        </h3>
+        <p class="text-sm sm:text-base text-[#e2eee6] font-light leading-relaxed">
+          Stay right beside the Sok River in our handcrafted standalone wooden cottages. Reserve online with zero credit card deposit.
+        </p>
+        <div class="pt-4 flex flex-wrap items-center justify-center gap-4">
+          <a href="/booking-khao-sok-accommodation/" class="btn-couture-gold shadow-xl">
+            <span>Book Your Cottage</span>
+            <span>→</span>
+          </a>
+          <a href="/khao-sok-tour-packages/" class="btn-couture-dark-glass shadow-lg">
+            <span>Explore Tour Packages</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </PageLayout>
