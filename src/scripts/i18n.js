@@ -164,7 +164,9 @@
     // Reviews & Trust Bar
     'Verified Google & Global Traveler Reviews': 'รีวิวจากแขกผู้เข้าพักจริงบน Google และแพลตฟอร์มระดับโลก',
     'Thoughts from our Guests': 'ความประทับใจจากแขกผู้มาเยือน',
-    '564+ Verified Google Reviews': 'กว่า 564+ รีวิวที่ได้รับการยืนยันบน Google',
+    '731+ Verified Google Reviews': 'กว่า 731+ รีวิวที่ได้รับการยืนยันบน Google',
+    '731+ Google Reviews': 'กว่า 731+ รีวิวบน Google',
+    '731 Google Reviews': '731 รีวิวบน Google',
     'Read All Google Reviews': 'อ่านรีวิวทั้งหมดบน Google Maps',
     'No Advance Deposit Required · Free Bus Pickup': 'ไม่ต้องจ่ายมัดจำล่วงหน้า · บริการรับส่งฟรีจากจุดจอดรถบัส',
 
@@ -263,7 +265,8 @@
     'Verified Google Reviews Score': 'คะแนนที่ได้รับการยืนยันบน Google Reviews',
     'Fabulous · 1,098+ Verified Reviews': 'ยอดเยี่ยม · กว่า 1,098+ รีวิว',
     'Top Choice · 397+ Verified Reviews': 'ยอดนิยม · กว่า 397+ รีวิว',
-    '4.4 / 5 · 564+ Verified Reviews': '4.4 / 5 · กว่า 564+ รีวิว',
+    '4.5 / 5 · 731+ Verified Reviews': '4.5 / 5 · กว่า 731+ รีวิว',
+    '4.5 / 5 · Verified Guests': '4.5 / 5 · แขกผู้เข้าพักจริง',
 
     // Plan Your Escape Canopy
     '07 / PLAN YOUR ESCAPE': '07 / วางแผนการเดินทางของคุณ',
