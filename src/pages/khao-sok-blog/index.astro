@@ -1,99 +1,388 @@
 ---
-// Khao Sok Blog Index — Luxury Editorial Magazine Layout
-// 2026 High-Conversion Travel Journal & Field Dispatches
+// Khao Sok Blog Index — Complete 46-Article Luxury Magazine & Journal
+// Verbatim & Enhanced Library from Khao Sok Riverside Cottages
 import PageLayout from '../../layouts/PageLayout.astro';
 
 const articles = [
   {
-    title: 'Cave, Raft & Hike Adventure in Khlong Phanom National Park',
-    slug: '/khao-sok-cave-raft-hike-tour/',
-    image: '/wp-content/uploads/2026/03/bamboo-rafting-khao-sok.jpg',
-    category: 'Expedition',
-    readTime: '4 min read',
-    excerpt: 'A half-day adventure near Khao Sok combining peaceful bamboo rafting down clear jungle rivers, guided rainforest trekking, and exploring the limestone caverns of Tam Kaew Cave.',
-    featured: true,
+    "slug": "/khao-sok-cave-raft-hike-tour/",
+    "title": "Cave, Raft & Hike Adventure in Khlong Phanom National Park",
+    "image": "/wp-content/uploads/2026/03/bamboo-rafting-khao-sok.jpg",
+    "category": "Activities & Tours",
+    "excerpt": "Explore Khlong Phanom National Park on a Cave, Raft & Hike adventure from Khao Sok. Bamboo rafting, jungle trekking and a Tam Kaew Cave visit.",
+    "readTime": "4 min read"
   },
   {
-    title: 'Fungal in the Jungle – the Hidden Mushrooms of Khao Sok',
-    slug: '/fungal-in-the-jungle-the-hidden-mushrooms-of-khao-sok/',
-    image: '/wp-content/uploads/2025/08/mushroom-types-khao-sok-e.jpg',
-    category: 'Biodiversity',
-    readTime: '5 min read',
-    excerpt: 'Scattered across the 160-million-year-old forest floor is a forgotten kingdom of wild mushrooms. An in-depth exploration of rare, luminous, and exotic fungi of southern Thailand.',
-    featured: false,
+    "slug": "/fungal-in-the-jungle-the-hidden-mushrooms-of-khao-sok/",
+    "title": "Fungal in the Jungle \u2013 the Hidden Mushrooms of Khao Sok",
+    "image": "/wp-content/uploads/2025/08/stereum_ostrea-2.jpg",
+    "category": "Culture & Wildlife",
+    "excerpt": "An introduction to the mushrooms of Khao Sok buy R\u00f3is\u00edn. Discover the the hidden world of mushrooms with photos and video.",
+    "readTime": "4 min read"
   },
   {
-    title: 'Thailand Rainy Season – Is It a Good Time to Visit Khao Sok?',
-    slug: '/thailand-rainy-season-is-it-a-good-time-to-visit-khao-sok/',
-    image: '/wp-content/uploads/2025/05/rain-clouds-over-cheow-lan-lake.jpg',
-    category: 'Travel Advice',
-    readTime: '6 min read',
-    excerpt: 'Why the Green Season brings mystical morning mists, dramatic jungle waterfalls, roaring wildlife activity, and calm emerald waters on Cheow Lan Lake with far fewer visitors.',
-    featured: false,
+    "slug": "/thailand-rainy-season-is-it-a-good-time-to-visit-khao-sok/",
+    "title": "Thailand Rainy Season \u2013 Is It a Good Time to Visit Khao Sok?",
+    "image": "/wp-content/uploads/2025/05/thailand-rainy-season-frogs.jpg",
+    "category": "Culture & Wildlife",
+    "excerpt": "We answer your questions about the Thailand rainy season. Is it a good time to visit Khao Sok? Is the park open? Can we stay on the lake?",
+    "readTime": "4 min read"
   },
   {
-    title: 'How to Get from Krabi to Khao Sok',
-    slug: '/krabi-to-khao-sok/',
-    image: '/wp-content/uploads/2024/05/krabi-airport.jpg',
-    category: 'Logistics & Arrival',
-    readTime: '4 min read',
-    excerpt: 'A complete practical guide on traveling from Ao Nang, Krabi Town, and Krabi Airport to Khao Sok by minivan, local bus, or direct private air-conditioned transfer.',
-    featured: false,
+    "slug": "/krabi-to-khao-sok/",
+    "title": "Krabi to Khao Sok",
+    "image": "/wp-content/uploads/2024/05/krabi-airport.jpg",
+    "category": "Travel Logistics",
+    "excerpt": "Are you travelling from Krabi to Khao Sok? This blog gives you the information you need to make your journey as easy as possible.",
+    "readTime": "4 min read"
   },
   {
-    title: 'Phuket to Khao Sok – Travel Guide & Bus Schedules',
-    slug: '/phuket-to-khao-sok/',
-    image: '/wp-content/uploads/2024/05/phuket-airport.jpg',
-    category: 'Logistics & Arrival',
-    readTime: '4 min read',
-    excerpt: 'Direct travel routes from Phuket International Airport, Patong, and Phuket Town to the national park gates, including hourly buses, minivans, and private cars.',
-    featured: false,
+    "slug": "/phuket-to-khao-sok/",
+    "title": "Phuket to Khao Sok",
+    "image": "/wp-content/uploads/2024/05/phuket-airport.jpg",
+    "category": "Travel Logistics",
+    "excerpt": "Traveling from Phuket to Khao Sok? Discover bus schedules and travel times to make your journey smooth and easy.",
+    "readTime": "4 min read"
   },
   {
-    title: 'Rare and Endangered Species of Khao Sok National Park',
-    slug: '/rare-endangered-species-khao-sok/',
-    image: '/wp-content/uploads/2024/12/endangered-species-khao-sok-1.jpg',
-    category: 'Wildlife Conservation',
-    readTime: '7 min read',
-    excerpt: 'Discover the ancient rainforest sanctuary protecting wild Asian elephants, Malayan tapirs, clouded leopards, great hornbills, and the parasitic giant Rafflesia Kerrii flower.',
-    featured: false,
+    "slug": "/rare-endangered-species-khao-sok/",
+    "title": "Rare and Endangered species of the Khao Sok national park",
+    "image": "/wp-content/uploads/2019/04/pangolin-thailand.jpg",
+    "category": "National Park & Nature",
+    "excerpt": "Discover the rare and endangered species of the Khao Sok national park in Thailand. We list endangered animals, birds and plants.",
+    "readTime": "4 min read"
   },
   {
-    title: 'Khao Sok Travel Guide – How Many Days to Stay?',
-    slug: '/khao-sok-travel-guide-how-many-days-to-stay-in-khao-sok/',
-    image: '/wp-content/uploads/2024/09/khao-sok-travel-guide-2.jpg',
-    category: 'Itinerary Planning',
-    readTime: '5 min read',
-    excerpt: 'Whether you have 2 days or a full week, discover the optimal balance between riverside relaxation, night wildlife safaris, and overnight floating bungalows on Cheow Lan Lake.',
-    featured: false,
+    "slug": "/khao-sok-travel-guide-how-many-days-to-stay-in-khao-sok/",
+    "title": "Khao Sok Travel Guide \u2013 How many days to stay in Khao Sok?",
+    "image": "/wp-content/uploads/2024/09/khao-sok-travel-guide.jpg",
+    "category": "Travel Logistics",
+    "excerpt": "Our Khao Sok travel guide helps you decide how many days to stay in Khao Sok to get the most from your visit.",
+    "readTime": "4 min read"
   },
   {
-    title: 'Riverside Cottages Nature Trail & Botanical Walk',
-    slug: '/riverside-cottages-nature-trail/',
-    image: '/wp-content/uploads/2024/07/kha-sok-nature-trail-g-standard-v2-4x.jpg',
-    category: 'Lodge Experience',
-    readTime: '3 min read',
-    excerpt: 'Step outside your wooden chalet and wander our dedicated botanical trail along the Sok River, identifying wild ginger, ancient ficus trees, and birds of paradise.',
-    featured: false,
+    "slug": "/riverside-cottages-nature-trail/",
+    "title": "Riverside Cottages Nature Trail",
+    "image": "/wp-content/uploads/2024/07/torch-ginger-final.jpg",
+    "category": "Activities & Tours",
+    "excerpt": "Discover the sights and sounds of the jungle as we journey along the Riverside Cottages Nature Trail. Listen to the actual sounds.",
+    "readTime": "4 min read"
   },
   {
-    title: 'The Ultimate Guide to Finding the Closest Airport to Khao Sok',
-    slug: '/guide-to-finding-the-closest-airport-to-khao-sok-national-park/',
-    image: '/wp-content/uploads/2024/05/surat-thani-airport-2.jpg',
-    category: 'Travel Advice',
-    readTime: '5 min read',
-    excerpt: 'Comparing Surat Thani (URT), Phuket (HKT), and Krabi (KBV) airports for flight prices, transfer durations, and convenience when planning your trip to Khao Sok.',
-    featured: false,
+    "slug": "/guide-to-finding-the-closest-airport-to-khao-sok-national-park/",
+    "title": "The Ultimate Guide to Finding the Closest Airport to Khao Sok National Park",
+    "image": "/wp-content/uploads/2024/05/khao-sok-cheow-lan-lake.jpg",
+    "category": "Travel Logistics",
+    "excerpt": "The pros and cons of choosing the closest airport to Khao Sok. Is the nearest airport to Khao Sok the best option? Find out in our blog.",
+    "readTime": "4 min read"
   },
   {
-    title: 'Dive Into Nature: Khao Sok 2-Day Jungle & Lake Tour',
-    slug: '/khao-sok-2-day-tour/',
-    image: '/wp-content/uploads/2024/03/kha0-sok-2-day-tour.jpg',
-    category: 'Expedition Review',
-    readTime: '6 min read',
-    excerpt: 'An intimate guest dispatch reviewing the iconic 2-day jungle & lake overnight expedition: limestone spires, floating raft houses, and tranquil sunrise canoeing.',
-    featured: false,
+    "slug": "/khao-sok-2-day-tour/",
+    "title": "Dive Into Nature: Khao Sok 2-Day Tour",
+    "image": "/wp-content/uploads/2024/03/floating-bunglaows-kha-sok-lake.jpg",
+    "category": "National Park & Nature",
+    "excerpt": "Experience the beauty of Khao Sok national park on a 2-day tour. Stay in the Khao Sok floating houses. Immerse yourself in nature.",
+    "readTime": "4 min read"
   },
+  {
+    "slug": "/best-activities-in-khao-sok-rivers-and-lakes-a-personal-review/",
+    "title": "Khao Sok Playground \u2013 Rivers and Lakes \u2013 A Personal Review",
+    "image": "/wp-content/uploads/2023/03/best-activities-in-khao-sok-2.jpg",
+    "category": "Activities & Tours",
+    "excerpt": "A personal review of things to do in the Khao Sok Playground. Join me as I take a trip on Cheow Lan Lake and glide down the Sok River.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/top-6-activities-in-khao-sok/",
+    "title": "Top 6 things to do in Khao Sok National Park",
+    "image": "/wp-content/uploads/2017/02/banner-1.jpg",
+    "category": "Activities & Tours",
+    "excerpt": "Discover amazing things to do in Khao Sok. From jungle cooking to deep jungle survival tours, there's something for everyone!",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/top-3-hikes-khao-sok-jungle/",
+    "title": "Hikers Paradise: Top 3 Hikes in Khao Sok Jungle",
+    "image": "/wp-content/uploads/2017/02/banner-2.jpg",
+    "category": "National Park & Nature",
+    "excerpt": "Discover the Top 3 Hikes in Khao Sok, leading you through the jungle to waterfalls, caves, and encounters with unique animals and plants.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/khao-sok-jungle-cooking/",
+    "title": "Jungle Cooking in Khao Sok",
+    "image": "/wp-content/uploads/2016/02/1456023846869.jpg",
+    "category": "Activities & Tours",
+    "excerpt": "Unlock the flavors of Thailand with a Khao Sok jungle cooking experience. A unique blend of spices and techniques make Thai cuisine so tasty.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/khao-sok-river-tubing/",
+    "title": "Khao Sok River Tubing \u2013 Floating through the jungle",
+    "image": "/wp-content/uploads/2016/08/IMG_1133.jpg",
+    "category": "Activities & Tours",
+    "excerpt": "Important information, and a bit of what to expect during one of Khao Sok's classic monsoon-season activities: Khao Sok river tubing!",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/khao-sok-night-safari/",
+    "title": "Khao Sok Night Safari \u2013 Full Moon Party (of fear)",
+    "image": "/wp-content/uploads/2016/09/20160421-IMG_8409.jpg",
+    "category": "Activities & Tours",
+    "excerpt": "Venture into the Khao Sok rainforest after dark on a Khao Sok night safari with a group of jungle novices! Spoiler alert: they all live!",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/khao-sok-canoe-trip-sabai-sabai/",
+    "title": "Khao Sok Canoe Trip \u2013 Sabai Sabai",
+    "image": "/wp-content/uploads/2015/09/Khao-Sok-Canoe-Trip.jpg",
+    "category": "Activities & Tours",
+    "excerpt": "Paddle downstream through the Karst cliffs on a Khao Sok Canoe trip by Riverside Cottages! Enjoy the cool atmosphere, amazing nature, and stunning scenery.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/khao-sok-safari-lake-national-park/",
+    "title": "Bikes and boats \u2013 A Khao Sok Safari",
+    "image": "/wp-content/uploads/2019/04/khao-sok-safari.jpg",
+    "category": "Activities & Tours",
+    "excerpt": "Emmanuel Caristi shares his Khao Sok safari adventure. Meet the locals on a bike ride & discover the Khao Sok national park.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/khao-sok-elephant-sanctuary/",
+    "title": "Khao Sok Elephant Retirement Sanctuary \u2013 Caring for the Khao Sok national park elephant",
+    "image": "/wp-content/uploads/2018/09/asian-elephant.jpg",
+    "category": "Activities & Tours",
+    "excerpt": "Discover the Khao Sok elephant sanctuary, a community-based eco-tourism program. Get to know the Khao Sok national park elephant.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/thailand-jungle-trekking/",
+    "title": "Thailand Jungle Trekking",
+    "image": "/wp-content/uploads/2023/03/jungle-hiking-1500-1000.jpg",
+    "category": "Activities & Tours",
+    "excerpt": "Join us on a Thailand jungle trekking adventure led by an expert guide on a quest to find the Rafflesia Kerrii, the world's largest flower!",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/khao-sok-jungle-hike/",
+    "title": "Khao Sok jungle hike: journey to the giant bamboo",
+    "image": "/wp-content/uploads/2016/08/IMG_1012.jpg",
+    "category": "Activities & Tours",
+    "excerpt": "Embark on an epic Khao Sok jungle hike to explore the breathtaking \u2018Chiang Ruun\u2019 bamboo and witness the unique karst geography and flora.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/khao-sok-park/",
+    "title": "Khao Sok Park Cave Hike",
+    "image": "/wp-content/uploads/2016/11/IMG_7975.jpg",
+    "category": "Activities & Tours",
+    "excerpt": "Discovering a hidden cave in Khao Sok park. Embark on an unforgettable hike through the dense rainforest and explore Bang Man cave.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/khao-sok-cave-exploring-the-crystal-chamber/",
+    "title": "Khao Sok Cave \u2013 Tam Gaew \u2013 Exploring the crystal chamber",
+    "image": "/wp-content/uploads/2024/01/khao-sok-cave-2.jpg",
+    "category": "Activities & Tours",
+    "excerpt": "Enjoy this blog about an amazing cave called Tam Gaew. It is famous for its unique crystal chamber with extraordinary speleothems.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/kao-sok-national-park-camping/",
+    "title": "Khao Sok Camping \u2013 Surviving in Paradise",
+    "image": "/wp-content/uploads/2023/07/cooking-jungle-steamed-rice.jpg",
+    "category": "Activities & Tours",
+    "excerpt": "Discover the joys and pitfalls of Khao Sok Camping . Spoiler alert - It was fantastic. Recommended for all adventurers.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/khao-sok-jungle-camping/",
+    "title": "Khao Sok jungle camping: Journey to the Chon Mining area, part 2",
+    "image": "/wp-content/uploads/2016/10/IMG_0337.jpg",
+    "category": "Activities & Tours",
+    "excerpt": "The second installment of our tale detailing our Khao Sok jungle camping trip that took us to the abandoned Meuang Chon tin mining site.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/khao-sok-jungle-adventure-journey-meuang-chon/",
+    "title": "A Khao Sok Jungle Adventure: Journey to Meuang Chon",
+    "image": "/wp-content/uploads/2016/09/20160422-IMG_8510.jpg",
+    "category": "Activities & Tours",
+    "excerpt": "Get ready for a Khao Sok jungle adventure like no other! Immerse yourself in nature, explore an abandoned tin mine and towering waterfalls.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/khao-sok-nature-trail/",
+    "title": "Out and back \u2013 a Khao Sok Nature Trail",
+    "image": "/wp-content/uploads/2017/08/Cliff-face-1.jpg",
+    "category": "Activities & Tours",
+    "excerpt": "Experience the beauty of Khao Sok nature trail. Suitable for all ages and abilities, explore the jungle and enjoy free diversions.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/spotlight-local-guides-in-khao-sok-nationalpark-ed/",
+    "title": "Spotlight: Local Guides in Khao Sok Nationalpark \u2013 Ed",
+    "image": "/wp-content/uploads/2023/10/khao-sok-guides-ed-2-g.jpg",
+    "category": "National Park & Nature",
+    "excerpt": "An insight into the local Guides in Khao Sok Nationalpark. Ed leads tours around Khao Sok and also works on his organic farm nearby.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/asian-elephant-khao-sok-national-park-elephant/",
+    "title": "The Asian Elephant \u2013 Elephant Facts \u2013 Khao Sok National Park Elephant",
+    "image": "/wp-content/uploads/2018/09/asian-elephant.jpg",
+    "category": "Culture & Wildlife",
+    "excerpt": "Get to know the Asian elephant. Top elephant facts about the elephant family , elephant trunk, weight, baby elephant & elephant diet.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/khlong-phanom-national-park/",
+    "title": "Gateway to the undiscovered: Khlong Phanom National Park",
+    "image": "/wp-content/uploads/2019/03/khlong-phanom-national-park-2.jpg",
+    "category": "National Park & Nature",
+    "excerpt": "Khlong Phanom national park is rich in natural wonders. Ideal for trekking into nature. Discover this unexplored section of Thailand jungle!",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/what-is-karst-topography/",
+    "title": "What is Karst Topography?",
+    "image": "/wp-content/uploads/2022/09/karst-topography-2.jpg",
+    "category": "Culture & Wildlife",
+    "excerpt": "Discover the science behind karst topography. How is this landscape created? What sre the influences of water and man?",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/khao-sok-weather/",
+    "title": "Sweat it out: A Khao Sok National Park Weather guide!",
+    "image": "/wp-content/uploads/2018/05/DSCF2577.jpg",
+    "category": "Culture & Wildlife",
+    "excerpt": "Unravel the Khao Sok weather and the Khao Sok national park weather. Prepare yourself for the Khao Sok the rainy season.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/khao-sok-dry-season/",
+    "title": "Thai Dry Season: an April Portrait",
+    "image": "/wp-content/uploads/2016/05/capark-e1542053663925.jpg",
+    "category": "Lodge & Life",
+    "excerpt": "Looking for a great place to stay in Khao Sok during the Thai dry season? Look no further than Khao Sok Riverside Cottages! Read on to find out why.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/guide-to-khao-sok-village/",
+    "title": "A Guide to Khao Sok Village",
+    "image": "/wp-content/uploads/2020/08/Khao-Sok-village-9.jpg",
+    "category": "Featured Guide",
+    "excerpt": "Explore Khao Sok village, the gateway to Khao Sok national park. Discover guesthouses, resorts, restaurants, & shops in this charming hamlet.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/train-bangkok-khao-sok/",
+    "title": "Bangkok to Khao Sok",
+    "image": "/wp-content/uploads/2016/07/khao-sok-national-park-2.jpg",
+    "category": "Travel Logistics",
+    "excerpt": "This blog provides information about taking the train from Bangkok to Khao Sok, including times, prices, and tips for the trip.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/get-surat-thani-airport-khao-sok/",
+    "title": "Surat Thani to Khao Sok & Khao Sok to Surat Thani: Complete 2025 Travel Guide",
+    "image": "/wp-content/uploads/2024/05/surat-thani-airport-2.jpg",
+    "category": "Travel Logistics",
+    "excerpt": "Explore transport options from Surat Thani to Khao Sok National Park. Discover your best travel choices today.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/leaving-khao-sok-to-koh-samui-and-other-locations/",
+    "title": "Koh Samui to Khao Sok: A Comprehensive Travel Guide",
+    "image": "/images/khao-sok-hero-cottages.jpg",
+    "category": "Travel Logistics",
+    "excerpt": "Koh Samui to Khao Sok. Up-to-date travel information. Includes detailed information for those departing Khao Sok.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/departing-from-khao-sok/",
+    "title": "Departing from Khao Sok",
+    "image": "/wp-content/uploads/2017/11/DSC01366.jpg",
+    "category": "Travel Logistics",
+    "excerpt": "Detailed guide to travellers leaving Khao Sok to Surat Thani, Phuket, Krabi Koh Samui,. Koh Phangan and Koh Lanta",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/off-the-beaten-path-in-south-thailand/",
+    "title": "Getting off the Beaten Path in South Thailand",
+    "image": "/wp-content/uploads/2018/10/AD.jpg",
+    "category": "Travel Logistics",
+    "excerpt": "We'll give you inside tips on how to get off the beaten path in South Thailand, just a couple hours drive from Khao Sok. Get ready for adventures!",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/what-to-do-in-khao-sok-a-drivers-guide/",
+    "title": "Driver's Guide: Explore the Khao Sok viewpoint & Waterfalls",
+    "image": "/wp-content/uploads/2017/11/DSC01956.jpg",
+    "category": "Travel Logistics",
+    "excerpt": "Plan your perfect Khao Sok adventures with our Khao Sok driver's guide. Discover the khao Sok viewpoint waterfalls, & ancient cave temples.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/finding-perfect-khao-sok-bungalow/",
+    "title": "Finding a perfect Khao Sok bungalow",
+    "image": "/wp-content/uploads/2016/05/RIVER_COTTAGES_MR_D2832_HDR.jpg",
+    "category": "Travel Logistics",
+    "excerpt": "Choosing the perfect Khao Sok bungalow is crucial for a memorable trip. The key criteria to consider - cleanliness, location, service & food.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/khao-sok-family-holiday-thailand/",
+    "title": "Family Holiday Thailand \u2013 how to visit Khao Sok with children",
+    "image": "/wp-content/uploads/2016/11/riverside-6.jpg",
+    "category": "Culture & Wildlife",
+    "excerpt": "Visit Khao Sok with children for the perfect family holiday in Thailand, Explore Khaosok nature, book a family room & a Khao Sok family tour.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/sustainable-community-led-tourism/",
+    "title": "Community-Led Tourism and the Story Behind Riverside Cottages",
+    "image": "/wp-content/uploads/2017/02/banner-2.jpg",
+    "category": "Culture & Wildlife",
+    "excerpt": "Discover how responsible, community-led tourism is empowering the preservation of Khao Sok National Park in Thailand.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/khao-sok-after-covid-19/",
+    "title": "Khao Sok after Covid-19",
+    "image": "/wp-content/uploads/2020/06/khao-sok-after-covid-19-e.jpg",
+    "category": "Travel Logistics",
+    "excerpt": "All you need to know about visiting Khao Sok after Covid-19. You will find rejuvenated nature, safe travel and accommodation.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/khaosok-koh-sok-national-park/",
+    "title": "How to spell Khaosok \u2013 Koh Sok \u2013 Koh Sok national park",
+    "image": "/wp-content/uploads/2019/04/Khaosok.jpg",
+    "category": "Culture & Wildlife",
+    "excerpt": "How to find Khaosok, Koh Sok or Koh Sok national park on the web. There are many mispellings of Khao Sok and these rare the most common.",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "/top-tips-cheow-larn-lake-trip/",
+    "title": "Top Tips For Your Lake Trip",
+    "image": "/wp-content/uploads/2024/03/cheow-lan-lake-trip-e.jpg",
+    "category": "Rainforest Guide",
+    "excerpt": "Know before you go",
+    "readTime": "4 min read"
+  }
+];
+
+const categories = [
+  "All",
+  "Activities & Tours",
+  "Culture & Wildlife",
+  "Featured Guide",
+  "Lodge & Life",
+  "National Park & Nature",
+  "Rainforest Guide",
+  "Travel Logistics"
 ];
 
 const featuredArticle = articles[0];
@@ -101,102 +390,141 @@ const gridArticles = articles.slice(1);
 ---
 
 <PageLayout
-  title="Khao Sok Blog & Field Dispatches | Riverside Cottages"
-  description="Official travel guide and nature journal for Khao Sok National Park. In-depth advice on lake tours, wildlife encounters, seasons, and logistics from our riverside team."
+  title="Khao Sok Blog & Field Dispatches | All 46 Travel Articles"
+  description="Complete travel guide and nature journal for Khao Sok National Park. All 46 articles covering lake tours, wildlife encounters, seasons, hiking trails, and travel logistics."
   heroImage="/images/khao-sok-hero-cottages.jpg"
   heroTitle="Khao Sok Travel Journal"
-  heroSubtitle="Field Dispatches, Wildlife Guides & Rainforest Stories"
+  heroSubtitle="The Complete Field Guide: 46 Stories, Wildlife Dispatches & Guides"
   breadcrumbs={[{"label": "Khao Sok Blog", "href": "/khao-sok-blog/"}]}
 >
-  <div class="max-w-7xl mx-auto space-y-12 sm:space-y-16">
+  <div class="max-w-7xl mx-auto space-y-10 sm:space-y-14">
 
     <!-- Top Editorial Header & Category Filter Bar -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#12281b]/10 pb-8">
-      <div class="space-y-2 max-w-2xl">
-        <span class="font-sans text-xs uppercase tracking-[0.25em] text-[#7a5813] font-bold block">
-          DISPATCHES FROM THE SOK RIVER
-        </span>
-        <h2 class="font-monumental text-3xl sm:text-4xl text-[#122319] tracking-tight">
-          Rainforest Chronicles & Travel Wisdom
-        </h2>
-        <p class="text-[#264634] text-sm sm:text-base font-light leading-relaxed">
-          Curated by our resident naturalists and local guides. Everything you need to plan an authentic, unforgettable journey into southern Thailand's oldest jungle.
-        </p>
+    <div class="space-y-6 border-b border-[#12281b]/10 pb-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div class="space-y-2 max-w-2xl">
+          <span class="font-sans text-xs uppercase tracking-[0.25em] text-[#7a5813] font-bold block">
+            THE COMPLETE CHRONICLES OF KHAO SOK ({articles.length} ARTICLES)
+          </span>
+          <h2 class="font-monumental text-3xl sm:text-4xl text-[#122319] tracking-tight">
+            Rainforest Life, Wildlife & Travel Wisdom
+          </h2>
+          <p class="text-[#264634] text-sm sm:text-base font-light leading-relaxed">
+            Every dispatch, travel guide, and nature story from our riverside team. Explore our complete archive below or filter by topic.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <a
+            href="/booking-khao-sok-accommodation/"
+            class="btn-couture-gold shadow-md text-xs py-2.5 px-5 font-bold uppercase tracking-wider whitespace-nowrap"
+          >
+            <span>Plan Your Stay</span>
+            <span>→</span>
+          </a>
+        </div>
       </div>
 
-      <div class="flex items-center gap-3">
-        <a
-          href="/booking-khao-sok-accommodation/"
-          class="btn-couture-gold shadow-md text-xs py-2.5 px-5 font-bold uppercase tracking-wider"
-        >
-          <span>Plan Your Stay</span>
-          <span>→</span>
-        </a>
+      <!-- Live Search & Interactive Category Filter -->
+      <div class="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+        
+        <!-- Category Filter Pills -->
+        <div class="flex flex-wrap items-center gap-2" id="category-filters">
+          {categories.map((cat, i) => (
+            <button
+              type="button"
+              data-cat-btn={cat}
+              class={}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        <!-- Quick Keyword Search Input -->
+        <div class="relative min-w-[240px] max-w-xs">
+          <input
+            type="text"
+            id="article-search"
+            placeholder="Search all 46 articles..."
+            class="w-full pl-9 pr-4 py-2 rounded-full text-xs font-sans bg-white border border-[#12281b]/15 text-[#122319] placeholder-[#122319]/40 focus:outline-none focus:border-[#ba9038] focus:ring-1 focus:ring-[#ba9038] transition-all shadow-inner"
+          />
+          <span class="absolute left-3 top-2.5 text-xs text-[#122319]/40 pointer-events-none">🔍</span>
+        </div>
+
       </div>
     </div>
 
-    <!-- ===== FEATURED LEAD ARTICLE (Singita Hero Card) ===== -->
-    <article class="teak-panel bamboo-frame rounded-3xl overflow-hidden shadow-xl border border-[#12281b]/10 group hover:border-[#ba9038]/60 transition-all duration-500">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
-        <!-- Lead Image -->
-        <a href={featuredArticle.slug} class="lg:col-span-7 relative h-72 sm:h-96 lg:h-full min-h-[320px] overflow-hidden block">
-          <img
-            src={featuredArticle.image}
-            alt={featuredArticle.title}
-            class="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
-            loading="eager"
-            width="1200"
-            height="800"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
-          <div class="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-[10px] uppercase tracking-widest text-[#122319] font-sans font-bold shadow-md">
-            ★ Featured Dispatch · {featuredArticle.category}
-          </div>
-        </a>
+    <!-- ===== FEATURED LEAD ARTICLE ===== -->
+    <div id="featured-container">
+      <article class="teak-panel bamboo-frame rounded-3xl overflow-hidden shadow-xl border border-[#12281b]/10 group hover:border-[#ba9038]/60 transition-all duration-500 bg-white">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
+          <!-- Lead Image -->
+          <a href={featuredArticle.slug} class="lg:col-span-7 relative h-72 sm:h-96 lg:h-full min-h-[320px] overflow-hidden block">
+            <img
+              src={featuredArticle.image}
+              alt={featuredArticle.title}
+              class="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+              loading="eager"
+              width="1200"
+              height="800"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+            <div class="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-[10px] uppercase tracking-widest text-[#122319] font-sans font-bold shadow-md">
+              ★ Featured Story · {featuredArticle.category}
+            </div>
+          </a>
 
-        <!-- Lead Content -->
-        <div class="lg:col-span-5 p-6 sm:p-10 lg:p-12 flex flex-col justify-between space-y-6 bg-white">
-          <div class="space-y-4">
-            <div class="flex items-center gap-3 text-xs text-[#7a5813] font-sans font-semibold tracking-wider uppercase">
-              <span>{featuredArticle.category}</span>
-              <span>•</span>
-              <span>{featuredArticle.readTime}</span>
+          <!-- Lead Content -->
+          <div class="lg:col-span-5 p-6 sm:p-10 lg:p-12 flex flex-col justify-between space-y-6 bg-white">
+            <div class="space-y-4">
+              <div class="flex items-center gap-3 text-xs text-[#7a5813] font-sans font-semibold tracking-wider uppercase">
+                <span>{featuredArticle.category}</span>
+                <span>•</span>
+                <span>{featuredArticle.readTime}</span>
+              </div>
+
+              <h3 class="font-monumental text-2xl sm:text-3xl text-[#122319] leading-snug group-hover:text-[#ba9038] transition-colors font-semibold">
+                <a href={featuredArticle.slug}>
+                  {featuredArticle.title}
+                </a>
+              </h3>
+
+              <p class="text-[#264634] text-sm sm:text-base font-light leading-relaxed">
+                {featuredArticle.excerpt}
+              </p>
             </div>
 
-            <h3 class="font-monumental text-2xl sm:text-3xl text-[#122319] leading-snug group-hover:text-[#ba9038] transition-colors font-semibold">
-              <a href={featuredArticle.slug}>
-                {featuredArticle.title}
+            <div class="pt-4 border-t border-[#12281b]/10 flex items-center justify-between">
+              <a
+                href={featuredArticle.slug}
+                class="inline-flex items-center gap-2 text-xs font-sans uppercase tracking-widest text-[#7a5813] hover:text-[#122319] font-bold group-hover:translate-x-1 transition-all"
+              >
+                <span>Read Full Article</span>
+                <span>→</span>
               </a>
-            </h3>
-
-            <p class="text-[#264634] text-sm sm:text-base font-light leading-relaxed">
-              {featuredArticle.excerpt}
-            </p>
-          </div>
-
-          <div class="pt-4 border-t border-[#12281b]/10 flex items-center justify-between">
-            <a
-              href={featuredArticle.slug}
-              class="inline-flex items-center gap-2 text-xs font-sans uppercase tracking-widest text-[#7a5813] hover:text-[#122319] font-bold group-hover:translate-x-1 transition-all"
-            >
-              <span>Read Full Article</span>
-              <span>→</span>
-            </a>
-            <span class="text-xs text-[#264634]/60 font-sans">Khao Sok National Park</span>
+              <span class="text-xs text-[#264634]/60 font-sans">Khao Sok National Park</span>
+            </div>
           </div>
         </div>
-      </div>
-    </article>
+      </article>
+    </div>
 
-    <!-- ===== ARTICLE MAGAZINE GRID (9 Articles) ===== -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+    <!-- ===== ARTICLE MAGAZINE GRID (All 45 Articles) ===== -->
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+      id="articles-grid"
+    >
       {gridArticles.map((article, idx) => (
         <article
-          class={`teak-panel bamboo-frame rounded-2xl overflow-hidden shadow-md hover:shadow-2xl border border-[#12281b]/10 hover:border-[#ba9038]/60 transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between bg-white group reveal reveal-delay-${(idx % 3) + 1}`}
+          class="article-card teak-panel bamboo-frame rounded-2xl overflow-hidden shadow-md hover:shadow-2xl border border-[#12281b]/10 hover:border-[#ba9038]/60 transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between bg-white group reveal"
+          data-category={article.category}
+          data-title={article.title.toLowerCase()}
+          data-excerpt={article.excerpt.toLowerCase()}
         >
           <div>
             <!-- Article Image -->
-            <a href={article.slug} class="relative block h-52 sm:h-56 overflow-hidden">
+            <a href={article.slug} class="relative block h-52 sm:h-56 overflow-hidden bg-[#f4efeb]">
               <img
                 src={article.image}
                 alt={article.title}
@@ -206,7 +534,7 @@ const gridArticles = articles.slice(1);
                 height="533"
               />
               <div class="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/30 to-transparent pointer-events-none"></div>
-              <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-md text-[9px] uppercase tracking-widest text-[#122319] font-sans font-bold">
+              <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-md text-[9px] uppercase tracking-widest text-[#122319] font-sans font-bold shadow-sm">
                 {article.category}
               </div>
             </a>
@@ -232,7 +560,7 @@ const gridArticles = articles.slice(1);
           </div>
 
           <!-- Card Footer -->
-          <div class="px-5 sm:px-6 pb-5 sm:pb-6 pt-2 border-t border-[#12281b]/10 flex items-center justify-between">
+          <div class="px-5 sm:px-6 pb-5 sm:pb-6 pt-3 border-t border-[#12281b]/10 flex items-center justify-between">
             <a
               href={article.slug}
               class="inline-flex items-center gap-1.5 text-xs font-sans uppercase tracking-wider text-[#7a5813] group-hover:text-[#122319] font-bold transition-colors"
@@ -240,10 +568,28 @@ const gridArticles = articles.slice(1);
               <span>Read Story</span>
               <span class="group-hover:translate-x-1 transition-transform">→</span>
             </a>
-            <span class="text-[10px] font-sans uppercase tracking-wider text-[#264634]/60">Guide</span>
+            <span class="text-[10px] font-sans uppercase tracking-wider text-[#264634]/60">Khao Sok Guide</span>
           </div>
         </article>
       ))}
+    </div>
+
+    <!-- Empty State if search yields no results -->
+    <div id="empty-state" class="hidden py-16 text-center space-y-4 rounded-3xl bg-white border border-[#12281b]/10 p-8">
+      <div class="w-12 h-12 rounded-full bg-[#ba9038]/10 text-[#7a5813] flex items-center justify-center mx-auto text-xl font-bold">
+        🔍
+      </div>
+      <h3 class="font-monumental text-2xl text-[#122319]">No articles match your search</h3>
+      <p class="text-[#264634] text-sm max-w-md mx-auto font-light">
+        Try searching with different terms like "lake", "hike", "elephants", or "bus".
+      </p>
+      <button
+        type="button"
+        id="reset-search-btn"
+        class="btn-couture-dark-glass text-xs py-2 px-4 shadow-sm inline-block"
+      >
+        Clear filters & show all 46 articles
+      </button>
     </div>
 
     <!-- ===== INVITATION BANNER AT BOTTOM ===== -->
@@ -283,4 +629,94 @@ const gridArticles = articles.slice(1);
     </div>
 
   </div>
+
+  <script is:inline>
+    // Client-side interactive category filter and instant search
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('[data-cat-btn]');
+      const searchInput = document.getElementById('article-search');
+      const cards = document.querySelectorAll('.article-card');
+      const emptyState = document.getElementById('empty-state');
+      const resetBtn = document.getElementById('reset-search-btn');
+      const featuredBox = document.getElementById('featured-container');
+
+      let currentCategory = 'All';
+      let currentQuery = '';
+
+      function applyFilters() {
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+          const cardCat = card.getAttribute('data-category');
+          const title = card.getAttribute('data-title') || '';
+          const excerpt = card.getAttribute('data-excerpt') || '';
+
+          const matchesCat = (currentCategory === 'All') || (cardCat === currentCategory);
+          const matchesQuery = !currentQuery || title.includes(currentQuery) || excerpt.includes(currentQuery);
+
+          if (matchesCat && matchesQuery) {
+            card.classList.remove('hidden');
+            visibleCount++;
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+
+        // Hide featured container when filtering
+        if (featuredBox) {
+          if (currentCategory !== 'All' || currentQuery !== '') {
+            featuredBox.classList.add('hidden');
+          } else {
+            featuredBox.classList.remove('hidden');
+          }
+        }
+
+        if (emptyState) {
+          if (visibleCount === 0) {
+            emptyState.classList.remove('hidden');
+          } else {
+            emptyState.classList.add('hidden');
+          }
+        }
+      }
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentCategory = btn.getAttribute('data-cat-btn');
+
+          filterBtns.forEach(b => {
+            b.className = 'px-3.5 py-1.5 rounded-full text-xs font-sans font-semibold tracking-wider transition-all duration-300 min-h-[36px] bg-white hover:bg-[#faf8f5] text-[#122319] border border-[#12281b]/10 hover:border-[#ba9038]/50';
+          });
+          btn.className = 'px-3.5 py-1.5 rounded-full text-xs font-sans font-semibold tracking-wider transition-all duration-300 min-h-[36px] bg-[#12281b] text-[#f7e6b5] shadow-sm';
+
+          applyFilters();
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          currentQuery = e.target.value.toLowerCase().trim();
+          applyFilters();
+        });
+      }
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          currentCategory = 'All';
+          currentQuery = '';
+          if (searchInput) searchInput.value = '';
+
+          filterBtns.forEach((b, i) => {
+            if (i === 0) {
+              b.className = 'px-3.5 py-1.5 rounded-full text-xs font-sans font-semibold tracking-wider transition-all duration-300 min-h-[36px] bg-[#12281b] text-[#f7e6b5] shadow-sm';
+            } else {
+              b.className = 'px-3.5 py-1.5 rounded-full text-xs font-sans font-semibold tracking-wider transition-all duration-300 min-h-[36px] bg-white hover:bg-[#faf8f5] text-[#122319] border border-[#12281b]/10 hover:border-[#ba9038]/50';
+            }
+          });
+
+          applyFilters();
+        });
+      }
+    });
+  </script>
 </PageLayout>
