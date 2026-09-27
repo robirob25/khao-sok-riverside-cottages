@@ -548,9 +548,12 @@ const cottageRooms = [
       <!-- Dates Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div class="space-y-2">
-          <label for="step-date-checkin" class="block text-xs font-sans uppercase tracking-wider text-[#12281b] font-semibold">
-            Check-In Date *
-          </label>
+          <div class="flex items-center justify-between">
+            <label for="step-date-checkin" id="label-date-checkin" class="block text-xs font-sans uppercase tracking-wider text-[#12281b] font-semibold">
+              Tour Start Date (Check-In) *
+            </label>
+            <span class="text-[10px] font-sans uppercase tracking-wider text-[#7a5813] font-bold" id="hint-date-checkin">Arrival Day</span>
+          </div>
           <div class="relative">
             <input
               type="date"
@@ -558,7 +561,7 @@ const cottageRooms = [
               name="checkin_date"
               required
               lang="en-US"
-              class="w-full pl-4 pr-10 py-3.5 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] font-medium text-sm focus:outline-none focus:ring-2 focus:ring-[#ba9038]/20 transition-all"
+              class="w-full pl-4 pr-10 py-3.5 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] font-medium text-sm focus:outline-none focus:ring-2 focus:ring-[#ba9038]/20 transition-all cursor-pointer"
             />
             <div class="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#7a5813]">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -569,9 +572,15 @@ const cottageRooms = [
         </div>
 
         <div class="space-y-2">
-          <label for="step-date-checkout" class="block text-xs font-sans uppercase tracking-wider text-[#12281b] font-semibold">
-            Check-Out Date *
-          </label>
+          <div class="flex items-center justify-between">
+            <label for="step-date-checkout" id="label-date-checkout" class="block text-xs font-sans uppercase tracking-wider text-[#12281b] font-semibold">
+              Tour End Date (Check-Out) *
+            </label>
+            <span id="badge-nights-lock" class="text-[10px] font-sans font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-[#ba9038]/15 text-[#7a5813] border border-[#ba9038]/30 flex items-center gap-1">
+              <span>🔒</span>
+              <span id="text-nights-lock">Fixed: 3 Nights</span>
+            </span>
+          </div>
           <div class="relative">
             <input
               type="date"
@@ -579,14 +588,17 @@ const cottageRooms = [
               name="checkout_date"
               required
               lang="en-US"
-              class="w-full pl-4 pr-10 py-3.5 rounded-xl bg-[#faf8f5] border border-[#12281b]/15 focus:border-[#ba9038] focus:bg-white text-[#12281b] font-medium text-sm focus:outline-none focus:ring-2 focus:ring-[#ba9038]/20 transition-all"
+              class="w-full pl-4 pr-10 py-3.5 rounded-xl bg-[#f4efeb]/80 border border-[#12281b]/15 text-[#12281b] font-medium text-sm focus:outline-none transition-all cursor-not-allowed"
             />
-            <div class="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#7a5813]">
+            <div id="icon-date-checkout" class="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#7a5813]">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
               </svg>
             </div>
           </div>
+          <p id="help-date-checkout" class="text-[11px] text-[#183424] leading-relaxed">
+            Automatically set for the <span id="help-package-duration" class="font-bold text-[#12281b]">4 Days / 3 Nights</span> package itinerary.
+          </p>
         </div>
       </div>
 
@@ -979,6 +991,14 @@ const cottageRooms = [
     const step2RecapThumb = document.getElementById('step2-recap-thumb');
     const step2RecapTitle = document.getElementById('step2-recap-title');
     const btnStep2ChangeExp = document.getElementById('btn-step2-change-exp');
+    const labelDateCheckin = document.getElementById('label-date-checkin');
+    const hintDateCheckin = document.getElementById('hint-date-checkin');
+    const labelDateCheckout = document.getElementById('label-date-checkout');
+    const badgeNightsLock = document.getElementById('badge-nights-lock');
+    const textNightsLock = document.getElementById('text-nights-lock');
+    const iconDateCheckout = document.getElementById('icon-date-checkout');
+    const helpDateCheckout = document.getElementById('help-date-checkout');
+    const helpPackageDuration = document.getElementById('help-package-duration');
     const inputCheckin = document.getElementById('step-date-checkin');
     const inputCheckout = document.getElementById('step-date-checkout');
     const displayAdults = document.getElementById('display-adults');
@@ -1110,12 +1130,8 @@ const cottageRooms = [
         step1Rate.textContent = type === 'package' ? `${price} / person · All-Inclusive` : `${price} / night`;
       }
 
-      // Automatically recalculate checkout date if checkin already filled
-      if (inputCheckin && inputCheckin.value && inputCheckout) {
-        const d = new Date(inputCheckin.value);
-        d.setDate(d.getDate() + (selectedItem.nights || 1));
-        inputCheckout.value = d.toISOString().split('T')[0];
-      }
+      // Automatically recalculate checkout date if checkin already filled and sync date rules
+      syncDateRules();
 
       // Update Beds24 URL accordingly
       if (beds24Link) {
@@ -1191,6 +1207,7 @@ const cottageRooms = [
       if (step === 2) {
         if (step2RecapThumb) step2RecapThumb.src = selectedItem.img;
         if (step2RecapTitle) step2RecapTitle.textContent = `${selectedItem.title} (${selectedItem.price})`;
+        syncDateRules();
       } else if (step === 3) {
         updateStep3Summary();
       }
@@ -1198,23 +1215,74 @@ const cottageRooms = [
       root.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // Dates Setup
+    // Dates Setup & Dynamic Rules (Enforces exact nights for packages, min 1 for rooms)
+    function syncDateRules() {
+      if (!inputCheckin || !inputCheckout) return;
+
+      const isPackage = selectedItem.type === 'package';
+      const requiredNights = selectedItem.nights || 1;
+
+      if (isPackage) {
+        if (labelDateCheckin) labelDateCheckin.textContent = 'Tour Start Date (Check-In) *';
+        if (hintDateCheckin) hintDateCheckin.textContent = 'Arrival Day';
+        if (labelDateCheckout) labelDateCheckout.textContent = 'Tour End Date (Check-Out) *';
+        if (badgeNightsLock) badgeNightsLock.classList.remove('hidden');
+        if (textNightsLock) textNightsLock.textContent = `Fixed: ${requiredNights} Night${requiredNights > 1 ? 's' : ''}`;
+        if (helpDateCheckout) helpDateCheckout.classList.remove('hidden');
+        if (helpPackageDuration) helpPackageDuration.textContent = selectedItem.duration || `${requiredNights} Nights`;
+
+        inputCheckout.setAttribute('readonly', 'true');
+        inputCheckout.classList.add('bg-[#f4efeb]/80', 'cursor-not-allowed');
+        inputCheckout.classList.remove('bg-[#faf8f5]', 'cursor-pointer');
+        if (iconDateCheckout) {
+          iconDateCheckout.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>';
+        }
+
+        // Auto compute checkout based on checkin
+        if (inputCheckin.value) {
+          const inD = new Date(inputCheckin.value);
+          const outD = new Date(inD);
+          outD.setDate(outD.getDate() + requiredNights);
+          const outStr = outD.toISOString().split('T')[0];
+          inputCheckout.value = outStr;
+          inputCheckout.min = outStr;
+          inputCheckout.max = outStr;
+        }
+      } else {
+        if (labelDateCheckin) labelDateCheckin.textContent = 'Check-In Date *';
+        if (hintDateCheckin) hintDateCheckin.textContent = 'Arrival Day';
+        if (labelDateCheckout) labelDateCheckout.textContent = 'Check-Out Date *';
+        if (badgeNightsLock) badgeNightsLock.classList.remove('hidden');
+        if (textNightsLock) textNightsLock.textContent = 'Flexible (Min. 1 Night)';
+        if (helpDateCheckout) helpDateCheckout.classList.add('hidden');
+
+        inputCheckout.removeAttribute('readonly');
+        inputCheckout.removeAttribute('max');
+        inputCheckout.classList.remove('bg-[#f4efeb]/80', 'cursor-not-allowed');
+        inputCheckout.classList.add('bg-[#faf8f5]', 'cursor-pointer');
+        if (iconDateCheckout) {
+          iconDateCheckout.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>';
+        }
+
+        if (inputCheckin.value) {
+          const inD = new Date(inputCheckin.value);
+          const minOutD = new Date(inD);
+          minOutD.setDate(minOutD.getDate() + 1);
+          const minOutStr = minOutD.toISOString().split('T')[0];
+          inputCheckout.min = minOutStr;
+          if (!inputCheckout.value || inputCheckout.value <= inputCheckin.value) {
+            inputCheckout.value = minOutStr;
+          }
+        }
+      }
+    }
+
     const today = new Date();
     const todayStr = today.toISOString().split('T')[0];
     if (inputCheckin) {
       inputCheckin.min = todayStr;
       inputCheckin.addEventListener('change', () => {
-        if (inputCheckin.value) {
-          const inDate = new Date(inputCheckin.value);
-          const nightsToAdd = selectedItem.nights || 1;
-          const outDate = new Date(inDate);
-          outDate.setDate(outDate.getDate() + nightsToAdd);
-          const outDateStr = outDate.toISOString().split('T')[0];
-          if (inputCheckout) {
-            inputCheckout.min = outDateStr;
-            inputCheckout.value = outDateStr;
-          }
-        }
+        syncDateRules();
         if (error2) error2.classList.add('hidden');
       });
     }
@@ -1276,18 +1344,31 @@ const cottageRooms = [
 
       if (!inVal || !outVal) {
         if (error2 && error2Text) {
-          error2Text.textContent = 'Please select both Check-In and Check-Out dates.';
+          error2Text.textContent = 'Please select your arrival date.';
           error2.classList.remove('hidden');
         }
         return false;
       }
 
-      if (outVal <= inVal) {
-        if (error2 && error2Text) {
-          error2Text.textContent = 'Check-Out date must be strictly after Check-In date.';
-          error2.classList.remove('hidden');
+      const d1 = new Date(inVal);
+      const d2 = new Date(outVal);
+      const actualNights = Math.round((d2 - d1) / (1000 * 60 * 60 * 24));
+
+      if (selectedItem.type === 'package') {
+        const requiredNights = selectedItem.nights || 1;
+        if (actualNights !== requiredNights) {
+          // Auto fix
+          d1.setDate(d1.getDate() + requiredNights);
+          inputCheckout.value = d1.toISOString().split('T')[0];
         }
-        return false;
+      } else {
+        if (actualNights < 1) {
+          if (error2 && error2Text) {
+            error2Text.textContent = 'Cottage stays require a minimum of 1 night.';
+            error2.classList.remove('hidden');
+          }
+          return false;
+        }
       }
 
       if (error2) error2.classList.add('hidden');
